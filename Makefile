@@ -6,7 +6,7 @@
 #    By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 13:20:37 by rbroque           #+#    #+#              #
-#    Updated: 2022/12/03 17:14:06 by rbroque          ###   ########.fr        #
+#    Updated: 2022/12/03 19:43:39 by rbroque          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,8 +36,8 @@ LIB = $(LIB_FOLDER)/libft.a
 
 ### INCLUDES
 
+INCLUDES_LIB = -I $(LIB_FOLDER)/includes/ -I /usr/include/X11/
 INCLUDES += includes/
-INCLUDES_LIB = $(LIB_FOLDER)/includes/
 HEADER += $(INCLUDES)/fdf.h
 
 ### MAKEFILE
@@ -69,14 +69,14 @@ endif
 all: $(NAME)
 
 $(NAME): $(LIB) $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -I $(INCLUDES) -I $(INCLUDES_LIB) -Lminilibx-linux -lmlx_Linux -L/usr/lib -Iminilibx-linux -lXext -lX11 -lm -lz
+	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -I $(INCLUDES) $(INCLUDES_LIB) -Lminilibx-linux -lmlx_Linux -L/usr/lib -Iminilibx-linux -lXext -lX11 -lm -lz
 
 $(LIB):
 	$(MAKE) -C $(LIB_FOLDER)
 
 $(OBJS): $(PATH_OBJS)/%.o: %.c $(HEADER) $(MAKEFILE)
 	@mkdir -p $(PATH_OBJS)
-	$(CC) $(CFLAGS) -c $< -o $@ -I $(INCLUDES) -I $(INCLUDES_LIB) -Iminilibx-linux -O3
+	$(CC) $(CFLAGS) -c $< -o $@ -I $(INCLUDES) $(INCLUDES_LIB) -Iminilibx-linux -O3
 
 clean:
 	$(RM) -R $(PATH_OBJS)
