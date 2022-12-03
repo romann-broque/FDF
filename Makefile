@@ -6,7 +6,7 @@
 #    By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 13:20:37 by rbroque           #+#    #+#              #
-#    Updated: 2022/12/03 19:43:39 by rbroque          ###   ########.fr        #
+#    Updated: 2022/12/03 21:58:07 by rbroque          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,8 @@ PATH_SRCS += srcs/
 # srcs/
 
 SRCS += main.c
+SRCS += event.c
+SRCS += window.c
 
 vpath %.c $(PATH_SRCS)
 
