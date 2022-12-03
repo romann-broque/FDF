@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/02 13:53:21 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/03 15:25:09 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,7 @@
 
 # include "libft.h"
 # include "mlx.h"
+
+# define ESCAPE_KEY 65307
 
 #endif

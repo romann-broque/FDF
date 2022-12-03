@@ -6,7 +6,7 @@
 #    By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 13:20:37 by rbroque           #+#    #+#              #
-#    Updated: 2022/12/02 13:57:23 by rbroque          ###   ########.fr        #
+#    Updated: 2022/12/03 17:14:06 by rbroque          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,14 +40,16 @@ INCLUDES += includes/
 INCLUDES_LIB = $(LIB_FOLDER)/includes/
 HEADER += $(INCLUDES)/fdf.h
 
+### MAKEFILE
+
+MAKEFILE = Makefile
+
 ### COMPILATION
 
 CC = cc
 
 CFLAGS += -Wall
 CFLAGS += -Wextra
-
-LINKS += -
 
 ifneq ($(noerror), 1)
 	CFLAGS += -Werror
@@ -72,7 +74,7 @@ $(NAME): $(LIB) $(OBJS)
 $(LIB):
 	$(MAKE) -C $(LIB_FOLDER)
 
-$(OBJS): $(PATH_OBJS)/%.o: %.c $(HEADER)
+$(OBJS): $(PATH_OBJS)/%.o: %.c $(HEADER) $(MAKEFILE)
 	@mkdir -p $(PATH_OBJS)
 	$(CC) $(CFLAGS) -c $< -o $@ -I $(INCLUDES) -I $(INCLUDES_LIB) -Iminilibx-linux -O3
 
