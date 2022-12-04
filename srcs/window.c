@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 21:48:43 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/03 21:49:15 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/04 13:58:37 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,14 @@ int	close_window1(int key, t_win *ptr)
 int	close_window2(t_win *ptr)
 {
 	mlx_loop_end(ptr->mlx_ptr);
+	return (0);
+}
+
+int	detect_mouse_pos(int x, int y, t_win *ptr)
+{
+	(void)ptr;
+	printf("x: %d\n", x);
+	printf("y: %d\n", y);
 	return (0);
 }
 

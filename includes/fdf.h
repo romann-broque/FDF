@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/03 23:02:05 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/04 13:58:26 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ t_win	*init_window(const int height, const int width, char *title);
 void	destroy_window(t_win *window);
 int		close_window1(int key, t_win *ptr);
 int		close_window2(t_win *ptr);
+int		detect_mouse_pos(int x, int y, t_win *ptr);
 
 // events
 

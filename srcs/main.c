@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:22:16 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/04 01:35:43 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/04 10:54:33 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,10 @@ int	main(int ac, char **av)
 	window = init_window(height, width, "Nice");
 	img.img = mlx_new_image(window->mlx_ptr, height, width);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
-	print_line(0, 0, height, width, &img, GREEN);
-	print_line(0, width, height, 0, &img, GREEN);
-	print_shap(&img, height, width);
+
+	print_line(0, 100, 100, 450, &img, GREEN);
+//	print_line(0, width, height, 0, &img, GREEN);
+//	print_shap(&img, height, width);
 	mlx_put_image_to_window(window->mlx_ptr, window->win_ptr, img.img, 0, 0);
 	loop(window);
 	destroy_window(window);
