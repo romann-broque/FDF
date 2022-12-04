@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/04 14:51:59 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/04 18:44:54 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@
 # define YELLOW	0x00FFFF00
 # define GREEN	0x0000FF00
 # define BLUE	0x000000FF
+# define WHITE	0x00FFFFFF
 
 typedef struct	s_data {
 	void	*img;
@@ -64,7 +65,7 @@ void	loop(t_win *window);
 // print
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-void	print_shap(t_data *img, int height, int width);
+void	print_ref(t_data *img, int height, int width);
 void	print_line(int x1, int x2, int y1, int y2, t_data *data, int color);
 
 #endif
