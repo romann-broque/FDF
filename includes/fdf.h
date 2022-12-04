@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/04 13:58:26 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/04 14:51:59 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,14 @@
 # include <keysymdef.h> //precise path in Makefile
 
 # define ESCAPE_KEY 65307
+
+# ifndef HEIGHT
+#  define HEIGHT 1920
+# endif
+
+# ifndef WIDTH
+#  define WIDTH 1080
+# endif
 
 // COLORS
 
