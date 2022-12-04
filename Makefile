@@ -6,7 +6,7 @@
 #    By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 13:20:37 by rbroque           #+#    #+#              #
-#    Updated: 2022/12/03 21:58:07 by rbroque          ###   ########.fr        #
+#    Updated: 2022/12/03 22:35:44 by rbroque          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ PATH_SRCS += srcs/
 
 SRCS += main.c
 SRCS += event.c
+SRCS += print.c
 SRCS += window.c
 
 vpath %.c $(PATH_SRCS)
@@ -80,6 +81,10 @@ $(OBJS): $(PATH_OBJS)/%.o: %.c $(HEADER) $(MAKEFILE)
 	@mkdir -p $(PATH_OBJS)
 	$(CC) $(CFLAGS) -c $< -o $@ -I $(INCLUDES) $(INCLUDES_LIB) -Iminilibx-linux -O3
 
+run:
+	$(MAKE)
+	./$(NAME)
+
 clean:
 	$(RM) -R $(PATH_OBJS)
 	$(MAKE) -sC $(LIB_FOLDER) clean
@@ -91,4 +96,4 @@ fclean: clean
 re: fclean
 	$(MAKE)
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re run
