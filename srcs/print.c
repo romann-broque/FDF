@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 21:58:34 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/04 18:45:09 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/04 22:04:16 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	print_line_neg(int x1, int y1, int x2, int y2, t_data* data, int color)
 	const float	dx = x2 - x1;
 	const float	dy = y2 - y1;
 	const float	e1 = dy / dx;
-	const float	e2 = 1.0;
+	const float	e2 = -1.0;
 	float		e;
 	int			x;
 	int			y;

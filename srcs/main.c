@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:22:16 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/04 18:42:47 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/04 22:04:40 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,13 @@ int	main(int ac, char **av)
 
 	int	x_center = height / 2;
 	int	y_center = width / 2;
-	print_line(x_center, y_center, x_center + 200, y_center - 150, &img, GREEN);
-	print_line(x_center, y_center, x_center + 200, y_center - 60, &img, GREEN);
-	print_line(x_center, y_center, x_center + 200, y_center + 50, &img, GREEN);
-	print_line(x_center, y_center, x_center + 200, y_center + 150, &img, GREEN);
+	int	curr_y = y_center - 150;
+
+	while (curr_y < y_center + 150)
+	{
+		print_line(x_center, y_center, x_center + 200, curr_y, &img, GREEN)
+		++curr_y;
+	}
 //	print_line(0, 10, 1, width - 1, &img, GREEN);
 //	print_line(0, width, height, 0, &img, GREEN);
 	print_ref(&img, height, width);
