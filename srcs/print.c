@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 21:58:34 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/04 22:04:16 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/05 02:02:29 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,86 +66,93 @@ int		get_sign(int nb)
 	return (1);
 }
 
-void	print_line_neg(int x1, int y1, int x2, int y2, t_data* data, int color)
+void	print_line_less(t_pos *pos1, t_pos *pos2, t_data* data, int color, int sign)
 {
-	const float	dx = x2 - x1;
-	const float	dy = y2 - y1;
-	const float	e1 = dy / dx;
+	const float	dx = pos2->x - pos1->x;
+	const float	dy = pos2->y - pos1->y;
+	const float	e1 = sign * (dy / dx);
 	const float	e2 = -1.0;
 	float		e;
-	int			x;
-	int			y;
+	t_pos		*pos;
 
-	x = x1;
-	y = y1;
+	pos = init_pos(pos1->x, pos1->y);
 	e = 0.0;
-	while (x < x2)
+	while (pos->x <= pos2->x)
 	{
-		my_mlx_pixel_put(data, x, y, color);
+		my_mlx_pixel_put(data, pos->x, pos->y, color);
 		e += e1;
 		if (e >= 0.5)
 		{
-			y += get_sign(dy);
+			pos->y += get_sign(dy);
 			e += e2;
 		}
-		++x;
+		++pos->x;
 	}
 }
 
-
-void	print_line_pos(int x1, int y1, int x2, int y2, t_data* data, int color)
+void	print_line_more(t_pos *pos1, t_pos *pos2, t_data* data, int color, int sign)
 {
-	const float	dx = x2 - x1;
-	const float	dy = y2 - y1;
-	const float	e1 = -dy / dx;
+	const float	dx = pos2->x - pos1->x;
+	const float	dy = pos2->y - pos1->y;
+	const float	e1 = sign * (dy / dx);
 	const float	e2 = -1.0;
 	float		e;
-	int			x;
-	int			y;
+	t_pos		*pos;
 
-	x = x1;
-	y = y1;
+	pos = init_pos(pos1->x, pos1->y);
 	e = 0.0;
-	while (x < x2)
+	while (pos->y <= pos2->y)
 	{
-		my_mlx_pixel_put(data, x, y, color);
+		printf("curr_x --> %d\n", pos->x);
+		printf("curr_y --> %d\n", pos->y);
+		my_mlx_pixel_put(data, pos->x, pos->y, color);
 		e += e1;
 		if (e >= 0.5)
 		{
-			y += get_sign(dy);
+			pos->y += get_sign(dy);
 			e += e2;
 		}
-		++x;
+		++pos->x;
 	}
 }
 
-void	print_line(int x1, int y1, int x2, int y2, t_data *data, int color)
+void	ft_swap(int *nb1, int *nb2)
 {
-	const float	dx = x2 - x1;
-	const float	dy = y2 - y1;
-	const float	coeff = dy / dx;
+	int	tmp;
 
+	tmp = *nb1;
+	*nb1 = *nb2;
+	*nb2 = tmp;
+}
+
+void	print_line(t_pos *pos1, t_pos *pos2, t_data *data, int color)
+{
+	float	dx;
+	float	dy;
+	float	coeff;
+
+	if (pos1->x > pos2->x)
+	{
+		ft_swap(&pos1->x, &pos2->x);
+		ft_swap(&pos1->y, &pos2->y);
+	}
+	dx = pos2->x - pos1->x;
+	dy = pos2->y - pos1->y;
+	coeff = dy / dx;
 	printf("coeff --> %f\n", coeff);
 	if (coeff >= 0)
 	{
 		if (coeff <= 1)
-			print_line_neg(x1, y1, x2, y2, data, color);
+			print_line_less(pos1, pos2, data, color, 1);
 		else
-			print_line_neg(x1, y1, x2, y2, data, color);
+			print_line_more(pos1, pos2, data, color, 1);
 	}
 	else
 	{
 		if (coeff >= -1)
-			print_line_pos(x1, y1, x2, y2, data, color);
+			print_line_less(pos1, pos2, data, color, -1);
 		else
-			print_line_pos(x1, y1, x2, y2, data, color);
+			print_line_more(pos1, pos2, data, color, -1);
 	}
-/*
-	else if (x2 < x1 && y2 < y1)
-		print_line_neg(x2, y2, x1, y1, data, color);
-	else if (x2 < x1 && y1 > y2)
-		print_line_pos(x1, y1, x2, y2, data, color);
-	else
-		print_line_pos(x2, y2, x1, y1, data, color);
-*/
 }
+

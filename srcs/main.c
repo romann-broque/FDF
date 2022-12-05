@@ -6,11 +6,27 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:22:16 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/04 22:04:40 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/05 01:17:27 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+void	set_pos(t_pos *pos, int x, int y)
+{
+	pos->x = x;
+	pos->y = y;
+}
+
+t_pos	*init_pos(int x, int y)
+{
+	t_pos	*new;
+
+	new = (t_pos *)malloc(sizeof(t_pos));
+	if (new != NULL)
+		set_pos(new, x, y);
+	return (new);
+}
 
 int	main(int ac, char **av)
 {
@@ -26,20 +42,25 @@ int	main(int ac, char **av)
 	window = init_window(height, width, "Nice");
 	img.img = mlx_new_image(window->mlx_ptr, height, width);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
-//	print_line(0, 10, 1, width - 1, &img, GREEN);
+//
+	int		x_center = height / 2;
+	int		y_center = width / 2;
+	t_pos	*center = init_pos(x_center, y_center);
+	t_pos	*pos = init_pos(x_center + 100, y_center - 300);
+	t_pos	*corner1 = init_pos(0, 0);
+	t_pos	*corner2 = init_pos(HEIGHT, 0);
+	t_pos	*corner3 = init_pos(0, WIDTH);
+	t_pos	*corner4 = init_pos(HEIGHT, WIDTH);
 
-	int	x_center = height / 2;
-	int	y_center = width / 2;
-	int	curr_y = y_center - 150;
-
-	while (curr_y < y_center + 150)
-	{
-		print_line(x_center, y_center, x_center + 200, curr_y, &img, GREEN)
-		++curr_y;
-	}
-//	print_line(0, 10, 1, width - 1, &img, GREEN);
-//	print_line(0, width, height, 0, &img, GREEN);
 	print_ref(&img, height, width);
+	print_line(corner1, corner4, &img, RED);
+	print_line(corner2, corner3, &img, RED);
+	while (pos->y <= center->y + 300)
+	{
+		print_line(center, pos, &img, GREEN);
+		++pos->y;
+	}
+//
 	mlx_put_image_to_window(window->mlx_ptr, window->win_ptr, img.img, 0, 0);
 	loop(window);
 	destroy_window(window);

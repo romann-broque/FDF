@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/04 18:44:54 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/05 00:46:24 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 
 # include "libft.h"
 # include <mlx.h>
-# include <X.h> //precise path in Makefile
-# include <keysymdef.h> //precise path in Makefile
+# include <X.h>
+# include <keysymdef.h>
 
 # define ESCAPE_KEY 65307
 
 # ifndef HEIGHT
-#  define HEIGHT 1920
+#  define HEIGHT 1080
 # endif
 
 # ifndef WIDTH
@@ -31,14 +31,14 @@
 // COLORS
 
 # define RED	0x00FF0000
-# define YELLOW	0x00FFFF00
 # define GREEN	0x0000FF00
 # define BLUE	0x000000FF
+# define YELLOW	0x00FFFF00
 # define WHITE	0x00FFFFFF
 
 typedef struct	s_data {
-	void	*img;
 	char	*addr;
+	void	*img;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
@@ -49,6 +49,12 @@ typedef struct	s_win
 	void	*mlx_ptr;
 	void	*win_ptr;
 }				t_win;
+
+typedef struct	s_pos
+{
+	int	x;
+	int	y;
+}				t_pos;
 
 // window
 
@@ -66,6 +72,10 @@ void	loop(t_win *window);
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	print_ref(t_data *img, int height, int width);
-void	print_line(int x1, int x2, int y1, int y2, t_data *data, int color);
+void	print_line(t_pos *pos1, t_pos *pos2, t_data *data, int color);
+
+// struct
+
+t_pos	*init_pos(int x, int y);
 
 #endif
