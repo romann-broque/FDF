@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:22:16 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/05 01:17:27 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/06 02:33:49 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	main(int ac, char **av)
 	int		x_center = height / 2;
 	int		y_center = width / 2;
 	t_pos	*center = init_pos(x_center, y_center);
-	t_pos	*pos = init_pos(x_center + 100, y_center - 300);
+	t_pos	*pos = init_pos(x_center + 100, y_center - 200);
 	t_pos	*corner1 = init_pos(0, 0);
 	t_pos	*corner2 = init_pos(HEIGHT, 0);
 	t_pos	*corner3 = init_pos(0, WIDTH);
@@ -55,9 +55,10 @@ int	main(int ac, char **av)
 	print_ref(&img, height, width);
 	print_line(corner1, corner4, &img, RED);
 	print_line(corner2, corner3, &img, RED);
-	while (pos->y <= center->y + 300)
+	while (pos->y <= center->y + 200)
 	{
-		print_line(center, pos, &img, GREEN);
+		printf("x --> %d; y --> %d\n", pos->x, pos->y);
+		print_line(center, pos, &img, BLUE);
 		++pos->y;
 	}
 //

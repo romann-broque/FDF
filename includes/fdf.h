@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/05 00:46:24 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/05 20:31:25 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@
 # define ESCAPE_KEY 65307
 
 # ifndef HEIGHT
-#  define HEIGHT 1080
+#  define HEIGHT 600
 # endif
 
 # ifndef WIDTH
-#  define WIDTH 1080
+#  define WIDTH 600
 # endif
 
 // COLORS
