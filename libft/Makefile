@@ -6,15 +6,19 @@
 #    By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 10:15:13 by rbroque           #+#    #+#              #
-#    Updated: 2022/11/14 10:02:06 by rbroque          ###   ########.fr        #
+#    Updated: 2022/12/06 22:56:04 by rbroque          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-### NAME
+##############
+#### NAME ####
+##############
 
 NAME = libft.a
 
-### SRCS
+##############
+#### SRCS ####
+##############
 
 PATH_SRCS += srcs/
 PATH_SRCS += srcs/conv/
@@ -102,16 +106,22 @@ SRCS += ft_substr.c
 
 vpath %.c $(PATH_SRCS)
 
-### OBJS
+###############
+#### OBJS #####
+###############
 
 PATH_OBJS = objs
 OBJS = $(patsubst %.c, $(PATH_OBJS)/%.o, $(SRCS))
 
-### INCLUDES
+##################
+#### INCLUDES ####
+##################
 
 INCLUDES += includes/
 
-### COMPILATION
+#####################
+#### COMPILATION ####
+#####################
 
 CC = clang
 
@@ -126,16 +136,33 @@ ifeq ($(everything), true)
 	CFLAGS += -Weverything
 endif
 
-### RULES
+#################
+#### DISPLAY ####
+#################
+
+ifndef ECHO
+T := $(shell $(MAKE) $(MAKECMDGOALS) --no-print-directory \
+      -nrRf $(firstword $(MAKEFILE_LIST)) \
+      ECHO="COUNTTHIS" | grep -c "COUNTTHIS")
+N := x
+C = $(words $N)$(eval N := x $N)
+ECHO = echo -ne "\r [`expr $C '*' 100 / $T`%]"
+endif
+
+###############
+#### RULES ####
+###############
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	ar rcs $@ $^
+	@ar rcs $@ $^
+	@$(ECHO) $(NAME) COMPILED !
 
 $(OBJS): $(PATH_OBJS)/%.o: %.c $(HEADER)
+	@$(ECHO) COMPILING $^
 	@mkdir -p $(PATH_OBJS)
-	$(CC) $(CFLAGS) -c $< -o $@ -I $(INCLUDES)
+	@$(CC) $(CFLAGS) -c $< -o $@ -I $(INCLUDES)
 
 clean:
 	$(RM) -R $(PATH_OBJS)

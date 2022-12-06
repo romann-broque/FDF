@@ -6,15 +6,19 @@
 #    By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 13:20:37 by rbroque           #+#    #+#              #
-#    Updated: 2022/12/06 21:25:24 by rbroque          ###   ########.fr        #
+#    Updated: 2022/12/06 22:56:51 by rbroque          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-### NAME
+##############
+#### NAME ####
+##############
 
 NAME = fdf
 
-### SRCS
+##############
+#### SRCS ####
+##############
 
 PATH_SRCS += srcs/
 PATH_SRCS += srcs/struct/
@@ -42,27 +46,37 @@ SRCS += print.c
 
 vpath %.c $(PATH_SRCS)
 
-### OBJS
+##############
+#### OBJS ####
+##############
 
 PATH_OBJS = objs
 OBJS = $(patsubst %.c, $(PATH_OBJS)/%.o, $(SRCS))
 
-### LIB
+#############
+#### LIB ####
+#############
 
 LIB_FOLDER = libft/
 LIB = $(LIB_FOLDER)/libft.a
 
-### INCLUDES
+###################
+#### INCLUDES #####
+###################
 
 INCLUDES_LIB = -I $(LIB_FOLDER)/includes/ -I /usr/include/X11/
 INCLUDES += includes/
 HEADER += $(INCLUDES)/fdf.h
 
-### MAKEFILE
+##################
+#### MAKEFILE ####
+##################
 
 MAKEFILE = Makefile
 
-### COMPILATION
+#####################
+#### COMPILATION ####
+#####################
 
 CC = cc
 
@@ -82,19 +96,36 @@ ifeq ($(debug), true)
 	CFLAGS += -fsanitize=address,undefined
 endif
 
-### RULES
+#################
+#### DISPLAY ####
+#################
+
+ifndef ECHO
+T := $(shell $(MAKE) $(MAKECMDGOALS) --no-print-directory \
+      -nrRf $(firstword $(MAKEFILE_LIST)) \
+      ECHO="COUNTTHIS" | grep -c "COUNTTHIS")
+N := x
+C = $(words $N)$(eval N := x $N)
+ECHO = echo -ne "\r [`expr $C '*' 100 / $T`%]"
+endif
+
+###############
+#### RULES ####
+###############
 
 all: $(NAME)
 
 $(NAME): $(LIB) $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -I $(INCLUDES) $(INCLUDES_LIB) -Lminilibx-linux -lmlx_Linux -L/usr/lib -Iminilibx-linux -lXext -lX11 -lm -lz
+	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -I $(INCLUDES) $(INCLUDES_LIB) -Lminilibx-linux -lmlx_Linux -L/usr/lib -Iminilibx-linux -lXext -lX11 -lm -lz
+	@echo "All done !"
 
 $(LIB):
-	$(MAKE) -C $(LIB_FOLDER)
+	@$(MAKE) -C $(LIB_FOLDER)
 
 $(OBJS): $(PATH_OBJS)/%.o: %.c $(HEADER) $(MAKEFILE)
+	@$(ECHO) COMPILING $^
 	@mkdir -p $(PATH_OBJS)
-	$(CC) $(CFLAGS) -c $< -o $@ -I $(INCLUDES) $(INCLUDES_LIB) -Iminilibx-linux -O3
+	@$(CC) $(CFLAGS) -c $< -o $@ -I $(INCLUDES) $(INCLUDES_LIB) -Iminilibx-linux -O3
 
 run:
 	$(MAKE)
@@ -112,3 +143,5 @@ re: fclean
 	$(MAKE)
 
 .PHONY: all clean fclean re run
+
+#endif
