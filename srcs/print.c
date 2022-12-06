@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 21:58:34 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/06 02:45:01 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/06 03:22:12 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,6 @@ void	print_line_less(t_pos *pos1, t_pos *pos2, t_data* data, int color, int sign
 
 void	print_line_more(t_pos *pos1, t_pos *pos2, t_data* data, int color, int sign)
 {
-	(void)sign;
 	const float	dx = pos2->x - pos1->x;
 	const float	dy = pos2->y - pos1->y;
 	const float	e1 = sign * (dy / dx);
@@ -108,12 +107,12 @@ void	print_line_more(t_pos *pos1, t_pos *pos2, t_data* data, int color, int sign
 		printf("e --> %f\n", e);
 		if (e >= 0.5)
 		{
-			pos->x += get_sign(dx);
+			++pos->x;
 			e += e2;
 		}
 		else
 			e += e1;
-		++pos->y;
+		pos->y += get_sign(dy);
 	}
 }
 
@@ -140,6 +139,7 @@ void	print_line(t_pos *pos1, t_pos *pos2, t_data *data, int color)
 	dx = pos2->x - pos1->x;
 	dy = pos2->y - pos1->y;
 	coeff = dy / dx;
+	printf("coeff -> %f\n", coeff);
 	if (coeff >= 0)
 	{
 		if (coeff <= 1)
