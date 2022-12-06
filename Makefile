@@ -6,7 +6,7 @@
 #    By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 13:20:37 by rbroque           #+#    #+#              #
-#    Updated: 2022/12/05 00:48:55 by rbroque          ###   ########.fr        #
+#    Updated: 2022/12/06 21:25:24 by rbroque          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,13 +17,28 @@ NAME = fdf
 ### SRCS
 
 PATH_SRCS += srcs/
+PATH_SRCS += srcs/struct/
+PATH_SRCS += srcs/print/
+PATH_SRCS += srcs/loop/
 
 # srcs/
 
 SRCS += main.c
-SRCS += event.c
-SRCS += print.c
+
+# srcs/struct
+
 SRCS += window.c
+SRCS += data.c
+SRCS += pos.c
+
+# srcs/loop
+
+SRCS += events.c
+SRCS += loop.c
+
+# srcs/print
+
+SRCS += print.c
 
 vpath %.c $(PATH_SRCS)
 

@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   data.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/02 13:22:16 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/06 21:14:34 by rbroque          ###   ########.fr       */
+/*   Created: 2022/12/06 21:12:50 by rbroque           #+#    #+#             */
+/*   Updated: 2022/12/06 21:13:26 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	main(int ac, char **av)
+t_data	*init_data(void *mlx_ptr)
 {
-	t_win	*window;
-	int		height = HEIGHT;
-	int		width = WIDTH;
+	t_data	*img;
 
-	if (ac > 1)
-		height = atoi(av[1]); // change atoi->ft_atoi
-	if (ac > 2)
-		width = atoi(av[2]); // change atoi->ft_atoi
-	window = init_window(height, width, "Nice");
-//	mlx_put_image_to_window(window->mlx_ptr, window->win_ptr, window->data->img, 0, 0);
-	loop(window);
-	destroy_window(window);
-	return (0);
+	img = (t_data *)malloc(sizeof(t_data));
+	if (img != NULL)
+	{
+		img->img = mlx_new_image(mlx_ptr, HEIGHT, WIDTH);
+		img->addr = mlx_get_data_addr(img->img, &img->bits_per_pixel, &img->line_length, &img->endian);
+	}
+	return (img);
 }

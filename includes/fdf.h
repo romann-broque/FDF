@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/06 19:22:45 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/06 21:27:20 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,27 +57,38 @@ typedef struct	s_pos
 	int	y;
 }				t_pos;
 
-// window
+/// loop
 
-t_win	*init_window(const int height, const int width, char *title);
-void	destroy_window(t_win *window);
+// events
+
 int		close_window1(int key, t_win *ptr);
 int		close_window2(t_win *ptr);
 int		detect_mouse_pos(int x, int y, t_win *ptr);
 
-// events
+// loop
 
 void	loop(t_win *window);
 
-// print
+/// print
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	print_ref(t_data *img, int height, int width);
 void	print_line(t_pos *pos1, t_pos *pos2, t_data *data, int color);
 
-// struct
+/// struct
+
+// data
+
+t_data	*init_data(void *mlx_ptr);
+
+// pos
 
 void	set_pos(t_pos *pos, int x, int y);
 t_pos	*init_pos(int x, int y);
+
+// window
+
+t_win	*init_window(const int height, const int width, char *title);
+void	destroy_window(t_win *window);
 
 #endif

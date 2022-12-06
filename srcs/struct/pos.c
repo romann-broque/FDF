@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   pos.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/02 13:22:16 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/06 21:14:34 by rbroque          ###   ########.fr       */
+/*   Created: 2022/12/06 21:13:39 by rbroque           #+#    #+#             */
+/*   Updated: 2022/12/06 21:13:54 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	main(int ac, char **av)
+void	set_pos(t_pos *pos, int x, int y)
 {
-	t_win	*window;
-	int		height = HEIGHT;
-	int		width = WIDTH;
+	pos->x = x;
+	pos->y = y;
+}
 
-	if (ac > 1)
-		height = atoi(av[1]); // change atoi->ft_atoi
-	if (ac > 2)
-		width = atoi(av[2]); // change atoi->ft_atoi
-	window = init_window(height, width, "Nice");
-//	mlx_put_image_to_window(window->mlx_ptr, window->win_ptr, window->data->img, 0, 0);
-	loop(window);
-	destroy_window(window);
-	return (0);
+t_pos	*init_pos(int x, int y)
+{
+	t_pos	*new;
+
+	new = (t_pos *)malloc(sizeof(t_pos));
+	if (new != NULL)
+		set_pos(new, x, y);
+	return (new);
 }
