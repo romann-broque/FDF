@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/05 20:31:25 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/06 19:22:45 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct	s_win
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
+	t_data	*data;
 }				t_win;
 
 typedef struct	s_pos
@@ -76,6 +77,7 @@ void	print_line(t_pos *pos1, t_pos *pos2, t_data *data, int color);
 
 // struct
 
+void	set_pos(t_pos *pos, int x, int y);
 t_pos	*init_pos(int x, int y);
 
 #endif
