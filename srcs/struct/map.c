@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 16:04:04 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/07 18:09:46 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/07 18:51:23 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,21 +26,24 @@ void	print_lst_pos(t_list *lst)
 	printf("\n");
 }
 
-void	add_coord_to_lst(t_list **lst, char **coord, int y)
+void	add_coord_to_lst(t_list **lst, char **coord, int y, int zoom)
 {
 	t_list	*curr_pos;
+	int		i;
 	int		x;
 
+	i = 0;
 	x = 0;
-	while (coord[x] != NULL)
+	while (coord[i] != NULL)
 	{
-		curr_pos = ft_lstnew(init_pos(x, y, ft_atoi(coord[x])));
+		curr_pos = ft_lstnew(init_pos(x, y * zoom, ft_atoi(coord[i])));
 		ft_lstadd_back(lst, curr_pos);
-		++x;
+		x += zoom;
+		++i;
 	}
 }
 
-t_list	*get_pos(int fd)
+t_list	*get_pos(int fd, int zoom)
 {
 	t_list	*pos_lst;
 	int		y;
@@ -53,11 +56,11 @@ t_list	*get_pos(int fd)
 	while (curr_line != NULL)
 	{
 		coord = ft_split_set(curr_line, " \n");
-		add_coord_to_lst(&pos_lst, coord, y);
+		add_coord_to_lst(&pos_lst, coord, y, zoom);
 		free_array((void **)coord);
 		curr_line = get_next_line(fd);
 		++y;
 	}
-	print_lst_pos(pos_lst);
+//	print_lst_pos(pos_lst);
 	return (pos_lst);
 }

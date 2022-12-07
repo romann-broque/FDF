@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/07 18:14:12 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/07 18:48:13 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	ft_swap(int *nb1, int *nb2);
 
 /// map
 
-t_list	*get_pos(int fd);
+t_list	*get_pos(int fd, int zoom);
 
 /// print ///
 
