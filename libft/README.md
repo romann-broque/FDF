@@ -108,6 +108,12 @@ A C-library of usual functions
 > The resulting array is terminated with a NULL pointer.
 > Returns NULL if allocation fails.
 
+#### [`ft_split_set`](srcs/strings/ft_split_set.c)
+> Allocates (with malloc(3)) and returns an array of strings obtained by
+> separating the input string with the input charset used as the delimiter.
+> The resulting array is terminated with a NULL pointer.
+> Returns NULL if allocation fails.
+
 #### [`ft_striteri`](srcs/strings/ft_striteri.c)
 > Allocates (with malloc(3)) and returns a duplicate string each character
 > of which has been modified by the input function

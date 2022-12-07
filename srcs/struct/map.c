@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 16:04:04 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/07 16:19:23 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/07 16:35:55 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,15 +27,13 @@ void	print_strs(char **strs)
 
 void	get_map(int fd)
 {
-//	t_map	*map;
 	char	**coord;
 	char	*curr_line;
 
-//	map = NULL;
 	curr_line = get_next_line(fd);
 	while (curr_line != NULL)
 	{
-		coord = ft_split(curr_line, ' ');
+		coord = ft_split_set(curr_line, " \n");
 		print_strs(coord);
 		free_array((void **)coord);
 		curr_line = get_next_line(fd);

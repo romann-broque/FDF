@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 12:51:40 by rbroque           #+#    #+#             */
-/*   Updated: 2022/11/11 22:04:49 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/07 16:34:48 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 
 ssize_t	index_of(const char *str, const char c);
 char	**ft_split(char const *s, char c);
+char	**ft_split_set(char const *s, const char *charset);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strcpy(char *dst, char *src);
 char	*ft_strdup(const char *s);
