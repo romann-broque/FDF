@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/06 21:27:20 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/07 03:31:45 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,20 @@ int		detect_mouse_pos(int x, int y, t_win *ptr);
 
 void	loop(t_win *window);
 
+/// math
+
+int		get_sign(int nb);
+void	ft_swap(int *nb1, int *nb2);
+
 /// print
+
+// print
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	print_ref(t_data *img, int height, int width);
+
+// print_line
+
 void	print_line(t_pos *pos1, t_pos *pos2, t_data *data, int color);
 
 /// struct

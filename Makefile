@@ -6,7 +6,7 @@
 #    By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 13:20:37 by rbroque           #+#    #+#              #
-#    Updated: 2022/12/07 03:17:31 by rbroque          ###   ########.fr        #
+#    Updated: 2022/12/07 04:44:56 by rbroque          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ NAME = fdf
 PATH_SRCS += srcs/
 PATH_SRCS += srcs/struct/
 PATH_SRCS += srcs/print/
+PATH_SRCS += srcs/math/
 PATH_SRCS += srcs/loop/
 
 # srcs/
@@ -46,9 +47,14 @@ SRCS += pos.c
 SRCS += events.c
 SRCS += loop.c
 
+# srcs/math
+
+SRCS += utils.c
+
 # srcs/print
 
 SRCS += print.c
+SRCS += print_line.c
 
 vpath %.c $(PATH_SRCS)
 
@@ -137,7 +143,7 @@ all: $(NAME)
 
 $(NAME): $(LIB) $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -I $(INCLUDES) $(INCLUDES_LIB) $(LINKS)
-	@$(ECHOC) $(GREEN) "--> $(NAME) COMPILED !"$(NC)"\n"
+	@$(ECHOC) $(GREEN) "--> $(NAME) COMPILED !"$(NC)"\n\n"
 
 $(LIB):
 	@echo -e $(BLUE) "\n====> Building libft.a <===="$(NC)"\n"
@@ -156,13 +162,13 @@ run:
 clean:
 	@$(RM) -R $(PATH_OBJS)
 	@$(MAKE) -sC $(LIB_FOLDER) clean > /dev/null
-	@$(ECHOC) $(GREEN) "--> .o files cleaned !"$(NC)"\n"
+	@$(ECHOC) $(GREEN) "--> .o files deleted !"$(NC)"\n"
 
 fclean: clean
 	@$(ECHOC) $(YELLOW) "Cleaning up $(NAME)..." $(NC)
 	@$(MAKE) -sC $(LIB_FOLDER) fclean > /dev/null
 	@$(RM) $(NAME)
-	@$(ECHOC) $(GREEN) "--> $(NAME) cleaned !"$(NC)"\n"
+	@$(ECHOC) $(GREEN) "--> $(NAME) deleted !"$(NC)"\n"
 
 re: fclean
 	@echo -e $(YELLOW) "\nRebuilding..." $(NC)
