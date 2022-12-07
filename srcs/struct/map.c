@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 16:04:04 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/07 18:51:23 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/07 19:01:02 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	add_coord_to_lst(t_list **lst, char **coord, int y, int zoom)
 	x = 0;
 	while (coord[i] != NULL)
 	{
-		curr_pos = ft_lstnew(init_pos(x, y * zoom, ft_atoi(coord[i])));
+		curr_pos = ft_lstnew(init_pos(x + HEIGHT / 4, y * zoom + WIDTH / 4, ft_atoi(coord[i])));
 		ft_lstadd_back(lst, curr_pos);
 		x += zoom;
 		++i;
