@@ -6,9 +6,15 @@
 #    By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 13:20:37 by rbroque           #+#    #+#              #
-#    Updated: 2022/12/06 22:56:51 by rbroque          ###   ########.fr        #
+#    Updated: 2022/12/06 23:51:04 by rbroque          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+#############
+#### ENV ####
+#############
+
+SHELL = /usr/bin/bash
 
 ##############
 #### NAME ####
@@ -64,8 +70,13 @@ LIB = $(LIB_FOLDER)/libft.a
 #### INCLUDES #####
 ###################
 
-INCLUDES_LIB = -I $(LIB_FOLDER)/includes/ -I /usr/include/X11/
+INCLUDES_LIB += -I $(LIB_FOLDER)/includes/
+INCLUDES_LIB += -I /usr/include/X11/
+INCLUDES_LIB += -I minilibx-linux/
 INCLUDES += includes/
+
+LINKS += -Lminilibx-linux -lmlx_Linux
+LINKS += -L/usr/lib -lXext -lX11 -lm -lz
 HEADER += $(INCLUDES)/fdf.h
 
 ##################
@@ -116,31 +127,34 @@ endif
 all: $(NAME)
 
 $(NAME): $(LIB) $(OBJS)
-	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -I $(INCLUDES) $(INCLUDES_LIB) -Lminilibx-linux -lmlx_Linux -L/usr/lib -Iminilibx-linux -lXext -lX11 -lm -lz
-	@echo "All done !"
+	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -I $(INCLUDES) $(INCLUDES_LIB) $(LINKS)
+	@echo -ne "\r$@ COMPILED !"
 
 $(LIB):
 	@$(MAKE) -C $(LIB_FOLDER)
 
 $(OBJS): $(PATH_OBJS)/%.o: %.c $(HEADER) $(MAKEFILE)
-	@$(ECHO) COMPILING $^
+	@$(ECHO) COMPILING $>
+	sleep 0.2
 	@mkdir -p $(PATH_OBJS)
-	@$(CC) $(CFLAGS) -c $< -o $@ -I $(INCLUDES) $(INCLUDES_LIB) -Iminilibx-linux -O3
+	@$(CC) $(CFLAGS) -c $< -o $@ -I $(INCLUDES) $(INCLUDES_LIB) -O3
 
 run:
 	$(MAKE)
 	./$(NAME)
 
 clean:
-	$(RM) -R $(PATH_OBJS)
-	$(MAKE) -sC $(LIB_FOLDER) clean
+	@echo -ne "\rcleaning .o"
+	@$(RM) -R $(PATH_OBJS)
+	@$(MAKE) -sC $(LIB_FOLDER) clean
 
 fclean: clean
-	$(RM) $(NAME)
-	$(MAKE) -sC $(LIB_FOLDER) fclean
+	@echo -ne "\rcleaning $(NAME)"
+	@$(RM) $(NAME)
+	@$(MAKE) -sC $(LIB_FOLDER) fclean
 
 re: fclean
-	$(MAKE)
+	@$(MAKE) -s
 
 .PHONY: all clean fclean re run
 

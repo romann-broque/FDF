@@ -6,9 +6,15 @@
 #    By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 10:15:13 by rbroque           #+#    #+#              #
-#    Updated: 2022/12/06 22:56:04 by rbroque          ###   ########.fr        #
+#    Updated: 2022/12/07 01:05:38 by rbroque          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+#############
+#### ENV ####
+#############
+
+SHELL = /usr/bin/bash
 
 ##############
 #### NAME ####
@@ -25,7 +31,6 @@ PATH_SRCS += srcs/conv/
 PATH_SRCS += srcs/ctype/
 PATH_SRCS += srcs/gnl/
 PATH_SRCS += srcs/list/
-PATH_SRCS += srcs/math/
 PATH_SRCS += srcs/memory/
 PATH_SRCS += srcs/output/
 PATH_SRCS += srcs/strings/
@@ -50,7 +55,6 @@ SRCS += ft_itoa.c
 # gnl
 
 SRCS += get_next_line.c
-SRCS += get_next_line_utils.c
 
 # list
 
@@ -63,10 +67,6 @@ SRCS += ft_lstlast.c
 SRCS += ft_lstmap.c
 SRCS += ft_lstnew.c
 SRCS += ft_lstsize.c
-
-# math
-
-SRCS += get_min.c
 
 # memory
 
@@ -140,13 +140,20 @@ endif
 #### DISPLAY ####
 #################
 
+ifneq ($(words $(MAKECMDGOALS)),1) # if no argument was given to make...
+.DEFAULT_GOAL = all # set the default goal to all
+%:                   # define a last resort default rule
+	@$(MAKE) $@ --no-print-directory -rRf $(firstword $(MAKEFILE_LIST)) # recursive make call, 
+else
 ifndef ECHO
 T := $(shell $(MAKE) $(MAKECMDGOALS) --no-print-directory \
       -nrRf $(firstword $(MAKEFILE_LIST)) \
       ECHO="COUNTTHIS" | grep -c "COUNTTHIS")
 N := x
 C = $(words $N)$(eval N := x $N)
-ECHO = echo -ne "\r [`expr $C '*' 100 / $T`%]"
+
+ECHOC = echo -ne "\r\033[2K"
+ECHO = $(ECHOC) "[`expr $C '*' 100 / $T`%]"
 endif
 
 ###############
@@ -157,20 +164,27 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	@ar rcs $@ $^
-	@$(ECHO) $(NAME) COMPILED !
+	@$(ECHOC) "--> $(NAME) COMPILED !\n"
 
 $(OBJS): $(PATH_OBJS)/%.o: %.c $(HEADER)
-	@$(ECHO) COMPILING $^
+	@$(ECHO) "COMPILING $<"
 	@mkdir -p $(PATH_OBJS)
 	@$(CC) $(CFLAGS) -c $< -o $@ -I $(INCLUDES)
 
 clean:
-	$(RM) -R $(PATH_OBJS)
+	@echo "Cleaning up .o files..."
+	@$(RM) -R $(PATH_OBJS)
+	@echo "--> .o files cleaned !"
 
 fclean: clean
-	$(RM) $(NAME)
+	@echo "Cleaning up $(NAME)..."
+	@$(RM) $(NAME)
+	@echo "--> $(NAME) cleaned !"
 
 re: fclean
-	$(MAKE)
+	@echo "Rebuilding..."
+	@$(MAKE) -s
 
 .PHONY: all clean fclean re
+
+endif

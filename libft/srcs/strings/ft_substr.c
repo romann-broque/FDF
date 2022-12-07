@@ -6,11 +6,18 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/14 16:06:36 by rbroque           #+#    #+#             */
-/*   Updated: 2022/11/14 10:00:11 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/11/08 01:00:04 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+static size_t	get_min(const size_t nb1, const size_t nb2)
+{
+	if (nb1 > nb2)
+		return (nb2);
+	return (nb1);
+}
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {

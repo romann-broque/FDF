@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_math.h                                          :+:      :+:    :+:   */
+/*   index_of.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/14 10:00:21 by rbroque           #+#    #+#             */
-/*   Updated: 2022/11/14 10:04:09 by rbroque          ###   ########.fr       */
+/*   Created: 2022/11/11 21:53:42 by rbroque           #+#    #+#             */
+/*   Updated: 2022/11/11 22:05:59 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_MATH_H
-# define FT_MATH_H
+#include "libft.h"
 
-# include "libft.h"
+ssize_t	index_of(const char *str, const char c)
+{
+	ssize_t	index;
 
-size_t	get_min(const size_t nb1, const size_t nb2);
-
-#endif
+	index = 0;
+	while (str[index] != '\0' && str[index] != c)
+		++index;
+	if (str[index] != c)
+		return (-1);
+	return (index);
+}

@@ -1,20 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_min.c                                          :+:      :+:    :+:   */
+/*   ft_strncpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/14 09:59:34 by rbroque           #+#    #+#             */
-/*   Updated: 2022/11/14 10:00:09 by rbroque          ###   ########.fr       */
+/*   Created: 2022/11/11 21:49:19 by rbroque           #+#    #+#             */
+/*   Updated: 2022/11/11 21:50:58 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	get_min(const size_t nb1, const size_t nb2)
+char	*ft_strncpy(char *dest, char *src, unsigned int n)
 {
-	if (nb1 > nb2)
-		return (nb2);
-	return (nb1);
+	size_t	i;
+
+	i = 0;
+	while (i < n && src[i] != '\0')
+	{
+		dest[i] = src[i];
+		++i;
+	}
+	while (i < n)
+	{
+		dest[i] = '\0';
+		++i;
+	}
+	return (dest);
 }

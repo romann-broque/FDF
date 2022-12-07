@@ -40,70 +40,21 @@ A C-library of usual functions
 * [`ft_strlcat`](srcs/strings/ft_strlcat.c)
 * [`ft_strlcpy`](srcs/strings/ft_strlcpy.c)
 * [`ft_strncmp`](srcs/strings/ft_strncmp.c)
+* [`ft_strncpy`](srcs/strings/ft_strncpy.c)
 * [`ft_strndup`](srcs/strings/ft_strndup.c)
 * [`ft_strnstr`](srcs/strings/ft_strnstr.c)
 * [`ft_strrchr`](srcs/strings/ft_strrchr.c)
 
 ### Part 2 - Additional functions
 
-#### [`get_min`](srcs/math/get_min.c)
-> Get the minimum between two size_t.
+#### [`index_of`](srcs/strings/index_of.c)
+> Returns the index of the first matching character occurence.
+> If the character isn't found, it returns -1.
 
 #### [`ft_itoa`](srcs/conv/ft_itoa.c)
 > Allocates (with malloc(3)) and returns a string
 > representing the input integer.
 > Negative numbers are supported.
-> Returns NULL if allocation fails.
-
-#### [`ft_putchar_fd`](srcs/output/ft_putchar_fd.c)
-> Writes a character on the input file descriptor.
-
-#### [`ft_putendl_fd`](srcs/output/ft_putendl_fd.c)
-> Writes a string on the input file descriptor followed by a newline.
-
-#### [`ft_putnbr_fd`](srcs/output/ft_putnbr_fd.c)
-> Writes a integer on the input file descriptor.
-
-#### [`ft_putstr_fd`](srcs/output/ft_putstr_fd.c)
-> Writes a string on the input file descriptor.
-
-#### [`ft_split`](srcs/strings/ft_split.c)
-> Allocates (with malloc(3)) and returns an array of strings obtained by
-> separating the input string with the input character used as the delimiter.
-> The resulting array is terminated with a NULL pointer.
-> Returns NULL if allocation fails.
-
-#### [`ft_striteri`](srcs/strings/ft_striteri.c)
-> Allocates (with malloc(3)) and returns a duplicate string each character
-> of which has been modified by the input function
-> (which takes as argument the input string and its index).
-> Returns NULL if the allocation fails.
-
-#### [`ft_strjoin`](srcs/strings/ft_strjoin.c)
-> Allocates (with malloc(3)) and returns a new string resulting from
-> the concatenation of two strings.
-> Returns NULL if allocation fails.
-
-#### [`ft_strmapi`](srcs/strings/ft_strmapi.c)
-> Allocates (with malloc(3)) and returns a duplicate string each character
-> of which has been modified by the input function
-> (which takes as argument each character of the input string and its index).
-
-#### [`ft_strnjoin`](srcs/strings/ft_strnjoin.c)
-> Allocates (with malloc(3)) and returns a concatenation of two strings.
-> The first string is freed.
-> If a string is NULL, it will be treated as empty string
-> Returns NULL if allocation fails.
-> Returns NULL if the allocation fails.
-
-#### [`ft_strtrim`](srcs/strings/ft_strtrim.c)
-> Allocates (with malloc(3)) and returns a copy of the input string without
-> the set's characters at the beginning and at the end.
-> Returns NULL if allocation fails.
-
-#### [`ft_substr`](srcs/strings/ft_substr.c)
-> Allocates (with malloc(3)) and returns a substring from the original string.
-> This new string starts at the input index.
 > Returns NULL if allocation fails.
 
 #### [`ft_lstadd_back`](srcs/list/ft_lstadd_back.c)
@@ -139,3 +90,54 @@ A C-library of usual functions
 
 #### [`ft_lstsize`](srcs/list/ft_lstsize.c)
 > Returns the size of the list.
+#### [`ft_putchar_fd`](srcs/output/ft_putchar_fd.c)
+> Writes a character on the input file descriptor.
+
+#### [`ft_putendl_fd`](srcs/output/ft_putendl_fd.c)
+> Writes a string on the input file descriptor followed by a newline.
+
+#### [`ft_putnbr_fd`](srcs/output/ft_putnbr_fd.c)
+> Writes a integer on the input file descriptor.
+
+#### [`ft_putstr_fd`](srcs/output/ft_putstr_fd.c)
+> Writes a string on the input file descriptor.
+
+#### [`ft_split`](srcs/strings/ft_split.c)
+> Allocates (with malloc(3)) and returns an array of strings obtained by
+> separating the input string with the input character used as the delimiter.
+> The resulting array is terminated with a NULL pointer.
+> Returns NULL if allocation fails.
+
+#### [`ft_striteri`](srcs/strings/ft_striteri.c)
+> Allocates (with malloc(3)) and returns a duplicate string each character
+> of which has been modified by the input function
+> (which takes as argument the input string and its index).
+> Returns NULL if the allocation fails.
+
+#### [`ft_strjoin`](srcs/strings/ft_strjoin.c)
+> Allocates (with malloc(3)) and returns a new string resulting from
+> the concatenation of two strings.
+> Returns NULL if allocation fails.
+
+#### [`ft_strmapi`](srcs/strings/ft_strmapi.c)
+> Allocates (with malloc(3)) and returns a duplicate string each character
+> of which has been modified by the input function
+> (which takes as argument each character of the input string and its index).
+> Returns NULL if the allocation fails.
+
+#### [`ft_strnjoin`](srcs/strings/ft_strnjoin.c)
+> Allocates (with malloc(3)) and returns a concatenation of two strings.
+> The first string is freed.
+> If a string is NULL, it will be treated as empty string
+> Returns NULL if allocation fails.
+
+#### [`ft_strtrim`](srcs/strings/ft_strtrim.c)
+> Allocates (with malloc(3)) and returns a copy of the input string without
+> the set's characters at the beginning and at the end.
+> Returns NULL if allocation fails.
+
+#### [`ft_substr`](srcs/strings/ft_substr.c)
+> Allocates (with malloc(3)) and returns a substring from the original string.
+> This new string starts at the input index.
+> Returns NULL if allocation fails.
+
