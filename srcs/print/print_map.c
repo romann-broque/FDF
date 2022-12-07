@@ -6,21 +6,20 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 15:44:38 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/07 15:45:36 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/07 18:17:08 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	print_map(int fd)
+void	print_map(t_list *lst, t_data *img)
 {
-	char	*line;
+	t_pos	*pos;
 
-	line = get_next_line(fd);
-	while (line != NULL)
+	while (lst != NULL)
 	{
-		printf("%s", line);
-		free(line);
-		line = get_next_line(fd);
+		pos = lst->content;
+		my_mlx_pixel_put(img, pos->x + HEIGHT / 2, pos->y + WIDTH / 2, WHITE + pos->z);
+		lst = lst->next;
 	}
 }

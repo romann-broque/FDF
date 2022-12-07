@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/07 16:18:33 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/07 18:14:12 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ typedef struct	s_pos
 {
 	int	x;
 	int	y;
+	int	z;
 }				t_pos;
 
 /// loop ///
@@ -79,7 +80,7 @@ void	ft_swap(int *nb1, int *nb2);
 
 /// map
 
-void	get_map(int fd);
+t_list	*get_pos(int fd);
 
 /// print ///
 
@@ -90,7 +91,7 @@ void	print_ref(t_data *img, int height, int width);
 
 // print_map
 
-void	print_map(int fd);
+void	print_map(t_list *lst, t_data *img);
 
 // print_line
 
@@ -104,8 +105,8 @@ t_data	*init_data(void *mlx_ptr);
 
 // pos
 
-t_pos	set_pos(t_pos *pos, int x, int y);
-t_pos	*init_pos(int x, int y);
+t_pos	set_pos(t_pos *pos, int x, int y, int z);
+t_pos	*init_pos(int x, int y, int z);
 
 // window
 

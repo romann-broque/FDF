@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 03:28:54 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/07 03:32:06 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/07 18:05:25 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	print_line_less(t_pos *pos1, t_pos *pos2, t_data *data, int color, i
 	int deltaNE = 2 * (dy - dx);
    	t_pos		*pos;
 
-	pos = init_pos(pos1->x, pos1->y);
+	pos = init_pos(pos1->x, pos1->y, pos1->z);
 	while (pos->x < pos2->x)
 	{
 		if (sign * dp <= 0) /* On choisit le point E */
@@ -45,7 +45,7 @@ static void	print_line_more(t_pos *pos1, t_pos *pos2, t_data *data, int color, i
 	int deltaNE = 2 * (dx - dy);
    	t_pos		*pos;
 
-	pos = init_pos(pos1->x, pos1->y);
+	pos = init_pos(pos1->x, pos1->y, pos1->z);
 	while (pos->y != pos2->y)
 	{
 		if (sign * dp <= 0) /* On choisit le point E */
