@@ -6,7 +6,7 @@
 #    By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 10:15:13 by rbroque           #+#    #+#              #
-#    Updated: 2022/12/07 01:05:38 by rbroque          ###   ########.fr        #
+#    Updated: 2022/12/07 02:04:48 by rbroque          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -140,11 +140,12 @@ endif
 #### DISPLAY ####
 #################
 
-ifneq ($(words $(MAKECMDGOALS)),1) # if no argument was given to make...
-.DEFAULT_GOAL = all # set the default goal to all
-%:                   # define a last resort default rule
-	@$(MAKE) $@ --no-print-directory -rRf $(firstword $(MAKEFILE_LIST)) # recursive make call, 
-else
+RED='\033[0;31m'
+GREEN='\033[1;32m'
+ORANGE='\033[0;33m'
+YELLOW='\033[1;33m'
+NC='\033[0m' # No Color
+
 ifndef ECHO
 T := $(shell $(MAKE) $(MAKECMDGOALS) --no-print-directory \
       -nrRf $(firstword $(MAKEFILE_LIST)) \
@@ -153,7 +154,7 @@ N := x
 C = $(words $N)$(eval N := x $N)
 
 ECHOC = echo -ne "\r\033[2K"
-ECHO = $(ECHOC) "[`expr $C '*' 100 / $T`%]"
+ECHO = $(ECHOC) $(ORANGE) "[`expr $C '*' 100 / $T`%]"
 endif
 
 ###############
@@ -164,27 +165,25 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	@ar rcs $@ $^
-	@$(ECHOC) "--> $(NAME) COMPILED !\n"
+	@$(ECHOC) $(GREEN) "--> $(NAME) COMPILED !"$(NC)"\n"
 
 $(OBJS): $(PATH_OBJS)/%.o: %.c $(HEADER)
-	@$(ECHO) "COMPILING $<"
+	@$(ECHO) $(ORANGE) "Compiling $<"
 	@mkdir -p $(PATH_OBJS)
 	@$(CC) $(CFLAGS) -c $< -o $@ -I $(INCLUDES)
 
 clean:
-	@echo "Cleaning up .o files..."
+	@$(ECHOC) $(YELLOW) "Cleaning up .o files..." $(NC)
 	@$(RM) -R $(PATH_OBJS)
-	@echo "--> .o files cleaned !"
+	@$(ECHOC) $(GREEN) "--> .o files cleaned !"$(NC)"\n"
 
 fclean: clean
-	@echo "Cleaning up $(NAME)..."
+	@$(ECHOC) $(YELLOW) "Cleaning up $(NAME)..." $(NC)
 	@$(RM) $(NAME)
-	@echo "--> $(NAME) cleaned !"
+	@$(ECHOC) $(GREEN) "--> $(NAME) cleaned !"$(NC)"\n"
 
 re: fclean
-	@echo "Rebuilding..."
+	@echo -e $(YELLOW) "\nRebuilding...\n" $(NC)
 	@$(MAKE) -s
 
 .PHONY: all clean fclean re
-
-endif

@@ -6,7 +6,7 @@
 #    By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 13:20:37 by rbroque           #+#    #+#              #
-#    Updated: 2022/12/06 23:51:04 by rbroque          ###   ########.fr        #
+#    Updated: 2022/12/07 02:22:55 by rbroque          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -111,13 +111,22 @@ endif
 #### DISPLAY ####
 #################
 
+RED='\033[0;31m'
+GREEN='\033[1;32m'
+ORANGE='\033[0;33m'
+YELLOW='\033[1;33m'
+BLUE='\033[1;36m'
+NC='\033[0m' # No Color
+
 ifndef ECHO
 T := $(shell $(MAKE) $(MAKECMDGOALS) --no-print-directory \
       -nrRf $(firstword $(MAKEFILE_LIST)) \
       ECHO="COUNTTHIS" | grep -c "COUNTTHIS")
 N := x
 C = $(words $N)$(eval N := x $N)
-ECHO = echo -ne "\r [`expr $C '*' 100 / $T`%]"
+
+ECHOC = echo -ne "\r\033[2K"
+ECHO = $(ECHOC) $(ORANGE) "[`expr $C '*' 100 / $T`%]"
 endif
 
 ###############
@@ -128,14 +137,15 @@ all: $(NAME)
 
 $(NAME): $(LIB) $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -I $(INCLUDES) $(INCLUDES_LIB) $(LINKS)
-	@echo -ne "\r$@ COMPILED !"
+	@$(ECHOC) $(GREEN) "--> $(NAME) COMPILED !"$(NC)"\n"
 
 $(LIB):
-	@$(MAKE) -C $(LIB_FOLDER)
+	@echo -e $(BLUE) "\n====> Building libft.a <===="$(NC)"\n"
+	@$(MAKE) -sC $(LIB_FOLDER)
+	@echo -e $(BLUE) "\n====> Building $(NAME) <===="$(NC)"\n"
 
 $(OBJS): $(PATH_OBJS)/%.o: %.c $(HEADER) $(MAKEFILE)
-	@$(ECHO) COMPILING $>
-	sleep 0.2
+	@$(ECHO) $(ORANGE) "Compiling $<"
 	@mkdir -p $(PATH_OBJS)
 	@$(CC) $(CFLAGS) -c $< -o $@ -I $(INCLUDES) $(INCLUDES_LIB) -O3
 
@@ -144,16 +154,18 @@ run:
 	./$(NAME)
 
 clean:
-	@echo -ne "\rcleaning .o"
 	@$(RM) -R $(PATH_OBJS)
-	@$(MAKE) -sC $(LIB_FOLDER) clean
+	@$(MAKE) -sC $(LIB_FOLDER) clean > /dev/null
+	@$(ECHOC) $(GREEN) "--> .o files cleaned !"$(NC)"\n"
 
 fclean: clean
-	@echo -ne "\rcleaning $(NAME)"
+	@$(ECHOC) $(YELLOW) "Cleaning up $(NAME)..." $(NC)
+	@$(MAKE) -sC $(LIB_FOLDER) fclean > /dev/null
 	@$(RM) $(NAME)
-	@$(MAKE) -sC $(LIB_FOLDER) fclean
+	@$(ECHOC) $(GREEN) "--> $(NAME) cleaned !"$(NC)"\n"
 
 re: fclean
+	@echo -e $(YELLOW) "\nRebuilding..." $(NC)
 	@$(MAKE) -s
 
 .PHONY: all clean fclean re run
