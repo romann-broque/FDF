@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 15:44:38 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/07 23:57:49 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/08 00:00:42 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,12 @@ void	print_map(t_pos ***pos_array, t_data *img)
 			if (pos_array[y][x + 1] != NULL)
 			{
 				pos2 = pos_array[y][x + 1];
+				print_line(pos1, pos2, img, WHITE + pos1->z * BLUE);
+			}
+			if (pos_array[y + 1] != NULL
+				&& pos_array[y + 1][x] != NULL)
+			{
+				pos2 = pos_array[y + 1][x];
 				print_line(pos1, pos2, img, WHITE + pos1->z * BLUE);
 			}
 			++x;
