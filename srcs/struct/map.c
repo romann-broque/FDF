@@ -1,30 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pos.c                                              :+:      :+:    :+:   */
+/*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/06 21:13:39 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/07 15:22:05 by rbroque          ###   ########.fr       */
+/*   Created: 2022/12/07 16:04:04 by rbroque           #+#    #+#             */
+/*   Updated: 2022/12/07 16:19:23 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-t_pos	set_pos(t_pos *pos, int x, int y)
+void	print_strs(char **strs)
 {
-	pos->x = x;
-	pos->y = y;
-	return (*pos);
+	if (strs != NULL)
+	{
+		while (*strs != NULL)
+		{
+			printf("[%s]", *strs);
+			++strs;
+		}
+		printf("\n");
+	}
 }
 
-t_pos	*init_pos(int x, int y)
+void	get_map(int fd)
 {
-	t_pos	*new;
+//	t_map	*map;
+	char	**coord;
+	char	*curr_line;
 
-	new = (t_pos *)malloc(sizeof(t_pos));
-	if (new != NULL)
-		set_pos(new, x, y);
-	return (new);
+//	map = NULL;
+	curr_line = get_next_line(fd);
+	while (curr_line != NULL)
+	{
+		coord = ft_split(curr_line, ' ');
+		print_strs(coord);
+		free_array((void **)coord);
+		curr_line = get_next_line(fd);
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/07 03:31:45 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/07 16:18:33 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 # include <mlx.h>
 # include <X.h>
 # include <keysymdef.h>
+# include <sys/types.h>
+# include <sys/stat.h>
+# include <fcntl.h>
 
 # define ESCAPE_KEY 65307
 
@@ -57,7 +60,7 @@ typedef struct	s_pos
 	int	y;
 }				t_pos;
 
-/// loop
+/// loop ///
 
 // events
 
@@ -69,23 +72,31 @@ int		detect_mouse_pos(int x, int y, t_win *ptr);
 
 void	loop(t_win *window);
 
-/// math
+/// math ///
 
 int		get_sign(int nb);
 void	ft_swap(int *nb1, int *nb2);
 
-/// print
+/// map
+
+void	get_map(int fd);
+
+/// print ///
 
 // print
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	print_ref(t_data *img, int height, int width);
 
+// print_map
+
+void	print_map(int fd);
+
 // print_line
 
 void	print_line(t_pos *pos1, t_pos *pos2, t_data *data, int color);
 
-/// struct
+/// struct ///
 
 // data
 
@@ -93,12 +104,16 @@ t_data	*init_data(void *mlx_ptr);
 
 // pos
 
-void	set_pos(t_pos *pos, int x, int y);
+t_pos	set_pos(t_pos *pos, int x, int y);
 t_pos	*init_pos(int x, int y);
 
 // window
 
 t_win	*init_window(const int height, const int width, char *title);
 void	destroy_window(t_win *window);
+
+/// array ///
+
+void	free_array(void **array);
 
 #endif

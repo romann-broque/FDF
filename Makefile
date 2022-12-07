@@ -6,7 +6,7 @@
 #    By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 13:20:37 by rbroque           #+#    #+#              #
-#    Updated: 2022/12/07 04:44:56 by rbroque          ###   ########.fr        #
+#    Updated: 2022/12/07 16:18:48 by rbroque          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,8 +39,10 @@ SRCS += main.c
 # srcs/struct
 
 SRCS += window.c
+SRCS += map.c
 SRCS += data.c
 SRCS += pos.c
+SRCS += array.c
 
 # srcs/loop
 
@@ -55,6 +57,7 @@ SRCS += utils.c
 
 SRCS += print.c
 SRCS += print_line.c
+SRCS += print_map.c
 
 vpath %.c $(PATH_SRCS)
 
@@ -142,7 +145,7 @@ endif
 all: $(NAME)
 
 $(NAME): $(LIB) $(OBJS)
-	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -I $(INCLUDES) $(INCLUDES_LIB) $(LINKS)
+	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -I $(INCLUDES) $(INCLUDES_LIB) $(LINKS) $(LIB)
 	@$(ECHOC) $(GREEN) "--> $(NAME) COMPILED !"$(NC)"\n\n"
 
 $(LIB):
