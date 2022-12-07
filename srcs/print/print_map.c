@@ -6,20 +6,29 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 15:44:38 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/07 19:20:32 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/07 23:03:24 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	print_map(t_list *lst, t_data *img)
+void	print_map(t_pos ***pos_array, t_data *img)
 {
-	t_pos	*pos1;
+	size_t	x;
+	size_t	y;
+	t_pos	*curr_pos;
 
-	while (lst != NULL)
+	x = 0;
+	y = 0;
+	while (pos_array[y] != NULL)
 	{
-		pos1 = lst->content;
-		my_mlx_pixel_put(img, pos1->x, pos1->y, WHITE + pos1->z * BLUE);
-		lst = lst->next;
+		x = 0;
+		while (pos_array[y][x] != NULL)
+		{
+			curr_pos = pos_array[y][x];
+			my_mlx_pixel_put(img, curr_pos->x, curr_pos->y, WHITE + curr_pos->z * BLUE);
+			++x;
+		}
+		++y;
 	}
 }

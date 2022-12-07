@@ -6,7 +6,7 @@
 #    By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 13:20:37 by rbroque           #+#    #+#              #
-#    Updated: 2022/12/07 16:25:19 by rbroque          ###   ########.fr        #
+#    Updated: 2022/12/07 22:28:10 by rbroque          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -162,6 +162,9 @@ run:
 	@$(MAKE) -s
 	./$(NAME)
 
+norm:
+	norminette $(PATH_SRCS) $(INCLUDES) $(PATH_LIB)
+ 
 clean:
 	@$(RM) -R $(PATH_OBJS)
 	@$(MAKE) -sC $(LIB_FOLDER) clean > /dev/null
