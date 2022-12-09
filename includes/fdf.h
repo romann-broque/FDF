@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/09 15:26:48 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/09 15:30:16 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,10 @@
 
 # ifndef WIDTH
 #  define WIDTH 1080
+# endif
+
+# ifndef ZOOM
+#  define ZOOM 20
 # endif
 
 // COLORS

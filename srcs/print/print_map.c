@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 15:44:38 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/08 00:00:42 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/09 15:28:57 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ void	print_map(t_pos ***pos_array, t_data *img)
 		while (pos_array[y][x] != NULL)
 		{
 			pos1 = pos_array[y][x];
-			my_mlx_pixel_put(img, pos1->x, pos1->y, WHITE + pos1->z * BLUE);
+			if (pos1->x <= HEIGHT && pos1->y <= WIDTH)
+				my_mlx_pixel_put(img, pos1->x, pos1->y, WHITE + pos1->z * BLUE);
 			if (pos_array[y][x + 1] != NULL)
 			{
 				pos2 = pos_array[y][x + 1];
