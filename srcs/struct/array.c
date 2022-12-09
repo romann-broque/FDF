@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 16:16:45 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/07 23:45:21 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/09 15:26:01 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ size_t	get_array_size_char(char **array)
 	return (size);
 }
 
-t_pos	***extend_array_pos(t_pos ***array, t_pos **element)
+t_pos	***extend_pos_matrix(t_pos ***array, t_pos **element)
 {
 	const size_t	array_size = get_array_size_pos(array);
 	t_pos			***new;

@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/07 23:44:18 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/09 15:26:48 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	ft_swap(int *nb1, int *nb2);
 
 /// map
 
-t_pos	***get_pos(int fd, int zoom);
+t_pos	***get_pos_matrix(int fd, int zoom);
 
 /// print ///
 
@@ -120,6 +120,6 @@ void	free_pos_array(t_pos **pos_array);
 void	free_pos_matrix(t_pos ***pos_matrix);
 size_t	get_array_size_pos(t_pos ***pos_array);
 size_t	get_array_size_char(char **array);
-t_pos	***extend_array_pos(t_pos ***array, t_pos **element);
+t_pos	***extend_pos_matrix(t_pos ***array, t_pos **element);
 
 #endif
