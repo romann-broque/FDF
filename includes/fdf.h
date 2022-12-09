@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/09 15:30:16 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/09 16:15:40 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef struct	s_win
 	void	*mlx_ptr;
 	void	*win_ptr;
 	t_data	*data;
+	int		zoom;
 }				t_win;
 
 typedef struct	s_pos
@@ -72,6 +73,7 @@ typedef struct	s_pos
 int		close_window1(int key, t_win *ptr);
 int		close_window2(t_win *ptr);
 int		detect_mouse_pos(int x, int y, t_win *ptr);
+int		zoom(int x, int y, int key, t_win *ptr);
 
 // loop
 
@@ -81,6 +83,7 @@ void	loop(t_win *window);
 
 int		get_sign(int nb);
 void	ft_swap(int *nb1, int *nb2);
+int		get_max(const int nb1, const int nb2);
 
 /// map
 
@@ -95,7 +98,7 @@ void	print_ref(t_data *img, int height, int width);
 
 // print_map
 
-void	print_map(t_pos ***pos_array, t_data *img);
+void	print_map(t_pos ***pos_array, t_win *window);
 
 // print_line
 
@@ -109,6 +112,8 @@ t_data	*init_data(void *mlx_ptr);
 
 // pos
 
+void	set_offset(t_pos **pos_array, int zoom);
+void	unset_offset(t_pos **pos_array, int zoom);
 t_pos	set_pos(t_pos *pos, int x, int y, int z);
 t_pos	*init_pos(int x, int y, int z);
 

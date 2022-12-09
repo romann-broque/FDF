@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 21:48:43 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/07 18:11:59 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/09 15:40:13 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,14 @@ int	detect_mouse_pos(int x, int y, t_win *window)
 	print_line(&center, &pos, window->data, BLUE);
 	mlx_put_image_to_window(window->mlx_ptr, window->win_ptr, window->data->img, 0, 0);
 	printf("x=%d; y=%d\n", x, y);
+	return (0);
+}
+
+int	zoom(int x, int y, int key, t_win *window)
+{
+	printf("x --> %d\n", x);
+	printf("y --> %d\n", y);
+	printf("key --> %d\n", key);
+	printf("window --> %p\n", window);
 	return (0);
 }

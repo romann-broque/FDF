@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 21:10:04 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/07 23:53:08 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/09 15:47:16 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_win	*init_window(const int height, const int width, char *title)
 		new->mlx_ptr = mlx_init();
 		new->win_ptr = mlx_new_window(new->mlx_ptr, height, width, title);
 		new->data = init_data(new->mlx_ptr);
+		new->zoom = ZOOM;
 	}
 	return (new);
 }
