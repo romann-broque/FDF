@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 16:16:45 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/09 15:26:01 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/10 16:46:57 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,20 @@ void	free_pos_matrix(t_pos ***pos_matrix)
 	free(pos_matrix);
 }
 
-size_t	get_array_size_pos(t_pos ***pos_array)
+size_t	get_pos_matrix_size(t_pos ***pos_array)
+{
+	size_t	size;
+
+	size = 0;
+	if (pos_array != NULL)
+	{
+		while (pos_array[size] != NULL)
+			++size;
+	}
+	return (size);
+}
+
+size_t	get_pos_array_size(t_pos **pos_array)
 {
 	size_t	size;
 
@@ -76,7 +89,7 @@ size_t	get_array_size_char(char **array)
 
 t_pos	***extend_pos_matrix(t_pos ***array, t_pos **element)
 {
-	const size_t	array_size = get_array_size_pos(array);
+	const size_t	array_size = get_pos_matrix_size(array);
 	t_pos			***new;
 
 	new = (t_pos ***)malloc((array_size + 1 + 1) * sizeof(t_pos **));

@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/10 03:52:22 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/10 16:48:54 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,20 +51,22 @@ typedef struct	s_data {
 	int		endian;
 }				t_data;
 
-typedef struct	s_win
-{
-	void	*mlx_ptr;
-	void	*win_ptr;
-	t_data	*data;
-	int		zoom;
-}				t_win;
-
 typedef struct	s_pos
 {
 	int	x;
 	int	y;
 	int	z;
 }				t_pos;
+
+typedef struct	s_win
+{
+	void	*mlx_ptr;
+	void	*win_ptr;
+	t_data	*data;
+	int		zoom;
+	t_pos	***orig_matrix;
+	t_pos	***refr_matrix;
+}				t_win;
 
 /// loop ///
 
@@ -118,7 +120,7 @@ t_pos	*init_pos(int x, int y, int z);
 
 // window
 
-t_win	*init_window(const int height, const int width, char *title);
+t_win	*init_window(const int height, const int width, char *title, t_pos ***orig_matrix);
 void	destroy_window(t_win *window);
 
 /// array ///
@@ -126,7 +128,8 @@ void	destroy_window(t_win *window);
 void	free_strs(char **array);
 void	free_pos_array(t_pos **pos_array);
 void	free_pos_matrix(t_pos ***pos_matrix);
-size_t	get_array_size_pos(t_pos ***pos_array);
+size_t	get_pos_matrix_size(t_pos ***pos_array);
+size_t	get_pos_array_size(t_pos **pos_array);
 size_t	get_array_size_char(char **array);
 t_pos	***extend_pos_matrix(t_pos ***array, t_pos **element);
 
