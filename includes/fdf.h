@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/09 16:15:40 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/10 03:52:22 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@
 # define ESCAPE_KEY 65307
 
 # ifndef HEIGHT
-#  define HEIGHT 1920
+#  define HEIGHT 800
 # endif
 
 # ifndef WIDTH
-#  define WIDTH 1080
+#  define WIDTH 600
 # endif
 
 # ifndef ZOOM
@@ -113,7 +113,6 @@ t_data	*init_data(void *mlx_ptr);
 // pos
 
 void	set_offset(t_pos **pos_array, int zoom);
-void	unset_offset(t_pos **pos_array, int zoom);
 t_pos	set_pos(t_pos *pos, int x, int y, int z);
 t_pos	*init_pos(int x, int y, int z);
 

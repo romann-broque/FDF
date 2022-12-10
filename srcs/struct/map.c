@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 16:04:04 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/09 16:58:31 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/10 01:46:36 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		get_x_offset(t_pos *pos)
 
 int		get_y_offset(t_pos *curr_pos, t_pos *last_pos)
 {
-	return (last_pos->y - 1 + (last_pos->z - curr_pos->z) / 6);
+	return (last_pos->y + (last_pos->z - curr_pos->z) / 6);
 }
 
 void	apply_persp(t_pos *curr_pos, t_pos *last_pos)
@@ -35,22 +35,8 @@ void	set_offset(t_pos **pos_array, int zoom)
 	i = 0;
 	while (pos_array[i] != NULL)
 	{
-		set_pos(pos_array[i], pos_array[i]->x + (zoom * i) + HEIGHT / 2,
-				pos_array[i]->y * (zoom - 5) + WIDTH / 2,
-				pos_array[i]->z);
-		++i;
-	}
-}
-
-void	unset_offset(t_pos **pos_array, int zoom)
-{
-	size_t	i;
-
-	i = 0;
-	while (pos_array[i] != NULL)
-	{
-		set_pos(pos_array[i], pos_array[i]->x + HEIGHT / 2,
-				pos_array[i]->y / zoom + WIDTH / 2,
+		set_pos(pos_array[i], pos_array[i]->x + (zoom * i) + HEIGHT / 3,
+				pos_array[i]->y * (zoom - 5) + WIDTH / 3,
 				pos_array[i]->z);
 		++i;
 	}
