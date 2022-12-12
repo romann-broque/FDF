@@ -6,7 +6,7 @@
 #    By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 13:20:37 by rbroque           #+#    #+#              #
-#    Updated: 2022/12/07 22:28:10 by rbroque          ###   ########.fr        #
+#    Updated: 2022/12/12 18:21:02 by rbroque          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ PATH_SRCS += srcs/struct/
 PATH_SRCS += srcs/print/
 PATH_SRCS += srcs/math/
 PATH_SRCS += srcs/loop/
+PATH_SRCS += srcs/utils/
 
 # srcs/
 
@@ -43,6 +44,7 @@ SRCS += map.c
 SRCS += data.c
 SRCS += pos.c
 SRCS += array.c
+SRCS += matrix.c
 
 # srcs/loop
 
@@ -58,6 +60,10 @@ SRCS += utils.c
 SRCS += print.c
 SRCS += print_line.c
 SRCS += print_map.c
+
+# srcs/utils
+
+SRCS += string.c
 
 vpath %.c $(PATH_SRCS)
 

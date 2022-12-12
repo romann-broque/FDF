@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 16:04:04 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/10 16:46:17 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/12 18:13:02 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,36 +58,40 @@ t_pos	**get_pos_array(char **coord, int y, int zoom)
 		{
 			pos_array[i] = init_pos(x, y, ft_atoi(coord[i]));
 			if (i > 0)
-				apply_persp(pos_array[i], pos_array[i - 1]);
+				apply_persp(pos_array[i], pos_array[i - 1]); // else => free
 			++i;
 		}
-		pos_array[i] = NULL;
+		pos_array[size] = NULL;
 		set_offset(pos_array, zoom);
 	}
 	return (pos_array);
 }
 
-t_pos	***get_pos_matrix(int fd, int zoom)
+t_pos	***get_pos_matrix(int fd, int zoom, size_t size)
 {
 	t_pos	***pos_matrix;
-	t_pos	**curr_pos_array;
 	int		y;
+	size_t	i;
 	char	**coord;
 	char	*curr_line;
 
 	y = 0;
-	pos_matrix = NULL;
-	curr_pos_array = NULL;
-	curr_line = get_next_line(fd);
-	while (curr_line != NULL)
+	pos_matrix = (t_pos ***)malloc((size + 1) * sizeof(t_pos **));
+	if (pos_matrix != NULL)
 	{
-		coord = ft_split_set(curr_line, " \n");
-		curr_pos_array = get_pos_array(coord, y, zoom);
-		pos_matrix = extend_pos_matrix(pos_matrix, curr_pos_array);
-		free(curr_line);
-		free_strs(coord);
 		curr_line = get_next_line(fd);
-		++y;
+		i = 0;
+		while (curr_line != NULL)
+		{
+			coord = ft_split_set(curr_line, " \n");
+			pos_matrix[i] = get_pos_array(coord, y, zoom);
+			free(curr_line);
+			free_strs(coord);
+			curr_line = get_next_line(fd);
+			++i;
+			++y;
+		}
+		pos_matrix[size] = NULL;
 	}
 	return (pos_matrix);
 }

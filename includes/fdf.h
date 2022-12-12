@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/10 16:48:54 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/12 18:22:03 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int		get_max(const int nb1, const int nb2);
 
 /// map
 
-t_pos	***get_pos_matrix(int fd, int zoom);
+t_pos	***get_pos_matrix(int fd, int zoom, size_t size);
 
 /// print ///
 
@@ -123,14 +123,23 @@ t_pos	*init_pos(int x, int y, int z);
 t_win	*init_window(const int height, const int width, char *title, t_pos ***orig_matrix);
 void	destroy_window(t_win *window);
 
-/// array ///
+// array
 
+size_t	get_pos_array_size(t_pos **pos_array);
 void	free_strs(char **array);
 void	free_pos_array(t_pos **pos_array);
-void	free_pos_matrix(t_pos ***pos_matrix);
+
+// matrix
+
+size_t	get_matrix_size(const char *path);
 size_t	get_pos_matrix_size(t_pos ***pos_array);
-size_t	get_pos_array_size(t_pos **pos_array);
+void	free_pos_matrix(t_pos ***pos_matrix);
+
+/// utils ///
+
+// string
+
+size_t	strcountchr(const char *str, const char c);
 size_t	get_array_size_char(char **array);
-t_pos	***extend_pos_matrix(t_pos ***array, t_pos **element);
 
 #endif

@@ -1,44 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   array.c                                            :+:      :+:    :+:   */
+/*   matrix.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/07 16:16:45 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/12 18:19:44 by rbroque          ###   ########.fr       */
+/*   Created: 2022/12/12 18:18:12 by rbroque           #+#    #+#             */
+/*   Updated: 2022/12/12 18:19:08 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	free_strs(char **array)
+size_t	get_matrix_size(const char *path)
+{
+	char	buffer[BUFFER_SIZE + 1];
+	int		fd;
+	ssize_t	nb_bytes;
+	size_t	size;
+
+	fd = open(path, O_RDONLY);
+	size = 0;
+	ft_bzero(buffer, BUFFER_SIZE + 1);
+	nb_bytes = read(fd, buffer, BUFFER_SIZE);
+	while (nb_bytes > 0)
+	{
+		size += strcountchr(buffer, '\n');
+		nb_bytes = read(fd, buffer, BUFFER_SIZE);
+	}
+	close(fd);
+	return (size);
+}
+
+void	free_pos_matrix(t_pos ***pos_matrix)
 {
 	size_t	i;
 
 	i = 0;
-	while (array[i] != NULL)
+	while (pos_matrix[i] != NULL)
 	{
-		free(array[i]);
+		free_pos_array(pos_matrix[i]);
 		++i;
 	}
-	free(array);
+	free(pos_matrix);
 }
 
-void	free_pos_array(t_pos **pos_array)
-{
-	size_t	i;
-
-	i = 0;
-	while (pos_array[i] != NULL)
-	{
-		free(pos_array[i]);
-		++i;
-	}
-	free(pos_array);
-}
-
-size_t	get_pos_array_size(t_pos **pos_array)
+size_t	get_pos_matrix_size(t_pos ***pos_array)
 {
 	size_t	size;
 
@@ -50,3 +57,4 @@ size_t	get_pos_array_size(t_pos **pos_array)
 	}
 	return (size);
 }
+
