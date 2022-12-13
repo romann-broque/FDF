@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/12 23:24:38 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/13 02:52:08 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int		get_max(const int nb1, const int nb2);
 
 /// map
 
-t_pos	***get_pos_matrix(int fd, int zoom, size_t size);
+t_pos	***get_pos_matrix(int fd, size_t size);
 
 /// print ///
 
@@ -100,7 +100,7 @@ void	print_ref(t_data *img, int height, int width);
 
 // print_map
 
-void	print_map(t_pos ***pos_array, t_win *window);
+void	print_map(t_pos ***pos_array, t_win *window, unsigned int map);
 
 // print_line
 
@@ -114,7 +114,7 @@ t_data	*init_data(void *mlx_ptr);
 
 // pos
 
-void	set_offset(t_pos **pos_array, int zoom);
+void	set_offset(t_pos ***pos_matrix, int zoom);
 t_pos	set_pos(t_pos *pos, int x, int y, int z);
 t_pos	*init_pos(int x, int y, int z);
 
@@ -122,6 +122,7 @@ t_pos	*init_pos(int x, int y, int z);
 
 t_win	*init_window(const int height, const int width, char *title, t_pos ***orig_matrix, const size_t size);
 void	destroy_window(t_win *window);
+void	refresh(t_win *window);
 
 // array
 

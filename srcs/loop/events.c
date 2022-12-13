@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 21:48:43 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/09 15:40:13 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/13 02:55:16 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,14 @@ int	detect_mouse_pos(int x, int y, t_win *window)
 	return (0);
 }
 
-int	zoom(int x, int y, int key, t_win *window)
+int	zoom(int key, int x, int y, t_win *window)
 {
-	printf("x --> %d\n", x);
-	printf("y --> %d\n", y);
-	printf("key --> %d\n", key);
-	printf("window --> %p\n", window);
+	(void)x;
+	(void)y;
+	if (key == 4 && window->zoom < INT_MAX)
+		++window->zoom;
+	if (key == 5 && window->zoom > 0)
+		--window->zoom;
+	refresh(window);
 	return (0);
 }

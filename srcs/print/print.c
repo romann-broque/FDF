@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 21:58:34 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/07 03:30:39 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/13 02:37:09 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	windows_shap(t_data *img, int height, int width)
 		++x;
 	}
 }
+
 void	print_ref(t_data *img, int height, int width)
 {
 	int	x;
