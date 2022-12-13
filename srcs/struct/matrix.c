@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 18:18:12 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/12 18:19:08 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/13 02:01:23 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,3 +58,44 @@ size_t	get_pos_matrix_size(t_pos ***pos_array)
 	return (size);
 }
 
+void	cpy_matrix(t_pos ***dest, t_pos ***src)
+{
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	while (src[i] != NULL)
+	{
+		j = 0;
+		while (src[i][j] != NULL)
+		{
+			dest[i][j] = init_pos(src[i][j]->x, src[i][j]->y, src[i][j]->z);
+			++j;
+		}
+		++i;
+	}
+}
+
+t_pos	***dup_matrix(t_pos ***src, const size_t matrix_size)
+{
+	size_t	x_nb;
+	size_t	i;
+	t_pos	***new;
+
+	new = (t_pos ***)malloc((matrix_size + 1) * sizeof(t_pos **));
+	if (new != NULL)
+	{
+		i = 0;
+		while (i < matrix_size)
+		{
+			x_nb = get_pos_array_size(src[i]);
+			new[i] = (t_pos **)malloc((x_nb + 1) * sizeof(t_pos *));
+			//if (new[i] == NULL)  --> free_all
+			new[i][x_nb] = NULL;
+			++i;
+		}
+		new[matrix_size] = NULL;
+		cpy_matrix(new, src);
+	}
+	return (new);
+}

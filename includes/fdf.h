@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/12 18:22:03 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/12 23:24:38 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,7 @@ t_pos	*init_pos(int x, int y, int z);
 
 // window
 
-t_win	*init_window(const int height, const int width, char *title, t_pos ***orig_matrix);
+t_win	*init_window(const int height, const int width, char *title, t_pos ***orig_matrix, const size_t size);
 void	destroy_window(t_win *window);
 
 // array
@@ -134,6 +134,8 @@ void	free_pos_array(t_pos **pos_array);
 size_t	get_matrix_size(const char *path);
 size_t	get_pos_matrix_size(t_pos ***pos_array);
 void	free_pos_matrix(t_pos ***pos_matrix);
+void	cpy_matrix(t_pos ***dest, t_pos ***src);
+t_pos	***dup_matrix(t_pos ***src, const size_t matrix_size);
 
 /// utils ///
 

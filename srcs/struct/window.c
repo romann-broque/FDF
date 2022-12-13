@@ -6,13 +6,13 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 21:10:04 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/12 18:07:21 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/12 23:24:10 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-t_win	*init_window(const int height, const int width, char *title, t_pos ***orig_matrix)
+t_win	*init_window(const int height, const int width, char *title, t_pos ***orig_matrix, const size_t size)
 {
 	t_win	*new;
 
@@ -24,7 +24,7 @@ t_win	*init_window(const int height, const int width, char *title, t_pos ***orig
 		new->data = init_data(new->mlx_ptr);
 		new->zoom = ZOOM;
 		new->orig_matrix = orig_matrix;
-		new->refr_matrix = orig_matrix;
+		new->refr_matrix = dup_matrix(orig_matrix, size);
 	}
 	return (new);
 }
@@ -37,5 +37,6 @@ void	destroy_window(t_win *window)
 	free(window->mlx_ptr);
 	free(window->data);
 	free_pos_matrix(window->orig_matrix);
+	free_pos_matrix(window->refr_matrix);
 	free(window);
 }
