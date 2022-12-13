@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:22:16 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/13 02:41:09 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/13 12:51:07 by rbroque          ###   ########.fr       */
 /*   Updated: 2022/12/03 03:38:33 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -34,7 +34,6 @@ int	main(int ac, char **av)
 	}
 	if (fd > -1)
 	{
-		fd = open("assets/test_maps/42.fdf", O_RDONLY);
 		pos_matrix = get_pos_matrix(fd, size);
 		window = init_window(HEIGHT, WIDTH, "FDF", pos_matrix, size);
 		print_map(window->refr_matrix, window, WHITE);

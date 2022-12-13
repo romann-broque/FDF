@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/13 11:51:46 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/13 12:54:10 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ typedef struct	s_transform
 	int	zoom;
 	int	x_offset;
 	int	y_offset;
+	int	x_rot;
+	int	y_rot;
 }				t_transform;
 
 typedef struct	s_win

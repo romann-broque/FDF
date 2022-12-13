@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 21:10:04 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/13 11:52:19 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/13 12:54:42 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ t_transform	*init_transform(void)
 		transform->zoom = ZOOM;
 		transform->x_offset = HEIGHT / 3;
 		transform->y_offset = WIDTH / 3;
+		transform->x_rot = 0;
+		transform->y_rot = -5;
 	}
 	return (transform);
 }
