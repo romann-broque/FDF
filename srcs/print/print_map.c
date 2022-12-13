@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 15:44:38 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/13 02:41:48 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/13 11:35:02 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,7 @@ static void	link_pos(t_pos *pos1, t_pos *pos2, t_win *window, unsigned int color
 	if (pos2 != NULL)
 	{
 		max_z = get_max(pos1->z, pos2->z);
-	//	if (pos1->x >= 0 && pos1->x < HEIGHT && pos1->y >= 0 && pos1->y < WIDTH
-	//		&& pos2->x < HEIGHT && pos1->x >= 0 && pos2->y < WIDTH && pos2->y >= 0)
-			print_line(pos1, pos2, window->data, color + max_z * BLUE);
+		print_line(pos1, pos2, window->data, color + max_z * BLUE);
 	}
 }
 

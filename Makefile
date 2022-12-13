@@ -6,7 +6,7 @@
 #    By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 13:20:37 by rbroque           #+#    #+#              #
-#    Updated: 2022/12/12 18:21:02 by rbroque          ###   ########.fr        #
+#    Updated: 2022/12/13 11:29:49 by rbroque          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ PATH_SRCS += srcs/
 PATH_SRCS += srcs/struct/
 PATH_SRCS += srcs/print/
 PATH_SRCS += srcs/math/
+PATH_SRCS += srcs/map/
 PATH_SRCS += srcs/loop/
 PATH_SRCS += srcs/utils/
 

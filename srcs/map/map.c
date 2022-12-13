@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 16:04:04 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/13 02:57:19 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/13 11:52:39 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	apply_persp(t_pos *curr_pos, t_pos *last_pos)
 	curr_pos->y = get_y_offset(curr_pos, last_pos);
 }
 
-void	set_offset(t_pos ***pos_matrix, int zoom)
+void	set_offset(t_pos ***pos_matrix, t_transform *transform)
 {
 	size_t	y;
 	size_t	x;
@@ -39,8 +39,8 @@ void	set_offset(t_pos ***pos_matrix, int zoom)
 		x = 0;
 		while (pos_matrix[y][x] != NULL)
 		{
-			set_pos(pos_matrix[y][x], pos_matrix[y][x]->x + (zoom * x) + HEIGHT / 3,
-					pos_matrix[y][x]->y * (zoom - 5) + WIDTH / 3,
+			set_pos(pos_matrix[y][x], pos_matrix[y][x]->x + (transform->zoom * x) + transform->x_offset,
+					pos_matrix[y][x]->y * (transform->zoom - 5) + transform->y_offset,
 					pos_matrix[y][x]->z);
 			++x;
 		}

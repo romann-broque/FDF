@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/13 02:52:08 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/13 11:51:46 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,21 @@ typedef struct	s_pos
 	int	z;
 }				t_pos;
 
+typedef struct	s_transform
+{
+	int	zoom;
+	int	x_offset;
+	int	y_offset;
+}				t_transform;
+
 typedef struct	s_win
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
-	t_data	*data;
-	int		zoom;
-	t_pos	***orig_matrix;
-	t_pos	***refr_matrix;
+	void		*mlx_ptr;
+	void		*win_ptr;
+	t_data		*data;
+	t_transform	*transform;
+	t_pos		***orig_matrix;
+	t_pos		***refr_matrix;
 }				t_win;
 
 /// loop ///
@@ -97,6 +104,7 @@ t_pos	***get_pos_matrix(int fd, size_t size);
 
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 void	print_ref(t_data *img, int height, int width);
+void	put_pixel(t_data *data, int x, int y, int color);
 
 // print_map
 
@@ -114,7 +122,7 @@ t_data	*init_data(void *mlx_ptr);
 
 // pos
 
-void	set_offset(t_pos ***pos_matrix, int zoom);
+void	set_offset(t_pos ***pos_matrix, t_transform *transform);
 t_pos	set_pos(t_pos *pos, int x, int y, int z);
 t_pos	*init_pos(int x, int y, int z);
 

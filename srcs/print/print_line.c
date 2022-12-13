@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 03:28:54 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/09 17:02:19 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/13 11:33:22 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static void	print_line_less(t_pos *pos1, t_pos *pos2, t_data *data, int color, i
 			pos->y += get_sign(dy);
 		}
 		pos->x++;
-		my_mlx_pixel_put(data, pos->x, pos->y, color);
+		put_pixel(data, pos->x, pos->y, color);
 	}
 	free(pos);
 }
@@ -58,7 +58,7 @@ static void	print_line_more(t_pos *pos1, t_pos *pos2, t_data *data, int color, i
 				pos->x++;
 		}
 		pos->y += get_sign(dy);
-		my_mlx_pixel_put(data, pos->x, pos->y, color);
+		put_pixel(data, pos->x, pos->y, color);
 	}
 	free(pos);
 }
