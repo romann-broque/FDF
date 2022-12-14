@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/13 14:57:23 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/14 15:13:18 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,14 @@
 
 # ifndef ZOOM
 #  define ZOOM 20
+# endif
+
+# ifndef MAX_ZOOM_OFFSET
+#  define MAX_ZOOM_OFFSET 100
+# endif
+
+# ifndef MIN_ZOOM_OFFSET
+#  define MIN_ZOOM_OFFSET 3
 # endif
 
 // COLORS

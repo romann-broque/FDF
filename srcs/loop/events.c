@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 21:48:43 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/13 11:50:14 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/14 15:12:29 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ int	zoom(int key, int x, int y, t_win *window)
 	t_transform	*const transform = window->transform;
 	(void)x;
 	(void)y;
-	if (key == 4 && transform->zoom < INT_MAX)
+	if (key == 4 && transform->zoom < MAX_ZOOM_OFFSET)
 		++transform->zoom;
-	if (key == 5 && window->transform->zoom > 0)
+	if (key == 5 && window->transform->zoom > -window->transform->y_rot + MIN_ZOOM_OFFSET)
 		--transform->zoom;
 	printf("zoom -> %d\n", transform->zoom);
 	refresh(window);

@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 15:44:38 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/14 11:49:24 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/14 15:08:43 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	print_map(t_pos ***pos_array, t_win *window, unsigned int color)
 		x = 0;
 		while (pos_array[y][x] != NULL)
 		{
-			printf("POINT %zu;%zu --> %d;%d\n", x, y, pos_array[y][x]->x, pos_array[y][x]->y);
 			curr_pos = pos_array[y][x];
 			link_pos(curr_pos, pos_array[y][x + 1], window, color);
 			if (pos_array[y + 1] != NULL)
