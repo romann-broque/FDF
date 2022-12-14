@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 21:58:34 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/13 11:32:48 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/14 15:06:06 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 
 void	put_pixel(t_data *data, int x, int y, int color)
 {
-	if (x >= 0 && x <= HEIGHT && y >= 0 && y <= WIDTH)
+	if (x >= 0 && x < HEIGHT && y >= 0 && y < WIDTH)
 		my_mlx_pixel_put(data, x, y, color);
 }
 
