@@ -6,7 +6,7 @@
 #    By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 13:20:37 by rbroque           #+#    #+#              #
-#    Updated: 2022/12/13 11:29:49 by rbroque          ###   ########.fr        #
+#    Updated: 2022/12/13 14:54:51 by rbroque          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,11 +41,9 @@ SRCS += main.c
 # srcs/struct
 
 SRCS += window.c
-SRCS += map.c
 SRCS += data.c
 SRCS += pos.c
-SRCS += array.c
-SRCS += matrix.c
+SRCS += transform.c
 
 # srcs/loop
 
@@ -55,6 +53,12 @@ SRCS += loop.c
 # srcs/math
 
 SRCS += utils.c
+
+# srcs/map
+
+SRCS += matrix.c
+SRCS += map.c
+SRCS += array.c
 
 # srcs/print
 

@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/13 12:54:10 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/13 14:57:23 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,10 +96,6 @@ int		get_sign(int nb);
 void	ft_swap(int *nb1, int *nb2);
 int		get_max(const int nb1, const int nb2);
 
-/// map
-
-t_pos	***get_pos_matrix(int fd, size_t size);
-
 /// print ///
 
 // print
@@ -134,6 +130,12 @@ t_win	*init_window(const int height, const int width, char *title, t_pos ***orig
 void	destroy_window(t_win *window);
 void	refresh(t_win *window);
 
+// transform
+
+t_transform	*init_transform(void);
+
+/// map ///
+
 // array
 
 size_t	get_pos_array_size(t_pos **pos_array);
@@ -147,6 +149,10 @@ size_t	get_pos_matrix_size(t_pos ***pos_array);
 void	free_pos_matrix(t_pos ***pos_matrix);
 void	cpy_matrix(t_pos ***dest, t_pos ***src);
 t_pos	***dup_matrix(t_pos ***src, const size_t matrix_size);
+
+/// map
+
+t_pos	***get_pos_matrix(int fd, size_t size);
 
 /// utils ///
 

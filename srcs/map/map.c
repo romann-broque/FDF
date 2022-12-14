@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 16:04:04 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/13 12:59:29 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/14 11:40:51 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,9 @@ void	put_pos(t_pos *pos, size_t x, t_transform *transform)
 	const int	new_y = pos->y * (transform->zoom + transform->y_rot);
 	const int	new_z = pos->z;
 
-	if (transform->zoom + transform->y_rot > 0)
-		set_pos(pos, new_x + transform->x_offset,
-		new_y + transform->y_offset,
-		new_z);
+	set_pos(pos, new_x + transform->x_offset,
+	new_y + transform->y_offset,
+	new_z);
 }
 
 void	set_offset(t_pos ***pos_matrix, t_transform *transform)
