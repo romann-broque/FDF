@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 18:18:12 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/13 02:01:23 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/14 15:43:50 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ size_t	get_matrix_size(const char *path)
 	while (nb_bytes > 0)
 	{
 		size += strcountchr(buffer, '\n');
+		ft_bzero(buffer, BUFFER_SIZE);
 		nb_bytes = read(fd, buffer, BUFFER_SIZE);
 	}
 	close(fd);
@@ -69,7 +70,7 @@ void	cpy_matrix(t_pos ***dest, t_pos ***src)
 		j = 0;
 		while (src[i][j] != NULL)
 		{
-			dest[i][j] = init_pos(src[i][j]->x, src[i][j]->y, src[i][j]->z);
+			dest[i][j] = init_pos(src[i][j]->x, src[i][j]->y, src[i][j]->z); //
 			++j;
 		}
 		++i;
