@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 18:18:12 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/14 15:43:50 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/16 14:42:04 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	cpy_matrix(t_pos ***dest, t_pos ***src)
 		j = 0;
 		while (src[i][j] != NULL)
 		{
-			dest[i][j] = init_pos(src[i][j]->x, src[i][j]->y, src[i][j]->z); //
+			set_pos(dest[i][j], src[i][j]->x, src[i][j]->y, src[i][j]->z);
 			++j;
 		}
 		++i;
@@ -79,9 +79,8 @@ void	cpy_matrix(t_pos ***dest, t_pos ***src)
 
 t_pos	***dup_matrix(t_pos ***src, const size_t matrix_size)
 {
-	size_t	x_nb;
-	size_t	i;
 	t_pos	***new;
+	size_t	i;
 
 	new = (t_pos ***)malloc((matrix_size + 1) * sizeof(t_pos **));
 	if (new != NULL)
@@ -89,10 +88,7 @@ t_pos	***dup_matrix(t_pos ***src, const size_t matrix_size)
 		i = 0;
 		while (i < matrix_size)
 		{
-			x_nb = get_pos_array_size(src[i]);
-			new[i] = (t_pos **)malloc((x_nb + 1) * sizeof(t_pos *));
-			//if (new[i] == NULL)  --> free_all
-			new[i][x_nb] = NULL;
+			new[i] = dup_array(src[i], get_pos_array_size(src[i]));
 			++i;
 		}
 		new[matrix_size] = NULL;

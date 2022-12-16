@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/14 15:28:11 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/16 14:42:22 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,6 +149,7 @@ t_transform	*init_transform(void);
 size_t	get_pos_array_size(t_pos **pos_array);
 void	free_strs(char **array);
 void	free_pos_array(t_pos **pos_array);
+t_pos	**dup_array(t_pos **src, const size_t array_size);
 
 // matrix
 
