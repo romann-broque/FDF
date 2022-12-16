@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/16 14:42:22 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/16 14:55:47 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ int		close_window1(int key, t_win *ptr);
 int		close_window2(t_win *ptr);
 int		detect_mouse_pos(int x, int y, t_win *ptr);
 int		zoom(int x, int y, int key, t_win *ptr);
+int		button_press(int key, int x, int y, t_win *window);
 
 // loop
 
