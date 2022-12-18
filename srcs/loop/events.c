@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 21:48:43 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/16 14:55:23 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/18 15:30:37 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,15 @@ int	zoom(int key, int x, int y, t_win *window)
 	(void)x;
 	(void)y;
 	if (key == 4 && transform->zoom < MAX_ZOOM_OFFSET)
+	{
 		++transform->zoom;
-	if (key == 5 && window->transform->zoom > -window->transform->y_rot + MIN_ZOOM_OFFSET)
+		refresh(window);
+	}
+	else if (key == 5 && window->transform->zoom > -window->transform->y_rot + MIN_ZOOM_OFFSET)
+	{
 		--transform->zoom;
-	refresh(window);
+		refresh(window);
+	}
 	return (0);
 }
 

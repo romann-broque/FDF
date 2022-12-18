@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 03:28:54 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/14 11:32:48 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/18 15:39:34 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,20 +63,12 @@ static void	print_line_more(t_pos *pos1, t_pos *pos2, t_data *data, int color, i
 	free(pos);
 }
 
-void	print_line(t_pos *pos1, t_pos *pos2, t_data *data, int color)
+void	choose_line_printing(t_pos *pos1, t_pos *pos2, t_data *data, int color)
 {
-	float	dx;
-	float	dy;
-	float	coeff;
+	const float dx = pos2->x - pos1->x;
+	const float dy = pos2->y - pos1->y;
+	const float	coeff = dy / dx;
 
-	if (pos1->x > pos2->x)
-	{
-		ft_swap(&pos1->x, &pos2->x);
-		ft_swap(&pos1->y, &pos2->y);
-	}
-	dx = pos2->x - pos1->x;
-	dy = pos2->y - pos1->y;
-	coeff = dy / dx;
 	if (coeff >= 0)
 	{
 		if (coeff <= 1)
@@ -91,4 +83,15 @@ void	print_line(t_pos *pos1, t_pos *pos2, t_data *data, int color)
 		else
 			print_line_more(pos1, pos2, data, color, -1);
 	}
+
+}
+
+void	print_line(t_pos *pos1, t_pos *pos2, t_data *data, int color)
+{
+	if (pos1->x > pos2->x)
+	{
+		ft_swap(&pos1->x, &pos2->x);
+		ft_swap(&pos1->y, &pos2->y);
+	}
+	choose_line_printing(pos1, pos2, data, color);
 }
