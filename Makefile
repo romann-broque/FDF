@@ -6,7 +6,7 @@
 #    By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 13:20:37 by rbroque           #+#    #+#              #
-#    Updated: 2022/12/13 14:54:51 by rbroque          ###   ########.fr        #
+#    Updated: 2022/12/18 15:35:31 by rbroque          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,6 +48,8 @@ SRCS += transform.c
 # srcs/loop
 
 SRCS += events.c
+SRCS += mouse.c
+SRCS += keyboard.c
 SRCS += loop.c
 
 # srcs/math

@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   loop.c                                             :+:      :+:    :+:   */
+/*   keyboard.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/03 21:52:12 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/18 15:33:12 by rbroque          ###   ########.fr       */
+/*   Created: 2022/12/18 15:34:19 by rbroque           #+#    #+#             */
+/*   Updated: 2022/12/18 15:34:35 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void	hook(t_win *window)
+int	key_press(int key, t_win *window)
 {
-	mlx_hook(window->win_ptr, DestroyNotify, StructureNotifyMask, close_window2, window);
-//	mlx_hook(window->win_ptr, MotionNotify, PointerMotionMask, detect_mouse_pos, window);
-	mlx_key_hook(window->win_ptr, key_press, window);
-	mlx_hook(window->win_ptr, ButtonPress, ButtonPressMask, mouse_press, window);
-}
-
-void	loop(t_win *window)
-{
-	hook(window);
-	mlx_loop(window->mlx_ptr);
+	if (key == ESCAPE_KEY)
+		close_window1(key, window);
+	else if (key == R_KEY || key == F_KEY)
+		rotate(key, window);
+	return (0);
 }

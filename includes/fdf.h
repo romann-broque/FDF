@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/18 15:00:49 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/18 15:36:00 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,9 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 
-# define ESCAPE_KEY 65307
+//////////////////
+/// RESOLUTION ///
+//////////////////
 
 # ifndef HEIGHT
 #  define HEIGHT 1920
@@ -43,7 +45,19 @@
 #  define ZOOM MIN_ZOOM_OFFSET + 1
 # endif
 
-// COLORS
+///////////////////
+/// KEY_MAPPING ///
+///////////////////
+
+# define ESCAPE_KEY 65307
+# define F_KEY 102
+# define R_KEY 114
+# define SCROLL1_KEY 4
+# define SCROLL2_KEY 5
+
+//////////////
+/// COLORS ///
+//////////////
 
 # define RED	0x00FF0000
 # define GREEN	0x0000FF00
@@ -93,7 +107,15 @@ int		close_window1(int key, t_win *ptr);
 int		close_window2(t_win *ptr);
 int		detect_mouse_pos(int x, int y, t_win *ptr);
 int		zoom(int x, int y, int key, t_win *ptr);
-int		button_press(int key, int x, int y, t_win *window);
+int		rotate(int key, t_win *window);
+
+// keyboard
+
+int		key_press(int key, t_win *window);
+
+// mouse
+
+int		mouse_press(int key, int x, int y, t_win *window);
 
 // loop
 

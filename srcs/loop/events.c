@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 21:48:43 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/18 15:30:37 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/18 15:34:40 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,35 @@ int	close_window2(t_win *ptr)
 	return (0);
 }
 
+int	zoom(int key, int x, int y, t_win *window)
+{
+	t_transform	*const transform = window->transform;
+
+	(void)x;
+	(void)y;
+	if (key == SCROLL1_KEY && transform->zoom < MAX_ZOOM_OFFSET)
+	{
+		++transform->zoom;
+		refresh(window);
+	}
+	else if (key == SCROLL2_KEY && window->transform->zoom > -window->transform->y_rot + MIN_ZOOM_OFFSET)
+	{
+		--transform->zoom;
+		refresh(window);
+	}
+	return (0);
+}
+
+int	rotate(int key, t_win *window)
+{
+	if (key == R_KEY)
+		++window->transform->y_rot;
+	else if (key == F_KEY)
+		--window->transform->y_rot;
+	refresh(window);
+	return (0);
+}
+
 /*
 int	detect_mouse_pos(int x, int y, t_win *window)
 {
@@ -40,28 +69,3 @@ int	detect_mouse_pos(int x, int y, t_win *window)
 }
 */
 
-int	zoom(int key, int x, int y, t_win *window)
-{
-	t_transform	*const transform = window->transform;
-
-	(void)x;
-	(void)y;
-	if (key == 4 && transform->zoom < MAX_ZOOM_OFFSET)
-	{
-		++transform->zoom;
-		refresh(window);
-	}
-	else if (key == 5 && window->transform->zoom > -window->transform->y_rot + MIN_ZOOM_OFFSET)
-	{
-		--transform->zoom;
-		refresh(window);
-	}
-	return (0);
-}
-
-int	button_press(int key, int x, int y, t_win *window)
-{
-	if (key == 4 || key == 5)
-		zoom(key, x, y, window);
-	return (0);
-}
