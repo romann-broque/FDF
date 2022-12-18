@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 03:28:54 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/18 15:39:34 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/18 17:40:05 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	print_line_less(t_pos *pos1, t_pos *pos2, t_data *data, int color, i
 	int			deltaNE = 2 * (dy - dx);
 
 	pos = init_pos(pos1->x, pos1->y, pos1->z);
-	while (pos->x <= pos2->x)
+	while (pos->x < pos2->x)
 	{
 		if (sign * dp <= 0)
 			dp += deltaE;
