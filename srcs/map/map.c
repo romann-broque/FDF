@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 16:04:04 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/14 15:10:10 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/18 14:50:45 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		get_x_offset(t_pos *pos)
 
 int		get_y_offset(t_pos *curr_pos, t_pos *last_pos)
 {
-	return (last_pos->y + (last_pos->z - curr_pos->z) / 6);
+	return (last_pos->y + (last_pos->z - curr_pos->z));
 }
 
 void	apply_persp(t_pos *curr_pos, t_pos *last_pos)
