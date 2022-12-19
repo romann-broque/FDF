@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/19 15:23:52 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/20 00:24:20 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@
 # define ESCAPE_KEY 65307
 # define F_KEY 102
 # define R_KEY 114
+# define C_KEY 99
+# define V_KEY 118
 # define SCROLL1_KEY 4
 # define SCROLL2_KEY 5
 
@@ -59,15 +61,17 @@
 /// COLORS ///
 //////////////
 
-# define RED	0x00FF0000
-# define GREEN	0x0000FF00
-# define BLUE	0x000000FF
-# define YELLOW	0x00FFFF00
-# define WHITE	0x00FFFFFF
+# define CONTRAST	20
+# define RED		0x00FF0000
+# define GREEN		0x0000FF00
+# define BLUE		0x000000FF
+# define YELLOW		0x00FFFF00
+# define WHITE		0x00FFFFFF
 
 typedef struct	s_data {
 	char	*addr;
 	void	*img;
+	int		contrast;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
@@ -108,6 +112,7 @@ int		close_window2(t_win *ptr);
 int		detect_mouse_pos(int x, int y, t_win *ptr);
 int		zoom(int x, int y, int key, t_win *ptr);
 int		rotate(int key, t_win *window);
+int		contrast(int key, t_win *window);
 
 // keyboard
 
@@ -147,7 +152,7 @@ void	print_line(t_pos *pos1, t_pos *pos2, t_data *data, int color);
 
 // data
 
-t_data	*init_data(void *mlx_ptr);
+t_data	*init_data(void *mlx_ptr, int contrast);
 
 // pos
 
