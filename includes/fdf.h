@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/19 15:20:37 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/19 15:23:52 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,6 +197,6 @@ size_t	get_array_size_char(char **array);
 
 // rotate
 
-int	get_rot(int *y_rot);
+int	get_rot(t_transform *transform);
 
 #endif
