@@ -6,7 +6,7 @@
 #    By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 13:20:37 by rbroque           #+#    #+#              #
-#    Updated: 2022/12/18 15:35:31 by rbroque          ###   ########.fr        #
+#    Updated: 2022/12/19 15:21:20 by rbroque          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ NAME = fdf
 
 PATH_SRCS += srcs/
 PATH_SRCS += srcs/struct/
+PATH_SRCS += srcs/transform/
 PATH_SRCS += srcs/print/
 PATH_SRCS += srcs/math/
 PATH_SRCS += srcs/map/
@@ -67,6 +68,10 @@ SRCS += array.c
 SRCS += print.c
 SRCS += print_line.c
 SRCS += print_map.c
+
+# srcs/transform
+
+SRCS += rotate.c
 
 # srcs/utils
 

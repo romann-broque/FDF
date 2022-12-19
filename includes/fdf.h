@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/18 15:36:00 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/19 15:20:37 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@
 //////////////////
 
 # ifndef HEIGHT
-#  define HEIGHT 1920
+#  define HEIGHT 1600
 # endif
 
 # ifndef WIDTH
-#  define WIDTH 1080
+#  define WIDTH 900
 # endif
 
 # ifndef MAX_ZOOM_OFFSET
@@ -42,7 +42,7 @@
 # endif
 
 # ifndef ZOOM
-#  define ZOOM MIN_ZOOM_OFFSET + 1
+#  define ZOOM MIN_ZOOM_OFFSET + 10
 # endif
 
 ///////////////////
@@ -192,5 +192,11 @@ t_pos	***get_pos_matrix(int fd, size_t size);
 
 size_t	strcountchr(const char *str, const char c);
 size_t	get_array_size_char(char **array);
+
+/// transform ///
+
+// rotate
+
+int	get_rot(int *y_rot);
 
 #endif

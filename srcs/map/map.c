@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 16:04:04 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/18 14:50:45 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/19 15:19:52 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	apply_persp(t_pos *curr_pos, t_pos *last_pos)
 void	put_pos(t_pos *pos, size_t x, t_transform *transform)
 {
 	const int	new_x = pos->x + (transform->zoom * x);
-	const int	new_y = pos->y * (transform->zoom + transform->y_rot);
+	const int	new_y = pos->y * (transform->zoom + get_rot(&transform->y_rot));
 	const int	new_z = pos->z;
 
 

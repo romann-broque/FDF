@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 21:48:43 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/18 15:34:40 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/19 15:19:14 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	rotate(int key, t_win *window)
 {
 	if (key == R_KEY)
 		++window->transform->y_rot;
-	else if (key == F_KEY)
+	else
 		--window->transform->y_rot;
 	refresh(window);
 	return (0);
