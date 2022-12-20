@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/20 17:50:47 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/20 18:00:16 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -213,5 +213,10 @@ size_t	get_array_size_char(char **array);
 // rotate
 
 int	get_rot(t_transform *transform);
+
+// altitude
+
+int	get_altitude(int alt1, int alt2, int alt_ref);
+
 
 #endif

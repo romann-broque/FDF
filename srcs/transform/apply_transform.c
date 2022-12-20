@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 14:43:57 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/20 17:50:14 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/20 18:01:19 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int		get_x_shift(t_pos *pos)
 
 static int		get_y_shift(t_pos *curr_pos, t_pos *last_pos, t_transform *transform)
 {
-	return (last_pos->y + (last_pos->z - curr_pos->z) / transform->altitude);
+	return (last_pos->y + get_altitude(last_pos->z, curr_pos->z, transform->altitude));
 }
 
 void	apply_persp(t_pos *curr_pos, t_pos *last_pos, t_transform *transform)
