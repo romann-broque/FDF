@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 21:48:43 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/20 17:53:11 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/20 23:48:04 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ int	close_window2(t_win *ptr)
 
 int	zoom(int key, int x, int y, t_win *window)
 {
-	t_transform	*const transform = window->transform;
+	t_transform *const	transform = window->transform;
 
 	(void)x;
 	(void)y;
-	if (key == SCROLL1_KEY && transform->zoom < MAX_ZOOM_OFFSET)
+	if (key == SCROLL1_KEY && transform->zoom < MAX_ZOOM_OFFSET) // should_zoom
 		++transform->zoom;
-	else if (key == SCROLL2_KEY && window->transform->zoom > MIN_ZOOM_OFFSET)
+	else if (key == SCROLL2_KEY && window->transform->zoom > MIN_ZOOM_OFFSET) // should_unzoom
 		--transform->zoom;
 	return (0);
 }
@@ -80,3 +80,18 @@ int	detect_mouse_pos(int x, int y, t_win *window)
 }
 */
 
+
+// t_key do_action(t_action_string action_id) {
+// 	static const t_action_key action_keys[] = {
+// 		{ .action_id = CLOSE, .key = ESCAPE_KEY }
+// 	};
+// 	return action_keys[action_id].key
+	
+// }
+
+
+
+// bool should_close(...)
+// {
+// 	return get_action_key(CLOSE) && windows.state == UP;
+// }

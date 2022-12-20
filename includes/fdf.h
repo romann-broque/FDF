@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/20 18:00:16 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/20 23:48:09 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,18 @@ typedef struct	s_win
 	t_pos		***orig_matrix;
 	t_pos		***refr_matrix;
 }				t_win;
+
+
+
+// typedef int t_key;
+// typedef const int t_action_id;
+// typedef struct s_action_key
+// {
+// 	 t_action_id action_id;
+// 	 t_key key;
+// }	 t_action_key;
+// #define CLOSE 0
+
 
 /// loop ///
 

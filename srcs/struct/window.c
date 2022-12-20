@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 21:10:04 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/20 00:24:35 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/20 23:55:55 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ t_win	*init_window(const int height, const int width, char *title, t_pos ***orig
 {
 	t_win	*new;
 
-	new = (t_win *)malloc(sizeof(t_win));	
+	new = (t_win *)malloc(sizeof(t_win));	// NO MALLOC
 	if (new != NULL)
 	{
 		new->mlx_ptr = mlx_init();
 		new->win_ptr = mlx_new_window(new->mlx_ptr, height, width, title);
 		new->data = init_data(new->mlx_ptr, CONTRAST);
-		new->transform = init_transform();
+		new->transform = init_transform(); // NO MALLOC
 		new->orig_matrix = orig_matrix;
 		new->refr_matrix = dup_matrix(orig_matrix, size);
 		set_offset(new->refr_matrix, new->transform);

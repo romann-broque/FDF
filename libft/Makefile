@@ -6,7 +6,7 @@
 #    By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 10:15:13 by rbroque           #+#    #+#              #
-#    Updated: 2022/12/07 16:33:40 by rbroque          ###   ########.fr        #
+#    Updated: 2022/12/20 23:49:28 by rbroque          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -168,26 +168,27 @@ endif
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@ar rcs $@ $^
-	@$(ECHOC) $(GREEN) "--> $(NAME) COMPILED !"$(NC)"\n"
+	ar rcs $@ $^
+	$(ECHOC) $(GREEN) "--> $(NAME) COMPILED !"$(NC)"\n"
 
 $(OBJS): $(PATH_OBJS)/%.o: %.c $(HEADER)
-	@$(ECHO) $(ORANGE) "Compiling $<"
-	@mkdir -p $(PATH_OBJS)
-	@$(CC) $(CFLAGS) -c $< -o $@ -I $(INCLUDES)
+	$(ECHO) $(ORANGE) "Compiling $<"
+	mkdir -p $(PATH_OBJS)
+	$(CC) $(CFLAGS) -c $< -o $@ -I $(INCLUDES)
 
 clean:
-	@$(ECHOC) $(YELLOW) "Cleaning up .o files..." $(NC)
-	@$(RM) -R $(PATH_OBJS)
-	@$(ECHOC) $(GREEN) "--> .o files cleaned !"$(NC)"\n"
+	$(ECHOC) $(YELLOW) "Cleaning up .o files..." $(NC)
+	$(RM) -R $(PATH_OBJS)
+	$(ECHOC) $(GREEN) "--> .o files cleaned !"$(NC)"\n"
 
 fclean: clean
-	@$(ECHOC) $(YELLOW) "Cleaning up $(NAME)..." $(NC)
-	@$(RM) $(NAME)
-	@$(ECHOC) $(GREEN) "--> $(NAME) cleaned !"$(NC)"\n"
+	$(ECHOC) $(YELLOW) "Cleaning up $(NAME)..." $(NC)
+	$(RM) $(NAME)
+	$(ECHOC) $(GREEN) "--> $(NAME) cleaned !"$(NC)"\n"
 
 re: fclean
-	@echo -e $(YELLOW) "\nRebuilding...\n" $(NC)
-	@$(MAKE) -s
+	echo -e $(YELLOW) "\nRebuilding...\n" $(NC)
+	$(MAKE) -s
 
 .PHONY: all clean fclean re
+.SILENT:
