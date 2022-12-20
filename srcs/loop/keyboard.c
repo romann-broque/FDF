@@ -14,7 +14,6 @@
 
 int	key_press(int key, t_win *window)
 {
-	printf("key --> %d\n", key);
 	if (key == ESCAPE_KEY)
 		close_window1(key, window);
 	else if (key == R_KEY || key == F_KEY)

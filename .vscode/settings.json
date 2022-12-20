@@ -1,0 +1,9 @@
+{
+    "makefile.launchConfigurations": [
+        {
+            "cwd": "/home/screw/Desktop/Code/42_Projects/RENDER/FDF",
+            "binaryPath": "/home/screw/Desktop/Code/42_Projects/RENDER/FDF/fdf",
+            "binaryArgs": []
+        }
+    ]
+}
