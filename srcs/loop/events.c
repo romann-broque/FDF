@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 21:48:43 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/20 17:40:40 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/20 17:53:11 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	altitude(int key, t_win *window)
 {
 	if (key == Z_KEY)
 		++window->transform->altitude;
-	else if (window->transform->altitude > 0)
+	else if (window->transform->altitude > 1)
 		--window->transform->altitude;
 	return (0);
 }

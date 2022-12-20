@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 16:04:04 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/20 14:44:53 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/20 17:49:44 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,21 @@ void	set_offset(t_pos ***pos_matrix, t_transform *transform)
 {
 	size_t	y;
 	size_t	x;
+
+	y = 0;
+	while (pos_matrix[y] != NULL)
+	{
+		x = 0;
+		while (pos_matrix[y][x] != NULL)
+		{
+			if (x > 0)
+				apply_persp(pos_matrix[y][x], pos_matrix[y][x - 1], transform); // else => free
+			++x;
+		}
+		++y;
+	}
+
+// Cut function
 
 	y = 0;
 	while (pos_matrix[y] != NULL)
@@ -45,8 +60,6 @@ t_pos	**get_pos_array(char **coord, int y)
 		while (coord[i] != NULL)
 		{
 			pos_array[i] = init_pos(x, y, ft_atoi(coord[i]));
-			if (i > 0)
-				apply_persp(pos_array[i], pos_array[i - 1]); // else => free
 			++i;
 		}
 		pos_array[size] = NULL;

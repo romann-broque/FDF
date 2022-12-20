@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/20 17:31:47 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/20 17:50:47 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,7 +177,7 @@ void	refresh(t_win *window);
 // transform
 
 t_transform	*init_transform(void);
-void	apply_persp(t_pos *curr_pos, t_pos *last_pos);
+void	apply_persp(t_pos *curr_pos, t_pos *last_pos, t_transform *transform);
 void	apply_transform(t_pos *pos, size_t x, t_transform *transform);
 
 /// map ///
