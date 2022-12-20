@@ -6,38 +6,11 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 16:04:04 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/19 16:02:02 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/20 14:44:53 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-int		get_x_offset(t_pos *pos)
-{
-	return (pos->x);
-}
-
-int		get_y_offset(t_pos *curr_pos, t_pos *last_pos)
-{
-	return (last_pos->y + (last_pos->z - curr_pos->z));
-}
-
-void	apply_persp(t_pos *curr_pos, t_pos *last_pos)
-{
-	curr_pos->x = get_x_offset(last_pos);
-	curr_pos->y = get_y_offset(curr_pos, last_pos);
-}
-
-void	put_pos(t_pos *pos, size_t x, t_transform *transform)
-{
-	const int	new_x = pos->x + (transform->zoom * x);
-	const int	new_y = pos->y * (get_rot(transform));
-	const int	new_z = pos->z;
-
-	set_pos(pos, new_x + transform->x_offset,
-	new_y + transform->y_offset,
-	new_z);
-}
 
 void	set_offset(t_pos ***pos_matrix, t_transform *transform)
 {
@@ -50,7 +23,7 @@ void	set_offset(t_pos ***pos_matrix, t_transform *transform)
 		x = 0;
 		while (pos_matrix[y][x] != NULL)
 		{
-			put_pos(pos_matrix[y][x], x, transform);
+			apply_transform(pos_matrix[y][x], x, transform);
 			++x;
 		}
 		++y;

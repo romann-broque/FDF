@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 14:53:22 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/13 14:53:46 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/20 17:28:53 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_transform	*init_transform(void)
 	if (transform != NULL)
 	{
 		transform->zoom = ZOOM;
+		transform->altitude = ALTITUDE;
 		transform->x_offset = HEIGHT / 3;
 		transform->y_offset = WIDTH / 3;
 		transform->x_rot = 0;

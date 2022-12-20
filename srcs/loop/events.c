@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 21:48:43 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/20 00:21:31 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/20 17:40:40 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,9 @@ int	zoom(int key, int x, int y, t_win *window)
 	(void)x;
 	(void)y;
 	if (key == SCROLL1_KEY && transform->zoom < MAX_ZOOM_OFFSET)
-	{
 		++transform->zoom;
-		refresh(window);
-	}
 	else if (key == SCROLL2_KEY && window->transform->zoom > MIN_ZOOM_OFFSET)
-	{
 		--transform->zoom;
-		refresh(window);
-	}
 	return (0);
 }
 
@@ -50,19 +44,24 @@ int	rotate(int key, t_win *window)
 		++window->transform->y_rot;
 	else
 		--window->transform->y_rot;
-	refresh(window);
 	return (0);
 }
 
 int	contrast(int key, t_win *window)
 {
-	printf("key --> %d\n", key);
 	if (key == C_KEY)
 		++window->data->contrast;
 	else
 		--window->data->contrast;
-	printf("contrast --> %d\n", window->data->contrast);
-	refresh(window);
+	return (0);
+}
+
+int	altitude(int key, t_win *window)
+{
+	if (key == Z_KEY)
+		++window->transform->altitude;
+	else if (window->transform->altitude > 0)
+		--window->transform->altitude;
 	return (0);
 }
 

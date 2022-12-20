@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/20 00:24:20 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/20 17:31:47 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@
 //////////////////
 
 # ifndef HEIGHT
-#  define HEIGHT 1600
+#  define HEIGHT 1200
 # endif
 
 # ifndef WIDTH
-#  define WIDTH 900
+#  define WIDTH 800
 # endif
 
 # ifndef MAX_ZOOM_OFFSET
@@ -45,6 +45,10 @@
 #  define ZOOM MIN_ZOOM_OFFSET + 10
 # endif
 
+# ifndef ALTITUDE
+#  define ALTITUDE 1
+# endif
+
 ///////////////////
 /// KEY_MAPPING ///
 ///////////////////
@@ -54,6 +58,8 @@
 # define R_KEY 114
 # define C_KEY 99
 # define V_KEY 118
+# define Z_KEY 122
+# define X_KEY 120
 # define SCROLL1_KEY 4
 # define SCROLL2_KEY 5
 
@@ -87,6 +93,7 @@ typedef struct	s_pos
 typedef struct	s_transform
 {
 	int	zoom;
+	int	altitude;
 	int	x_offset;
 	int	y_offset;
 	int	x_rot;
@@ -113,6 +120,7 @@ int		detect_mouse_pos(int x, int y, t_win *ptr);
 int		zoom(int x, int y, int key, t_win *ptr);
 int		rotate(int key, t_win *window);
 int		contrast(int key, t_win *window);
+int		altitude(int key, t_win *window);
 
 // keyboard
 
@@ -169,6 +177,8 @@ void	refresh(t_win *window);
 // transform
 
 t_transform	*init_transform(void);
+void	apply_persp(t_pos *curr_pos, t_pos *last_pos);
+void	apply_transform(t_pos *pos, size_t x, t_transform *transform);
 
 /// map ///
 
