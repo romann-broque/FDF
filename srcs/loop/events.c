@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 21:48:43 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/22 02:11:16 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/22 18:14:44 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ int	rotate(int key, t_win *window)
 int	contrast(int key, t_win *window)
 {
 	if (key == C_KEY)
-		++window->data->contrast;
+		window->data->contrast += CONTRAST_SHIFT;
 	else
-		--window->data->contrast;
+		window->data->contrast += CONTRAST_SHIFT;
 	return (0);
 }
 

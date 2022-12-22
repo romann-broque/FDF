@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/21 15:48:59 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/22 18:21:49 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,14 @@
 /// COLORS ///
 //////////////
 
-# define CONTRAST	20
-# define RED		0x00FF0000
-# define GREEN		0x0000FF00
-# define BLUE		0x000000FF
-# define YELLOW		0x00FFFF00
-# define WHITE		0x00FFFFFF
+# define CONTRAST		50
+# define CONTRAST_SHIFT	0x000000F0
+# define RED			0x00FF0000
+# define GREEN			0x0000FF00
+# define BLUE			0x000000FF
+# define YELLOW			0x00FFFF00
+# define WHITE			0x00FFFFFF
+# define DEFAULT_COLOR	0x00FFFFFF
 
 typedef struct	s_data {
 	char	*addr;
@@ -151,6 +153,7 @@ void	loop(t_win *window);
 int		get_sign(int nb);
 void	ft_swap(int *nb1, int *nb2);
 int		get_max(const int nb1, const int nb2);
+int		get_min(const int nb1, const int nb2);
 
 /// print ///
 

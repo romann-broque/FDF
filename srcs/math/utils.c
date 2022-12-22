@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 03:30:01 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/09 16:15:22 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/22 18:07:50 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,11 @@ int		get_max(const int nb1, const int nb2)
 	if (nb1 < nb2)
 		return (nb2);
 	return (nb1);
+}
+
+int		get_min(const int nb1, const int nb2)
+{
+	if (nb1 < nb2)
+		return (nb1);
+	return (nb2);
 }

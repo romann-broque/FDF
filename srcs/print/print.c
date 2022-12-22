@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 21:58:34 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/14 15:06:06 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/22 18:21:11 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,13 @@ void	print_ref(t_data *img, int height, int width)
 	x = 0;
 	while (x < height)
 	{
-		my_mlx_pixel_put(img, x, width / 2, WHITE);
+		my_mlx_pixel_put(img, x, width / 2, DEFAULT_COLOR);
 		++x;
 	}
 	y = 0;
 	while (y < width)
 	{
-		my_mlx_pixel_put(img, height / 2, y, WHITE);
+		my_mlx_pixel_put(img, height / 2, y, DEFAULT_COLOR);
 		++y;
 	}
 }
