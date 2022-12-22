@@ -6,13 +6,13 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 16:04:04 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/20 17:49:44 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/21 15:30:16 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	set_offset(t_pos ***pos_matrix, t_transform *transform)
+void	apply_persp_matrix(t_pos ***pos_matrix, t_transform *transform)
 {
 	size_t	y;
 	size_t	x;
@@ -29,8 +29,12 @@ void	set_offset(t_pos ***pos_matrix, t_transform *transform)
 		}
 		++y;
 	}
+}
 
-// Cut function
+void	apply_transform_matrix(t_pos ***pos_matrix, t_transform *transform)
+{
+	size_t	y;
+	size_t	x;
 
 	y = 0;
 	while (pos_matrix[y] != NULL)
@@ -45,6 +49,12 @@ void	set_offset(t_pos ***pos_matrix, t_transform *transform)
 	}
 }
 
+void	set_offset(t_pos ***pos_matrix, t_transform *transform)
+{
+	apply_persp_matrix(pos_matrix, transform);
+	apply_transform_matrix(pos_matrix, transform);
+}
+
 t_pos	**get_pos_array(char **coord, int y)
 {
 	const size_t	size = get_array_size_char(coord);
@@ -55,8 +65,8 @@ t_pos	**get_pos_array(char **coord, int y)
 	pos_array = (t_pos **)malloc((size + 1) * sizeof(t_pos *));
 	if (pos_array != NULL)
 	{
-		i = 0;
 		x = 0;
+		i = 0;
 		while (coord[i] != NULL)
 		{
 			pos_array[i] = init_pos(x, y, ft_atoi(coord[i]));

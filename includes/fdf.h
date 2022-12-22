@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/20 23:48:09 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/21 15:48:59 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,15 @@
 //////////////////
 
 # ifndef HEIGHT
-#  define HEIGHT 1200
+#  define HEIGHT 1920
 # endif
 
 # ifndef WIDTH
-#  define WIDTH 800
+#  define WIDTH 900
 # endif
 
 # ifndef MAX_ZOOM_OFFSET
-#  define MAX_ZOOM_OFFSET 100
+#  define MAX_ZOOM_OFFSET 600
 # endif
 
 # ifndef MIN_ZOOM_OFFSET
@@ -228,7 +228,7 @@ int	get_rot(t_transform *transform);
 
 // altitude
 
-int	get_altitude(int alt1, int alt2, int alt_ref);
+int	get_altitude(int alt1, int alt2, t_transform *transform);
 
 
 #endif

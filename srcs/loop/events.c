@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 21:48:43 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/20 23:48:04 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/22 02:11:16 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int	zoom(int key, int x, int y, t_win *window)
 
 int	rotate(int key, t_win *window)
 {
+	printf("y_rot --> %d\n", window->transform->y_rot % (2 * window->transform->zoom));
 	if (key == R_KEY)
 		++window->transform->y_rot;
 	else
