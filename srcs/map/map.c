@@ -6,13 +6,13 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 16:04:04 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/21 15:30:16 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/22 19:58:10 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	apply_persp_matrix(t_pos ***pos_matrix, t_transform *transform)
+static void	apply_persp_matrix(t_pos ***pos_matrix, t_transform *transform)
 {
 	size_t	y;
 	size_t	x;
@@ -31,7 +31,7 @@ void	apply_persp_matrix(t_pos ***pos_matrix, t_transform *transform)
 	}
 }
 
-void	apply_transform_matrix(t_pos ***pos_matrix, t_transform *transform)
+static void	apply_transform_matrix(t_pos ***pos_matrix, t_transform *transform)
 {
 	size_t	y;
 	size_t	x;

@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 15:19:34 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/20 14:36:54 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/22 19:57:34 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,13 @@ int	get_rot(t_transform *transform)
 	if (transform->y_rot > 0)
 		transform->y_rot = 4 * -2 * transform->zoom + 1;
 	return (get_neg_rot(transform));
+}
+
+int	rotate(int key, t_win *window)
+{
+	if (key == R_KEY)
+		++window->transform->y_rot;
+	else
+		--window->transform->y_rot;
+	return (0);
 }

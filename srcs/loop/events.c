@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 21:48:43 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/22 18:14:44 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/22 20:00:10 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,44 +25,12 @@ int	close_window2(t_win *ptr)
 	return (0);
 }
 
-int	zoom(int key, int x, int y, t_win *window)
-{
-	t_transform *const	transform = window->transform;
-
-	(void)x;
-	(void)y;
-	if (key == SCROLL1_KEY && transform->zoom < MAX_ZOOM_OFFSET) // should_zoom
-		++transform->zoom;
-	else if (key == SCROLL2_KEY && window->transform->zoom > MIN_ZOOM_OFFSET) // should_unzoom
-		--transform->zoom;
-	return (0);
-}
-
-int	rotate(int key, t_win *window)
-{
-	printf("y_rot --> %d\n", window->transform->y_rot % (2 * window->transform->zoom));
-	if (key == R_KEY)
-		++window->transform->y_rot;
-	else
-		--window->transform->y_rot;
-	return (0);
-}
-
 int	contrast(int key, t_win *window)
 {
 	if (key == C_KEY)
 		window->data->contrast += CONTRAST_SHIFT;
 	else
 		window->data->contrast += CONTRAST_SHIFT;
-	return (0);
-}
-
-int	altitude(int key, t_win *window)
-{
-	if (key == Z_KEY)
-		++window->transform->altitude;
-	else if (window->transform->altitude > 1)
-		--window->transform->altitude;
 	return (0);
 }
 

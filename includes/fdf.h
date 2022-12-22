@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/22 18:21:49 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/22 20:01:16 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,10 +131,7 @@ typedef struct	s_win
 int		close_window1(int key, t_win *ptr);
 int		close_window2(t_win *ptr);
 int		detect_mouse_pos(int x, int y, t_win *ptr);
-int		zoom(int x, int y, int key, t_win *ptr);
-int		rotate(int key, t_win *window);
 int		contrast(int key, t_win *window);
-int		altitude(int key, t_win *window);
 
 // keyboard
 
@@ -228,10 +225,15 @@ size_t	get_array_size_char(char **array);
 // rotate
 
 int	get_rot(t_transform *transform);
+int	rotate(int key, t_win *window);
 
 // altitude
 
 int	get_altitude(int alt1, int alt2, t_transform *transform);
+int	altitude(int key, t_win *window);
 
+// zoom
+
+int		zoom(int x, int y, int key, t_win *ptr);
 
 #endif
