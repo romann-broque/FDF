@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/12 18:18:12 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/16 14:42:04 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/28 14:06:17 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	cpy_matrix(t_pos ***dest, t_pos ***src)
 		j = 0;
 		while (src[i][j] != NULL)
 		{
-			set_pos(dest[i][j], src[i][j]->x, src[i][j]->y, src[i][j]->z);
+			cpy_pos(dest[i][j], src[i][j]);
 			++j;
 		}
 		++i;

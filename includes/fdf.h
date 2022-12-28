@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/22 20:01:16 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/28 14:05:05 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,8 +176,8 @@ t_data	*init_data(void *mlx_ptr, int contrast);
 
 // pos
 
-void	set_offset(t_pos ***pos_matrix, t_transform *transform);
 t_pos	set_pos(t_pos *pos, int x, int y, int z);
+void	cpy_pos(t_pos *dest, t_pos *src);
 t_pos	*init_pos(int x, int y, int z);
 
 // window
@@ -212,6 +212,7 @@ t_pos	***dup_matrix(t_pos ***src, const size_t matrix_size);
 /// map
 
 t_pos	***get_pos_matrix(int fd, size_t size);
+void	set_offset(t_pos ***pos_matrix, t_transform *transform);
 
 /// utils ///
 
