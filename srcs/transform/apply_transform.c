@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 14:43:57 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/22 18:06:47 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/22 20:05:22 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	apply_transform(t_pos *pos, size_t x, t_transform *transform)
 {
 	const int	y_rot = get_rot(transform);
 	const int	new_x = pos->x + (transform->zoom * x);
-	int			new_y = pos->y * y_rot;
+	const int	new_y = pos->y * y_rot;
 	const int	new_z = pos->z;
 
 	set_pos(pos, new_x + transform->x_offset,
