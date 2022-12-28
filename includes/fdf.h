@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/28 15:55:39 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/28 18:07:27 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@
 //////////////////
 
 # ifndef HEIGHT
-#  define HEIGHT 1920
+#  define HEIGHT 900
 # endif
 
 # ifndef WIDTH
-#  define WIDTH 900
+#  define WIDTH 600
 # endif
 
 # ifndef MAX_ZOOM_OFFSET
@@ -100,6 +100,7 @@ typedef struct	s_transform
 	int	y_offset;
 	int	x_rot;
 	int	y_rot;
+	t_pos	*dimensions;
 	t_pos	*center;
 }				t_transform;
 
@@ -238,5 +239,9 @@ int	altitude(int key, t_win *window);
 // zoom
 
 int		zoom(int x, int y, int key, t_win *ptr);
+
+// transform
+
+t_pos	*get_center(t_transform *transform);
 
 #endif
