@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/28 14:05:05 by rbroque          ###   ########.fr       */
+/*   Updated: 2022/12/28 15:55:39 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ typedef struct	s_transform
 	int	y_offset;
 	int	x_rot;
 	int	y_rot;
+	t_pos	*center;
 }				t_transform;
 
 typedef struct	s_win
@@ -188,9 +189,10 @@ void	refresh(t_win *window);
 
 // transform
 
-t_transform	*init_transform(void);
-void	apply_persp(t_pos *curr_pos, t_pos *last_pos, t_transform *transform);
-void	apply_transform(t_pos *pos, size_t x, t_transform *transform);
+t_transform	*init_transform(t_pos ***pos_matrix);
+void		free_transform(t_transform *transform);
+void		apply_persp(t_pos *curr_pos, t_pos *last_pos, t_transform *transform);
+void		apply_transform(t_pos *pos, size_t x, t_transform *transform);
 
 /// map ///
 
