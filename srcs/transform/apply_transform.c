@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 14:43:57 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/28 18:44:02 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/03 14:52:50 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ static void	get_trans_pos(t_pos *dest, t_pos *src, t_transform *transform, size_
 
 	if (transform->center != NULL)
 	{
-		dest->x = src->x + transform->zoom * x + transform->center->x / 2;
-		dest->y = src->y * y_rot + transform->center->y;
+		dest->x = src->x + transform->zoom * x + transform->x_offset;
+		dest->y = src->y * y_rot + transform->y_offset;
 		dest->z = src->z;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 14:53:22 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/28 19:02:08 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/03 14:56:09 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ t_pos *get_dimensions(t_pos ***pos_matrix)
 
 t_pos	*get_center(t_transform *transform)
 {
-	const int	x = (transform->dimensions->x + (transform->dimensions->x % 2)) * transform->zoom + transform->x_offset;
-	const int	y = transform->dimensions->y * (2 * transform->zoom);
+	const int	x = (transform->dimensions->x / 2 + (transform->dimensions->x % 2)) * transform->zoom;
+	const int	y = (transform->dimensions->y / 2 + (transform->dimensions->y % 2)) * transform->zoom;
 	const int	z = 0;
 
 	return (init_pos(x, y, z));
@@ -54,12 +54,12 @@ t_transform *init_transform(t_pos ***pos_matrix)
 	{
 		transform->zoom = ZOOM;
 		transform->altitude = ALTITUDE;
-		transform->x_offset = HEIGHT / 2;
-		transform->y_offset = WIDTH / 2;
 		transform->x_rot = 0;
-		transform->y_rot = -6;
+		transform->y_rot = 0;
 		transform->dimensions = get_dimensions(pos_matrix);
 		transform->center = get_center(transform);
+		transform->x_offset = HEIGHT / 2 - transform->center->x;
+		transform->y_offset = WIDTH / 2 - transform->center->y;
 	}
 	return (transform);
 }

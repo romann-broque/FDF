@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 21:10:04 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/28 18:12:20 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/03 14:57:47 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,5 @@ void	refresh(t_win *window)
 	window->data = init_data(window->mlx_ptr, window->data->contrast);
 	free(tmp); // assign instead of realloc
 	print_map(window->refr_matrix, window, WHITE);
-	print_ref(window->data, HEIGHT, WIDTH);
 	mlx_put_image_to_window(window->mlx_ptr, window->win_ptr, window->data->img, 0, 0);	
 }
