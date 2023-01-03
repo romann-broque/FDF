@@ -1,28 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   altitude.c                                         :+:      :+:    :+:   */
+/*   dimensions.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/20 17:54:30 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/03 18:06:51 by rbroque          ###   ########.fr       */
+/*   Created: 2023/01/03 18:11:57 by rbroque           #+#    #+#             */
+/*   Updated: 2023/01/03 18:12:23 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	get_altitude(int alt1, int alt2, t_transform *transform)
+t_pos *get_dimensions(t_pos ***pos_matrix)
 {
-	(void)transform;
-	return (alt1 - alt2);
-}
+	size_t	i;	
+	size_t	j;	
+	t_pos	*dimensions;
 
-int	altitude(int key, t_win *window)
-{
-	if (key == Z_KEY && window->transform->altitude < get_abs(get_rot(window->transform)))
-		++window->transform->altitude;
-	else if (window->transform->altitude > MIN_ALTITUDE)
-		--window->transform->altitude;
-	return (0);
+	dimensions = init_pos(0, 0, 0);
+	if (dimensions != NULL)
+	{
+		i = 0;
+		while (pos_matrix[i] != NULL)
+		{
+			j = 0;
+			while (pos_matrix[i][j] != NULL)
+				++j;
+			if (dimensions->x < (long)j)
+				dimensions->x = j;
+			++i;
+		}
+		dimensions->y = i - (i > 0);
+	}
+	return (dimensions);
 }

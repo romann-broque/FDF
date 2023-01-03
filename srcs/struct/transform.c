@@ -6,44 +6,11 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 14:53:22 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/03 15:18:02 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/03 18:13:07 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-t_pos *get_dimensions(t_pos ***pos_matrix)
-{
-	size_t	i;	
-	size_t	j;	
-	t_pos	*dimensions;
-
-	dimensions = init_pos(0, 0, 0);
-	if (dimensions != NULL)
-	{
-		i = 0;
-		while (pos_matrix[i] != NULL)
-		{
-			j = 0;
-			while (pos_matrix[i][j] != NULL)
-				++j;
-			if (dimensions->x < (long)j)
-				dimensions->x = j;
-			++i;
-		}
-		dimensions->y = i - (i > 0);
-	}
-	return (dimensions);
-}
-
-t_pos	*get_center(t_transform *transform)
-{
-	const int	x = (transform->dimensions->x / 2 + (transform->dimensions->x % 2)) * transform->zoom;
-	const int	y = (transform->dimensions->y / 2 + (transform->dimensions->y % 2)) * transform->zoom;
-	const int	z = 0;
-
-	return (init_pos(x, y, z));
-}
 
 t_transform	*init_transform(t_pos ***pos_matrix)
 {

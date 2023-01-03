@@ -6,7 +6,7 @@
 #    By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 13:20:37 by rbroque           #+#    #+#              #
-#    Updated: 2022/12/22 20:03:23 by rbroque          ###   ########.fr        #
+#    Updated: 2023/01/03 18:13:28 by rbroque          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,6 +73,8 @@ SRCS += print_map.c
 
 SRCS += rotate.c
 SRCS += altitude.c
+SRCS += dimensions.c
+SRCS += center.c
 SRCS += zoom.c
 SRCS += apply_transform.c
 

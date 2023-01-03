@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/19 15:19:34 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/22 19:57:34 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/03 18:44:31 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,16 @@ static int	get_neg_rot(t_transform *transform)
 
 int	get_rot(t_transform *transform)
 {
+	const int	quarter = -2 * transform->zoom;
+
 	if (transform->y_rot > 0)
-		transform->y_rot = 4 * -2 * transform->zoom + 1;
+		transform->y_rot = 4 * quarter + 1;
 	return (get_neg_rot(transform));
 }
 
 int	rotate(int key, t_win *window)
 {
+	printf("y_rot --> %d\n", get_rot(window->transform));
 	if (key == R_KEY)
 		++window->transform->y_rot;
 	else

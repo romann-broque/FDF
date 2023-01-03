@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/03 16:10:10 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/03 18:14:27 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,10 @@
 
 # ifndef ALTITUDE
 #  define ALTITUDE 1
+# endif
+
+# ifndef MIN_ALTITUDE
+#  define MIN_ALTITUDE 2
 # endif
 
 # ifndef MAX_ALTITUDE
@@ -251,8 +255,12 @@ int	altitude(int key, t_win *window);
 
 int		zoom(int x, int y, int key, t_win *ptr);
 
-// transform
+// center
 
 t_pos	*get_center(t_transform *transform);
+
+// dimensions
+
+t_pos *get_dimensions(t_pos ***pos_matrix);
 
 #endif
