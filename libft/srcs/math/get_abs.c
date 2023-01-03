@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   altitude.c                                         :+:      :+:    :+:   */
+/*   get_abs.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/20 17:54:30 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/03 16:10:55 by rbroque          ###   ########.fr       */
+/*   Created: 2023/01/03 15:15:17 by rbroque           #+#    #+#             */
+/*   Updated: 2023/01/03 15:17:29 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "ft_math.h"
 
-int	get_altitude(int alt1, int alt2, t_transform *transform)
+unsigned long	get_abs(int n)
 {
-	(void)transform;
-	return (alt1 - alt2);
-}
-
-int	altitude(int key, t_win *window)
-{
-	if (key == Z_KEY && window->transform->altitude < get_abs(get_rot(window->transform)))
-		++window->transform->altitude;
-	else if (window->transform->altitude > 1)
-		--window->transform->altitude;
-	return (0);
+	if (n < 0)
+		return (-n);
+	return (n);
 }

@@ -6,7 +6,7 @@
 #    By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 10:15:13 by rbroque           #+#    #+#              #
-#    Updated: 2022/12/20 23:49:28 by rbroque          ###   ########.fr        #
+#    Updated: 2023/01/03 15:18:17 by rbroque          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ PATH_SRCS += srcs/conv/
 PATH_SRCS += srcs/ctype/
 PATH_SRCS += srcs/gnl/
 PATH_SRCS += srcs/list/
+PATH_SRCS += srcs/math/
 PATH_SRCS += srcs/memory/
 PATH_SRCS += srcs/output/
 PATH_SRCS += srcs/strings/
@@ -67,6 +68,10 @@ SRCS += ft_lstlast.c
 SRCS += ft_lstmap.c
 SRCS += ft_lstnew.c
 SRCS += ft_lstsize.c
+
+# math
+
+SRCS += get_abs.c
 
 # memory
 

@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/13 14:53:22 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/03 14:56:09 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/03 15:18:02 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ t_pos	*get_center(t_transform *transform)
 	return (init_pos(x, y, z));
 }
 
-t_transform *init_transform(t_pos ***pos_matrix)
+t_transform	*init_transform(t_pos ***pos_matrix)
 {
-	t_transform *transform;
+	t_transform	*transform;
 
 	transform = (t_transform *)malloc(sizeof(t_transform));
 	if (transform != NULL)

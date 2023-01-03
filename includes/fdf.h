@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/28 18:07:27 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/03 16:10:10 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,10 @@
 #  define ALTITUDE 1
 # endif
 
+# ifndef MAX_ALTITUDE
+#  define MAX_ALTITUDE 20
+# endif
+
 ///////////////////
 /// KEY_MAPPING ///
 ///////////////////
@@ -76,6 +80,13 @@
 # define WHITE			0x00FFFFFF
 # define DEFAULT_COLOR	0x00FFFFFF
 
+////////////
+/// FILE ///
+////////////
+
+# define MAP_PATH "assets/test_maps/42.fdf"
+# define MAP_NAME "FDF"
+
 typedef struct	s_data {
 	char	*addr;
 	void	*img;
@@ -94,8 +105,8 @@ typedef struct	s_pos
 
 typedef struct	s_transform
 {
-	int	zoom;
-	int	altitude;
+	size_t	zoom;
+	size_t	altitude;
 	int	x_offset;
 	int	y_offset;
 	int	x_rot;

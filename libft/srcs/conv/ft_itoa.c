@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/16 00:39:04 by rbroque           #+#    #+#             */
-/*   Updated: 2022/09/16 01:20:01 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/03 15:14:54 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,6 @@ static size_t	get_size_nb(int nb)
 		++size;
 	}
 	return (size);
-}
-
-static unsigned long	get_abs(int n)
-{
-	if (n < 0)
-		return (-n);
-	return (n);
 }
 
 static void	cp_nb(char *dest, int n, size_t len)

@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 10:15:48 by rbroque           #+#    #+#             */
-/*   Updated: 2022/11/11 21:23:19 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/03 15:17:09 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "ft_conv.h"
 # include "ft_ctype.h"
 # include "ft_list.h"
+# include "ft_math.h"
 # include "ft_memory.h"
 # include "ft_output.h"
 # include "ft_strings.h"

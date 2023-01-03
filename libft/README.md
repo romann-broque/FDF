@@ -47,6 +47,9 @@ A C-library of usual functions
 
 ### Part 2 - Additional functions
 
+#### [`get_abs`](srcs/math/get_abs.c)
+> Returns the absolute value of an integer.
+
 #### [`index_of`](srcs/strings/index_of.c)
 > Returns the index of the first matching character occurence.
 > If the character isn't found, it returns -1.

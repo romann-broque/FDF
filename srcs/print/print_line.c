@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 03:28:54 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/18 17:40:05 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/03 17:09:55 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 static void	print_line_less(t_pos *pos1, t_pos *pos2, t_data *data, int color, int sign)
 {
    	t_pos		*pos;
-	int			dx = sign * (pos2->x - pos1->x);
-	int			dy = pos2->y - pos1->y;
-	int			dp = 2 * dy - dx;
-	int			deltaE = 2 * dy;
-	int			deltaNE = 2 * (dy - dx);
+	long		dx = sign * (pos2->x - pos1->x);
+	long		dy = pos2->y - pos1->y;
+	long		dp = 2 * dy - dx;
+	long		deltaE = 2 * dy;
+	long		deltaNE = 2 * (dy - dx);
 
 	pos = init_pos(pos1->x, pos1->y, pos1->z);
 	while (pos->x < pos2->x)
@@ -40,11 +40,11 @@ static void	print_line_less(t_pos *pos1, t_pos *pos2, t_data *data, int color, i
 static void	print_line_more(t_pos *pos1, t_pos *pos2, t_data *data, int color, int sign)
 {
    	t_pos		*pos;
-	int 		dx = sign * (pos2->x - pos1->x);
-	int 		dy = pos2->y - pos1->y;
-	int 		dp = 2 * dy - dx;
-	int 		deltaE = 2 * dx;
-	int			deltaNE = 2 * (dx - dy);
+	long 		dx = sign * (pos2->x - pos1->x);
+	long 		dy = pos2->y - pos1->y;
+	long 		dp = 2 * dy - dx;
+	long 		deltaE = 2 * dx;
+	long		deltaNE = 2 * (dx - dy);
 
 	pos = init_pos(pos1->x, pos1->y, pos1->z);
 	while (pos->y != pos2->y)
