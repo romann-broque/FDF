@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 16:29:27 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/07 16:34:24 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/04 16:47:13 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,19 +59,6 @@ static char	*get_word(const char **s, const char *charset)
 		ft_strlcpy(word, *s, wordlen + 1);
 	*s += wordlen;
 	return (word);
-}
-
-static void	free_strs(char **strs)
-{
-	size_t	i;
-
-	i = 0;
-	while (strs[i] != NULL)
-	{
-		free(strs[i]);
-		++i;
-	}
-	free(strs);
 }
 
 char	**ft_split_set(char const *s, const char *charset)

@@ -47,12 +47,8 @@ A C-library of usual functions
 
 ### Part 2 - Additional functions
 
-#### [`get_abs`](srcs/math/get_abs.c)
-> Returns the absolute value of an integer.
-
-#### [`index_of`](srcs/strings/index_of.c)
-> Returns the index of the first matching character occurence.
-> If the character isn't found, it returns -1.
+#### [`free_strs`](srcs/free/free_strs.c)
+> Free all the strings in the string array then free the array pointer.
 
 #### [`ft_itoa`](srcs/conv/ft_itoa.c)
 > Allocates (with malloc(3)) and returns a string
@@ -150,3 +146,9 @@ A C-library of usual functions
 > This new string starts at the input index.
 > Returns NULL if allocation fails.
 
+#### [`get_abs`](srcs/math/get_abs.c)
+> Returns the absolute value of an integer.
+
+#### [`index_of`](srcs/strings/index_of.c)
+> Returns the index of the first matching character occurence.
+> If the character isn't found, it returns -1.

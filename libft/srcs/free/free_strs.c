@@ -1,43 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   free_strs.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/07 03:30:01 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/22 18:07:50 by rbroque          ###   ########.fr       */
+/*   Created: 2023/01/04 16:40:19 by rbroque           #+#    #+#             */
+/*   Updated: 2023/01/04 16:46:49 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "libft.h"
 
-void	ft_swap(int *nb1, int *nb2)
+void	free_strs(char **strs)
 {
-	int	tmp;
+	size_t  i;
 
-	tmp = *nb1;
-	*nb1 = *nb2;
-	*nb2 = tmp;
-}
-
-int		get_sign(int nb)
-{
-	if (nb < 0)
-		return (-1);
-	return (1);
-}
-
-int		get_max(const int nb1, const int nb2)
-{
-	if (nb1 < nb2)
-		return (nb2);
-	return (nb1);
-}
-
-int		get_min(const int nb1, const int nb2)
-{
-	if (nb1 < nb2)
-		return (nb1);
-	return (nb2);
+	if (strs != NULL)
+	{
+        i = 0;
+		while (strs[i] != NULL)
+		{
+			free(strs[i]);
+			++i;
+		}
+		free(strs);
+	}
 }

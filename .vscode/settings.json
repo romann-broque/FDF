@@ -5,5 +5,8 @@
             "binaryPath": "/home/screw/Desktop/Code/42_Projects/RENDER/FDF/fdf",
             "binaryArgs": []
         }
-    ]
+    ],
+    "files.associations": {
+        "cstdlib": "c"
+    }
 }

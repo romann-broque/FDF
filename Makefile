@@ -6,7 +6,7 @@
 #    By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 13:20:37 by rbroque           #+#    #+#              #
-#    Updated: 2023/01/03 18:13:28 by rbroque          ###   ########.fr        #
+#    Updated: 2023/01/04 17:46:51 by rbroque          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,66 +21,23 @@ SHELL = /usr/bin/bash
 ##############
 
 NAME = fdf
+DEFAULT_ARG = ./assets/tests_maps/42.fdf
 
 ##############
 #### SRCS ####
 ##############
 
 PATH_SRCS += srcs/
-PATH_SRCS += srcs/struct/
-PATH_SRCS += srcs/transform/
-PATH_SRCS += srcs/print/
-PATH_SRCS += srcs/math/
-PATH_SRCS += srcs/map/
-PATH_SRCS += srcs/loop/
-PATH_SRCS += srcs/utils/
+PATH_SRCS += srcs/parser
 
 # srcs/
 
-SRCS += main.c
+SRCS += fdf.c
 
-# srcs/struct
+# srcs/parser
 
-SRCS += window.c
-SRCS += data.c
-SRCS += pos.c
-SRCS += transform.c
-
-# srcs/loop
-
-SRCS += events.c
-SRCS += mouse.c
-SRCS += keyboard.c
-SRCS += loop.c
-
-# srcs/math
-
-SRCS += utils.c
-
-# srcs/map
-
-SRCS += matrix.c
-SRCS += map.c
-SRCS += array.c
-
-# srcs/print
-
-SRCS += print.c
-SRCS += print_line.c
-SRCS += print_map.c
-
-# srcs/transform
-
-SRCS += rotate.c
-SRCS += altitude.c
-SRCS += dimensions.c
-SRCS += center.c
-SRCS += zoom.c
-SRCS += apply_transform.c
-
-# srcs/utils
-
-SRCS += string.c
+SRCS += parser.c
+SRCS += read.c
 
 vpath %.c $(PATH_SRCS)
 
@@ -183,7 +140,7 @@ $(OBJS): $(PATH_OBJS)/%.o: %.c $(HEADER) $(MAKEFILE)
 
 run:
 	@$(MAKE) -s
-	./$(NAME)
+	./$(NAME) $(DEFAULT_ARG)
 
 norm:
 	norminette $(PATH_SRCS) $(INCLUDES) $(PATH_LIB)
