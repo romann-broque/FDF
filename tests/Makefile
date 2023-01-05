@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/12/02 13:20:37 by rbroque           #+#    #+#              #
-#    Updated: 2023/01/05 15:24:59 by rbroque          ###   ########.fr        #
+#    Created: 2023/01/05 12:11:15 by rbroque           #+#    #+#              #
+#    Updated: 2023/01/05 16:39:59 by rbroque          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,25 +20,18 @@ SHELL = /usr/bin/bash
 #### NAME ####
 ##############
 
-NAME = fdf
-DEFAULT_ARG = ./assets/test_maps/perso/parsing_test.fdf
+NAME = run_tests
 
 ##############
 #### SRCS ####
 ##############
 
 PATH_SRCS += srcs/
-PATH_SRCS += srcs/parser
 
 # srcs/
 
 SRCS += main.c
-SRCS += fdf.c
-
-# srcs/parser
-
-SRCS += parser.c
-SRCS += read.c
+SRCS += parser.test.c
 
 vpath %.c $(PATH_SRCS)
 
@@ -49,11 +42,14 @@ vpath %.c $(PATH_SRCS)
 PATH_OBJS = objs
 OBJS = $(patsubst %.c, $(PATH_OBJS)/%.o, $(SRCS))
 
+FDF_CMPL = ../objs/*.o
+FDF_OBJS = $(patsubst %/main.o, %, $(FDF_CMPL))
+
 #############
 #### LIB ####
 #############
 
-LIB_FOLDER = libft/
+LIB_FOLDER = ../libft/
 LIB = $(LIB_FOLDER)/libft.a
 
 ###################
@@ -62,12 +58,14 @@ LIB = $(LIB_FOLDER)/libft.a
 
 INCLUDES_LIB += -I $(LIB_FOLDER)/includes/
 INCLUDES_LIB += -I /usr/include/X11/
-INCLUDES_LIB += -I minilibx-linux/
-INCLUDES += includes/
+INCLUDES_LIB += -I ../minilibx-linux/
+INCLUDES += ../includes/
+TEST_INCLUDES += includes/
 
-LINKS += -Lminilibx-linux -lmlx_Linux
+LINKS += -L../minilibx-linux -lmlx_Linux
 LINKS += -L/usr/lib -lXext -lX11 -lm -lz
 HEADER += $(INCLUDES)/fdf.h
+TEST_HEADER += $(TEST_INCLUDES)/run_tests.h
 
 ##################
 #### MAKEFILE ####
@@ -123,45 +121,36 @@ endif
 #### RULES ####
 ###############
 
-all: $(NAME)
+all:
+	@echo BEFORE : $(FDF_CMPL)
+	@echo THEN :   $(FDF_OBJS)
+#$(NAME)
 
-$(NAME): $(LIB) $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -I $(INCLUDES) $(INCLUDES_LIB) $(LINKS) $(LIB)
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) $(MAIN_OBJS) -o $(NAME) -I $(INCLUDES) $(INCLUDES_LIB) $(LINKS) $(LIB)
 	$(ECHOC) $(GREEN) "--> $(NAME) COMPILED !"$(NC)"\n\n"
-
-$(LIB):
-	echo -e $(BLUE) "\n====> Building libft.a <===="$(NC)"\n"
-	$(MAKE) -sC $(LIB_FOLDER)
-	echo -e $(BLUE) "\n====> Building $(NAME) <===="$(NC)"\n"
 
 $(OBJS): $(PATH_OBJS)/%.o: %.c $(HEADER) $(MAKEFILE)
 	$(ECHO) $(ORANGE) "Compiling $<"
 	mkdir -p $(PATH_OBJS)
-	$(CC) $(CFLAGS) -c $< -o $@ -I $(INCLUDES) $(INCLUDES_LIB) -O3
+	$(CC) $(CFLAGS) -c $< -o $@ -I $(INCLUDES) -I $(TEST_INCLUDES) $(INCLUDES_LIB) $(LIB) -O3
 
 run:
 	$(MAKE) -s
 	./$(NAME) $(DEFAULT_ARG)
 
-norm:
-	norminette $(PATH_SRCS) $(INCLUDES) $(PATH_LIB)
- 
 clean:
 	$(RM) -R $(PATH_OBJS)
-	$(MAKE) -sC $(LIB_FOLDER) clean > /dev/null
 	$(ECHOC) $(GREEN) "--> .o files deleted !"$(NC)"\n"
 
 fclean: clean
 	$(ECHOC) $(YELLOW) "Cleaning up $(NAME)..." $(NC)
-	$(MAKE) -sC $(LIB_FOLDER) fclean > /dev/null
 	$(RM) $(NAME)
-	$(ECHOC) $(GREEN) "--> $(NAME) deleted !"$(NC)"\n"
+	$(ECHOC) $(GREEN) "--> $(NAME) deleted !\n"
 
 re: fclean
-	echo -e $(YELLOW) "\nRebuilding..." $(NC)
+	$(ECHOC) $(YELLOW) "\nRebuilding..." $(NC)
 	$(MAKE) -s
 
 .PHONY: all clean fclean re run
-.SILENT: $(NAME) $(LIB) $(OBJS) run clean fclean re
-
-#endif
+.SILENT: $(NAME) $(OBJS) run clean fclean re

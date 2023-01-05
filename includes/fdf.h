@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/05 00:39:37 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/05 15:24:38 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 # include <fcntl.h>
 
 # define EXPECT_COUNT_ARG 2
+
+int	fdf(const char *path_file);
 
 /// PARSER ///
 
