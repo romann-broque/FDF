@@ -6,7 +6,7 @@
 #    By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 12:11:15 by rbroque           #+#    #+#              #
-#    Updated: 2023/01/06 17:41:24 by rbroque          ###   ########.fr        #
+#    Updated: 2023/01/06 21:50:08 by rbroque          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -123,7 +123,12 @@ endif
 #### RULES ####
 ###############
 
-all: $(LIB_FDF) $(NAME)
+all: $(NAME)
+	./$(NAME)
+
+$(NAME): $(LIB_FDF) $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) $(MAIN_OBJS) -o $(NAME) -I $(INCLUDES) $(INCLUDES_LIB) $(LINKS) $(LIB_FDF) $(LIB)
+	$(ECHOC) $(GREEN) "--> $(NAME) COMPILED !"$(NC)"\n\n"
 
 $(LIB_FDF):
 	echo -e $(BLUE) "\n====> Building libfdf.a"$(NC)"\n"
@@ -131,18 +136,10 @@ $(LIB_FDF):
 	$(ECHOC) $(GREEN) "--> $(NAME) COMPILED !"$(NC)"\n"
 	echo -e $(BLUE) "\n====> Building $(NAME)"$(NC)"\n"
 
-$(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) $(MAIN_OBJS) -o $(NAME) -I $(INCLUDES) $(INCLUDES_LIB) $(LINKS) $(LIB_FDF) $(LIB)
-	$(ECHOC) $(GREEN) "--> $(NAME) COMPILED !"$(NC)"\n\n"
-
 $(OBJS): $(PATH_OBJS)/%.o: %.c $(HEADER) $(MAKEFILE)
 	$(ECHO) $(ORANGE) "Compiling $<"
 	mkdir -p $(PATH_OBJS)
 	$(CC) $(CFLAGS) -c $< -o $@ -I $(INCLUDES) -I $(TEST_INCLUDES) $(INCLUDES_LIB) -O3
-
-run:
-	$(MAKE) -s
-	./$(NAME) $(DEFAULT_ARG)
 
 clean:
 	$(RM) -R $(PATH_OBJS)
@@ -159,5 +156,5 @@ re: fclean
 	$(ECHOC) $(YELLOW) "\nRebuilding..." $(NC)
 	$(MAKE) -s
 
-.PHONY: all clean fclean re run
-.SILENT: $(NAME) $(OBJS) run clean fclean re
+.PHONY: all clean fclean re
+.SILENT: $(NAME) $(OBJS) clean fclean re

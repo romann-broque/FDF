@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 12:19:11 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/05 15:08:03 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/06 22:03:01 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 int	main(void)
 {
-	return (EXIT_SUCCESS);
+	return (parser_test("./assets/parsing_test1.fdf"));
 }

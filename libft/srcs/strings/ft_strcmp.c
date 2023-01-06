@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_math.h                                          :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/03 15:15:58 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/06 20:47:34 by rbroque          ###   ########.fr       */
+/*   Created: 2023/01/06 20:37:33 by rbroque           #+#    #+#             */
+/*   Updated: 2023/01/06 20:41:10 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_MATH_H
-# define FT_MATH_H
+#include "libft.h"
 
-unsigned long	get_abs(int n);
-int				get_max(const int n1, const int n2);
+int	ft_strcmp(const char *s1, const char *s2)
+{
+	const size_t	max_len = get_max(ft_strlen(s1), ft_strlen(s2));
 
-#endif
+	return (ft_strncmp(s1, s2, max_len));
+}

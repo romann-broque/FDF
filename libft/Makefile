@@ -6,7 +6,7 @@
 #    By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 10:15:13 by rbroque           #+#    #+#              #
-#    Updated: 2023/01/04 16:46:24 by rbroque          ###   ########.fr        #
+#    Updated: 2023/01/06 20:49:02 by rbroque          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,6 +77,7 @@ SRCS += ft_lstsize.c
 # math
 
 SRCS += get_abs.c
+SRCS += get_max.c
 
 # memory
 
@@ -101,6 +102,7 @@ SRCS += index_of.c
 SRCS += ft_split.c
 SRCS += ft_split_set.c
 SRCS += ft_strchr.c
+SRCS += ft_strcmp.c
 SRCS += ft_strcpy.c
 SRCS += ft_strdup.c
 SRCS += ft_striteri.c

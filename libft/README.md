@@ -34,6 +34,7 @@ A C-library of usual functions
 ##### Functions from `<string.h>` library
 
 * [`ft_strchr`](srcs/strings/ft_strchr.c)
+* [`ft_strcmp`](srcs/strings/ft_strcmp.c)
 * [`ft_strcpy`](srcs/strings/ft_strcpy.c)
 * [`ft_strdup`](srcs/strings/ft_strdup.c)
 * [`ft_strlen`](srcs/strings/ft_strlen.c)
@@ -148,6 +149,9 @@ A C-library of usual functions
 
 #### [`get_abs`](srcs/math/get_abs.c)
 > Returns the absolute value of an integer.
+
+#### [`get_max`](srcs/math/get_max.c)
+> Returns the biggest number between two integers.
 
 #### [`index_of`](srcs/strings/index_of.c)
 > Returns the index of the first matching character occurence.

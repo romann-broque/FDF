@@ -6,7 +6,7 @@
 #    By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 13:20:37 by rbroque           #+#    #+#              #
-#    Updated: 2023/01/06 18:21:57 by rbroque          ###   ########.fr        #
+#    Updated: 2023/01/06 21:49:36 by rbroque          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -131,9 +131,9 @@ endif
 #### RULES ####
 ###############
 
-all: $(NAME)
+all: $(LIB) $(NAME)
 
-$(NAME): $(LIB) $(OBJS)
+$(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -I $(INCLUDES) $(INCLUDES_LIB) $(LINKS) $(LIB)
 	$(ECHOC) $(GREEN) "--> $(NAME) COMPILED !"$(NC)"\n\n"
 
@@ -158,7 +158,9 @@ run:
 norm:
 	norminette $(PATH_SRCS) $(INCLUDES) $(PATH_LIB)
 
-test: $(LIB) $(RUN_TESTS)
+test:
+	$(MAKE) -s
+	$(MAKE) -sC $(TEST_FOLDER)
 
 clean:
 	$(RM) -R $(PATH_OBJS)
