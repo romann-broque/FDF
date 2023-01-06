@@ -6,7 +6,7 @@
 #    By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 13:20:37 by rbroque           #+#    #+#              #
-#    Updated: 2023/01/05 15:24:59 by rbroque          ###   ########.fr        #
+#    Updated: 2023/01/06 17:26:19 by rbroque          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,6 +75,14 @@ HEADER += $(INCLUDES)/fdf.h
 
 MAKEFILE = Makefile
 
+###############
+#### TESTS ####
+###############
+
+TEST_FOLDER = tests/
+RUN_TESTS = $(TEST_FOLDER)/run_tests
+
+
 #####################
 #### COMPILATION ####
 #####################
@@ -139,29 +147,38 @@ $(OBJS): $(PATH_OBJS)/%.o: %.c $(HEADER) $(MAKEFILE)
 	mkdir -p $(PATH_OBJS)
 	$(CC) $(CFLAGS) -c $< -o $@ -I $(INCLUDES) $(INCLUDES_LIB) -O3
 
+$(RUN_TESTS):
+	echo -e $(BLUE) "\n====> Building tests <===="$(NC)"\n"
+	$(MAKE) -sC $(TEST_FOLDER)
+
 run:
 	$(MAKE) -s
 	./$(NAME) $(DEFAULT_ARG)
 
 norm:
 	norminette $(PATH_SRCS) $(INCLUDES) $(PATH_LIB)
- 
+
+test: $(RUN_TESTS)
+
 clean:
 	$(RM) -R $(PATH_OBJS)
 	$(MAKE) -sC $(LIB_FOLDER) clean > /dev/null
+	$(MAKE) -sC $(TEST_FOLDER) clean > /dev/null
 	$(ECHOC) $(GREEN) "--> .o files deleted !"$(NC)"\n"
 
 fclean: clean
 	$(ECHOC) $(YELLOW) "Cleaning up $(NAME)..." $(NC)
 	$(MAKE) -sC $(LIB_FOLDER) fclean > /dev/null
+	$(MAKE) -sC $(TEST_FOLDER) fclean > /dev/null
 	$(RM) $(NAME)
 	$(ECHOC) $(GREEN) "--> $(NAME) deleted !"$(NC)"\n"
+	$(ECHOC) $(GREEN) "--> $(RUN_TESTS) deleted !"$(NC)"\n"
 
 re: fclean
 	echo -e $(YELLOW) "\nRebuilding..." $(NC)
 	$(MAKE) -s
 
 .PHONY: all clean fclean re run
-.SILENT: $(NAME) $(LIB) $(OBJS) run clean fclean re
+.SILENT: $(NAME) $(LIB) $(OBJS) $(RUN_TESTS) run clean fclean re test
 
 #endif

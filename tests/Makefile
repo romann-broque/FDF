@@ -6,7 +6,7 @@
 #    By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 12:11:15 by rbroque           #+#    #+#              #
-#    Updated: 2023/01/05 16:39:59 by rbroque          ###   ########.fr        #
+#    Updated: 2023/01/06 17:41:24 by rbroque          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,8 +42,8 @@ vpath %.c $(PATH_SRCS)
 PATH_OBJS = objs
 OBJS = $(patsubst %.c, $(PATH_OBJS)/%.o, $(SRCS))
 
-FDF_CMPL = ../objs/*.o
-FDF_OBJS = $(patsubst %/main.o, %, $(FDF_CMPL))
+FDF_CMPL = $(wildcard ../objs/*.o)
+FDF_OBJS = $(filter-out ../objs/main.o,$(FDF_CMPL))
 
 #############
 #### LIB ####
@@ -51,6 +51,8 @@ FDF_OBJS = $(patsubst %/main.o, %, $(FDF_CMPL))
 
 LIB_FOLDER = ../libft/
 LIB = $(LIB_FOLDER)/libft.a
+
+LIB_FDF = libfdf.a
 
 ###################
 #### INCLUDES #####
@@ -121,19 +123,22 @@ endif
 #### RULES ####
 ###############
 
-all:
-	@echo BEFORE : $(FDF_CMPL)
-	@echo THEN :   $(FDF_OBJS)
-#$(NAME)
+all: $(LIB_FDF) $(NAME)
+
+$(LIB_FDF):
+	echo -e $(BLUE) "\n====> Building libfdf.a"$(NC)"\n"
+	ar rcs $(LIB_FDF) $(FDF_OBJS)
+	$(ECHOC) $(GREEN) "--> $(NAME) COMPILED !"$(NC)"\n"
+	echo -e $(BLUE) "\n====> Building $(NAME)"$(NC)"\n"
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) $(MAIN_OBJS) -o $(NAME) -I $(INCLUDES) $(INCLUDES_LIB) $(LINKS) $(LIB)
+	$(CC) $(CFLAGS) $(OBJS) $(MAIN_OBJS) -o $(NAME) -I $(INCLUDES) $(INCLUDES_LIB) $(LINKS) $(LIB_FDF) $(LIB)
 	$(ECHOC) $(GREEN) "--> $(NAME) COMPILED !"$(NC)"\n\n"
 
 $(OBJS): $(PATH_OBJS)/%.o: %.c $(HEADER) $(MAKEFILE)
 	$(ECHO) $(ORANGE) "Compiling $<"
 	mkdir -p $(PATH_OBJS)
-	$(CC) $(CFLAGS) -c $< -o $@ -I $(INCLUDES) -I $(TEST_INCLUDES) $(INCLUDES_LIB) $(LIB) -O3
+	$(CC) $(CFLAGS) -c $< -o $@ -I $(INCLUDES) -I $(TEST_INCLUDES) $(INCLUDES_LIB) -O3
 
 run:
 	$(MAKE) -s
@@ -145,6 +150,8 @@ clean:
 
 fclean: clean
 	$(ECHOC) $(YELLOW) "Cleaning up $(NAME)..." $(NC)
+	$(RM) $(LIB_FDF)
+	$(ECHOC) $(GREEN) "--> $(LIB_FDF) deleted !\n"
 	$(RM) $(NAME)
 	$(ECHOC) $(GREEN) "--> $(NAME) deleted !\n"
 
