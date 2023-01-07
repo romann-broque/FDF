@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.c                                              :+:      :+:    :+:   */
+/*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/04 15:16:21 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/07 14:56:06 by rbroque          ###   ########.fr       */
+/*   Created: 2023/01/07 14:13:06 by rbroque           #+#    #+#             */
+/*   Updated: 2023/01/07 14:23:49 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	fdf(const char *path_file)
+t_data	*init_data(void *mlx_ptr)
 {
-	char		***parsing;
-	t_window	*window;
-	int			ret_val;
+	t_data	*img;
 
-	parsing = parse(path_file);
-	ret_val = is_parsing_valid(parsing);
-	if (ret_val == true)
+	img = (t_data *)malloc(sizeof(t_data));
+	if (img != NULL)
 	{
-		window = init_window();
-	// 	display_window;
-		free_window(window);
+		img->img = mlx_new_image(mlx_ptr, HEIGHT, WIDTH);
+		img->addr = mlx_get_data_addr(img->img, &img->bits_per_pixel, &img->line_length, &img->endian);
 	}
-	free_parsing(parsing);
-	return (!ret_val);
+	return (img);
 }
-

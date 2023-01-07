@@ -6,7 +6,7 @@
 #    By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 13:20:37 by rbroque           #+#    #+#              #
-#    Updated: 2023/01/07 12:05:27 by rbroque          ###   ########.fr        #
+#    Updated: 2023/01/07 14:57:36 by rbroque          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,18 +28,30 @@ DEFAULT_ARG = ./assets/test_maps/perso/parsing_test.fdf
 ##############
 
 PATH_SRCS += srcs/
-PATH_SRCS += srcs/parser
+PATH_SRCS += srcs/parser/
+PATH_SRCS += srcs/window/
+PATH_SRCS += srcs/window/data
 
 # srcs/
 
 SRCS += main.c
 SRCS += fdf.c
 
-# srcs/parser
+# srcs/parser/
 
 SRCS += is_valid_parsing.c
 SRCS += parser.c
 SRCS += read.c
+
+# srcs/window/
+
+SRCS += init_window.c
+SRCS += free_window.c
+
+# srcs/window/data/
+
+SRCS += init_data.c
+SRCS += free_data.c
 
 vpath %.c $(PATH_SRCS)
 
