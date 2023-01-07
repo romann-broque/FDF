@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 12:18:47 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/06 21:05:57 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/07 01:30:07 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,24 @@
 
 # include "../includes/fdf.h"
 
+# define RESET "\033[0m"
+# define RED "\033[1m\033[31m"
+# define GREEN "\033[32m"
+# define OK EXIT_SUCCESS
+# define KO EXIT_FAILURE
+# define PARSER_PATH1 "./assets/parsing_test1.fdf"
+# define PARSER_PATH2 "./assets/parsing_test2.fdf"
+
+/// UTILS ///
+
+int     check_result(const size_t test_index, const int curr_res, const int exp_res);
+int     test_sequence(int (*tests[])(const size_t));
+
 //////////////
 /// PARSER ///
 //////////////
 
-int		parser_test(const char *path_file);
+int		parser_test(void);
 bool	is_same_parsing(const char ***pars1, const char ***pars2);
 
 #endif

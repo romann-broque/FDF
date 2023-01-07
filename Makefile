@@ -6,7 +6,7 @@
 #    By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 13:20:37 by rbroque           #+#    #+#              #
-#    Updated: 2023/01/06 21:49:36 by rbroque          ###   ########.fr        #
+#    Updated: 2023/01/07 00:43:03 by rbroque          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,8 +80,7 @@ MAKEFILE = Makefile
 ###############
 
 TEST_FOLDER = tests/
-RUN_TESTS = $(TEST_FOLDER)/run_tests
-
+RUN_TESTS = $(TEST_FOLDER)run_tests
 
 #####################
 #### COMPILATION ####

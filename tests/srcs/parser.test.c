@@ -6,40 +6,44 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 14:31:39 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/06 21:53:33 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/07 01:30:30 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "run_tests.h"
 
-void	display_parsing(char ***parsing)
+static int	is_parsing_valid__test1(const size_t test_index)
 {
-	size_t	i;
-	size_t	j;
-
-	i = 0;
-	while (parsing[i] != NULL)
-	{
-		j = 0;
-		while (parsing[i][j] != NULL)
-		{
-			printf("pars1 --> %s\n", parsing[i][j]);
-			printf("pars2 --> %s\n", parsing[i][j]);
-			printf("\n");
-			++j;
-		}
-		++i;
-	}
-}
-
-int	parser_test(const char *path_file)
-{
-	char	***parsing;
-	int		ret_val;
+	const char	*path_file = PARSER_PATH1;
+	const int	exp_result = KO;
+	char		***parsing;
+	int			ret_val;
 
 	parsing = parse(path_file);
 	ret_val = is_parsing_valid(parsing);
 	free_parsing(parsing);
-	printf("ret_val --> %d\n", ret_val);
-	return (!ret_val);
+	return (check_result(test_index, ret_val, exp_result));
+}
+
+static int	is_parsing_valid__test2(const size_t test_index)
+{
+	const char	*path_file = PARSER_PATH2;
+	const int	exp_result = OK;
+	char		***parsing;
+	int			ret_val;
+
+	parsing = parse(path_file);
+	ret_val = is_parsing_valid(parsing);
+	free_parsing(parsing);
+	return (check_result(test_index, ret_val, exp_result));
+}
+
+int	parser_test(void)
+{
+	static int	(*tests[])(const size_t) = {
+		is_parsing_valid__test1,
+		is_parsing_valid__test2,
+		NULL};
+
+	return (test_sequence(tests));
 }

@@ -1,30 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   test_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/05 12:19:11 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/07 00:56:23 by rbroque          ###   ########.fr       */
+/*   Created: 2023/01/07 01:28:32 by rbroque           #+#    #+#             */
+/*   Updated: 2023/01/07 01:30:30 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "run_tests.h"
 
-int	main(void)
+int	check_result(const size_t test_index, const int curr_res, const int exp_res)
 {
-	static int	(*tester[])(void) = {parser_test, NULL};
+	printf("Test%zu: ", test_index + 1);
+	if (curr_res == exp_res)
+	{
+		printf(GREEN "OK\n" RESET);
+		return (EXIT_SUCCESS);
+	}
+	printf(RED "KO\n" RESET);
+	return (EXIT_FAILURE);
+}
+
+int	test_sequence(int (*tests[])(const size_t))
+{
 	int			ret_val;
 	size_t		i;
 
 	ret_val = EXIT_SUCCESS;
 	i = 0;
-	while (tester[i] != NULL)
+	while (tests[i] != NULL)
 	{
-		if (tester[i]() == EXIT_FAILURE)
+		if (tests[i](i) == EXIT_FAILURE)
 			ret_val = EXIT_FAILURE;
 		++i;
 	}
 	return (ret_val);
+
 }
