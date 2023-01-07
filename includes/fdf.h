@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/07 15:09:04 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/07 18:06:14 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ typedef struct s_window
 	void	*mlx_ptr;
 	void	*win_ptr;
 	t_data	*data;
-}				t_window;
+}				t_win;
 
 int	fdf(const char *path_file);
 
@@ -83,17 +83,28 @@ bool	is_parsing_valid(char ***parsing);
 
 /// WINDOW ///
 
-// data.c
+// free_data.c
 
-t_data	*init_data(void *mlx_ptr);
 void	free_data(t_data *data, void *mlx_ptr);
 
-// init_window.c
+// init_data.c
 
-t_window	*init_window(void);
+t_data	*init_data(void *mlx_ptr);
 
 // free_window.c
 
-void	free_window(t_window *window);
+void	free_window(t_win *window);
+
+// init_win.c
+
+t_win	*init_window(void);
+
+// loop.c
+
+void	loop(t_win *window);
+
+// display_window.c
+
+void	display_window(t_win *window);
 
 #endif

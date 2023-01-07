@@ -6,7 +6,7 @@
 #    By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 13:20:37 by rbroque           #+#    #+#              #
-#    Updated: 2023/01/07 14:57:36 by rbroque          ###   ########.fr        #
+#    Updated: 2023/01/07 18:06:30 by rbroque          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ PATH_SRCS += srcs/
 PATH_SRCS += srcs/parser/
 PATH_SRCS += srcs/window/
 PATH_SRCS += srcs/window/data
+PATH_SRCS += srcs/window/display
 
 # srcs/
 
@@ -52,6 +53,11 @@ SRCS += free_window.c
 
 SRCS += init_data.c
 SRCS += free_data.c
+
+# srcs/window/display/
+
+SRCS += display_window.c
+SRCS += loop.c
 
 vpath %.c $(PATH_SRCS)
 
