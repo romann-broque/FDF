@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 15:00:22 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/07 11:22:00 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/07 12:05:48 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,47 +43,6 @@ char	***parse(const char *path_file)
 		parsing = parse_file(file_content, file_size);
 	free_strs(file_content);
 	return (parsing);
-}
-
-static bool	is_format_valid(const char *str)
-{
-	size_t	digit;
-
-	if (*str == '-' || *str == '+')
-		++str;
-	digit = 0;
-	while (ft_isdigit(*str) != 0)
-	{
-		++digit;
-		++str;
-	}
-	return (digit > 0 && *str == '\0');
-}
-
-bool	is_parsing_valid(char ***parsing)
-{
-	size_t	i;
-	size_t	j;
-	bool	is_val;
-
-	is_val = false;
-	if (parsing != NULL)
-	{
-		is_val = true;
-		i = 0;
-		while (parsing[i] != NULL)
-		{
-			j = 0;
-			while (parsing[i][j] != NULL)
-			{
-				if (is_format_valid(parsing[i][j]) == false)
-					return (false);
-				++j;
-			}
-			++i;
-		}
-	}
-	return (is_val);
 }
 
 void	free_parsing(char ***parsing)

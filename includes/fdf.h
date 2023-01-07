@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/05 15:24:38 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/07 12:05:07 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@
 
 # define EXPECT_COUNT_ARG 2
 
+# define MIN_WIDTH 2
+# define MIN_HEIGHT 2
+
 int	fdf(const char *path_file);
 
 /// PARSER ///
@@ -37,6 +40,9 @@ void	free_parsing(char ***parsing);
 // parser.c
 
 char	***parse(const char *path_file);
+
+// is_valid_parsing.c
+
 bool	is_parsing_valid(char ***parsing);
 
 #endif

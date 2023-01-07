@@ -6,7 +6,7 @@
 #    By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 13:20:37 by rbroque           #+#    #+#              #
-#    Updated: 2023/01/07 10:56:53 by rbroque          ###   ########.fr        #
+#    Updated: 2023/01/07 12:05:27 by rbroque          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ SRCS += fdf.c
 
 # srcs/parser
 
+SRCS += is_valid_parsing.c
 SRCS += parser.c
 SRCS += read.c
 
