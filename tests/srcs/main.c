@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 12:19:11 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/07 00:56:23 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/07 11:05:02 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int	main(void)
 
 	ret_val = EXIT_SUCCESS;
 	i = 0;
+	display_title(TEST_TITLE);
 	while (tester[i] != NULL)
 	{
 		if (tester[i]() == EXIT_FAILURE)

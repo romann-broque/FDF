@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 01:28:32 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/07 01:30:30 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/07 11:03:34 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,9 @@ int	test_sequence(int (*tests[])(const size_t))
 		++i;
 	}
 	return (ret_val);
+}
 
+void	display_title(const char *title)
+{
+	printf("%s", title);
 }

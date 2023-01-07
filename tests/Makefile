@@ -6,7 +6,7 @@
 #    By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 12:11:15 by rbroque           #+#    #+#              #
-#    Updated: 2023/01/07 01:30:27 by rbroque          ###   ########.fr        #
+#    Updated: 2023/01/07 10:58:40 by rbroque          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -132,12 +132,13 @@ $(NAME): $(LIB_FDF) $(OBJS)
 	$(ECHOC) $(GREEN) "--> $(NAME) COMPILED !"$(NC)"\n\n"
 
 $(LIB_FDF):
+	echo -e $(BLUE) "\n====> Building tests <===="$(NC)"\n"
 	echo -e $(BLUE) "\n====> Building libfdf.a"$(NC)"\n"
 	ar rcs $(LIB_FDF) $(FDF_OBJS)
 	$(ECHOC) $(GREEN) "--> $(NAME) COMPILED !"$(NC)"\n"
 	echo -e $(BLUE) "\n====> Building $(NAME)"$(NC)"\n"
 
-$(OBJS): $(PATH_OBJS)/%.o: %.c $(HEADER) $(MAKEFILE)
+$(OBJS): $(PATH_OBJS)/%.o: %.c $(HEADER) $(TEST_HEADER) $(MAKEFILE)
 	$(ECHO) $(ORANGE) "Compiling $<"
 	mkdir -p $(PATH_OBJS)
 	$(CC) $(CFLAGS) -c $< -o $@ -I $(INCLUDES) -I $(TEST_INCLUDES) $(INCLUDES_LIB) -O3
@@ -158,4 +159,4 @@ re: fclean
 	$(MAKE) -s
 
 .PHONY: all clean fclean re
-.SILENT: $(NAME) $(OBJS) clean fclean re
+.SILENT: $(NAME) $(OBJS) $(LIB_FDF) clean fclean re

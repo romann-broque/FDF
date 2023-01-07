@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 15:00:22 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/05 02:24:04 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/07 11:22:00 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,17 @@ char	***parse(const char *path_file)
 
 static bool	is_format_valid(const char *str)
 {
-	while (ft_isdigit(*str) != 0)
+	size_t	digit;
+
+	if (*str == '-' || *str == '+')
 		++str;
-	return (*str == '\0');
+	digit = 0;
+	while (ft_isdigit(*str) != 0)
+	{
+		++digit;
+		++str;
+	}
+	return (digit > 0 && *str == '\0');
 }
 
 bool	is_parsing_valid(char ***parsing)

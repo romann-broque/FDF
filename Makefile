@@ -6,7 +6,7 @@
 #    By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 13:20:37 by rbroque           #+#    #+#              #
-#    Updated: 2023/01/07 00:43:03 by rbroque          ###   ########.fr        #
+#    Updated: 2023/01/07 10:56:53 by rbroque          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -146,10 +146,6 @@ $(OBJS): $(PATH_OBJS)/%.o: %.c $(HEADER) $(MAKEFILE)
 	mkdir -p $(PATH_OBJS)
 	$(CC) $(CFLAGS) -c $< -o $@ -I $(INCLUDES) $(INCLUDES_LIB) -O3
 
-$(RUN_TESTS):
-	echo -e $(BLUE) "\n====> Building tests <===="$(NC)"\n"
-	$(MAKE) -sC $(TEST_FOLDER)
-
 run:
 	$(MAKE) -s
 	./$(NAME) $(DEFAULT_ARG)
@@ -180,6 +176,6 @@ re: fclean
 	$(MAKE) -s
 
 .PHONY: all clean fclean re run
-.SILENT: $(NAME) $(LIB) $(OBJS) $(RUN_TESTS) run clean fclean re test
+.SILENT: $(NAME) $(LIB) $(OBJS) run clean fclean re test
 
 #endif
