@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 12:18:47 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/07 11:25:35 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/07 12:43:52 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@
 # define PARSER_PATH3 "./assets/parsing_test3.fdf"
 # define PARSER_PATH4 "./assets/parsing_test4.fdf"
 # define PARSER_PATH5 "./assets/parsing_test5.fdf"
+# define PARSER_PATH6 "./assets/parsing_test6.fdf"
+# define PARSER_PATH7 "./assets/parsing_test7.fdf"
 
 /////////////////////////////////
 //// <----- FUNCTIONS -----> ////

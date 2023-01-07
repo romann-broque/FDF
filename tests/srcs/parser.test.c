@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 14:31:39 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/07 11:36:21 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/07 12:43:41 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,32 @@ static int	is_parsing_valid__test5(const size_t test_index)
 	return (check_result(test_index, !ret_val, exp_result));
 }
 
+static int	is_parsing_valid__test6(const size_t test_index)
+{
+	const char	*path_file = PARSER_PATH6;
+	const int	exp_result = KO;
+	char		***parsing;
+	int			ret_val;
+
+	parsing = parse(path_file);
+	ret_val = is_parsing_valid(parsing);
+	free_parsing(parsing);
+	return (check_result(test_index, !ret_val, exp_result));
+}
+
+static int	is_parsing_valid__test7(const size_t test_index)
+{
+	const char	*path_file = PARSER_PATH7;
+	const int	exp_result = KO;
+	char		***parsing;
+	int			ret_val;
+
+	parsing = parse(path_file);
+	ret_val = is_parsing_valid(parsing);
+	free_parsing(parsing);
+	return (check_result(test_index, !ret_val, exp_result));
+}
+
 int	parser_test(void)
 {
 	static int	(*tests[])(const size_t) = {
@@ -85,6 +111,8 @@ int	parser_test(void)
 		is_parsing_valid__test3,
 		is_parsing_valid__test4,
 		is_parsing_valid__test5,
+		is_parsing_valid__test6,
+		is_parsing_valid__test7,
 		NULL};
 
 	display_title(PARSER_TEST_TITLE);
