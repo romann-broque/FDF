@@ -6,7 +6,7 @@
 #    By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 13:20:37 by rbroque           #+#    #+#              #
-#    Updated: 2023/01/08 14:41:14 by rbroque          ###   ########.fr        #
+#    Updated: 2023/01/08 18:59:13 by rbroque          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ PATH_SRCS += srcs/window/
 PATH_SRCS += srcs/window/data
 PATH_SRCS += srcs/window/display
 PATH_SRCS += srcs/window/loop
+PATH_SRCS += srcs/window/map
 
 # srcs/
 
@@ -58,6 +59,10 @@ SRCS += free_data.c
 # srcs/window/display/
 
 SRCS += display_window.c
+
+# srcs/window/display/
+
+SRCS += init_map.c
 
 # srcs/window/loop
 

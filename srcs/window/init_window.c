@@ -12,9 +12,10 @@
 
 #include "fdf.h"
 
-void	init_window(t_win *window)
+void	init_window(t_win *window, char ***parsing)
 {
 	window->mlx_ptr = mlx_init();
 	window->win_ptr = mlx_new_window(window->mlx_ptr, WIDTH, HEIGHT, WINDOW_TITLE);
 	init_data(window->mlx_ptr, &window->data);
+	window->map = init_map(parsing);
 }

@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/08 16:13:53 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/08 22:43:30 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,19 @@
 //// <----- STRUCT -----> ////
 //////////////////////////////
 
+typedef struct s_vertex
+{
+	int	x;
+	int	y;
+	int	z;
+	int	color;
+}				t_vertex;
+
+typedef struct s_map
+{
+	t_vertex	***vertex;
+}				t_map;
+
 typedef struct s_data
 {
 	void	*img;
@@ -73,6 +86,7 @@ typedef struct s_window
 	void	*mlx_ptr;
 	void	*win_ptr;
 	t_data	data;
+	t_map	*map;
 }				t_win;
 
 typedef struct s_event_mapping
@@ -115,7 +129,7 @@ void	free_window(t_win *window);
 
 // init_win.c
 
-void	init_window(t_win *window);
+void	init_window(t_win *window, char ***parsing);
 
 // DATA //
 
@@ -140,6 +154,10 @@ int		key_press(int key, t_win *window);
 // loop.c
 
 void	loop(t_win *window);
+
+// MAP //
+
+t_map	*init_map(char ***parsing);
 
 // DISPLAY //
 
