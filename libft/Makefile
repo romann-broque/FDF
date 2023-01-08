@@ -6,7 +6,7 @@
 #    By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 10:15:13 by rbroque           #+#    #+#              #
-#    Updated: 2023/01/06 20:49:02 by rbroque          ###   ########.fr        #
+#    Updated: 2023/01/08 11:50:20 by rbroque          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -143,6 +143,7 @@ CC = clang
 
 CFLAGS += -Wall
 CFLAGS += -Wextra
+CFLAGS += -fPIE
 
 ifneq ($(noerr), true)
 	CFLAGS += -Werror

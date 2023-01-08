@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.c                                              :+:      :+:    :+:   */
+/*   keyboard.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/04 15:16:21 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/08 12:00:00 by rbroque          ###   ########.fr       */
+/*   Created: 2023/01/08 11:52:06 by rbroque           #+#    #+#             */
+/*   Updated: 2023/01/08 12:23:31 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	fdf(const char *path_file)
+int	key_press(int key, t_win *window)
 {
-	char	***parsing;
-	t_win	*window;
-	int		ret_val;
+	static t_event_mapping	mapping[] = {
+	{.key = ESCAPE_KEY, .event = close_window},
+	{.key = NO_KEY, .event = NULL},
+	};
+	int						ret_val;
+	size_t					i;
 
-	parsing = parse(path_file);
-	ret_val = is_parsing_valid(parsing);
-	if (ret_val == true)
+	ret_val = EXIT_SUCCESS;
+	i = 0;
+	while (mapping[i].event != NULL)
 	{
-		window = init_window();
-		display_window(window);
-		free_window(window);
+		if (key == mapping[i].key)
+			ret_val = mapping[i].event(window);
+		++i;
 	}
-	free_parsing(parsing);
-	return (!ret_val);
+	return (ret_val);
 }

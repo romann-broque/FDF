@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 17:55:08 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/07 18:05:33 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/08 11:51:20 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,6 @@
 
 void	display_window(t_win *window)
 {
-	loop(window);
+	if (window != NULL)
+		loop(window);
 }

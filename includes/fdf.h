@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/07 18:06:14 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/08 12:24:09 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,22 @@
 //////////////////
 
 # ifndef HEIGHT
-#  define HEIGHT 50
+#  define HEIGHT 1600
 # endif
 
 # ifndef WIDTH
-#  define WIDTH 50
+#  define WIDTH 1200
 # endif
 
 # define MIN_WIDTH 2
 # define MIN_HEIGHT 2
+
+///////////////////
+/// KEY_MAPPING ///
+///////////////////
+
+# define ESCAPE_KEY 65307
+# define NO_KEY 0
 
 //////////////////////////////
 //// <----- STRUCT -----> ////
@@ -61,6 +68,14 @@ typedef struct s_window
 	void	*win_ptr;
 	t_data	*data;
 }				t_win;
+
+typedef struct s_event_mapping
+{
+	int	key;
+	int	(*event)(t_win *);
+
+}				t_event_mapping;
+
 
 int	fdf(const char *path_file);
 
@@ -99,9 +114,21 @@ void	free_window(t_win *window);
 
 t_win	*init_window(void);
 
+// LOOP //
+
+// events.c
+
+int	close_window(t_win *ptr);
+
+// keyboard.c
+
+int	key_press(int key, t_win *window);
+
 // loop.c
 
 void	loop(t_win *window);
+
+// DISPLAY //
 
 // display_window.c
 
