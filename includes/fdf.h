@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/08 12:24:09 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/08 13:13:47 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,10 +76,23 @@ typedef struct s_event_mapping
 
 }				t_event_mapping;
 
+/////////////////////////////////
+//// <----- FUNCTIONS -----> ////
+/////////////////////////////////
 
-int	fdf(const char *path_file);
+// fdf.c
+
+int		fdf(const char *path_file);
 
 /// PARSER ///
+
+// is_valid_parsing.c
+
+bool	is_parsing_valid(char ***parsing);
+
+// parser.c
+
+char	***parse(const char *path_file);
 
 // read.c
 
@@ -88,23 +101,7 @@ char	**get_file_content(const char *path_file, const size_t size);
 size_t	get_file_size(const char *path_file);
 void	free_parsing(char ***parsing);
 
-// parser.c
-
-char	***parse(const char *path_file);
-
-// is_valid_parsing.c
-
-bool	is_parsing_valid(char ***parsing);
-
 /// WINDOW ///
-
-// free_data.c
-
-void	free_data(t_data *data, void *mlx_ptr);
-
-// init_data.c
-
-t_data	*init_data(void *mlx_ptr);
 
 // free_window.c
 
@@ -114,15 +111,25 @@ void	free_window(t_win *window);
 
 t_win	*init_window(void);
 
+// DATA //
+
+// free_data.c
+
+void	free_data(t_data *data, void *mlx_ptr);
+
+// init_data.c
+
+t_data	*init_data(void *mlx_ptr);
+
 // LOOP //
 
 // events.c
 
-int	close_window(t_win *ptr);
+int		close_window(t_win *ptr);
 
 // keyboard.c
 
-int	key_press(int key, t_win *window);
+int		key_press(int key, t_win *window);
 
 // loop.c
 
