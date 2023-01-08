@@ -6,11 +6,28 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 15:00:22 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/07 12:05:48 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/08 15:03:01 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+static void	destroy_parsing(char ****parsing, const size_t size)
+{
+	size_t	i;
+
+	if (*parsing != NULL)
+	{
+		i = 0;
+		while (i < size)
+		{
+			free_strs((*parsing)[i]);
+			++i;
+		}
+		free(*parsing);
+		*parsing = NULL;
+	}
+}
 
 static char	***parse_file(char **content, const size_t size)
 {
@@ -20,15 +37,37 @@ static char	***parse_file(char **content, const size_t size)
 	parsing = (char ***)ft_calloc(size + 1, sizeof(char **));
 	if (parsing != NULL)
 	{
+		parsing[size] = NULL;
 		i = 0;
 		while (i < size)
 		{
-			parsing[i] = ft_split_set(content[i], "\n "); // protect against NULL
+			parsing[i] = ft_split_set(content[i], "\n ");
+			if (parsing[i] == NULL)
+			{
+				destroy_parsing(&parsing, size + 1);
+				break ;
+			}
 			++i;
 		}
-		parsing[size] = NULL;
 	}
 	return (parsing);
+}
+
+void	free_parsing(char ****parsing)
+{
+	size_t	i;
+
+	if (*parsing != NULL)
+	{
+		i = 0;
+		while ((*parsing)[i] != NULL)
+		{
+			free_strs((*parsing)[i]);
+			++i;
+		}
+	}
+	free(*parsing);
+	*parsing = NULL;
 }
 
 char	***parse(const char *path_file)
@@ -43,20 +82,4 @@ char	***parse(const char *path_file)
 		parsing = parse_file(file_content, file_size);
 	free_strs(file_content);
 	return (parsing);
-}
-
-void	free_parsing(char ***parsing)
-{
-	size_t	i;
-
-	if (parsing != NULL)
-	{
-		i = 0;
-		while (parsing[i] != NULL)
-		{
-			free_strs(parsing[i]);
-			++i;
-		}
-	}
-	free(parsing);
 }
