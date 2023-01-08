@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/08 14:57:06 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/08 15:18:45 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,16 @@
 /// DIMENSIONS ///
 //////////////////
 
-# ifndef HEIGHT
-#  define HEIGHT 1600
-# endif
-
 # ifndef WIDTH
-#  define WIDTH 1200
+#  define WIDTH 1600
 # endif
 
-# define MIN_WIDTH 2
+# ifndef HEIGHT
+#  define HEIGHT 1200
+# endif
+
 # define MIN_HEIGHT 2
+# define MIN_WIDTH 2
 
 ///////////////////
 /// KEY_MAPPING ///

@@ -20,7 +20,7 @@ t_win	*init_window(void)
 	if (window != NULL)
 	{
 		window->mlx_ptr = mlx_init();
-		window->win_ptr = mlx_new_window(window->mlx_ptr, HEIGHT, WIDTH, "FDF");
+		window->win_ptr = mlx_new_window(window->mlx_ptr, WIDTH, HEIGHT, "FDF");
 		window->data = init_data(window->mlx_ptr);
 	}
 	return (window);

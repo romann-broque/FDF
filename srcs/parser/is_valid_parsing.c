@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 12:04:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/07 12:11:23 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/08 15:18:45 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static bool	is_line_valid(char **line)
 			return (false);
 		++i;
 	}
-	return (i >= MIN_WIDTH);
+	return (i >= MIN_HEIGHT);
 }
 
 bool	is_parsing_valid(char ***parsing)
@@ -54,7 +54,7 @@ bool	is_parsing_valid(char ***parsing)
 				return (false);
 			++i;
 		}
-		if (i < MIN_HEIGHT)
+		if (i < MIN_WIDTH)
 			is_val = false;
 	}
 	return (is_val);
