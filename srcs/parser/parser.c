@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 15:00:22 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/08 15:03:01 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/08 16:08:06 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	free_parsing(char ****parsing)
 	*parsing = NULL;
 }
 
-char	***parse(const char *path_file)
+void	parse(char ****dest, const char *path_file)
 {
 	const size_t	file_size = get_file_size(path_file);
 	char			**file_content;
@@ -81,5 +81,5 @@ char	***parse(const char *path_file)
 	if (is_valid_file(file_content) == true)
 		parsing = parse_file(file_content, file_size);
 	free_strs(file_content);
-	return (parsing);
+	*dest = parsing;
 }

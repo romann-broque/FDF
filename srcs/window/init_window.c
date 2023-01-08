@@ -12,16 +12,9 @@
 
 #include "fdf.h"
 
-t_win	*init_window(void)
+void	init_window(t_win *window)
 {
-	t_win	*window;
-
-	window = (t_win *)malloc(sizeof(t_win));
-	if (window != NULL)
-	{
-		window->mlx_ptr = mlx_init();
-		window->win_ptr = mlx_new_window(window->mlx_ptr, WIDTH, HEIGHT, WINDOW_TITLE);
-		window->data = init_data(window->mlx_ptr);
-	}
-	return (window);
+	window->mlx_ptr = mlx_init();
+	window->win_ptr = mlx_new_window(window->mlx_ptr, WIDTH, HEIGHT, WINDOW_TITLE);
+	init_data(window->mlx_ptr, &window->data);
 }

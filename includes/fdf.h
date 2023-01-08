@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/08 15:32:32 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/08 16:13:53 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ typedef struct s_window
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
-	t_data	*data;
+	t_data	data;
 }				t_win;
 
 typedef struct s_event_mapping
@@ -98,7 +98,7 @@ bool	is_parsing_valid(char ***parsing);
 
 // parser.c
 
-char	***parse(const char *path_file);
+void	parse(char ****dest, const char *path_file);
 
 // read.c
 
@@ -115,7 +115,7 @@ void	free_window(t_win *window);
 
 // init_win.c
 
-t_win	*init_window(void);
+void	init_window(t_win *window);
 
 // DATA //
 
@@ -125,7 +125,7 @@ void	free_data(t_data *data, void *mlx_ptr);
 
 // init_data.c
 
-t_data	*init_data(void *mlx_ptr);
+void	init_data(void *mlx_ptr, t_data *dest);
 
 // LOOP //
 
