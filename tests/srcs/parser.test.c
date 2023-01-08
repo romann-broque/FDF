@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 14:31:39 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/07 13:19:54 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/08 15:06:07 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	is_parsing_valid__test1(const size_t test_index)
 
 	parsing = parse(path_file);
 	ret_val = is_parsing_valid(parsing);
-	free_parsing(parsing);
+	free_parsing(&parsing);
 	return (check_result(test_index, !ret_val, exp_result));
 }
 
@@ -34,7 +34,7 @@ static int	is_parsing_valid__test2(const size_t test_index)
 
 	parsing = parse(path_file);
 	ret_val = is_parsing_valid(parsing);
-	free_parsing(parsing);
+	free_parsing(&parsing);
 	return (check_result(test_index, !ret_val, exp_result));
 }
 
@@ -47,7 +47,7 @@ static int	is_parsing_valid__test3(const size_t test_index)
 
 	parsing = parse(path_file);
 	ret_val = is_parsing_valid(parsing);
-	free_parsing(parsing);
+	free_parsing(&parsing);
 	return (check_result(test_index, !ret_val, exp_result));
 }
 
@@ -60,7 +60,7 @@ static int	is_parsing_valid__test4(const size_t test_index)
 
 	parsing = parse(path_file);
 	ret_val = is_parsing_valid(parsing);
-	free_parsing(parsing);
+	free_parsing(&parsing);
 	return (check_result(test_index, !ret_val, exp_result));
 }
 
@@ -73,7 +73,7 @@ static int	is_parsing_valid__test5(const size_t test_index)
 
 	parsing = parse(path_file);
 	ret_val = is_parsing_valid(parsing);
-	free_parsing(parsing);
+	free_parsing(&parsing);
 	return (check_result(test_index, !ret_val, exp_result));
 }
 
@@ -86,7 +86,7 @@ static int	is_parsing_valid__test6(const size_t test_index)
 
 	parsing = parse(path_file);
 	ret_val = is_parsing_valid(parsing);
-	free_parsing(parsing);
+	free_parsing(&parsing);
 	return (check_result(test_index, !ret_val, exp_result));
 }
 
@@ -99,7 +99,7 @@ static int	is_parsing_valid__test7(const size_t test_index)
 
 	parsing = parse(path_file);
 	ret_val = is_parsing_valid(parsing);
-	free_parsing(parsing);
+	free_parsing(&parsing);
 	return (check_result(test_index, !ret_val, exp_result));
 }
 
@@ -112,7 +112,7 @@ static int	is_parsing_valid__test8(const size_t test_index)
 
 	parsing = parse(path_file);
 	ret_val = is_parsing_valid(parsing);
-	free_parsing(parsing);
+	free_parsing(&parsing);
 	return (check_result(test_index, !ret_val, exp_result));
 }
 
