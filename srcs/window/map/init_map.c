@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 18:37:45 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/08 22:57:20 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/09 13:46:02 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,9 +96,33 @@ static t_vertex	*get_vertex(const size_t x, const size_t y, const char *format)
 	return (create_vertex(new_x, new_y, new_z, color));
 }
 
+static void	print_vertex(t_vertex *vertex)
+{
+	printf("%d ", vertex->z);
+}
+
 ///////////////////////
 
 // MAP
+
+static void	display_map(t_map *map)
+{
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	while (map->vertex[i] != NULL)
+	{
+		j = 0;
+		while (map->vertex[i][j] != NULL)
+		{
+			print_vertex(map->vertex[i][j]);
+			++j;
+		}
+		printf("\n");
+		++i;
+	}
+}
 
 static void	fill_map(t_map *map, char ***parsing)
 {
@@ -139,18 +163,15 @@ void	init_vertex_map(t_map *map, const size_t x_size, const size_t y_size)
 	}
 }
 
-t_map	*init_map(char ***parsing)
+void	init_map(t_map *map, char ***parsing)
 {
 	const size_t	x_size = get_x_size(parsing);
 	const size_t	y_size = get_y_size(parsing);
-	t_map			*map;
 
-	map = (t_map *)malloc(sizeof(t_map)); // NO_MALLOC
-	if (map != NULL)
+	init_vertex_map(map, x_size, y_size);
+	if (map->vertex != NULL)
 	{
-		init_vertex_map(map, x_size, y_size);
-		if (map->vertex != NULL)
-			fill_map(map, parsing);
+		fill_map(map, parsing);
+		display_map(map);
 	}
-	return (map);
 }
