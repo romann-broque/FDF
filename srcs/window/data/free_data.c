@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 14:56:59 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/08 16:14:10 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/09 15:11:44 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,6 @@
 
 void	free_data(t_data *data, void *mlx_ptr)
 {
-	mlx_destroy_image(mlx_ptr, data->img);
+	if (mlx_ptr != NULL && data->img != NULL)
+		mlx_destroy_image(mlx_ptr, data->img);
 }

@@ -19,6 +19,6 @@ void	init_window(t_win *window, char ***parsing)
 	{
 		window->win_ptr = mlx_new_window(window->mlx_ptr, WIDTH, HEIGHT, WINDOW_TITLE);
 		init_data(window->mlx_ptr, &window->data);
-		init_map(&window->map, parsing);
 	}
+	init_map(&window->map, parsing);
 }

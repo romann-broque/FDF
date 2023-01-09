@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 15:16:21 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/09 14:57:14 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/09 15:00:04 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ int	fdf(const char *path_file)
 		if (is_window_initialised(&window) == true)
 		{
 			display_window(&window);
-			free_window(&window);
 			ret_val = EXIT_SUCCESS;
 		}
+		free_window(&window);
 	}
 	free_parsing(&parsing);
 	return (ret_val);
