@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 14:27:27 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/09 14:30:02 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/09 16:02:35 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	print_vertex(t_vertex *vertex)
 	printf("%d ", vertex->z);
 }
 
-void	print_map(t_map *map)
+void	print_map(const t_map *map)
 {
 	size_t	i;
 	size_t	j;

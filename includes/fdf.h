@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/09 15:38:28 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/09 16:06:14 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ typedef struct s_window
 typedef struct s_event_mapping
 {
 	int	key;
-	int	(*event)(t_win *);
+	int	(*event)(const t_win *);
 
 }				t_event_mapping;
 
@@ -143,13 +143,13 @@ void	init_window(t_win *window, char ***parsing);
 
 // is_window_initialised.c
 
-bool	is_window_initialised(t_win *window);
+bool	is_window_initialised(const t_win *window);
 
 // DATA //
 
 // free_data.c
 
-void	free_data(t_data *data, void *mlx_ptr);
+void	free_data(const t_data *data, void *mlx_ptr);
 
 // init_data.c
 
@@ -159,7 +159,7 @@ void	init_data(void *mlx_ptr, t_data *dest);
 
 // events.c
 
-int		close_window(t_win *ptr);
+int		close_window(const t_win *ptr);
 
 // keyboard.c
 
@@ -187,7 +187,7 @@ void	free_map(t_map *map);
 
 // print_map.c
 
-void	print_map(t_map *map);
+void	print_map(const t_map *map);
 
 // VERTEX //
 
