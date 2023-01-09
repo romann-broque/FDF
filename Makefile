@@ -6,7 +6,7 @@
 #    By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 13:20:37 by rbroque           #+#    #+#              #
-#    Updated: 2023/01/09 14:51:56 by rbroque          ###   ########.fr        #
+#    Updated: 2023/01/09 15:40:18 by rbroque          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ DEFAULT_ARG = ./assets/test_maps/perso/parsing_test.fdf
 
 PATH_SRCS += srcs/
 PATH_SRCS += srcs/parser/
+PATH_SRCS += srcs/error
 PATH_SRCS += srcs/window/
 PATH_SRCS += srcs/window/data
 PATH_SRCS += srcs/window/display
@@ -40,6 +41,10 @@ PATH_SRCS += srcs/window/map/vertex
 
 SRCS += main.c
 SRCS += fdf.c
+
+# srcs/error/
+
+SRCS += print_error.c
 
 # srcs/parser/
 

@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/09 14:52:38 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/09 15:38:28 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,12 @@
 ///////////////////////////////
 
 # define EXPECT_COUNT_ARG 2
+
+/////////////
+/// ERROR ///
+/////////////
+
+# define INVALID_PARSING_ERROR "Invalid map"
 
 //////////////
 /// WINDOW ///
@@ -103,6 +109,10 @@ typedef struct s_event_mapping
 // fdf.c
 
 int		fdf(const char *path_file);
+
+/// ERROR ///
+
+void	print_error(const char *error_message);
 
 /// PARSER ///
 

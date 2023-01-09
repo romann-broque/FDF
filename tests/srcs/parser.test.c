@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 14:31:39 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/08 17:39:19 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/09 15:33:50 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,19 @@ static int	is_parsing_valid__test8(const size_t test_index)
 	return (check_result(test_index, !ret_val, exp_result));
 }
 
+static int	is_parsing_valid__test9(const size_t test_index)
+{
+	const char	*path_file = PARSER_PATH9;
+	const int	exp_result = KO;
+	char		***parsing;
+	int			ret_val;
+
+	parse(&parsing, path_file);
+	ret_val = is_parsing_valid(parsing);
+	free_parsing(&parsing);
+	return (check_result(test_index, !ret_val, exp_result));
+}
+
 int	parser_test(void)
 {
 	static int	(*tests[])(const size_t) = {
@@ -127,6 +140,7 @@ int	parser_test(void)
 		is_parsing_valid__test6,
 		is_parsing_valid__test7,
 		is_parsing_valid__test8,
+		is_parsing_valid__test9,
 		NULL};
 
 	display_title(PARSER_TEST_TITLE);
