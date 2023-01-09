@@ -6,7 +6,7 @@
 #    By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 13:20:37 by rbroque           #+#    #+#              #
-#    Updated: 2023/01/09 14:29:57 by rbroque          ###   ########.fr        #
+#    Updated: 2023/01/09 14:51:56 by rbroque          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,6 +50,7 @@ SRCS += read.c
 # srcs/window/
 
 SRCS += init_window.c
+SRCS += is_window_initialised.c
 SRCS += free_window.c
 
 # srcs/window/data/

@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/09 14:30:12 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/09 14:52:38 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,10 @@ void	free_window(t_win *window);
 // init_win.c
 
 void	init_window(t_win *window, char ***parsing);
+
+// is_window_initialised.c
+
+bool	is_window_initialised(t_win *window);
 
 // DATA //
 
