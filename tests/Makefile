@@ -6,7 +6,7 @@
 #    By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 12:11:15 by rbroque           #+#    #+#              #
-#    Updated: 2023/01/07 10:58:40 by rbroque          ###   ########.fr        #
+#    Updated: 2023/01/09 14:26:14 by rbroque          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -125,7 +125,10 @@ endif
 ###############
 
 all: $(NAME)
+	$(ECHOC) $(BLUE)"\n""CLASSIC TESTS"$(NC)"\n"
 	./$(NAME)
+	$(ECHOC) $(BLUE)"\n""MLX_CRASH TESTS"$(NC)"\n"
+	env -i ./$(NAME)
 
 $(NAME): $(LIB_FDF) $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) $(MAIN_OBJS) -o $(NAME) -I $(INCLUDES) $(INCLUDES_LIB) $(LINKS) $(LIB_FDF) $(LIB)

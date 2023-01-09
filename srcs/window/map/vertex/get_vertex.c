@@ -1,24 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_win.c                                      :+:      :+:    :+:   */
+/*   get_vertex.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/07 14:09:27 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/07 14:50:25 by rbroque          ###   ########.fr       */
+/*   Created: 2023/01/09 14:10:09 by rbroque           #+#    #+#             */
+/*   Updated: 2023/01/09 14:21:20 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	init_window(t_win *window, char ***parsing)
+static int	get_altitude(const char *format)
 {
-	window->mlx_ptr = mlx_init();
-	if (window->mlx_ptr != NULL)
-	{
-		window->win_ptr = mlx_new_window(window->mlx_ptr, WIDTH, HEIGHT, WINDOW_TITLE);
-		init_data(window->mlx_ptr, &window->data);
-		init_map(&window->map, parsing);
-	}
+	return (ft_atoi(format));
+}
+
+static int	get_color(const char *format)
+{
+	(void)format;
+	return (0);
+}
+
+t_vertex	*get_vertex(const size_t x, const size_t y, const char *format)
+{
+	const int	new_x = (int)x;
+	const int	new_y = (int)y;
+	const int	new_z = get_altitude(format);
+	const int	color = get_color(format);
+
+	return (create_vertex(new_x, new_y, new_z, color));
 }

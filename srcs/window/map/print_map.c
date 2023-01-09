@@ -1,24 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_win.c                                      :+:      :+:    :+:   */
+/*   print_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/07 14:09:27 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/07 14:50:25 by rbroque          ###   ########.fr       */
+/*   Created: 2023/01/09 14:27:27 by rbroque           #+#    #+#             */
+/*   Updated: 2023/01/09 14:30:02 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	init_window(t_win *window, char ***parsing)
+static void	print_vertex(t_vertex *vertex)
 {
-	window->mlx_ptr = mlx_init();
-	if (window->mlx_ptr != NULL)
+	printf("%d ", vertex->z);
+}
+
+void	print_map(t_map *map)
+{
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	while (map->vertex[i] != NULL)
 	{
-		window->win_ptr = mlx_new_window(window->mlx_ptr, WIDTH, HEIGHT, WINDOW_TITLE);
-		init_data(window->mlx_ptr, &window->data);
-		init_map(&window->map, parsing);
+		j = 0;
+		while (map->vertex[i][j] != NULL)
+		{
+			print_vertex(map->vertex[i][j]);
+			++j;
+		}
+		printf("\n");
+		++i;
 	}
 }
