@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 12:19:11 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/07 11:05:02 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/10 14:32:30 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,11 @@
 
 int	main(void)
 {
-	static int	(*tester[])(void) = {parser_test, NULL};
+	static int	(*tester[])(void) = {
+		parser_test,
+		pixel_test,
+		NULL
+	};
 	int			ret_val;
 	size_t		i;
 

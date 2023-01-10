@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 12:18:47 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/09 15:34:12 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/10 14:45:36 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@
 
 # define TEST_TITLE "\n<====== TESTS ======>\n"
 # define PARSER_TEST_TITLE "\n-> PARSER\n\n"
+# define PIXEL_TEST_TITLE "\n-> PIXEL\n\n"
 
 ///////////
 // PATHS //
@@ -52,9 +53,9 @@
 
 /// UTILS ///
 
-int     check_result(const size_t test_index, const int curr_res, const int exp_res);
-int     test_sequence(int (*tests[])(const size_t));
-void    display_title(const char *title);
+int		check_result(const size_t test_index, const int curr_res, const int exp_res);
+int		test_sequence(int (*tests[])(const size_t));
+void	display_title(const char *title);
 
 //////////////
 /// PARSER ///
@@ -62,5 +63,11 @@ void    display_title(const char *title);
 
 int		parser_test(void);
 bool	is_same_parsing(const char ***pars1, const char ***pars2);
+
+/////////////
+/// PIXEL ///
+/////////////
+
+int		pixel_test(void);
 
 #endif

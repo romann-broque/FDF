@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 14:12:20 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/09 14:12:53 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/10 15:07:37 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,16 @@ size_t	get_x_size(char ***parsing)
 	size_t	size;
 
 	size = 0;
-	i = 0;
-	while (parsing[i] != NULL)
+	if (parsing != NULL)
 	{
-		curr_size = get_size_strs(parsing[i]);
-		if (size < curr_size)
-			size = curr_size;
-		++i;
+		i = 0;
+		while (parsing[i] != NULL)
+		{
+			curr_size = get_size_strs(parsing[i]);
+			if (size < curr_size)
+				size = curr_size;
+			++i;
+		}
 	}
 	return (size);
 }
@@ -45,7 +48,10 @@ size_t	get_y_size(char ***parsing)
 	size_t	size;
 
 	size = 0;
-	while (parsing[size] != NULL)
-		++size;
+	if (parsing != NULL)
+	{
+		while (parsing[size] != NULL)
+			++size;
+	}
 	return (size);
 }
