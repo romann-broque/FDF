@@ -6,7 +6,7 @@
 #    By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 13:20:37 by rbroque           #+#    #+#              #
-#    Updated: 2023/01/10 12:50:33 by rbroque          ###   ########.fr        #
+#    Updated: 2023/01/10 13:27:44 by rbroque          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,6 +66,7 @@ SRCS += free_data.c
 # srcs/window/display/
 
 SRCS += display_window.c
+SRCS += put_pixel.c
 
 # srcs/window/map/
 

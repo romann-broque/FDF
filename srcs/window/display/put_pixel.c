@@ -1,29 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display_window.c                                   :+:      :+:    :+:   */
+/*   put_pixel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/07 17:55:08 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/10 13:37:05 by rbroque          ###   ########.fr       */
+/*   Created: 2023/01/10 13:25:16 by rbroque           #+#    #+#             */
+/*   Updated: 2023/01/10 13:26:36 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void	display_map(t_win *window)
+static void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
-	if (window->map.vertex)
-	{
-		print_map(&window->data, &window->map);
-		mlx_put_image_to_window(window->mlx_ptr, window->win_ptr, window->data.img, 0, 0);
-	}
+	char	*dst;
+
+	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	*(unsigned int *)dst = color;
 }
 
-void	display_window(t_win *window)
+void	put_pixel(t_data *data, int x, int y, int color)
 {
-	display_map(window);
-	if (window->map.vertex != NULL)
-		loop(window);
+	if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT)
+		my_mlx_pixel_put(data, x, y, color);
 }

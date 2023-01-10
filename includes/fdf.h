@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/10 12:59:01 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/10 13:33:12 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,16 @@
 
 # define MIN_HEIGHT 2
 # define MIN_WIDTH 2
+
+/////////////
+/// COLOR ///
+/////////////
+
+# define WHITE			0x00FFFFFF
+
+/////////////
+/// ERROR ///
+/////////////
 
 ///////////////////
 /// KEY_MAPPING ///
@@ -189,7 +199,7 @@ void	free_map(t_map *map);
 
 // print_map.c
 
-void	print_map(const t_map *map);
+void	print_map(t_data *data, const t_map *map);
 
 // VERTEX //
 
@@ -202,5 +212,9 @@ void	get_vertex(t_vertex *vertex, const size_t x, const size_t y, const char *fo
 // display_window.c
 
 void	display_window(t_win *window);
+
+// put_pixel.c
+
+void	put_pixel(t_data *data, int x, int y, int color);
 
 #endif

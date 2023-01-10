@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 14:10:09 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/10 12:49:48 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/10 13:31:55 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	get_altitude(const char *format)
 static int	get_color(const char *format)
 {
 	(void)format;
-	return (0);
+	return (WHITE);
 }
 
 static void	set_vertex(t_vertex *vertex,
