@@ -6,7 +6,7 @@
 #    By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 13:20:37 by rbroque           #+#    #+#              #
-#    Updated: 2023/01/10 13:27:44 by rbroque          ###   ########.fr        #
+#    Updated: 2023/01/10 14:08:52 by rbroque          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,6 +36,7 @@ PATH_SRCS += srcs/window/display
 PATH_SRCS += srcs/window/loop
 PATH_SRCS += srcs/window/map
 PATH_SRCS += srcs/window/map/vertex
+PATH_SRCS += srcs/window/transform
 
 # srcs/
 
@@ -66,6 +67,7 @@ SRCS += free_data.c
 # srcs/window/display/
 
 SRCS += display_window.c
+SRCS += display_map.c
 SRCS += put_pixel.c
 
 # srcs/window/map/
@@ -73,7 +75,6 @@ SRCS += put_pixel.c
 SRCS += init_map.c
 SRCS += free_map.c
 SRCS += get_map_size.c
-SRCS += print_map.c
 
 # srcs/window/map/vertex
 
@@ -84,6 +85,10 @@ SRCS += get_vertex.c
 SRCS += events.c
 SRCS += keyboard.c
 SRCS += loop.c
+
+# srcs/window/transform
+
+SRCS += transform_map.c
 
 vpath %.c $(PATH_SRCS)
 
