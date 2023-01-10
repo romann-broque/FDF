@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 17:55:08 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/09 16:05:57 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/09 19:09:28 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 void	display_window(t_win *window)
 {
-	if (window != NULL)
+	if (window->map.vertex != NULL)
 		loop(window);
 }
