@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/10 14:06:22 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/10 14:18:35 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -217,6 +217,10 @@ void	display_window(t_win *window);
 // put_pixel.c
 
 void	put_pixel(t_data *data, int x, int y, int color);
+
+// put_line.c
+
+void	put_line(t_data *data, int x1, int y1, const int x2, const int y2);
 
 // TRANSFORM //
 

@@ -1,36 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display_map.c                                      :+:      :+:    :+:   */
+/*   put_line.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/09 14:27:27 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/10 14:24:08 by rbroque          ###   ########.fr       */
+/*   Created: 2023/01/10 14:10:16 by rbroque           #+#    #+#             */
+/*   Updated: 2023/01/10 14:24:00 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void	print_vertex(t_data *data, t_vertex *vertex)
+void	put_line(t_data *data, int x1, int y1, const int x2, const int y2)
 {
-	put_pixel(data, vertex->x, vertex->y, vertex->color);
-}
+	int	dx;
+	int	dy;
+	int	e;
 
-void	print_map(t_data *data, const t_map *map)
-{
-	size_t	i;
-	size_t	j;
-
-	i = 0;
-	while (i < map->y_size)
+	e = x2 - x1;
+	dx = e * 2;
+	dy = (y2 - y1) * 2;
+	while (x1 <= x2)
 	{
-		j = 0;
-		while (j < map->x_size)
+		put_pixel(data, x1, y1, WHITE);
+		++x1;
+		e -= dy;
+		if (e <= 0)
 		{
-			print_vertex(data, &map->vertex[i][j]);
-			++j;
+			++y1;
+			e += dx;
 		}
-		++i;
 	}
 }
