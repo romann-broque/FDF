@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/09 16:06:14 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/10 12:59:01 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,9 @@ typedef struct s_vertex
 
 typedef struct s_map
 {
-	t_vertex	***vertex;
+	t_vertex	**vertex;
+	size_t		x_size;
+	size_t		y_size;
 }				t_map;
 
 typedef struct s_data
@@ -191,13 +193,9 @@ void	print_map(const t_map *map);
 
 // VERTEX //
 
-// create_vertex.c
-
-t_vertex	*create_vertex(const int x, const int y, const int z, const int color);
-
 // get_vertex.c
 
-t_vertex	*get_vertex(const size_t x, const size_t y, const char *format);
+void	get_vertex(t_vertex *vertex, const size_t x, const size_t y, const char *format);
 
 // DISPLAY //
 

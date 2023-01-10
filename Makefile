@@ -6,7 +6,7 @@
 #    By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 13:20:37 by rbroque           #+#    #+#              #
-#    Updated: 2023/01/09 15:40:18 by rbroque          ###   ########.fr        #
+#    Updated: 2023/01/10 12:50:33 by rbroque          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,7 +76,6 @@ SRCS += print_map.c
 
 # srcs/window/map/vertex
 
-SRCS += create_vertex.c
 SRCS += get_vertex.c
 
 # srcs/window/loop

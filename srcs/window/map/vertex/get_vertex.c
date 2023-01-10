@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 14:10:09 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/09 14:21:20 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/10 12:49:48 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,21 @@ static int	get_color(const char *format)
 	return (0);
 }
 
-t_vertex	*get_vertex(const size_t x, const size_t y, const char *format)
+static void	set_vertex(t_vertex *vertex,
+				const int x, const int y, const int z, const int color)
+{
+	vertex->x = x;
+	vertex->y = y;
+	vertex->z = z;
+	vertex->color = color;
+}
+
+void	get_vertex(t_vertex *vertex, const size_t x, const size_t y, const char *format)
 {
 	const int	new_x = (int)x;
 	const int	new_y = (int)y;
 	const int	new_z = get_altitude(format);
 	const int	color = get_color(format);
 
-	return (create_vertex(new_x, new_y, new_z, color));
+	set_vertex(vertex, new_x, new_y, new_z, color);
 }
