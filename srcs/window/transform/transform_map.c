@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 13:51:11 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/10 14:07:03 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/11 19:11:26 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,69 @@ static void	offset(const t_map *map, const int x_offset, const int y_offset)
 	}
 }
 
+// ALTITUDE
+
+static void	altitude_vertex(t_vertex *v1, t_vertex *v2)
+{
+	(void)v1;
+	(void)v2;
+}
+
+static void	altitude(const t_map *map)
+{
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	while (i < map->y_size)
+	{
+		j = 0;
+		while (j < map->x_size)
+		{
+			if (j < map->x_size - 1)
+				altitude_vertex(&map->vertex[i][j], &map->vertex[i][j + 1]);
+			if (i < map->y_size - 1)
+				altitude_vertex(&map->vertex[i][j], &map->vertex[i + 1][j]);
+			++j;
+		}
+		++i;
+	}
+}
+
+// PERSP
+
+static void	persp_vertex(const t_map *map, t_vertex *v)
+{
+	const float	angle = map->angle;
+	const int	x_tmp = v->x;
+	const int	y_tmp = v->y;
+
+	v->x = x_tmp * cos(angle) - sin(angle) * y_tmp;
+	v->y = x_tmp * sin(angle) + cos(angle) * y_tmp;
+}
+
+static void	persp(const t_map *map)
+{
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	while (i < map->y_size)
+	{
+		j = 0;
+		while (j < map->x_size)
+		{
+			persp_vertex(map, &map->vertex[i][j]);
+			++j;
+		}
+		++i;
+	}
+}
+
 void	transform_map(const t_map *map)
 {
+	persp(map);
+	altitude(map);
 	offset(map, WIDTH / 4, HEIGHT / 4);
 	zoom(map);
 }

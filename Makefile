@@ -6,7 +6,7 @@
 #    By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 13:20:37 by rbroque           #+#    #+#              #
-#    Updated: 2023/01/10 14:17:22 by rbroque          ###   ########.fr        #
+#    Updated: 2023/01/11 17:26:06 by rbroque          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ SHELL = /usr/bin/bash
 ##############
 
 NAME = fdf
-DEFAULT_ARG = ./assets/test_maps/perso/parsing_test.fdf
+DEFAULT_ARG = ./assets/test_maps/default/42.fdf
 
 ##############
 #### SRCS ####

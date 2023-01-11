@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/11 16:59:52 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/11 18:55:42 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@
 # define MIN_HEIGHT 2
 # define MIN_WIDTH 2
 # define ZOOM 50
+# define ANGLE 0.0
 
 /////////////
 /// COLOR ///
@@ -72,6 +73,7 @@
 ///////////////////
 
 # define ESCAPE_KEY 65307
+# define R_KEY 114
 # define NO_KEY 0
 
 //////////////////////////////
@@ -105,6 +107,7 @@ typedef struct s_map
 	t_vertex	**vertex;
 	size_t		x_size;
 	size_t		y_size;
+	float		angle;
 }				t_map;
 
 typedef struct s_data
@@ -127,7 +130,7 @@ typedef struct s_window
 typedef struct s_event_mapping
 {
 	int	key;
-	int	(*event)(const t_win *);
+	int	(*event)(t_win *);
 
 }				t_event_mapping;
 
@@ -188,7 +191,8 @@ void	init_data(void *mlx_ptr, t_data *dest);
 
 // events.c
 
-int		close_window(const t_win *ptr);
+int		close_window(t_win *ptr);
+int		angle(t_win *ptr);
 
 // keyboard.c
 

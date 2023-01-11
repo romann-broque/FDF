@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 11:52:06 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/08 14:28:46 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/11 18:55:46 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int	key_press(const int key, t_win *window)
 {
 	static t_event_mapping	mapping[] = {
 	{.key = ESCAPE_KEY, .event = close_window},
+	{.key = R_KEY, .event = angle},
 	{.key = NO_KEY, .event = NULL},
 	};
 

@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 18:37:45 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/10 15:08:42 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/11 18:46:44 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ void	init_map(t_map *map, char ***parsing)
 {
 	map->x_size = get_x_size(parsing);
 	map->y_size = get_y_size(parsing);
+	map->angle = ANGLE;
 	init_vertex_map(map);
 	if (map->vertex != NULL)
 		fill_map(map, parsing);
