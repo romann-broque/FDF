@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/11 15:58:28 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/11 16:59:52 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -214,10 +214,6 @@ size_t	get_y_size(char ***parsing);
 
 void	free_map(t_map *map);
 
-// print_map.c
-
-void	print_map(t_data *data, const t_map *map);
-
 // VERTEX //
 
 // get_vertex.c
@@ -226,6 +222,10 @@ void	set_vertex(t_vertex *vertex, const int x, const int y, const int z, const i
 void	get_vertex(t_vertex *vertex, const size_t x, const size_t y, const char *format);
 
 // DISPLAY //
+
+// display_map.c
+
+void	display_map(t_win *window);
 
 // display_window.c
 
