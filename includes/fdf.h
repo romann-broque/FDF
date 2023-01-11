@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/10 14:18:35 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/11 15:58:28 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "libft.h"
 # include <mlx.h>
+# include <math.h>
 # include <X.h>
 # include <keysymdef.h>
 # include <sys/types.h>
@@ -60,6 +61,7 @@
 /////////////
 
 # define WHITE			0x00FFFFFF
+# define RED			0x00FF0000
 
 /////////////
 /// ERROR ///
@@ -75,6 +77,20 @@
 //////////////////////////////
 //// <----- STRUCT -----> ////
 //////////////////////////////
+
+typedef struct s_line
+{
+	int		x1;
+	int		x2;
+	int		y1;
+	int		y2;
+	long	dx; //stdlib --> math
+	int		sx;
+	long	dy;
+	int		sy;
+	long	error;
+	long	e2;
+}				t_line;
 
 typedef struct s_vertex
 {
@@ -206,6 +222,7 @@ void	print_map(t_data *data, const t_map *map);
 
 // get_vertex.c
 
+void	set_vertex(t_vertex *vertex, const int x, const int y, const int z, const int color);
 void	get_vertex(t_vertex *vertex, const size_t x, const size_t y, const char *format);
 
 // DISPLAY //
@@ -220,7 +237,7 @@ void	put_pixel(t_data *data, int x, int y, int color);
 
 // put_line.c
 
-void	put_line(t_data *data, int x1, int y1, const int x2, const int y2);
+void	put_line(t_data *data, const t_vertex v1, const t_vertex v2);
 
 // TRANSFORM //
 

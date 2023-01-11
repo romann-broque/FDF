@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 14:10:09 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/10 13:31:55 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/11 15:39:32 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	get_color(const char *format)
 	return (WHITE);
 }
 
-static void	set_vertex(t_vertex *vertex,
+void	set_vertex(t_vertex *vertex,
 				const int x, const int y, const int z, const int color)
 {
 	vertex->x = x;
