@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/11 18:55:42 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/12 14:29:49 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ typedef struct s_vertex
 typedef struct s_map
 {
 	t_vertex	**vertex;
+	t_vertex	**vcpy;
 	size_t		x_size;
 	size_t		y_size;
 	float		angle;
@@ -206,6 +207,7 @@ void	loop(t_win *window);
 
 // init_map.c
 
+void	cpy_vertex_map(t_vertex **vdest, t_vertex **vsrc, const size_t x_size, const size_t y_size);
 void	init_map(t_map *map, char ***parsing);
 
 // get_map_size.c
@@ -226,6 +228,10 @@ void	set_vertex(t_vertex *vertex, const int x, const int y, const int z, const i
 void	get_vertex(t_vertex *vertex, const size_t x, const size_t y, const char *format);
 
 // DISPLAY //
+
+// refresh.c
+
+void	refresh(t_win *window);
 
 // display_map.c
 

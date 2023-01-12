@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 13:51:11 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/11 19:11:26 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/12 14:34:28 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	zoom(const t_map *map)
 		j = 0;
 		while (j < map->x_size)
 		{
-			zoom_vertex(&(map->vertex[i][j]), i, j);
+			zoom_vertex(&(map->vcpy[i][j]), i, j);
 			++j;
 		}
 		++i;
@@ -55,7 +55,7 @@ static void	offset(const t_map *map, const int x_offset, const int y_offset)
 		j = 0;
 		while (j < map->x_size)
 		{
-			offset_vertex(&(map->vertex[i][j]), x_offset, y_offset);
+			offset_vertex(&(map->vcpy[i][j]), x_offset, y_offset);
 			++j;
 		}
 		++i;
@@ -82,9 +82,9 @@ static void	altitude(const t_map *map)
 		while (j < map->x_size)
 		{
 			if (j < map->x_size - 1)
-				altitude_vertex(&map->vertex[i][j], &map->vertex[i][j + 1]);
+				altitude_vertex(&map->vcpy[i][j], &map->vcpy[i][j + 1]);
 			if (i < map->y_size - 1)
-				altitude_vertex(&map->vertex[i][j], &map->vertex[i + 1][j]);
+				altitude_vertex(&map->vcpy[i][j], &map->vcpy[i + 1][j]);
 			++j;
 		}
 		++i;
@@ -114,7 +114,7 @@ static void	persp(const t_map *map)
 		j = 0;
 		while (j < map->x_size)
 		{
-			persp_vertex(map, &map->vertex[i][j]);
+			persp_vertex(map, &map->vcpy[i][j]);
 			++j;
 		}
 		++i;
@@ -123,8 +123,8 @@ static void	persp(const t_map *map)
 
 void	transform_map(const t_map *map)
 {
-	persp(map);
 	altitude(map);
-	offset(map, WIDTH / 4, HEIGHT / 4);
 	zoom(map);
+	persp(map);
+	offset(map, WIDTH / 2, HEIGHT / 2);
 }

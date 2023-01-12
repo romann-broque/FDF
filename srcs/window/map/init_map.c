@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 18:37:45 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/11 18:46:44 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/12 14:05:31 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,22 +49,20 @@ static void	fill_map(t_map *map, char ***parsing)
 	}
 }
 
-void	init_vertex_map(t_map *map)
+void	init_vertex_map(t_vertex ***vertex, const size_t x_size, const size_t y_size)
 {
-	const size_t	x_size = map->x_size;
-	const size_t	y_size = map->y_size;
-	size_t			i;
+	size_t	i;
 
-	map->vertex = (t_vertex **)ft_calloc(y_size, sizeof(t_vertex *));
-	if (map->vertex != NULL)
+	*vertex = (t_vertex **)ft_calloc(y_size, sizeof(t_vertex *));
+	if (*vertex != NULL)
 	{
 		i = 0;
 		while (i < y_size)
 		{
-			map->vertex[i] = (t_vertex *)ft_calloc(x_size, sizeof(t_vertex));
-			if (map->vertex[i] == NULL)
+			(*vertex)[i] = (t_vertex *)ft_calloc(x_size, sizeof(t_vertex));
+			if ((*vertex)[i] == NULL)
 			{
-				destroy_vertex_map(&map->vertex);
+				destroy_vertex_map(vertex);
 				return ;
 			}
 			++i;
@@ -72,12 +70,38 @@ void	init_vertex_map(t_map *map)
 	}
 }
 
+void	cpy_vertex_map(t_vertex **vdest, t_vertex **vsrc, const size_t x_size, const size_t y_size)
+{
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	while (i < y_size)
+	{
+		j = 0;
+		while (j < x_size)
+		{
+			vdest[i][j] = vsrc[i][j];
+			++j;
+		}
+		++i;
+	}
+}
+
+static void	dup_vertex_map(t_vertex ***vcpy, t_vertex **v_orig, const size_t x_size, const size_t y_size)
+{
+	init_vertex_map(vcpy, x_size, y_size);
+	if (*vcpy != NULL)
+		cpy_vertex_map(*vcpy, v_orig, x_size, y_size);
+}
+
 void	init_map(t_map *map, char ***parsing)
 {
 	map->x_size = get_x_size(parsing);
 	map->y_size = get_y_size(parsing);
 	map->angle = ANGLE;
-	init_vertex_map(map);
+	init_vertex_map(&map->vertex, map->x_size, map->y_size);
 	if (map->vertex != NULL)
 		fill_map(map, parsing);
+	dup_vertex_map(&map->vcpy, map->vertex, map->x_size, map->y_size);
 }
