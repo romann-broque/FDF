@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 11:52:06 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/12 14:29:16 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/12 15:13:08 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,11 @@ int	key_press(const int key, t_win *window)
 {
 	static t_event_mapping	mapping[] = {
 	{.key = ESCAPE_KEY, .event = close_window},
-	{.key = R_KEY, .event = angle},
+	{.key = Q_KEY, .event = increase_angle},
+	{.key = E_KEY, .event = decrease_angle},
 	{.key = NO_KEY, .event = NULL},
 	};
 
+	printf("key --> %d\n", key);
 	return (browse_mapping(mapping, key, window));
 }

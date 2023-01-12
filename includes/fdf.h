@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/12 14:29:49 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/12 15:16:21 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,8 @@
 ///////////////////
 
 # define ESCAPE_KEY 65307
+# define Q_KEY 113
+# define E_KEY 101
 # define R_KEY 114
 # define NO_KEY 0
 
@@ -108,7 +110,7 @@ typedef struct s_map
 	t_vertex	**vcpy;
 	size_t		x_size;
 	size_t		y_size;
-	float		angle;
+	double		angle;
 }				t_map;
 
 typedef struct s_data
@@ -193,7 +195,8 @@ void	init_data(void *mlx_ptr, t_data *dest);
 // events.c
 
 int		close_window(t_win *ptr);
-int		angle(t_win *ptr);
+int		increase_angle(t_win *ptr);
+int		decrease_angle(t_win *ptr);
 
 // keyboard.c
 

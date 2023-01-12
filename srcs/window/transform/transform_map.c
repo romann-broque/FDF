@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 13:51:11 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/12 14:34:28 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/12 15:27:25 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,9 +95,9 @@ static void	altitude(const t_map *map)
 
 static void	persp_vertex(const t_map *map, t_vertex *v)
 {
-	const float	angle = map->angle;
-	const int	x_tmp = v->x;
-	const int	y_tmp = v->y;
+	const double	angle = map->angle;
+	const int		x_tmp = v->x;
+	const int		y_tmp = v->y;
 
 	v->x = x_tmp * cos(angle) - sin(angle) * y_tmp;
 	v->y = x_tmp * sin(angle) + cos(angle) * y_tmp;
@@ -121,10 +121,19 @@ static void	persp(const t_map *map)
 	}
 }
 
+// ROTATE
+
+void	rotate(const t_map *map)
+{
+	offset(map, -WIDTH / 4, -HEIGHT / 4);
+	persp(map);
+	offset(map, WIDTH / 4, HEIGHT / 4);
+}
+
 void	transform_map(const t_map *map)
 {
 	altitude(map);
 	zoom(map);
-	persp(map);
+	rotate(map);
 	offset(map, WIDTH / 2, HEIGHT / 2);
 }
