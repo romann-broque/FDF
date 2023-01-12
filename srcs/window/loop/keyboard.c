@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 11:52:06 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/12 15:13:08 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/12 16:01:03 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,5 @@ int	key_press(const int key, t_win *window)
 	{.key = NO_KEY, .event = NULL},
 	};
 
-	printf("key --> %d\n", key);
 	return (browse_mapping(mapping, key, window));
 }

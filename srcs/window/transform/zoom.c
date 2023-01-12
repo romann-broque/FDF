@@ -1,18 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display_map.c                                      :+:      :+:    :+:   */
+/*   zoom.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/09 14:27:27 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/12 17:44:30 by rbroque          ###   ########.fr       */
+/*   Created: 2023/01/12 16:02:46 by rbroque           #+#    #+#             */
+/*   Updated: 2023/01/12 18:25:07 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void	print_map(t_data *data, const t_map *map)
+static void	zoom_vertex(t_vertex *vertex, const size_t y_index, const size_t x_index)
+{
+	printf("x --> %d\n", vertex->x);
+	vertex->x += x_index * ZOOM;
+	vertex->y += y_index * ZOOM;
+}
+
+void	zoom(const t_map *map)
 {
 	size_t	i;
 	size_t	j;
@@ -23,22 +30,9 @@ static void	print_map(t_data *data, const t_map *map)
 		j = 0;
 		while (j < map->x_size)
 		{
-			if (j < map->x_size - 1)
-				put_line(data, map->vcpy[i][j], map->vcpy[i][j + 1]);
-			if (i < map->y_size - 1)
-				put_line(data, map->vcpy[i][j], map->vcpy[i + 1][j]);
+			zoom_vertex(&(map->vcpy[i][j]), i, j);
 			++j;
 		}
 		++i;
-	}
-	put_pixel(data, map->center.x, map->center.y, RED);
-}
-
-void	display_map(t_win *window)
-{
-	if (window->map.vertex)
-	{
-		print_map(&window->data, &window->map);
-		mlx_put_image_to_window(window->mlx_ptr, window->win_ptr, window->data.img, 0, 0);
 	}
 }

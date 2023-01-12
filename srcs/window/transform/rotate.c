@@ -1,18 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display_map.c                                      :+:      :+:    :+:   */
+/*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/09 14:27:27 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/12 17:44:30 by rbroque          ###   ########.fr       */
+/*   Created: 2023/01/12 16:04:38 by rbroque           #+#    #+#             */
+/*   Updated: 2023/01/12 17:29:29 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void	print_map(t_data *data, const t_map *map)
+static void	rotate_vertex(const t_map *map, t_vertex *v)
+{
+	const double	angle = map->angle;
+	const int		x_tmp = v->x;
+	const int		y_tmp = v->y;
+
+	v->x = x_tmp * cos(angle) - sin(angle) * y_tmp;
+	v->y = x_tmp * sin(angle) + cos(angle) * y_tmp;
+}
+
+static void	rotate_map(const t_map *map)
 {
 	size_t	i;
 	size_t	j;
@@ -23,22 +33,16 @@ static void	print_map(t_data *data, const t_map *map)
 		j = 0;
 		while (j < map->x_size)
 		{
-			if (j < map->x_size - 1)
-				put_line(data, map->vcpy[i][j], map->vcpy[i][j + 1]);
-			if (i < map->y_size - 1)
-				put_line(data, map->vcpy[i][j], map->vcpy[i + 1][j]);
+			rotate_vertex(map, &map->vcpy[i][j]);
 			++j;
 		}
 		++i;
 	}
-	put_pixel(data, map->center.x, map->center.y, RED);
 }
 
-void	display_map(t_win *window)
+void	rotate(t_map *map)
 {
-	if (window->map.vertex)
-	{
-		print_map(&window->data, &window->map);
-		mlx_put_image_to_window(window->mlx_ptr, window->win_ptr, window->data.img, 0, 0);
-	}
+	offset(map, -WIDTH / 4, -HEIGHT / 4);
+	rotate_map(map);
+	offset(map, WIDTH / 4, HEIGHT / 4);
 }

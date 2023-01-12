@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/12 15:16:21 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/12 17:26:01 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@
 # define MIN_WIDTH 2
 # define ZOOM 50
 # define ANGLE 0.0
+# define ANGLE_SHIFT 0.1
 
 /////////////
 /// COLOR ///
@@ -108,6 +109,7 @@ typedef struct s_map
 {
 	t_vertex	**vertex;
 	t_vertex	**vcpy;
+	t_vertex	center;
 	size_t		x_size;
 	size_t		y_size;
 	double		angle;
@@ -254,8 +256,20 @@ void	put_line(t_data *data, const t_vertex v1, const t_vertex v2);
 
 // TRANSFORM //
 
+// zoom.c
+
+void	zoom(const t_map *map);
+
+// offset.c
+
+void	offset(t_map *map, const int x_offset, const int y_offset);
+
+// rotate.c
+
+void	rotate(t_map *map);
+
 // transform_map.c
 
-void	transform_map(const t_map *map);
+void	transform_map(t_map *map);
 
 #endif

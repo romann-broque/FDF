@@ -1,44 +1,48 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display_map.c                                      :+:      :+:    :+:   */
+/*   offset.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/09 14:27:27 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/12 17:44:30 by rbroque          ###   ########.fr       */
+/*   Created: 2023/01/12 16:03:58 by rbroque           #+#    #+#             */
+/*   Updated: 2023/01/12 18:27:20 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void	print_map(t_data *data, const t_map *map)
+static void	offset_vertex_x(t_map *map, t_vertex *vertex)
+{
+	const int	x_shift = ((map->x_size - 1) * ZOOM) / 2;
+
+	vertex->x += map->center.x - x_shift;
+}
+
+static void	offset_vertex_y(t_map *map, t_vertex *vertex)
+{
+	const int	y_shift = ((map->y_size - 1) * ZOOM) / 2;
+
+	vertex->y += map->center.y - y_shift;
+}
+
+void	offset(t_map *map, const int x_offset, const int y_offset)
 {
 	size_t	i;
 	size_t	j;
 
+	map->center.x = x_offset;
+	map->center.y = y_offset;
 	i = 0;
 	while (i < map->y_size)
 	{
 		j = 0;
 		while (j < map->x_size)
 		{
-			if (j < map->x_size - 1)
-				put_line(data, map->vcpy[i][j], map->vcpy[i][j + 1]);
-			if (i < map->y_size - 1)
-				put_line(data, map->vcpy[i][j], map->vcpy[i + 1][j]);
+			offset_vertex_x(map, &(map->vcpy[i][j]));
+			offset_vertex_y(map, &(map->vcpy[i][j]));
 			++j;
 		}
 		++i;
-	}
-	put_pixel(data, map->center.x, map->center.y, RED);
-}
-
-void	display_map(t_win *window)
-{
-	if (window->map.vertex)
-	{
-		print_map(&window->data, &window->map);
-		mlx_put_image_to_window(window->mlx_ptr, window->win_ptr, window->data.img, 0, 0);
 	}
 }
