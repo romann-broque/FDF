@@ -6,7 +6,7 @@
 #    By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 13:20:37 by rbroque           #+#    #+#              #
-#    Updated: 2023/01/12 16:08:00 by rbroque          ###   ########.fr        #
+#    Updated: 2023/01/13 15:27:01 by rbroque          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,7 +92,7 @@ SRCS += loop.c
 
 SRCS += transform_map.c
 SRCS += rotate.c
-SRCS += offset.c
+SRCS += center.c
 SRCS += zoom.c
 
 vpath %.c $(PATH_SRCS)

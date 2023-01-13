@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 16:04:38 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/12 17:29:29 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/13 15:30:26 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,28 @@ static void	rotate_map(const t_map *map)
 	}
 }
 
+void	offset(t_map *map, const int x_offset, const int y_offset)
+{
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	while (i < map->y_size)
+	{
+		j = 0;
+		while (j < map->x_size)
+		{
+			map->vcpy[i][j].x += x_offset;
+			map->vcpy[i][j].y += y_offset;
+			++j;
+		}
+		++i;
+	}
+}
+
 void	rotate(t_map *map)
 {
-	offset(map, -WIDTH / 4, -HEIGHT / 4);
+	offset(map, -map->center.x, -map->center.y);
 	rotate_map(map);
-	offset(map, WIDTH / 4, HEIGHT / 4);
+	offset(map, map->center.x, map->center.y);
 }

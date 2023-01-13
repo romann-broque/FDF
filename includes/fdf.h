@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/12 17:26:01 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/13 15:29:39 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -260,9 +260,9 @@ void	put_line(t_data *data, const t_vertex v1, const t_vertex v2);
 
 void	zoom(const t_map *map);
 
-// offset.c
+// center.c
 
-void	offset(t_map *map, const int x_offset, const int y_offset);
+void	center(t_map *map, const int x_offset, const int y_offset);
 
 // rotate.c
 
