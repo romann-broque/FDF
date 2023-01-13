@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/13 16:38:54 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/13 18:36:56 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@
 # define ZOOM_SHIFT 1
 # define ANGLE 0.0
 # define ANGLE_SHIFT 0.1
+# define ALTITUDE -2
+# define ALTITUDE_SHIFT 1
 
 /////////////
 /// COLOR ///
@@ -79,6 +81,8 @@
 # define E_KEY 101
 # define R_KEY 114
 # define F_KEY 102
+# define O_KEY 112
+# define P_KEY 111
 # define NO_KEY 0
 
 //////////////////////////////
@@ -115,6 +119,7 @@ typedef struct s_map
 	size_t		x_size;
 	size_t		y_size;
 	size_t		zoom;
+	int			altitude;
 	double		angle;
 }				t_map;
 
@@ -204,6 +209,8 @@ int		increase_zoom(t_win *window);
 int		decrease_zoom(t_win *window);
 int		increase_angle(t_win *ptr);
 int		decrease_angle(t_win *ptr);
+int		increase_altitude(t_win *window);
+int		decrease_altitude(t_win *window);
 
 // keyboard.c
 

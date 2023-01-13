@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 13:51:11 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/13 15:30:48 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/13 18:31:02 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,9 @@
 
 // ALTITUDE
 
-static void	altitude_vertex(t_vertex *v1, t_vertex *v2)
+static void	altitude_vertex(t_vertex *v, const int altitude)
 {
-	(void)v1;
-	(void)v2;
+	v->y += altitude * v->z;
 }
 
 static void	altitude(const t_map *map)
@@ -31,10 +30,7 @@ static void	altitude(const t_map *map)
 		j = 0;
 		while (j < map->x_size)
 		{
-			if (j < map->x_size - 1)
-				altitude_vertex(&map->vcpy[i][j], &map->vcpy[i][j + 1]);
-			if (i < map->y_size - 1)
-				altitude_vertex(&map->vcpy[i][j], &map->vcpy[i + 1][j]);
+			altitude_vertex(&map->vcpy[i][j], map->altitude);
 			++j;
 		}
 		++i;

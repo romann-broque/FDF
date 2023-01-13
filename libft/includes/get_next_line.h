@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/10 15:00:22 by rbroque           #+#    #+#             */
-/*   Updated: 2022/11/11 21:55:10 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/13 18:58:21 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "libft.h"
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 4096
+#  define BUFFER_SIZE 100000
 # endif
 # define OPEN_MAX FOPEN_MAX
 
