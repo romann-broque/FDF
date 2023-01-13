@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 11:39:50 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/12 16:01:09 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/13 16:40:21 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,26 @@ int	increase_angle(t_win *window)
 int	decrease_angle(t_win *window)
 {
 	change_angle(window, -ANGLE_SHIFT);
+	return (EXIT_SUCCESS);
+}
+
+// ZOOM
+
+static void	change_zoom(t_win *window, long zoom_shift)
+{
+	window->map.zoom += zoom_shift;
+}
+
+int	increase_zoom(t_win *window)
+{
+	if (window->map.zoom < SIZE_MAX - ZOOM_SHIFT)
+		change_zoom(window, ZOOM_SHIFT);
+	return (EXIT_SUCCESS);
+}
+
+int	decrease_zoom(t_win *window)
+{
+	if (window->map.zoom > ZOOM_SHIFT)
+		change_zoom(window, -ZOOM_SHIFT);
 	return (EXIT_SUCCESS);
 }

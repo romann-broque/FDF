@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/13 15:29:39 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/13 16:38:54 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@
 # define MIN_HEIGHT 2
 # define MIN_WIDTH 2
 # define ZOOM 50
+# define ZOOM_SHIFT 1
 # define ANGLE 0.0
 # define ANGLE_SHIFT 0.1
 
@@ -77,6 +78,7 @@
 # define Q_KEY 113
 # define E_KEY 101
 # define R_KEY 114
+# define F_KEY 102
 # define NO_KEY 0
 
 //////////////////////////////
@@ -112,6 +114,7 @@ typedef struct s_map
 	t_vertex	center;
 	size_t		x_size;
 	size_t		y_size;
+	size_t		zoom;
 	double		angle;
 }				t_map;
 
@@ -197,6 +200,8 @@ void	init_data(void *mlx_ptr, t_data *dest);
 // events.c
 
 int		close_window(t_win *ptr);
+int		increase_zoom(t_win *window);
+int		decrease_zoom(t_win *window);
 int		increase_angle(t_win *ptr);
 int		decrease_angle(t_win *ptr);
 
