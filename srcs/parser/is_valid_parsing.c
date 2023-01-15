@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 12:04:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/08 15:18:45 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/15 18:22:13 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static bool	is_format_valid(const char *str)
 	return (i > 0 && str[i] == '\0');
 }
 
-static bool	is_line_valid(char **line)
+static bool	is_line_valid(char **line, size_t ref_size)
 {
 	size_t	i;
 
@@ -35,27 +35,24 @@ static bool	is_line_valid(char **line)
 			return (false);
 		++i;
 	}
-	return (i >= MIN_HEIGHT);
+	return (i >= MIN_HEIGHT && get_size_strs(line) == ref_size);
 }
 
 bool	is_parsing_valid(char ***parsing)
 {
 	size_t	i;
-	bool	is_val;
+	size_t	ref_size;
 
-	is_val = false;
-	if (parsing != NULL)
+	i = 0;
+	if (parsing != NULL && parsing[0] != NULL)
 	{
-		is_val = true;
-		i = 0;
+		ref_size = get_size_strs(parsing[0]);
 		while (parsing[i] != NULL)
 		{
-			if (is_line_valid(parsing[i]) == false)
+			if (is_line_valid(parsing[i], ref_size) == false)
 				return (false);
 			++i;
 		}
-		if (i < MIN_WIDTH)
-			is_val = false;
 	}
-	return (is_val);
+	return (i >= MIN_WIDTH);
 }

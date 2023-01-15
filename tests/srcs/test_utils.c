@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 01:28:32 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/07 11:03:34 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/15 17:42:36 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ int	check_result(const size_t test_index, const int curr_res, const int exp_res)
 	printf("Test%zu: ", test_index + 1);
 	if (curr_res == exp_res)
 	{
-		printf(GREEN "OK\n" RESET);
+		printf(GREEN_PRINT "OK\n" RESET);
 		return (EXIT_SUCCESS);
 	}
-	printf(RED "KO\n" RESET);
+	printf(RED_PRINT "KO\n" RESET);
 	return (EXIT_FAILURE);
 }
 

@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 15:00:22 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/13 18:55:29 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/15 18:23:17 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ static char	***parse_file(char **content, const size_t size)
 		i = 0;
 		while (i < size)
 		{
-			printf("%s\n", content[i]);
 			parsing[i] = ft_split_set(content[i], "\n ");
 			if (parsing[i] == NULL)
 			{

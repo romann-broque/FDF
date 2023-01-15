@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/05 12:18:47 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/10 14:45:36 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/15 18:29:40 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@
 ///////////////////////////////
 
 # define RESET "\033[0m"
-# define RED "\033[1m\033[31m"
-# define GREEN "\033[32m"
+# define RED_PRINT "\033[1m\033[31m"
+# define GREEN_PRINT "\033[32m"
 # define OK EXIT_SUCCESS
 # define KO EXIT_FAILURE
 
@@ -46,6 +46,8 @@
 # define PARSER_PATH7 "./assets/parsing_test7.fdf"
 # define PARSER_PATH8 "./assets/parsing_test8.fdf"
 # define PARSER_PATH9 "./assets/parsing_test9.fdf"
+# define PARSER_PATH10 "./assets/parsing_test10.fdf"
+# define PARSER_PATH11 "./assets/parsing_test11.fdf"
 
 /////////////////////////////////
 //// <----- FUNCTIONS -----> ////

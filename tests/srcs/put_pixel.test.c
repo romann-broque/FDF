@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 14:30:46 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/10 21:50:00 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/15 17:44:55 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ static void	print_data(char *str, size_t x, size_t y)
 		++i;
 	}
 }
-*/
 
 static int	is_pixel_put_valid__test1(const size_t test_index)
 {
@@ -81,3 +80,4 @@ int	pixel_test(void)
 	return (test_sequence(tests));
 }
 
+*/

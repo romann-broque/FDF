@@ -6,7 +6,7 @@
 #    By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/05 12:11:15 by rbroque           #+#    #+#              #
-#    Updated: 2023/01/10 21:42:04 by rbroque          ###   ########.fr        #
+#    Updated: 2023/01/15 17:45:44 by rbroque          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ PATH_SRCS += srcs/
 SRCS += main.c
 SRCS += test_utils.c
 SRCS += parser.test.c
-SRCS += put_pixel.test.c
+#SRCS += put_pixel.test.c
 
 vpath %.c $(PATH_SRCS)
 

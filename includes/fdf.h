@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/15 03:29:00 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/15 17:38:58 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,7 +157,7 @@ int		fdf(const char *path_file);
 
 /// ERROR ///
 
-void	print_error(const char *error_message);
+void	print_error(char *error_message);
 
 /// PARSER ///
 
