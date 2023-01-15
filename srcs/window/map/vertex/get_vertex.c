@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 14:10:09 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/11 15:39:32 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/15 03:01:20 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	get_color(const char *format)
 }
 
 void	set_vertex(t_vertex *vertex,
-				const int x, const int y, const int z, const int color)
+				const float x, const float y, const float z, const int color)
 {
 	vertex->x = x;
 	vertex->y = y;

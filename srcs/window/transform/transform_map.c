@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 13:51:11 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/13 18:31:02 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/15 03:24:58 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // ALTITUDE
 
-static void	altitude_vertex(t_vertex *v, const int altitude)
+static void	altitude_vertex(t_vertex *v, const double altitude)
 {
 	v->y += altitude * v->z;
 }

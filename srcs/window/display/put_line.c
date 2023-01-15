@@ -6,13 +6,13 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 14:10:16 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/11 15:58:05 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/15 03:19:53 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	get_sign(const int nb)
+int	get_sign(const double nb)
 {
 	if (nb < 0)
 		return (-1);
@@ -52,9 +52,9 @@ void	put_line(t_data *data, const t_vertex v1, const t_vertex v2)
 	line.x2 = v2.x;
 	line.y1 = v1.y;
 	line.y2 = v2.y;
-	line.dx = abs(v2.x - v1.x);
+	line.dx = fabs(v2.x - v1.x);
 	line.sx = get_sign(v2.x - v1.x);
-	line.dy = -abs(v2.y - v1.y);
+	line.dy = -fabs(v2.y - v1.y);
 	line.sy = get_sign(v2.y - v1.y);
 	line.error = line.dx + line.dy;
 	plot_line(data, &line);

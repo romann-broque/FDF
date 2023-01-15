@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/13 18:36:56 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/15 03:29:00 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@
 # define ANGLE 0.0
 # define ANGLE_SHIFT 0.1
 # define ALTITUDE -2
-# define ALTITUDE_SHIFT 1
+# define ALTITUDE_SHIFT 0.1
 
 /////////////
 /// COLOR ///
@@ -105,9 +105,9 @@ typedef struct s_line
 
 typedef struct s_vertex
 {
-	int	x;
-	int	y;
-	int	z;
+	float	x;
+	float	y;
+	float	z;
 	int	color;
 }				t_vertex;
 
@@ -118,8 +118,8 @@ typedef struct s_map
 	t_vertex	center;
 	size_t		x_size;
 	size_t		y_size;
-	size_t		zoom;
-	int			altitude;
+	double		zoom;
+	double		altitude;
 	double		angle;
 }				t_map;
 
@@ -241,7 +241,7 @@ void	free_map(t_map *map);
 
 // get_vertex.c
 
-void	set_vertex(t_vertex *vertex, const int x, const int y, const int z, const int color);
+void	set_vertex(t_vertex *vertex, const float x, const float y, const float z, const int color);
 void	get_vertex(t_vertex *vertex, const size_t x, const size_t y, const char *format);
 
 // DISPLAY //

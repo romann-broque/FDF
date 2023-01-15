@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 16:04:38 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/13 16:07:52 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/15 03:20:59 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 static void	rotate_vertex(const t_map *map, t_vertex *v)
 {
 	const double	angle = map->angle;
-	const int		x_tmp = v->x;
-	const int		y_tmp = v->y;
+	const float		x_tmp = v->x;
+	const float		y_tmp = v->y;
 
 	v->x = x_tmp * cos(angle) - sin(angle) * y_tmp;
 	v->y = x_tmp * sin(angle) + cos(angle) * y_tmp;

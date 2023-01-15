@@ -6,13 +6,13 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 16:48:50 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/13 16:49:10 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/15 03:07:58 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	offset(t_map *map, const int x_offset, const int y_offset)
+void	offset(t_map *map, const float x_offset, const float y_offset)
 {
 	size_t	i;
 	size_t	j;
