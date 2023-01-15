@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/15 17:38:58 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/15 19:18:48 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,9 @@
 # define MIN_WIDTH 2
 # define ZOOM 50
 # define ZOOM_SHIFT 1
-# define ANGLE 0.0
+# define X_ANGLE 0.0
+# define Y_ANGLE 0.0
+# define Z_ANGLE 0.0
 # define ANGLE_SHIFT 0.1
 # define ALTITUDE -2
 # define ALTITUDE_SHIFT 0.1
@@ -77,8 +79,13 @@
 ///////////////////
 
 # define ESCAPE_KEY 65307
+
 # define Q_KEY 113
-# define E_KEY 101
+# define W_KEY 119
+# define A_KEY 97
+# define S_KEY 115
+# define Z_KEY 122
+# define X_KEY 120
 # define R_KEY 114
 # define F_KEY 102
 # define O_KEY 112
@@ -120,7 +127,9 @@ typedef struct s_map
 	size_t		y_size;
 	double		zoom;
 	double		altitude;
-	double		angle;
+	double		x_angle;
+	double		y_angle;
+	double		z_angle;
 }				t_map;
 
 typedef struct s_data
@@ -207,8 +216,12 @@ void	init_data(void *mlx_ptr, t_data *dest);
 int		close_window(t_win *ptr);
 int		increase_zoom(t_win *window);
 int		decrease_zoom(t_win *window);
-int		increase_angle(t_win *ptr);
-int		decrease_angle(t_win *ptr);
+int		increase_x_angle(t_win *ptr);
+int		decrease_x_angle(t_win *ptr);
+int		increase_y_angle(t_win *ptr);
+int		decrease_y_angle(t_win *ptr);
+int		increase_z_angle(t_win *ptr);
+int		decrease_z_angle(t_win *ptr);
 int		increase_altitude(t_win *window);
 int		decrease_altitude(t_win *window);
 

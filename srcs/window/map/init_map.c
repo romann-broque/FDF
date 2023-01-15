@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 18:37:45 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/15 17:28:29 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/15 18:43:33 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,9 @@ void	init_map(t_map *map, char ***parsing)
 	map->y_size = get_y_size(parsing);
 	printf("x_size --> %zu\n", map->x_size);
 	printf("y_size --> %zu\n", map->y_size);
-	map->angle = ANGLE;
+	map->x_angle = X_ANGLE;
+	map->y_angle = Y_ANGLE;
+	map->z_angle = Z_ANGLE;
 	map->zoom = ZOOM;
 	map->altitude = ALTITUDE;
 	init_vertex_map(&map->vertex, map->x_size, map->y_size);

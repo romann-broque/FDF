@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 11:39:50 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/15 03:29:07 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/15 19:11:19 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,44 @@ int	close_window(t_win *ptr)
 
 // ANGLE
 
-static void	change_angle(t_win *ptr, double rotation)
+static void	change_angle(double *angle, double rotation)
 {
-	ptr->map.angle += rotation;
+	*angle += rotation;
 }
 
-int	increase_angle(t_win *window)
+int	increase_x_angle(t_win *window)
 {
-	change_angle(window, ANGLE_SHIFT);
+	change_angle(&window->map.x_angle, ANGLE_SHIFT);
 	return (EXIT_SUCCESS);
 }
 
-int	decrease_angle(t_win *window)
+int	decrease_x_angle(t_win *window)
 {
-	change_angle(window, -ANGLE_SHIFT);
+	change_angle(&window->map.x_angle, -ANGLE_SHIFT);
+	return (EXIT_SUCCESS);
+}
+
+int	increase_y_angle(t_win *window)
+{
+	change_angle(&window->map.y_angle, ANGLE_SHIFT);
+	return (EXIT_SUCCESS);
+}
+
+int	decrease_y_angle(t_win *window)
+{
+	change_angle(&window->map.y_angle, -ANGLE_SHIFT);
+	return (EXIT_SUCCESS);
+}
+
+int	increase_z_angle(t_win *window)
+{
+	change_angle(&window->map.z_angle, ANGLE_SHIFT);
+	return (EXIT_SUCCESS);
+}
+
+int	decrease_z_angle(t_win *window)
+{
+	change_angle(&window->map.z_angle, -ANGLE_SHIFT);
 	return (EXIT_SUCCESS);
 }
 
