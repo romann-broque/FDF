@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/16 16:56:39 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/16 17:50:20 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,6 @@
 
 # define WINDOW_TITLE "FDF"
 
-//////////////////
-/// DIMENSIONS ///
-//////////////////
-
 # ifndef WIDTH
 #  define WIDTH 1600
 # endif
@@ -52,16 +48,22 @@
 #  define HEIGHT 1200
 # endif
 
+/////////////////
+/// TRANSFORM ///
+/////////////////
+
 # define MIN_HEIGHT 2
 # define MIN_WIDTH 2
-# define ZOOM 1
+# define ZOOM 2
 # define ZOOM_SHIFT 1
 # define X_ANGLE 0.0
 # define Y_ANGLE 0.0
 # define Z_ANGLE 0.0
 # define ANGLE_SHIFT 0.1
+# define ANGLE_SHIFT 0.1
 # define ALTITUDE -2
 # define ALTITUDE_SHIFT 0.01
+# define ALTITUDE_SHIFT_BOOST 1
 
 /////////////
 /// COLOR ///
@@ -90,6 +92,8 @@
 # define F_KEY 102
 # define O_KEY 112
 # define P_KEY 111
+# define U_KEY 117
+# define I_KEY 105
 # define NO_KEY 0
 
 //////////////////////////////
@@ -217,19 +221,32 @@ void	init_data(void *mlx_ptr, t_data *dest);
 
 // LOOP //
 
-// events.c
+// EVENTS//
+
+// e_close_window.c
 
 int		close_window(t_win *ptr);
+
+// e_zoom.c
+
 int		increase_zoom(t_win *window);
 int		decrease_zoom(t_win *window);
+
+// e_angle.c
+
 int		increase_x_angle(t_win *ptr);
 int		decrease_x_angle(t_win *ptr);
 int		increase_y_angle(t_win *ptr);
 int		decrease_y_angle(t_win *ptr);
 int		increase_z_angle(t_win *ptr);
 int		decrease_z_angle(t_win *ptr);
+
+// e_altitude.c
+
 int		increase_altitude(t_win *window);
 int		decrease_altitude(t_win *window);
+int		increase_altitude_boost(t_win *window);
+int		decrease_altitude_boost(t_win *window);
 
 // keyboard.c
 
@@ -298,6 +315,10 @@ void	zoom(const t_map *map);
 // center.c
 
 void	center(t_map *map, const int x_offset, const int y_offset);
+
+// offset.c
+
+void	offset(t_map *map, const float x_offset, const float y_offset);
 
 // rotate.c
 

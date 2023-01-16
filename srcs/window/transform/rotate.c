@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 16:04:38 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/16 14:35:34 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/16 17:35:38 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,25 +44,6 @@ static void	rotate_map(t_map *map)
 		while (j < map->x_size)
 		{
 			rotate_vertex(map, &map->vcpy[i][j]);
-			++j;
-		}
-		++i;
-	}
-}
-
-void	offset(t_map *map, const int x_offset, const int y_offset)
-{
-	size_t	i;
-	size_t	j;
-
-	i = 0;
-	while (i < map->y_size)
-	{
-		j = 0;
-		while (j < map->x_size)
-		{
-			map->vcpy[i][j].x += x_offset;
-			map->vcpy[i][j].y += y_offset;
 			++j;
 		}
 		++i;

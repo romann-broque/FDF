@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 11:52:06 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/16 11:35:32 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/16 17:51:16 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ int	key_press(const int key, t_win *window)
 	{.key = X_KEY, .event = decrease_z_angle},
 	{.key = P_KEY, .event = increase_altitude},
 	{.key = O_KEY, .event = decrease_altitude},
+	{.key = U_KEY, .event = increase_altitude_boost},
+	{.key = I_KEY, .event = decrease_altitude_boost},
 	{.key = NO_KEY, .event = NULL},
 	};
 

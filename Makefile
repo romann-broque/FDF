@@ -6,7 +6,7 @@
 #    By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 13:20:37 by rbroque           #+#    #+#              #
-#    Updated: 2023/01/16 16:57:40 by rbroque          ###   ########.fr        #
+#    Updated: 2023/01/16 17:44:26 by rbroque          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ PATH_SRCS += srcs/window/
 PATH_SRCS += srcs/window/data
 PATH_SRCS += srcs/window/display
 PATH_SRCS += srcs/window/loop
+PATH_SRCS += srcs/window/loop/events
 PATH_SRCS += srcs/window/map
 PATH_SRCS += srcs/window/map/vertex
 PATH_SRCS += srcs/window/transform
@@ -84,14 +85,21 @@ SRCS += get_vertex.c
 
 # srcs/window/loop
 
-SRCS += events.c
 SRCS += keyboard.c
 SRCS += loop.c
+
+# srcs/window/loop/events
+
+SRCS += e_altitude.c
+SRCS += e_angle.c
+SRCS += e_close_window.c
+SRCS += e_zoom.c
 
 # srcs/window/transform
 
 SRCS += transform_map.c
 SRCS += altitude.c
+SRCS += offset.c
 SRCS += rotate.c
 SRCS += center.c
 SRCS += zoom.c
