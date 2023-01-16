@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 18:37:45 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/15 18:43:33 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/16 14:37:05 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,8 +99,6 @@ void	init_map(t_map *map, char ***parsing)
 {
 	map->x_size = get_x_size(parsing);
 	map->y_size = get_y_size(parsing);
-	printf("x_size --> %zu\n", map->x_size);
-	printf("y_size --> %zu\n", map->y_size);
 	map->x_angle = X_ANGLE;
 	map->y_angle = Y_ANGLE;
 	map->z_angle = Z_ANGLE;
