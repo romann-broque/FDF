@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/16 16:47:46 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/16 16:56:39 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -286,6 +286,10 @@ void	put_pixel(t_data *data, int x, int y, int color);
 void	put_line(t_data *data, const t_vertex v1, const t_vertex v2);
 
 // TRANSFORM //
+
+// altitude.c
+
+void	altitude(const t_map *map);
 
 // zoom.c
 
