@@ -1,0 +1,3 @@
+[submodule "assets/42MapGenerator"]
+	path = assets/42MapGenerator
+	url = https:/github.com/jgigault/42MapGenerator
