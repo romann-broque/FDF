@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 16:04:38 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/15 19:23:43 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/16 11:32:08 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,29 @@
 
 static void	rotate_vertex(const t_map *map, t_vertex *v)
 {
-	const double	x_angle = map->x_angle;
-	const double	y_angle = map->y_angle;
-	const double	z_angle = map->z_angle;
 	const float		x_tmp = v->x;
 	const float		y_tmp = v->y;
 
-	v->x = x_tmp * cos(y_angle) * cos(z_angle) - y_tmp * cos(y_angle) * sin(z_angle);
-	v->y = x_tmp * cos(x_angle) * sin(z_angle) + y_tmp * cos(x_angle) * cos(z_angle);
+	v->x = map->cosy * (x_tmp * map->cosz - y_tmp * map->sinz);
+	v->y = map->cosx * (x_tmp * map->sinz + y_tmp * map->cosz);
 }
 
-static void	rotate_map(const t_map *map)
+static void	init_trigo(t_map *map)
+{
+	map->cosx = cos(map->x_angle);
+	map->sinx = sin(map->x_angle);
+	map->cosy = cos(map->y_angle);
+	map->siny = sin(map->y_angle);
+	map->cosz = cos(map->z_angle);
+	map->sinz = sin(map->z_angle);
+}
+
+static void	rotate_map(t_map *map)
 {
 	size_t	i;
 	size_t	j;
 
+	init_trigo(map);
 	i = 0;
 	while (i < map->y_size)
 	{

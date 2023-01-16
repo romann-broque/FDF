@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/15 19:18:48 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/16 11:14:15 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@
 # define Z_ANGLE 0.0
 # define ANGLE_SHIFT 0.1
 # define ALTITUDE -2
-# define ALTITUDE_SHIFT 0.1
+# define ALTITUDE_SHIFT 1
 
 /////////////
 /// COLOR ///
@@ -128,8 +128,14 @@ typedef struct s_map
 	double		zoom;
 	double		altitude;
 	double		x_angle;
+	double		cosx;
+	double		sinx;
 	double		y_angle;
+	double		cosy;
+	double		siny;
 	double		z_angle;
+	double		cosz;
+	double		sinz;
 }				t_map;
 
 typedef struct s_data

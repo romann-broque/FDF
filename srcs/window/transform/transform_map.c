@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 13:51:11 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/15 03:24:58 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/16 11:30:43 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ static void	altitude(const t_map *map)
 
 void	transform_map(t_map *map)
 {
-	altitude(map);
 	zoom(map);
 	center(map, WIDTH / 2, HEIGHT / 2);
 	rotate(map);
+	altitude(map);
 }
