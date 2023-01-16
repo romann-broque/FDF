@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/16 15:00:52 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/16 16:47:46 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,14 +54,14 @@
 
 # define MIN_HEIGHT 2
 # define MIN_WIDTH 2
-# define ZOOM 50
+# define ZOOM 1
 # define ZOOM_SHIFT 1
 # define X_ANGLE 0.0
 # define Y_ANGLE 0.0
 # define Z_ANGLE 0.0
 # define ANGLE_SHIFT 0.1
 # define ALTITUDE -2
-# define ALTITUDE_SHIFT 0.1
+# define ALTITUDE_SHIFT 0.01
 
 /////////////
 /// COLOR ///

@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 14:10:16 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/15 03:19:53 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/16 16:28:00 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,21 @@ static void	plot_line(t_data *data, t_line *line)
 	}
 }
 
+static bool are_pixels_out(const double x1, const double y1, const double x2, const double y2)
+{
+	if (x1 >= 0 && x1 <= WIDTH && x2 >= 0 && x2 <= WIDTH)
+		return ((y1 < 0 && y2 < 0) || (y1 > HEIGHT && y2 > HEIGHT));
+	else if (y1 >= 0 && y1 <= HEIGHT && y2 >= 0 && y2 <= HEIGHT)
+		return ((x1 < 0 && x2 < 0) || (x1 > WIDTH && x2 > WIDTH));
+	return (((x1 < 0 && x2 < 0) || (x1 > WIDTH && x2 > WIDTH))
+		&& ((y1 < 0 && y2 < 0) || (y1 > HEIGHT && y2 > HEIGHT)));
+}
+
+static bool	is_line_printable(t_line *line)
+{
+	return (are_pixels_out(line->x1, line->y1, line->x2, line->y2) == false);
+}
+
 void	put_line(t_data *data, const t_vertex v1, const t_vertex v2)
 {
 	t_line	line;
@@ -57,7 +72,8 @@ void	put_line(t_data *data, const t_vertex v1, const t_vertex v2)
 	line.dy = -fabs(v2.y - v1.y);
 	line.sy = get_sign(v2.y - v1.y);
 	line.error = line.dx + line.dy;
-	plot_line(data, &line);
+	if (is_line_printable(&line) == true)
+		plot_line(data, &line);
 }
 
 /*
