@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/16 17:50:20 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/17 02:59:04 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@
 # define Z_ANGLE 0.0
 # define ANGLE_SHIFT 0.1
 # define ANGLE_SHIFT 0.1
-# define ALTITUDE -2
+# define ALTITUDE -0.5
 # define ALTITUDE_SHIFT 0.01
 # define ALTITUDE_SHIFT_BOOST 1
 
@@ -129,8 +129,10 @@ typedef struct s_map
 	t_vertex	center;
 	size_t		x_size;
 	size_t		y_size;
+	// transfo
 	double		zoom;
 	double		altitude;
+	// trigo
 	double		x_angle;
 	double		cosx;
 	double		sinx;
@@ -140,6 +142,9 @@ typedef struct s_map
 	double		z_angle;
 	double		cosz;
 	double		sinz;
+	// cursor
+	int			cursor_x;
+	int			cursor_y;
 }				t_map;
 
 typedef struct s_data
@@ -300,6 +305,7 @@ void	put_pixel(t_data *data, int x, int y, int color);
 
 // put_line.c
 
+int	get_sign(const double nb);
 void	put_line(t_data *data, const t_vertex v1, const t_vertex v2);
 
 // TRANSFORM //
