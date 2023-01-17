@@ -6,26 +6,17 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 15:12:42 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/15 17:34:49 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/17 12:02:12 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	get_absolute_index(char *buffer, const char c)
-{
-	const ssize_t	index = index_of(buffer, c);
-
-	if (index == -1)
-		return (ft_strlen(buffer));
-	return (index);
-}
-
 static t_line_status	get_line_from_buff(char **line, char *buffer)
 {
 	size_t	index;
 
-	index = get_absolute_index(buffer, '\n');
+	index = abs_index(buffer, '\n');
 	if (*buffer != '\0')
 	{
 		*line = ft_strnjoin(*line, buffer, index + 1);

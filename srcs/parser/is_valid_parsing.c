@@ -6,22 +6,33 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 12:04:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/15 18:22:13 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/17 12:31:58 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static bool	is_format_valid(const char *str)
+bool	is_alt_valid(const char *alt)
 {
 	size_t	i;
 
-	if (*str == '-' || *str == '+')
-		++str;
+	if (*alt == '-' || *alt == '+')
+		++alt;
 	i = 0;
-	while (ft_isdigit(str[i]) != 0)
+	while (ft_isdigit(alt[i]) != 0)
 		++i;
-	return (i > 0 && str[i] == '\0');
+	return (i > 0 && (alt[i] == '\0' || alt[i] == SEPARATOR));
+}
+
+bool	is_color_valid(const char *color)
+{
+	(void)color;
+	return (true);
+}
+
+static bool	is_format_valid(const char *str)
+{
+	return (is_alt_valid(str) && is_color_valid(str + abs_index(str, SEPARATOR)));
 }
 
 static bool	is_line_valid(char **line, size_t ref_size)

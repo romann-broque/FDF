@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/17 02:59:04 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/17 16:14:33 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,13 @@
 ///////////////////////////////
 
 # define EXPECT_COUNT_ARG 2
+
+//////////////
+/// PARSER ///
+//////////////
+
+# define SEPARATOR	','
+# define HEX_BASE	"0123456789abcdef"
 
 /////////////
 /// ERROR ///
@@ -69,12 +76,9 @@
 /// COLOR ///
 /////////////
 
-# define WHITE			0x00FFFFFF
-# define RED			0x00FF0000
-
-/////////////
-/// ERROR ///
-/////////////
+# define WHITE				0x00FFFFFF
+# define RED				0x00FF0000
+# define UNDEFINED_COLOR	-1
 
 ///////////////////
 /// KEY_MAPPING ///
@@ -100,20 +104,6 @@
 //// <----- STRUCT -----> ////
 //////////////////////////////
 
-typedef struct s_line
-{
-	int		x1;
-	int		x2;
-	int		y1;
-	int		y2;
-	long	dx; //stdlib --> math
-	int		sx;
-	long	dy;
-	int		sy;
-	long	error;
-	long	e2;
-}				t_line;
-
 typedef struct s_vertex
 {
 	float	x;
@@ -121,6 +111,18 @@ typedef struct s_vertex
 	float	z;
 	int	color;
 }				t_vertex;
+
+typedef struct s_line
+{
+	t_vertex v1;
+	t_vertex v2;
+	long	dx; //stdlib --> math
+	int		sx;
+	long	dy;
+	int		sy;
+	long	error;
+	long	e2;
+}				t_line;
 
 typedef struct s_map
 {
@@ -305,8 +307,8 @@ void	put_pixel(t_data *data, int x, int y, int color);
 
 // put_line.c
 
-int	get_sign(const double nb);
-void	put_line(t_data *data, const t_vertex v1, const t_vertex v2);
+int		get_sign(const double nb);
+void	put_line(t_data *data, const t_vertex *v1, const t_vertex *v2);
 
 // TRANSFORM //
 

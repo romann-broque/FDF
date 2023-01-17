@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 21:06:20 by rbroque           #+#    #+#             */
-/*   Updated: 2022/12/20 23:11:10 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/17 12:54:51 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # define LAST_WHITESPACE 13
 
 int		ft_atoi(const char *str);
+int		ft_atoi_base(const char *str, char *base);
 char	*ft_itoa(int n);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 16:32:34 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/05 02:22:53 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/17 12:39:07 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ size_t	get_file_size(const char *path_file)
 		free(curr_line);
 		curr_line = get_next_line(fd);
 	}
+	close(fd);
 	return (size);
 }
 
@@ -46,6 +47,7 @@ char	**get_file_content(const char *path_file, const size_t size)
 		}
 		lines[size] = NULL;
 	}
+	close(fd);
 	return (lines);
 }
 

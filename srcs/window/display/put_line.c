@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 14:10:16 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/16 16:28:00 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/17 16:19:09 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,28 +19,47 @@ int	get_sign(const double nb)
 	return (1);
 }
 
+static bool	are_same_crd(const double c1, const double c2)
+{
+	return ((int)c1 == (int)c2);
+}
+
+static void	put_vertex(t_data *data, t_vertex *vertex)
+{
+	int	color;
+
+	color = vertex->color;
+	if (vertex->color == UNDEFINED_COLOR)
+		color = fabs(vertex->z) * 100 + WHITE;
+	put_pixel(data, vertex->x, vertex->y, color);
+}
+
 static void	plot_line(t_data *data, t_line *line)
 {
-	while (true)
+	size_t	i;
+
+	i = 0;
+	while (i < UINT_MAX)
 	{
-		put_pixel(data, line->x1, line->y1, WHITE);
-		if (line->x1 == line->x2 && line->y1 == line->y2)
+		put_vertex(data, &line->v1);
+		if (are_same_crd(line->v1.x, line->v2.x) && are_same_crd(line->v1.y, line->v2.y))
 			break ;
 		line->e2 = 2 * line->error;
 		if (line->e2 >= line->dy)
 		{
-			if (line->x1 == line->x2)
+			if (are_same_crd(line->v1.x, line->v2.x))
 				break ;
 			line->error += line->dy;
-			line->x1 += line->sx;
+			line->v1.x += line->sx;
 		}
 		if (line->e2 <= line->dx)
 		{
-			if (line->y1 == line->y2)
+			if (are_same_crd(line->v1.y, line->v2.y))
 				break ;
 			line->error += line->dx;
-			line->y1 += line->sy;
+			line->v1.y += line->sy;
 		}
+		++i;
 	}
 }
 
@@ -56,21 +75,28 @@ static bool are_pixels_out(const double x1, const double y1, const double x2, co
 
 static bool	is_line_printable(t_line *line)
 {
-	return (are_pixels_out(line->x1, line->y1, line->x2, line->y2) == false);
+	return (are_pixels_out(line->v1.x, line->v1.y, line->v2.x, line->v2.y) == false);
 }
 
-void	put_line(t_data *data, const t_vertex v1, const t_vertex v2)
+//
+
+void	cpy_vertex(t_vertex *vdest, const t_vertex *vsrc)
+{
+	set_vertex(vdest, vsrc->x, vsrc->y, vsrc->z, vsrc->color);
+}
+
+//
+
+void	put_line(t_data *data, const t_vertex *v1, const t_vertex *v2)
 {
 	t_line	line;
 
-	line.x1 = v1.x;
-	line.x2 = v2.x;
-	line.y1 = v1.y;
-	line.y2 = v2.y;
-	line.dx = fabs(v2.x - v1.x);
-	line.sx = get_sign(v2.x - v1.x);
-	line.dy = -fabs(v2.y - v1.y);
-	line.sy = get_sign(v2.y - v1.y);
+	cpy_vertex(&line.v1, v1);
+	cpy_vertex(&line.v2, v2);
+	line.dx = fabs(v2->x - v1->x);
+	line.sx = get_sign(v2->x - v1->x);
+	line.dy = -fabs(v2->y - v1->y);
+	line.sy = get_sign(v2->y - v1->y);
 	line.error = line.dx + line.dy;
 	if (is_line_printable(&line) == true)
 		plot_line(data, &line);

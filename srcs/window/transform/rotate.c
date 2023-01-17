@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 16:04:38 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/17 11:52:32 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/17 12:41:38 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,4 @@ void	rotate(t_map *map)
 	offset(map, -map->center.x, -map->center.y);
 	rotate_map(map);
 	offset(map, map->center.x, map->center.y);
-	printf("x_angle --> %lf\n", map->x_angle);
-	printf("y_angle --> %lf\n", map->y_angle);
-	printf("z_angle --> %lf\n", map->z_angle);
 }

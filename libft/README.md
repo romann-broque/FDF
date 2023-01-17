@@ -156,3 +156,7 @@ A C-library of usual functions
 #### [`index_of`](srcs/strings/index_of.c)
 > Returns the index of the first matching character occurence.
 > If the character isn't found, it returns -1.
+
+#### [`abs_index`](srcs/strings/abs_index.c)
+> Returns the index of the first matching character occurence in a null-terminated string.
+> If the character isn't found, it returns the length of the string.
