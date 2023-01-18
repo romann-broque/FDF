@@ -6,7 +6,7 @@
 #    By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 13:20:37 by rbroque           #+#    #+#              #
-#    Updated: 2023/01/16 17:44:26 by rbroque          ###   ########.fr        #
+#    Updated: 2023/01/18 16:38:32 by rbroque          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -91,6 +91,7 @@ SRCS += loop.c
 # srcs/window/loop/events
 
 SRCS += e_altitude.c
+SRCS += e_color.c
 SRCS += e_angle.c
 SRCS += e_close_window.c
 SRCS += e_zoom.c

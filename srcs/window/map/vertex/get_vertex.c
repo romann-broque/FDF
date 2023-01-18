@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 14:10:09 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/18 12:02:58 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/18 19:53:07 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ static int	get_color(const int alt, const char *format)
 {
 	int	color;
 
-	format += abs_index(format, SEPARATOR);
+	format += abs_index(format, SEPARATOR) + 1;
 	if (is_prefix_valid(format) == true)
-		color = ft_atoi_base(format + 2, HEX_BASE);
+		color = ft_atoi_base(format + ft_strlen(COLOR_PREFIX), HEX_BASE);
 	else
-		color = WHITE - alt * 20;
+		color = alt;
 	return (color);
 }
 

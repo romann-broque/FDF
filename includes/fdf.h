@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/18 12:01:44 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/18 20:24:24 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,7 @@
 # define Y_ANGLE 0.0
 # define Z_ANGLE 0.0
 # define ANGLE_SHIFT 0.1
-# define ANGLE_SHIFT 0.1
-# define ALTITUDE -0.5
+# define ALTITUDE -0.1
 # define ALTITUDE_SHIFT 0.01
 # define ALTITUDE_SHIFT_BOOST 1
 
@@ -77,9 +76,18 @@
 /// COLOR ///
 /////////////
 
+# define BLACK				0xFFFFFFFF
 # define WHITE				0x00FFFFFF
 # define RED				0x00FF0000
+# define YELLOW				0x0000FF00
+# define BLUE				0x000000FF
+# define GREEN				0x0000FFFF
 # define UNDEFINED_COLOR	-1
+# define DEFAULT_COLOR		WHITE
+# define COLOR_OFFSET		0x000000FF
+# define COLOR_MASK			0x00010000
+# define LIGHT_MASK			0x00FFFFFF
+# define DARK_MASK			0xFF000000
 
 ///////////////////
 /// KEY_MAPPING ///
@@ -99,6 +107,7 @@
 # define P_KEY 111
 # define U_KEY 117
 # define I_KEY 105
+# define C_KEY 99
 # define NO_KEY 0
 
 //////////////////////////////
@@ -123,7 +132,8 @@ typedef struct s_line
 	int		sy;
 	long	error;
 	long	e2;
-	double	color_shift;
+	float	color_shift;
+	uint	color_offset;
 }				t_line;
 
 typedef struct s_map
@@ -146,6 +156,8 @@ typedef struct s_map
 	double		z_angle;
 	double		cosz;
 	double		sinz;
+	// color
+	uint		color_offset;
 	// cursor
 	int			cursor_x;
 	int			cursor_y;
@@ -232,6 +244,10 @@ void	init_data(void *mlx_ptr, t_data *dest);
 
 // EVENTS//
 
+// e_color.c
+
+int	change_color(t_win *window);
+
 // e_close_window.c
 
 int		close_window(t_win *ptr);
@@ -310,7 +326,7 @@ void	put_pixel(t_data *data, int x, int y, int color);
 // put_line.c
 
 int		get_sign(const double nb);
-void	put_line(t_data *data, const t_vertex *v1, const t_vertex *v2);
+void	put_line(t_data *data, const t_vertex *v1, const t_vertex *v2, const uint color_offset);
 
 // TRANSFORM //
 
