@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/17 16:14:33 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/18 12:01:44 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,9 @@
 /// PARSER ///
 //////////////
 
-# define SEPARATOR	','
-# define HEX_BASE	"0123456789abcdef"
+# define SEPARATOR		','
+# define HEX_BASE		"0123456789abcdef"
+# define COLOR_PREFIX	"0x"
 
 /////////////
 /// ERROR ///
@@ -122,6 +123,7 @@ typedef struct s_line
 	int		sy;
 	long	error;
 	long	e2;
+	double	color_shift;
 }				t_line;
 
 typedef struct s_map

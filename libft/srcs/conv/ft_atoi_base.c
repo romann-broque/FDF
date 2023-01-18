@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/10 22:20:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/17 12:54:34 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/17 17:23:58 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@
 #define LAST_WHITESPACE 13
 */
 
-static char	*skip_whitespaces(char *str)
+static char	*skip_whitespaces(const char *str)
 {
 	while ((*str >= FIRST_WHITESPACE && *str <= LAST_WHITESPACE)
 		|| (*str == SPACE))
 		++str;
-	return (str);
+	return ((char *)str);
 }
 
 static int	get_sign(const char *str)

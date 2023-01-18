@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 14:10:16 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/17 16:19:09 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/18 11:48:03 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ static bool	are_same_crd(const double c1, const double c2)
 	return ((int)c1 == (int)c2);
 }
 
-static void	put_vertex(t_data *data, t_vertex *vertex)
+static void	put_vertex(t_data *data, t_vertex *vertex, double color_shift)
 {
 	int	color;
 
 	color = vertex->color;
 	if (vertex->color == UNDEFINED_COLOR)
-		color = fabs(vertex->z) * 100 + WHITE;
+		color = color_shift;
 	put_pixel(data, vertex->x, vertex->y, color);
 }
 
@@ -39,9 +39,9 @@ static void	plot_line(t_data *data, t_line *line)
 	size_t	i;
 
 	i = 0;
-	while (i < UINT_MAX)
+	while (i < INT_MAX)
 	{
-		put_vertex(data, &line->v1);
+		put_vertex(data, &line->v1, line->v1.color + line->color_shift * i);
 		if (are_same_crd(line->v1.x, line->v2.x) && are_same_crd(line->v1.y, line->v2.y))
 			break ;
 		line->e2 = 2 * line->error;
@@ -85,19 +85,42 @@ void	cpy_vertex(t_vertex *vdest, const t_vertex *vsrc)
 	set_vertex(vdest, vsrc->x, vsrc->y, vsrc->z, vsrc->color);
 }
 
+const t_vertex	*get_max_alt(const t_vertex *v1, const t_vertex *v2)
+{
+	if (v1->z > v2->z)
+		return (v1);
+	return (v2);
+}
+
+const t_vertex	*get_min_alt(const t_vertex *v1, const t_vertex *v2)
+{
+	if (v1->z > v2->z)
+		return (v2);
+	return (v1);
+}
+
+double	get_color_shift(const double dcolor, const double distance)
+{
+	if (distance == 0)
+		return (0);
+	return (dcolor / distance);
+}
 //
 
 void	put_line(t_data *data, const t_vertex *v1, const t_vertex *v2)
 {
 	t_line	line;
+	const t_vertex	*v_max = get_max_alt(v1, v2);
+	const t_vertex	*v_min = get_min_alt(v1, v2);
 
-	cpy_vertex(&line.v1, v1);
-	cpy_vertex(&line.v2, v2);
-	line.dx = fabs(v2->x - v1->x);
-	line.sx = get_sign(v2->x - v1->x);
-	line.dy = -fabs(v2->y - v1->y);
-	line.sy = get_sign(v2->y - v1->y);
+	cpy_vertex(&line.v1, v_max);
+	cpy_vertex(&line.v2, v_min);
+	line.dx = fabs(v_min->x - v_max->x);
+	line.sx = get_sign(v_min->x - v_max->x);
+	line.dy = -fabs(v_min->y - v_max->y);
+	line.sy = get_sign(v_min->y - v_max->y);
 	line.error = line.dx + line.dy;
+	line.color_shift = get_color_shift(v_max->color - v_min->color, sqrt(line.dx * line.dx + line.dy * line.dy));
 	if (is_line_printable(&line) == true)
 		plot_line(data, &line);
 }
