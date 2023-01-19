@@ -6,15 +6,19 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 14:10:09 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/18 19:53:07 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/19 11:51:11 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static int	get_altitude(const char *format)
+static int	get_altitude(const char *format, int *minz)
 {
-	return (ft_atoi(format));
+	const int	new_z = ft_atoi(format);
+
+	if (*minz > new_z)
+		*minz = new_z;
+	return (new_z);
 }
 
 static bool	is_prefix_valid(const char *format)
@@ -22,15 +26,16 @@ static bool	is_prefix_valid(const char *format)
 	return (ft_strncmp(format, COLOR_PREFIX, ft_strlen(COLOR_PREFIX)) == 0);
 }
 
-static int	get_color(const int alt, const char *format)
+static int	get_color(const int alt, const char *format, const int minz)
 {
-	int	color;
+	uint	color;
 
 	format += abs_index(format, SEPARATOR) + 1;
 	if (is_prefix_valid(format) == true)
 		color = ft_atoi_base(format + ft_strlen(COLOR_PREFIX), HEX_BASE);
 	else
-		color = alt;
+		color = (alt - minz);
+	(void)minz;
 	return (color);
 }
 
@@ -43,12 +48,16 @@ void	set_vertex(t_vertex *vertex,
 	vertex->color = color;
 }
 
-void	get_vertex(t_vertex *vertex, const size_t x, const size_t y, const char *format)
+void	get_vertex(t_map *map, const size_t x, const size_t y, const char *format)
 {
 	const int	new_x = (int)x;
 	const int	new_y = (int)y;
-	const int	new_z = get_altitude(format);
-	const int	color = get_color(new_z, format);
+	const int	new_z = get_altitude(format, &map->minz);
 
-	set_vertex(vertex, new_x, new_y, new_z, color);
+	set_vertex(&map->vertex[y][x], new_x, new_y, new_z, WHITE);
+}
+
+void	set_color(t_vertex *vertex, const char *format, const int minz)
+{
+	vertex->color = get_color(vertex->z, format, minz);
 }

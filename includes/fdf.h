@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/18 20:24:24 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/19 10:47:43 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ typedef struct s_vertex
 	float	x;
 	float	y;
 	float	z;
-	int	color;
+	uint	color;
 }				t_vertex;
 
 typedef struct s_line
@@ -143,6 +143,7 @@ typedef struct s_map
 	t_vertex	center;
 	size_t		x_size;
 	size_t		y_size;
+	int			minz;
 	// transfo
 	double		zoom;
 	double		altitude;
@@ -303,7 +304,8 @@ void	free_map(t_map *map);
 // get_vertex.c
 
 void	set_vertex(t_vertex *vertex, const float x, const float y, const float z, const int color);
-void	get_vertex(t_vertex *vertex, const size_t x, const size_t y, const char *format);
+void	get_vertex(t_map *map, const size_t x, const size_t y, const char *format);
+void	set_color(t_vertex *vertex, const char *format, const int minz);
 
 // DISPLAY //
 

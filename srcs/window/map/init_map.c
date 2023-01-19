@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 18:37:45 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/18 19:54:11 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/19 10:17:54 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,27 @@ static void	fill_map(t_map *map, char ***parsing)
 		j = 0;
 		while (j < x_size)
 		{
-			get_vertex(&map->vertex[i][j], j, i, parsing[i][j]);
+			get_vertex(map, j, i, parsing[i][j]);
+			++j;
+		}
+		++i;
+	}
+}
+
+static void	set_map_color(t_map *map, char ***parsing)
+{
+	const size_t	x_size = map->x_size;
+	const size_t	y_size = map->y_size;
+	size_t			i;
+	size_t			j;
+
+	i = 0;
+	while (i < y_size)
+	{
+		j = 0;
+		while (j < x_size)
+		{
+			set_color(&map->vertex[i][j], parsing[i][j], map->minz);
 			++j;
 		}
 		++i;
@@ -99,6 +119,7 @@ void	init_map(t_map *map, char ***parsing)
 {
 	map->x_size = get_x_size(parsing);
 	map->y_size = get_y_size(parsing);
+	map->minz = 0;
 	map->x_angle = X_ANGLE;
 	map->y_angle = Y_ANGLE;
 	map->z_angle = Z_ANGLE;
@@ -107,6 +128,10 @@ void	init_map(t_map *map, char ***parsing)
 	map->color_offset = COLOR_OFFSET;
 	init_vertex_map(&map->vertex, map->x_size, map->y_size);
 	if (map->vertex != NULL)
+	{
 		fill_map(map, parsing);
+		set_map_color(map, parsing);
+		printf("minz --> %d\n", map->minz);
+	}
 	dup_vertex_map(&map->vcpy, map->vertex, map->x_size, map->y_size);
 }
