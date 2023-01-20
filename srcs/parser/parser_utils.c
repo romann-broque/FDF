@@ -1,36 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   e_color.c                                          :+:      :+:    :+:   */
+/*   parser_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/18 16:36:47 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/20 10:36:43 by rbroque          ###   ########.fr       */
+/*   Created: 2023/01/20 16:20:40 by rbroque           #+#    #+#             */
+/*   Updated: 2023/01/20 16:22:12 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	change_color(t_win *window)
+bool	is_color_prefix_valid(const char *format)
 {
-	t_color *const	color = &window->map.color;
-
-	if (color->red < UCHAR_MAX)
-	{
-		if (color->blue > 0)
-		{
-			--(color->blue);
-			++(color->green);
-		}
-		else if (color->green > 0)
-		{
-			--(color->green);
-			++(color->red);
-		}
-		color->sum = sum_color(*color);
-	}
-	else
-		init_color(color);
-	return (EXIT_SUCCESS);
+	return (ft_strncmp(format, COLOR_PREFIX, ft_strlen(COLOR_PREFIX)) == 0);
 }

@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/20 13:54:27 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/20 17:09:21 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,18 +76,11 @@
 /// COLOR ///
 /////////////
 
-# define BLACK				0x0000000F
 # define WHITE				0x00FFFFFF
 # define RED				0x00FF0000
 # define YELLOW				0x0000FF00
 # define BLUE				0x000000FF
 # define GREEN				0x0000FFFF
-# define UNDEFINED_COLOR	-1
-# define DEFAULT_COLOR		WHITE
-# define COLOR_OFFSET		0x000000FF
-# define COLOR_MASK			0x00010000
-# define LIGHT_MASK			0x00010101
-# define DARK_MASK			0xFF000000
 
 ///////////////////
 /// KEY_MAPPING ///
@@ -107,7 +100,6 @@
 # define P_KEY 111
 # define U_KEY 117
 # define I_KEY 105
-# define C_KEY 99
 # define NO_KEY 0
 
 //////////////////////////////
@@ -124,19 +116,18 @@ typedef struct s_vertex
 
 typedef struct s_line
 {
-	t_vertex v1;
-	t_vertex v2;
-	long	dx; //stdlib --> math
-	int		sx;
-	long	dy;
-	int		sy;
-	long	error;
-	long	e2;
-	float	color_shift;
-	uint	color_offset;
+	t_vertex	v1;
+	t_vertex	v2;
+	long		dx; //stdlib --> math
+	int			sx;
+	long		dy;
+	int			sy;
+	long		error;
+	long		e2;
+	float		color_shift;
 }				t_line;
 
-typedef struct	s_color
+typedef struct s_color
 {
 	uint	red;
 	uint	green;
@@ -166,11 +157,6 @@ typedef struct s_map
 	double		z_angle;
 	double		cosz;
 	double		sinz;
-	// color
-	t_color		color;
-	// cursor
-	int			cursor_x;
-	int			cursor_y;
 }				t_map;
 
 typedef struct s_data
@@ -226,6 +212,10 @@ char	**get_file_content(const char *path_file, const size_t size);
 size_t	get_file_size(const char *path_file);
 void	free_parsing(char ****parsing);
 
+// parser_utils.c
+
+bool	is_color_prefix_valid(const char *format);
+
 /// WINDOW ///
 
 // free_window.c
@@ -253,10 +243,6 @@ void	init_data(void *mlx_ptr, t_data *dest);
 // LOOP //
 
 // EVENTS//
-
-// e_color.c
-
-int		change_color(t_win *window);
 
 // e_close_window.c
 
@@ -308,11 +294,6 @@ size_t	get_y_size(char ***parsing);
 
 void	free_map(t_map *map);
 
-// COLOR //
-
-uint	sum_color(t_color color);
-void	init_color(t_color *color);
-
 // VERTEX //
 
 // get_vertex.c
@@ -320,6 +301,10 @@ void	init_color(t_color *color);
 void	set_vertex(t_vertex *vertex, const float x, const float y, const float z, const float color);
 void	get_vertex(t_map *map, const size_t x, const size_t y, const char *format);
 void	set_color(t_vertex *vertex, const char *format, const int minz, const int maxz);
+
+// color_vertex.c
+
+float	color_vertex(const int alt, const int minz, const int maxz);
 
 // DISPLAY //
 
@@ -342,7 +327,7 @@ void	put_pixel(t_data *data, int x, int y, int color);
 // put_line.c
 
 int		get_sign(const double nb);
-void	put_line(t_data *data, const t_vertex *v1, const t_vertex *v2, const uint color_offset);
+void	put_line(t_data *data, const t_vertex *v1, const t_vertex *v2);
 
 // TRANSFORM //
 

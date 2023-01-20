@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 14:27:27 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/20 10:26:08 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/20 16:45:56 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ static void	print_map(t_data *data, const t_map *map)
 		while (j < map->x_size)
 		{
 			if (j < map->x_size - 1)
-				put_line(data, &map->vcpy[i][j], &map->vcpy[i][j + 1], map->color.sum);
+				put_line(data, &map->vcpy[i][j], &map->vcpy[i][j + 1]);
 			if (i < map->y_size - 1)
-				put_line(data, &map->vcpy[i][j], &map->vcpy[i + 1][j], map->color.sum);
+				put_line(data, &map->vcpy[i][j], &map->vcpy[i + 1][j]);
 			++j;
 		}
 		++i;
