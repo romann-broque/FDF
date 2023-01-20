@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/20 10:27:26 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/20 13:54:27 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ typedef struct s_vertex
 	float	x;
 	float	y;
 	float	z;
-	uint	color;
+	float	color;
 }				t_vertex;
 
 typedef struct s_line
@@ -152,6 +152,7 @@ typedef struct s_map
 	size_t		x_size;
 	size_t		y_size;
 	int			minz;
+	int			maxz;
 	// transfo
 	double		zoom;
 	double		altitude;
@@ -255,7 +256,7 @@ void	init_data(void *mlx_ptr, t_data *dest);
 
 // e_color.c
 
-int	change_color(t_win *window);
+int		change_color(t_win *window);
 
 // e_close_window.c
 
@@ -316,9 +317,9 @@ void	init_color(t_color *color);
 
 // get_vertex.c
 
-void	set_vertex(t_vertex *vertex, const float x, const float y, const float z, const int color);
+void	set_vertex(t_vertex *vertex, const float x, const float y, const float z, const float color);
 void	get_vertex(t_map *map, const size_t x, const size_t y, const char *format);
-void	set_color(t_vertex *vertex, const char *format, const int minz);
+void	set_color(t_vertex *vertex, const char *format, const int minz, const int maxz);
 
 // DISPLAY //
 

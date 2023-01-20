@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 18:37:45 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/20 10:23:29 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/20 12:10:32 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static void	set_map_color(t_map *map, char ***parsing)
 		j = 0;
 		while (j < x_size)
 		{
-			set_color(&map->vertex[i][j], parsing[i][j], map->minz);
+			set_color(&map->vertex[i][j], parsing[i][j], map->minz, map->maxz);
 			++j;
 		}
 		++i;
@@ -119,7 +119,8 @@ void	init_map(t_map *map, char ***parsing)
 {
 	map->x_size = get_x_size(parsing);
 	map->y_size = get_y_size(parsing);
-	map->minz = 0;
+	map->minz = INT_MAX;
+	map->maxz = INT_MIN;
 	map->x_angle = X_ANGLE;
 	map->y_angle = Y_ANGLE;
 	map->z_angle = Z_ANGLE;
@@ -132,6 +133,7 @@ void	init_map(t_map *map, char ***parsing)
 		fill_map(map, parsing);
 		set_map_color(map, parsing);
 		printf("minz --> %d\n", map->minz);
+		printf("maxz --> %d\n", map->maxz);
 	}
 	dup_vertex_map(&map->vcpy, map->vertex, map->x_size, map->y_size);
 }

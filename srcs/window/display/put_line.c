@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 14:10:16 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/20 10:39:03 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/20 15:30:17 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static bool are_same_crd(const double c1, const double c2)
 
 static void put_vertex(t_data *data, t_vertex *vertex, double color_shift, uint color_offset)
 {
-	ulong color;
+	float color;
 
 	color = vertex->color;
 	// if (vertex->z > 0)
@@ -34,12 +34,19 @@ static void put_vertex(t_data *data, t_vertex *vertex, double color_shift, uint 
 	// else
 	//  	color += fabs(color_shift + BLUE);
 //	if (color <= WHITE - color_offset)
-		color += color_offset;
+	// if (color <= (float)(WHITE) / (float)color_offset)
+	// 	color = color * color_offset;
+	// else
+	// 	color = color_offset;
+	// //if ((int)color_shift == 0)
+	//	printf("new->color --> %.6x\n", (int)color);
 	// else
 	// 	color += color_offset;
 	//color *= 10;
 	//printf("color --> %lu\n", color);
+	//printf("color_offset --> %u\n", color_offset);
 	(void)color_shift;
+	(void)color_offset;
 	put_pixel(data, vertex->x, vertex->y, color);
 }
 
