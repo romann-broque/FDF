@@ -1,36 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   e_color.c                                          :+:      :+:    :+:   */
+/*   init_color.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/18 16:36:47 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/20 10:36:43 by rbroque          ###   ########.fr       */
+/*   Created: 2023/01/20 10:23:14 by rbroque           #+#    #+#             */
+/*   Updated: 2023/01/20 10:34:46 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	change_color(t_win *window)
+uint	sum_color(t_color color)
 {
-	t_color *const	color = &window->map.color;
+	color.red <<= 16;
+	color.green <<= 8;
+	return (color.red + color.green + color.blue);
+}
 
-	if (color->red < UCHAR_MAX)
-	{
-		if (color->blue > 0)
-		{
-			--(color->blue);
-			++(color->green);
-		}
-		else if (color->green > 0)
-		{
-			--(color->green);
-			++(color->red);
-		}
-		color->sum = sum_color(*color);
-	}
-	else
-		init_color(color);
-	return (EXIT_SUCCESS);
+void	init_color(t_color *color)
+{
+	color->red = 0;
+	color->green = 0;
+	color->blue = UCHAR_MAX;
+	color->sum = sum_color(*color);
 }

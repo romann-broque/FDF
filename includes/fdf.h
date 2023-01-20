@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/19 10:47:43 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/20 10:27:26 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@
 /// COLOR ///
 /////////////
 
-# define BLACK				0xFFFFFFFF
+# define BLACK				0x0000000F
 # define WHITE				0x00FFFFFF
 # define RED				0x00FF0000
 # define YELLOW				0x0000FF00
@@ -86,7 +86,7 @@
 # define DEFAULT_COLOR		WHITE
 # define COLOR_OFFSET		0x000000FF
 # define COLOR_MASK			0x00010000
-# define LIGHT_MASK			0x00FFFFFF
+# define LIGHT_MASK			0x00010101
 # define DARK_MASK			0xFF000000
 
 ///////////////////
@@ -136,6 +136,14 @@ typedef struct s_line
 	uint	color_offset;
 }				t_line;
 
+typedef struct	s_color
+{
+	uint	red;
+	uint	green;
+	uint	blue;
+	uint	sum;
+}				t_color;
+
 typedef struct s_map
 {
 	t_vertex	**vertex;
@@ -158,7 +166,7 @@ typedef struct s_map
 	double		cosz;
 	double		sinz;
 	// color
-	uint		color_offset;
+	t_color		color;
 	// cursor
 	int			cursor_x;
 	int			cursor_y;
@@ -298,6 +306,11 @@ size_t	get_y_size(char ***parsing);
 // free_map.c
 
 void	free_map(t_map *map);
+
+// COLOR //
+
+uint	sum_color(t_color color);
+void	init_color(t_color *color);
 
 // VERTEX //
 

@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 14:10:16 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/19 12:11:45 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/20 10:39:03 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,17 +29,17 @@ static void put_vertex(t_data *data, t_vertex *vertex, double color_shift, uint 
 	ulong color;
 
 	color = vertex->color;
-//	if (vertex->z > 0)
-		color += fabs(color_shift + RED);
-//	else
-//		color += fabs(color_shift + BLUE);
-	if (color <= WHITE - color_offset)
-		color += -WHITE + color_offset;
-	else
-		color += -WHITE + color_offset;
-//	if (color < WHITE / 10)
-		color *= 10;
+	// if (vertex->z > 0)
+	//  	color += fabs(color_shift + GREEN);
+	// else
+	//  	color += fabs(color_shift + BLUE);
+//	if (color <= WHITE - color_offset)
+		color += color_offset;
+	// else
+	// 	color += color_offset;
+	//color *= 10;
 	//printf("color --> %lu\n", color);
+	(void)color_shift;
 	put_pixel(data, vertex->x, vertex->y, color);
 }
 
