@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/22 17:22:02 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/22 18:00:44 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -330,9 +330,24 @@ void	display_map(t_win *window);
 
 void	display_window(t_win *window);
 
+// LINE //
+
+// init_line.c
+
+void	init_line(t_line *line, const t_vertex *v1, const t_vertex *v2);
+
 // put_pixel.c
 
 void	put_pixel(t_data *data, int x, int y, int color);
+
+// line_utils.c
+
+bool	is_line_printable(t_line *line);
+bool	are_same_crd(const double c1, const double c2);
+
+// put_point.c
+
+void	put_point(t_data *data, const t_line *line);
 
 // put_line.c
 

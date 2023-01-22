@@ -6,7 +6,7 @@
 #    By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 13:20:37 by rbroque           #+#    #+#              #
-#    Updated: 2023/01/20 17:09:00 by rbroque          ###   ########.fr        #
+#    Updated: 2023/01/22 17:57:29 by rbroque          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,13 +31,14 @@ PATH_SRCS += srcs/
 PATH_SRCS += srcs/parser/
 PATH_SRCS += srcs/error
 PATH_SRCS += srcs/window/
-PATH_SRCS += srcs/window/data
-PATH_SRCS += srcs/window/display
-PATH_SRCS += srcs/window/loop
-PATH_SRCS += srcs/window/loop/events
-PATH_SRCS += srcs/window/map
-PATH_SRCS += srcs/window/map/vertex
-PATH_SRCS += srcs/window/transform
+PATH_SRCS += srcs/window/data/
+PATH_SRCS += srcs/window/display/
+PATH_SRCS += srcs/window/display/line/
+PATH_SRCS += srcs/window/loop/
+PATH_SRCS += srcs/window/loop/events/
+PATH_SRCS += srcs/window/map/
+PATH_SRCS += srcs/window/map/vertex/
+PATH_SRCS += srcs/window/transform/
 
 # srcs/
 
@@ -71,8 +72,14 @@ SRCS += free_data.c
 SRCS += display_window.c
 SRCS += display_map.c
 SRCS += refresh.c
+
+# srcs/window/display/
+
+SRCS += init_line.c
+SRCS += line_utils.c
 SRCS += put_line.c
 SRCS += put_pixel.c
+SRCS += put_point.c
 
 # srcs/window/map/
 
