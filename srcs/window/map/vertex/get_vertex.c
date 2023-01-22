@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 14:10:09 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/20 16:58:44 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/20 17:48:14 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,21 +23,18 @@ static int	get_altitude(const char *format, int *minz, int *maxz)
 	return (new_z);
 }
 
-static float	get_color(const int alt, const char *format, const int minz, const int maxz)
+static void	get_color(t_vertex *vertex, const char *format, const int minz, const int maxz)
 {
-	float	color;
-
 	format += abs_index(format, SEPARATOR) + 1;
 	if (is_color_prefix_valid(format) == true)
-		color = ft_atoi_base(format + ft_strlen(COLOR_PREFIX), HEX_BASE);
+		vertex->color.sum = ft_atoi_base(format + ft_strlen(COLOR_PREFIX), HEX_BASE); // calculate components
 	else
-		color = color_vertex(alt, minz, maxz);
-	return (color);
+		color_vertex(vertex, minz, maxz);
 }
 
 void	set_color(t_vertex *vertex, const char *format, const int minz, const int maxz)
 {
-	vertex->color = get_color(vertex->z, format, minz, maxz);
+	get_color(vertex, format, minz, maxz);
 }
 
 void	set_vertex(t_vertex *vertex,
@@ -46,7 +43,7 @@ void	set_vertex(t_vertex *vertex,
 	vertex->x = x;
 	vertex->y = y;
 	vertex->z = z;
-	vertex->color = color;
+	vertex->color.sum = color;
 }
 
 void	get_vertex(t_map *map, const size_t x, const size_t y, const char *format)

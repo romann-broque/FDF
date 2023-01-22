@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 14:10:16 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/20 16:54:22 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/22 17:31:46 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,17 @@ static bool	are_same_crd(const double c1, const double c2)
 	return ((int)c1 == (int)c2);
 }
 
-static void	put_vertex(t_data *data, t_vertex *vertex, double color_shift)
+static void	put_point(t_data *data, const t_line *line)
 {
-	float	color;
+	int		color;
+	float	rad = (float)(sqrt((line->v1.x - line->v2.x) * (line->v1.x - line->v2.x)
+				+ (line->v1.y - line->v2.y) * (line->v1.y - line->v2.y))) / (float)(line->nb_points);
+	int		red = line->v2.color.red * (1 - rad) + line->v1.color.red * rad;
+	int		green = (line->v2.color.green * (1 - rad) + line->v1.color.green * rad);
+	int		blue = (line->v2.color.blue * (1 - rad) + line->v1.color.blue * rad);
 
-	color = vertex->color;
-	// if (vertex->z > 0)
-	// 	color -= fabs(color_shift);
-	// else
-	// 	color -= fabs(color_shift);
-	(void)color_shift;
-	put_pixel(data, vertex->x, vertex->y, color);
+	color = (red << 16) + (green << 8) + blue;
+	put_pixel(data, line->v1.x, line->v1.y, color);
 }
 
 static void	plot_line(t_data *data, t_line *line)
@@ -44,7 +44,7 @@ static void	plot_line(t_data *data, t_line *line)
 	i = 0;
 	while (i < 1000)
 	{
-		put_vertex(data, &line->v1, line->color_shift * i);
+		put_point(data, line);
 		if (are_same_crd(line->v1.x, line->v2.x) && are_same_crd(line->v1.y, line->v2.y))
 			break ;
 		line->e2 = 2 * line->error;
@@ -80,11 +80,13 @@ static bool is_line_printable(t_line *line)
 	return (are_pixels_out(line->v1.x, line->v1.y, line->v2.x, line->v2.y) == false);
 }
 
-//
-
 void cpy_vertex(t_vertex *vdest, const t_vertex *vsrc)
 {
-	set_vertex(vdest, vsrc->x, vsrc->y, vsrc->z, vsrc->color);
+	set_vertex(vdest, vsrc->x, vsrc->y, vsrc->z, 0);
+	vdest->color.red = vsrc->color.red;
+	vdest->color.green = vsrc->color.green;
+	vdest->color.blue = vsrc->color.blue;
+	vdest->color.sum = vsrc->color.sum;
 }
 
 const t_vertex *get_max_alt(const t_vertex *v1, const t_vertex *v2)
@@ -101,14 +103,6 @@ const t_vertex *get_min_alt(const t_vertex *v1, const t_vertex *v2)
 	return (v1);
 }
 
-double get_color_shift(const double dcolor, const double distance)
-{
-	if (distance == 0)
-		return (0);
-	return (dcolor / distance);
-}
-//
-
 void put_line(t_data *data, const t_vertex *v1, const t_vertex *v2)
 {
 	t_line			line;
@@ -122,7 +116,7 @@ void put_line(t_data *data, const t_vertex *v1, const t_vertex *v2)
 	line.dy = -fabs(v_min->y - v_max->y);
 	line.sy = get_sign(v_min->y - v_max->y);
 	line.error = line.dx + line.dy;
-	line.color_shift = get_color_shift(v_max->color - v_min->color, sqrt(line.dx * line.dx + line.dy * line.dy));
+	line.nb_points = sqrt(line.dx * line.dx + line.dy * line.dy);
 	if (is_line_printable(&line) == true)
 		plot_line(data, &line);
 }

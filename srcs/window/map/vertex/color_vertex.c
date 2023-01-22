@@ -6,18 +6,11 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:11:26 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/20 17:08:21 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/20 18:07:13 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-static uint	sum_color(t_color color)
-{
-	color.red <<= 16;
-	color.green <<= 8;
-	return (color.red + color.green + color.blue);
-}
 
 static uint	get_red(float rad)
 {
@@ -58,16 +51,30 @@ static uint	get_blue(float rad)
 	return (blue);
 }
 
-float	color_vertex(const int alt, const int minz, const int maxz)
+uint	sum_color(t_color color)
 {
-	t_color	color;
+	color.red <<= 16;
+	color.green <<= 8;
+	return (color.red + color.green + color.blue);
+}
+
+void	color_vertex(t_vertex *vertex, const int minz, const int maxz)
+{
 	float	rad;
 
 	if (minz == maxz)
-		return (WHITE);
-	rad = (float)(alt - minz) / (float)(maxz - minz);
-	color.red = get_red(rad);
-	color.green = get_green(rad);
-	color.blue = get_blue(rad);
-	return (sum_color(color));
+	{
+		vertex->color.red = UCHAR_MAX;
+		vertex->color.green = UCHAR_MAX;
+		vertex->color.blue = UCHAR_MAX;
+		vertex->color.sum = WHITE;
+	}
+	else
+	{
+		rad = (float)(vertex->z - minz) / (float)(maxz - minz);
+		vertex->color.red = get_red(rad);
+		vertex->color.green = get_green(rad);
+		vertex->color.blue = get_blue(rad);
+		vertex->color.sum = sum_color(vertex->color);
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/20 17:09:21 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/22 17:22:02 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,12 +106,28 @@
 //// <----- STRUCT -----> ////
 //////////////////////////////
 
+typedef struct s_color
+{
+	uint	red;
+	uint	green;
+	uint	blue;
+	uint	sum;
+}				t_color;
+
+typedef struct s_color_shift
+{
+	float	red;
+	float	green;
+	float	blue;
+}				t_color_shift;
+
+
 typedef struct s_vertex
 {
 	float	x;
 	float	y;
 	float	z;
-	float	color;
+	t_color	color;
 }				t_vertex;
 
 typedef struct s_line
@@ -124,16 +140,9 @@ typedef struct s_line
 	int			sy;
 	long		error;
 	long		e2;
-	float		color_shift;
-}				t_line;
+	size_t		nb_points;
 
-typedef struct s_color
-{
-	uint	red;
-	uint	green;
-	uint	blue;
-	uint	sum;
-}				t_color;
+}				t_line;
 
 typedef struct s_map
 {
@@ -304,7 +313,8 @@ void	set_color(t_vertex *vertex, const char *format, const int minz, const int m
 
 // color_vertex.c
 
-float	color_vertex(const int alt, const int minz, const int maxz);
+uint	sum_color(t_color color);
+void	color_vertex(t_vertex *vertex, const int minz, const int maxz);
 
 // DISPLAY //
 
