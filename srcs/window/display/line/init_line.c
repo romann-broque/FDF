@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 17:54:53 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/22 17:55:26 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/22 19:37:37 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,5 @@ void	init_line(t_line *line, const t_vertex *v1, const t_vertex *v2)
 	line->dy = -fabs(v_min->y - v_max->y);
 	line->sy = get_sign(v_min->y - v_max->y);
 	line->error = line->dx + line->dy;
-	line->nb_points = sqrt(line->dx * line->dx + line->dy * line->dy);
+	line->nb_points = sqrt(pow(line->dx, 2) + pow(line->dy, 2));
 }

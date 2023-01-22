@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/22 18:00:44 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/22 18:34:39 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,14 +113,6 @@ typedef struct s_color
 	uint	blue;
 	uint	sum;
 }				t_color;
-
-typedef struct s_color_shift
-{
-	float	red;
-	float	green;
-	float	blue;
-}				t_color_shift;
-
 
 typedef struct s_vertex
 {
