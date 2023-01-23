@@ -6,13 +6,14 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/23 10:21:19 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/23 10:27:16 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
 # define XK_LATIN1
+# define XK_MISCELLANY
 
 # include "libft.h"
 # include <mlx.h>
@@ -87,8 +88,7 @@
 /// KEY_MAPPING ///
 ///////////////////
 
-# define ESCAPE_KEY 65307
-
+# define K_ESC		XK_Escape
 # define K_XROT1	XK_w
 # define K_XROT2	XK_s
 # define K_YROT1	XK_a

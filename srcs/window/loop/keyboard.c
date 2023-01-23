@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 11:52:06 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/23 10:18:54 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/23 10:23:16 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	browse_mapping(
 int	key_press(const int key, t_win *window)
 {
 	static t_event_mapping	mapping[] = {
-	{.key = ESCAPE_KEY, .event = close_window},
+	{.key = K_ESC, .event = close_window},
 	{.key = K_ZOOM, .event = increase_zoom},
 	{.key = K_UNZOOM, .event = decrease_zoom},
 	{.key = K_XROT1, .event = increase_x_angle},

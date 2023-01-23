@@ -6,18 +6,11 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 14:10:16 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/22 17:55:13 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/23 10:30:39 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-int	get_sign(const double nb)
-{
-	if (nb < 0)
-		return (-1);
-	return (1);
-}
 
 static void	plot_line(t_data *data, t_line *line)
 {
