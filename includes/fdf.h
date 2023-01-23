@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/23 12:33:29 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/23 15:37:50 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,19 +62,22 @@
 /// TRANSFORM ///
 /////////////////
 
-# define MIN_HEIGHT 2
-# define MIN_WIDTH 2
-# define MAX_ZOOM SIZE_MAX
-# define MIN_ZOOM 0
-# define ZOOM 2
-# define ZOOM_SHIFT 1
-# define X_ANGLE 0.0
-# define Y_ANGLE 0.0
-# define Z_ANGLE 0.0
-# define ANGLE_SHIFT 0.1
-# define ALTITUDE -0.1
-# define ALTITUDE_SHIFT 0.01
-# define ALTITUDE_SHIFT_BOOST 1
+# define MIN_HEIGHT				2
+# define MIN_WIDTH				2
+# define MAX_ZOOM				SIZE_MAX
+# define MIN_ZOOM				0
+# define ZOOM					2
+# define ZOOM_SHIFT				1
+# define X_ANGLE				0.0
+# define Y_ANGLE				0.0
+# define Z_ANGLE				0.0
+# define ANGLE_SHIFT			0.1
+# define ALTITUDE				-0.1
+# define ALTITUDE_SHIFT			0.01
+# define ALTITUDE_SHIFT_BOOST	1
+# define X_OFFSET				0
+# define Y_OFFSET				0
+# define OFFSET_SHIFT			5
 
 /////////////
 /// COLOR ///
@@ -106,6 +109,12 @@
 # define K_ALT2		XK_p
 # define K_ALT3		XK_u
 # define K_ALT4		XK_i
+# define K_UP		XK_Up
+# define K_DOWN		XK_Down
+# define K_LEFT		XK_Left
+# define K_RIGHT	XK_Right
+# define K_CENTER	XK_c
+# define K_RESET	XK_r
 # define NO_KEY 0
 
 //////////////////////////////
@@ -154,6 +163,8 @@ typedef struct s_map
 	// transfo
 	double		zoom;
 	double		altitude;
+	int			x_offset;
+	int			y_offset;
 	// trigo
 	double		x_angle;
 	double		cosx;
@@ -276,6 +287,21 @@ int		increase_altitude(t_win *window);
 int		decrease_altitude(t_win *window);
 int		increase_altitude_boost(t_win *window);
 int		decrease_altitude_boost(t_win *window);
+
+// e_offset.c
+
+int		up(t_win *window);
+int		down(t_win *window);
+int		left(t_win *window);
+int		right(t_win *window);
+
+// e_center.c
+
+int		center_offset(t_win *window);
+
+// e_reset.c
+
+int		reset(t_win *window);
 
 // keyboard.c
 

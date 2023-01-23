@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 18:37:45 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/23 10:50:33 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/23 14:55:30 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,8 @@ void	init_map(t_map *map, char ***parsing)
 	map->z_angle = Z_ANGLE;
 	map->zoom = ZOOM;
 	map->altitude = ALTITUDE;
+	map->x_offset = X_OFFSET;
+	map->y_offset = Y_OFFSET;
 	init_vertex_map(&map->vertex, map->x_size, map->y_size);
 	if (map->vertex != NULL)
 	{
