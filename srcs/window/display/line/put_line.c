@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/10 14:10:16 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/23 10:30:39 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/23 12:37:37 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	plot_line(t_data *data, t_line *line)
 	size_t	i;
 
 	i = 0;
-	while (i < line->nb_points)
+	while (i <= line->nb_points)
 	{
 		put_point(data, line);
 		if (are_same_crd(line->v1.x, line->v2.x) && are_same_crd(line->v1.y, line->v2.y))

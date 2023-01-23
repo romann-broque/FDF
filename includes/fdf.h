@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/23 12:08:50 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/23 12:33:29 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@
 
 # define MIN_HEIGHT 2
 # define MIN_WIDTH 2
+# define MAX_ZOOM SIZE_MAX
+# define MIN_ZOOM 0
 # define ZOOM 2
 # define ZOOM_SHIFT 1
 # define X_ANGLE 0.0
