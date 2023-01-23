@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/23 11:05:58 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/23 12:08:50 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -220,6 +220,7 @@ void	free_parsing(char ****parsing);
 // parser_utils.c
 
 bool	is_color_prefix_valid(const char *format);
+bool	is_format_valid(const char *str);
 
 /// WINDOW ///
 

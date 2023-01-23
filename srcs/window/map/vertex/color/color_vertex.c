@@ -6,12 +6,11 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:11:26 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/23 11:02:40 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/23 12:00:30 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
 
 static void	set_defined_color(t_color *color, const char *format)
 {

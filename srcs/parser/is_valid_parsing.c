@@ -6,34 +6,11 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 12:04:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/17 12:31:58 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/23 12:08:00 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
-bool	is_alt_valid(const char *alt)
-{
-	size_t	i;
-
-	if (*alt == '-' || *alt == '+')
-		++alt;
-	i = 0;
-	while (ft_isdigit(alt[i]) != 0)
-		++i;
-	return (i > 0 && (alt[i] == '\0' || alt[i] == SEPARATOR));
-}
-
-bool	is_color_valid(const char *color)
-{
-	(void)color;
-	return (true);
-}
-
-static bool	is_format_valid(const char *str)
-{
-	return (is_alt_valid(str) && is_color_valid(str + abs_index(str, SEPARATOR)));
-}
 
 static bool	is_line_valid(char **line, size_t ref_size)
 {
@@ -46,7 +23,8 @@ static bool	is_line_valid(char **line, size_t ref_size)
 			return (false);
 		++i;
 	}
-	return (i >= MIN_HEIGHT && get_size_strs(line) == ref_size);
+	return (i >= MIN_HEIGHT && i <= INT_MAX
+		&& ref_size <= INT_MAX && get_size_strs(line) == ref_size);
 }
 
 bool	is_parsing_valid(char ***parsing)
