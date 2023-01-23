@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 11:52:06 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/20 16:42:19 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/23 10:18:54 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,18 +37,18 @@ int	key_press(const int key, t_win *window)
 {
 	static t_event_mapping	mapping[] = {
 	{.key = ESCAPE_KEY, .event = close_window},
-	{.key = R_KEY, .event = increase_zoom},
-	{.key = F_KEY, .event = decrease_zoom},
-	{.key = A_KEY, .event = increase_x_angle},
-	{.key = S_KEY, .event = decrease_x_angle},
-	{.key = Q_KEY, .event = increase_y_angle},
-	{.key = W_KEY, .event = decrease_y_angle},
-	{.key = Z_KEY, .event = increase_z_angle},
-	{.key = X_KEY, .event = decrease_z_angle},
-	{.key = P_KEY, .event = increase_altitude},
-	{.key = O_KEY, .event = decrease_altitude},
-	{.key = U_KEY, .event = increase_altitude_boost},
-	{.key = I_KEY, .event = decrease_altitude_boost},
+	{.key = K_ZOOM, .event = increase_zoom},
+	{.key = K_UNZOOM, .event = decrease_zoom},
+	{.key = K_XROT1, .event = increase_x_angle},
+	{.key = K_XROT2, .event = decrease_x_angle},
+	{.key = K_YROT1, .event = increase_y_angle},
+	{.key = K_YROT2, .event = decrease_y_angle},
+	{.key = K_ZROT1, .event = increase_z_angle},
+	{.key = K_ZROT2, .event = decrease_z_angle},
+	{.key = K_ALT1, .event = increase_altitude},
+	{.key = K_ALT2, .event = decrease_altitude},
+	{.key = K_ALT3, .event = increase_altitude_boost},
+	{.key = K_ALT4, .event = decrease_altitude_boost},
 	{.key = NO_KEY, .event = NULL},
 	};
 

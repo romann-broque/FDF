@@ -6,12 +6,13 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/22 18:34:39 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/23 10:21:19 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FDF_H
 # define FDF_H
+# define XK_LATIN1
 
 # include "libft.h"
 # include <mlx.h>
@@ -88,18 +89,18 @@
 
 # define ESCAPE_KEY 65307
 
-# define Q_KEY 113
-# define W_KEY 119
-# define A_KEY 97
-# define S_KEY 115
-# define Z_KEY 122
-# define X_KEY 120
-# define R_KEY 114
-# define F_KEY 102
-# define O_KEY 112
-# define P_KEY 111
-# define U_KEY 117
-# define I_KEY 105
+# define K_XROT1	XK_w
+# define K_XROT2	XK_s
+# define K_YROT1	XK_a
+# define K_YROT2	XK_d
+# define K_ZROT1	XK_q
+# define K_ZROT2	XK_e
+# define K_ZOOM		XK_equal
+# define K_UNZOOM	XK_minus
+# define K_ALT1		XK_o
+# define K_ALT2		XK_p
+# define K_ALT3		XK_u
+# define K_ALT4		XK_i
 # define NO_KEY 0
 
 //////////////////////////////

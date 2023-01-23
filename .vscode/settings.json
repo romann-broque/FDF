@@ -8,7 +8,8 @@
     ],
     "files.associations": {
         "cstdlib": "c",
-        "cmath": "c"
+        "cmath": "c",
+        "keysymdef.h": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
