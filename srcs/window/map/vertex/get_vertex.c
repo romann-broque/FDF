@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 14:10:09 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/20 17:48:14 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/23 11:02:37 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,20 +21,6 @@ static int	get_altitude(const char *format, int *minz, int *maxz)
 	if (*maxz < new_z)
 		*maxz = new_z;
 	return (new_z);
-}
-
-static void	get_color(t_vertex *vertex, const char *format, const int minz, const int maxz)
-{
-	format += abs_index(format, SEPARATOR) + 1;
-	if (is_color_prefix_valid(format) == true)
-		vertex->color.sum = ft_atoi_base(format + ft_strlen(COLOR_PREFIX), HEX_BASE); // calculate components
-	else
-		color_vertex(vertex, minz, maxz);
-}
-
-void	set_color(t_vertex *vertex, const char *format, const int minz, const int maxz)
-{
-	get_color(vertex, format, minz, maxz);
 }
 
 void	set_vertex(t_vertex *vertex,

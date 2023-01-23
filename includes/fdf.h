@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/23 10:27:16 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/23 11:05:58 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,11 +78,14 @@
 /// COLOR ///
 /////////////
 
-# define WHITE				0x00FFFFFF
-# define RED				0x00FF0000
-# define YELLOW				0x0000FF00
-# define BLUE				0x000000FF
-# define GREEN				0x0000FFFF
+# define RED_MASK			0xFF0000
+# define GREEN_MASK			0x00FF00
+# define BLUE_MASK			0x0000FF
+# define WHITE				0xFFFFFF
+# define RED				0xFF0000
+# define YELLOW				0x00FF00
+# define BLUE				0x0000FF
+# define GREEN				0x00FFFF
 
 ///////////////////
 /// KEY_MAPPING ///
@@ -302,12 +305,19 @@ void	free_map(t_map *map);
 
 void	set_vertex(t_vertex *vertex, const float x, const float y, const float z, const float color);
 void	get_vertex(t_map *map, const size_t x, const size_t y, const char *format);
-void	set_color(t_vertex *vertex, const char *format, const int minz, const int maxz);
 
 // color_vertex.c
 
-uint	sum_color(t_color color);
+void	get_color(t_vertex *vertex, const char *format, const int minz, const int maxz);
 void	color_vertex(t_vertex *vertex, const int minz, const int maxz);
+
+// color_utils.c
+
+uint	sum_color(t_color color);
+void	get_color_comp(t_color *color);
+uint	get_red(float rad);
+uint	get_green(float rad);
+uint	get_blue(float rad);
 
 // DISPLAY //
 

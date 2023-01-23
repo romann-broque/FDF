@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 18:37:45 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/20 17:04:36 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/23 10:50:33 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static void	set_map_color(t_map *map, char ***parsing)
 		j = 0;
 		while (j < x_size)
 		{
-			set_color(&map->vertex[i][j], parsing[i][j], map->minz, map->maxz);
+			get_color(&map->vertex[i][j], parsing[i][j], map->minz, map->maxz);
 			++j;
 		}
 		++i;
