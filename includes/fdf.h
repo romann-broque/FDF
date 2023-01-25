@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/25 12:08:58 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/25 12:16:54 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@
 //// <----- DEFINES -----> ////
 ///////////////////////////////
 
-# define EXPECT_COUNT_ARG 2
+# define EXPECT_COUNT_ARG	2
+# define ON					1
+# define OFF				0
 
 //////////////
 /// PARSER ///
@@ -116,6 +118,7 @@
 # define K_RIGHT	XK_Right
 # define K_CENTER	XK_c
 # define K_RESET	XK_r
+# define K_HUD		XK_h
 # define NO_KEY 0
 
 //////////////////////////////
@@ -193,6 +196,7 @@ typedef struct s_window
 	void	*win_ptr;
 	t_data	data;
 	t_map	map;
+	bool	hud_status;
 }				t_win;
 
 typedef struct s_event_mapping
@@ -303,6 +307,10 @@ int		center_offset(t_win *window);
 // e_reset.c
 
 int		reset(t_win *window);
+
+// e_hud.c
+
+int		toggle_hud(t_win *window);
 
 // keyboard.c
 

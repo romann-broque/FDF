@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 00:21:46 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/25 12:03:16 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/25 12:19:34 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,12 @@ static void	display_info(const t_win *window, const int x_offset, const int y_of
 		"AMPLITUDE  (O P) (U I)",
 		"CENTER     C",
 		"RESET      R",
+		"HUD        H",
 	};
 	size_t		i;
 
 	i = 0;
-	while (i < 6)
+	while (i < 7)
 	{
 		print_string(window, info[i], x_offset, y_offset + (i + 1) * 20, LIGHT_BLUE);
 		++i;
@@ -65,6 +66,9 @@ static void	display_interface(t_win *window, const int width, const int height, 
 
 void	display_hud(t_win *window)
 {
-	display_info(window, WIDTH - WIDTH / 8, HEIGHT / 10);
-	display_interface(window, 200, 200, WIDTH - WIDTH / 8 - 20, HEIGHT / 13);
+	if (window->hud_status == ON)
+	{
+		display_info(window, WIDTH - WIDTH / 8, HEIGHT / 10);
+		display_interface(window, 200, 200, WIDTH - WIDTH / 8 - 20, HEIGHT / 13);
+	}
 }

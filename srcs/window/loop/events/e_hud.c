@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_win.c                                      :+:      :+:    :+:   */
+/*   e_hud.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/07 14:09:27 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/07 14:50:25 by rbroque          ###   ########.fr       */
+/*   Created: 2023/01/25 12:14:08 by rbroque           #+#    #+#             */
+/*   Updated: 2023/01/25 12:15:26 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	init_window(t_win *window, char ***parsing)
+int	toggle_hud(t_win *window)
 {
-	window->hud_status = ON;
-	window->mlx_ptr = mlx_init();
-	if (window->mlx_ptr != NULL)
-	{
-		window->win_ptr = mlx_new_window(window->mlx_ptr, WIDTH, HEIGHT, WINDOW_TITLE);
-		init_data(window->mlx_ptr, &window->data);
-	}
-	init_map(&window->map, parsing);
+	if (window->hud_status == ON)
+		window->hud_status = OFF;
+	else
+		window->hud_status = ON;
+	return (EXIT_SUCCESS);
 }

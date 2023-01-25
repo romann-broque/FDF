@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 11:52:06 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/23 15:37:14 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/25 12:16:08 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ int	key_press(const int key, t_win *window)
 	{.key = K_RIGHT, .event = right},
 	{.key = K_CENTER, .event = center_offset},
 	{.key = K_RESET, .event = reset},
+	{.key = K_HUD, .event = toggle_hud},
 	{.key = NO_KEY, .event = NULL},
 	};
 
