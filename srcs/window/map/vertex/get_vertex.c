@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 14:10:09 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/23 11:02:37 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/25 11:35:00 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	set_vertex(t_vertex *vertex,
 	vertex->y = y;
 	vertex->z = z;
 	vertex->color.sum = color;
+	get_color_comp(&vertex->color);
 }
 
 void	get_vertex(t_map *map, const size_t x, const size_t y, const char *format)

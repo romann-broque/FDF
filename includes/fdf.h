@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/23 15:37:50 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/25 12:08:58 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@
 # define WINDOW_TITLE "FDF"
 
 # ifndef WIDTH
-#  define WIDTH 1600
+#  define WIDTH 1900
 # endif
 
 # ifndef HEIGHT
@@ -90,7 +90,8 @@
 # define RED				0xFF0000
 # define YELLOW				0x00FF00
 # define BLUE				0x0000FF
-# define GREEN				0x00FFFF
+# define GREEN				0x00FF00
+# define LIGHT_BLUE			0x00FFFF
 
 ///////////////////
 /// KEY_MAPPING ///
@@ -361,6 +362,10 @@ void	display_map(t_win *window);
 // display_window.c
 
 void	display_window(t_win *window);
+
+// hud.c
+
+void	display_hud(t_win *window);
 
 // LINE //
 
