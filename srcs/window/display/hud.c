@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 00:21:46 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/25 14:26:23 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/26 15:29:49 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ static void	display_info(const t_win *window, const int x_offset, const int y_of
 		"ZOOM       + -",
 		"ROTATE     (Q E) (A D) (W S)",
 		"AMPLITUDE  (O P) (U I)",
+		"VIEW       1 / 2",
 		"CENTER     C",
 		"RESET      R",
 		"HUD        H",
@@ -35,7 +36,7 @@ static void	display_info(const t_win *window, const int x_offset, const int y_of
 	size_t		i;
 
 	i = 0;
-	while (i < 8)
+	while (i < 9)
 	{
 		print_string(window, info[i], x_offset, y_offset + (i + 1) * 20, LIGHT_BLUE);
 		++i;
@@ -59,17 +60,54 @@ static void	display_rectangle(t_win *window, const int width, const int height, 
 	put_line(&window->data, &v4, &v1);
 }
 
-static void	display_interface(t_win *window, const int width, const int height, const int x_offset, const int y_offset)
+static void print_center_text(t_win *window, char *text, const int width, const int x_offset, const int y_offset, const int color)
+{
+	const size_t	half_len = ft_strlen(text) / 2;
+
+	print_string(window, text, x_offset + width / 2 - half_len * 4, y_offset + 15, color);
+}
+
+static void	display_controls(t_win *window, char *text, const int width, const int height, const int x_offset, const int y_offset)
+{
+	display_rectangle(window, width, 30, x_offset, y_offset);
+	print_center_text(window, text, width, x_offset, y_offset, WHITE);
+	display_rectangle(window, width, height - 30, x_offset, y_offset + 30);
+	display_info(window, x_offset + 20, 35 + y_offset);
+}
+
+static void	display_interface(t_win *window, char *text, const int width, const int height, const int x_offset, const int y_offset, const int color)
 {
 	display_rectangle(window, width, height, x_offset, y_offset);
-	print_string(window, "CONTROLS", x_offset + width / 2 - 5 * 4, y_offset + 20, WHITE);
+	print_center_text(window, text, width, x_offset, y_offset, color);
+}
+
+static void	print_view(t_win *window, const int width, const int height, const int x_offset, const int y_offset, int color)
+{
+	static char	title[][20] = {
+		"[1] ISO     ",
+		"[2] TOP-DOWN",
+		"  - FREE -  ",
+	};
+	const int	tmp_color = color;
+	size_t		i;
+
+	i = 0;
+	while (i < 3)
+	{
+		if (window->map.view == i)
+			color = GREEN;
+		else
+			color = tmp_color;
+		display_interface(window, title[i], width, height, x_offset, y_offset + (i * height) + height / 3, color);
+		++i;
+	}
 }
 
 void	display_hud(t_win *window)
 {
 	if (window->hud_status == ON)
 	{
-		display_info(window, WIDTH - WIDTH / 8, HEIGHT / 10);
-		display_interface(window, 200, 200, WIDTH - WIDTH / 8 - 20, HEIGHT / 13);
+		display_controls(window, "CONTROLS", 200, 230, WIDTH - WIDTH / 8 - 20, HEIGHT / 13);
+		print_view(window, 200, 25, WIDTH - WIDTH / 8 - 20, 250 + HEIGHT / 13, RED);
 	}
 }

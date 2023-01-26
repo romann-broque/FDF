@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 17:46:19 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/22 17:59:12 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/26 10:34:47 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,5 @@ bool	is_line_printable(t_line *line)
 
 bool	are_same_crd(const double c1, const double c2)
 {
-	return ((int)c1 == (int)c2);
+	return (round(c1) == round(c2));
 }

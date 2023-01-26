@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/25 16:03:04 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/26 15:19:36 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@
 # define MIN_WIDTH				2
 # define MAX_ZOOM				SIZE_MAX
 # define MIN_ZOOM				1
-# define ZOOM					2
+# define ZOOM					3
 # define ZOOM_SHIFT				1
 # define X_ANGLE				0.0
 # define Y_ANGLE				0.0
@@ -158,11 +158,18 @@ typedef struct s_line
 
 }				t_line;
 
+typedef enum e_angle
+{
+	E_XANGLE,
+	E_YANGLE,
+	E_ZANGLE,
+}				t_angle;
+
 typedef enum e_view
 {
-	E_FREE,
 	E_ISOMETRIC,
 	E_MILITARY,
+	E_FREE,
 }				t_view;
 
 typedef struct s_map
@@ -359,7 +366,7 @@ void	free_map(t_map *map);
 // get_vertex.c
 
 void	set_vertex(t_vertex *vertex, const float x, const float y, const float z, const float color);
-void	get_vertex(t_map *map, const size_t x, const size_t y, const char *format);
+void	get_vertex(t_map *map, const int x, const int y, const char *format);
 
 // color_vertex.c
 
