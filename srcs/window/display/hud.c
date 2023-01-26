@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 00:21:46 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/25 12:19:34 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/25 14:26:23 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,12 @@ static void	display_info(const t_win *window, const int x_offset, const int y_of
 		"CENTER     C",
 		"RESET      R",
 		"HUD        H",
+		"EXIT       ESC",
 	};
 	size_t		i;
 
 	i = 0;
-	while (i < 7)
+	while (i < 8)
 	{
 		print_string(window, info[i], x_offset, y_offset + (i + 1) * 20, LIGHT_BLUE);
 		++i;

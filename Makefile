@@ -6,7 +6,7 @@
 #    By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 13:20:37 by rbroque           #+#    #+#              #
-#    Updated: 2023/01/25 12:15:55 by rbroque          ###   ########.fr        #
+#    Updated: 2023/01/25 15:58:59 by rbroque          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -113,6 +113,7 @@ SRCS += e_offset.c
 SRCS += e_reset.c
 SRCS += e_zoom.c
 SRCS += e_hud.c
+SRCS += e_view.c
 
 # srcs/window/transform
 

@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/25 12:16:54 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/25 16:03:04 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@
 # define MIN_HEIGHT				2
 # define MIN_WIDTH				2
 # define MAX_ZOOM				SIZE_MAX
-# define MIN_ZOOM				0
+# define MIN_ZOOM				1
 # define ZOOM					2
 # define ZOOM_SHIFT				1
 # define X_ANGLE				0.0
@@ -119,6 +119,9 @@
 # define K_CENTER	XK_c
 # define K_RESET	XK_r
 # define K_HUD		XK_h
+# define K_FREE		XK_0
+# define K_ISO		XK_1
+# define K_MILIT	XK_2
 # define NO_KEY 0
 
 //////////////////////////////
@@ -155,6 +158,13 @@ typedef struct s_line
 
 }				t_line;
 
+typedef enum e_view
+{
+	E_FREE,
+	E_ISOMETRIC,
+	E_MILITARY,
+}				t_view;
+
 typedef struct s_map
 {
 	t_vertex	**vertex;
@@ -164,6 +174,7 @@ typedef struct s_map
 	size_t		y_size;
 	int			minz;
 	int			maxz;
+	t_view		view;
 	// transfo
 	double		zoom;
 	double		altitude;
@@ -311,6 +322,12 @@ int		reset(t_win *window);
 // e_hud.c
 
 int		toggle_hud(t_win *window);
+
+// e_view.c
+
+int		free_view(t_win *window);
+int		iso_view(t_win *window);
+int		milit_view(t_win *window);
 
 // keyboard.c
 
