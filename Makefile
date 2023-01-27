@@ -6,7 +6,7 @@
 #    By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 13:20:37 by rbroque           #+#    #+#              #
-#    Updated: 2023/01/27 17:40:40 by rbroque          ###   ########.fr        #
+#    Updated: 2023/01/27 23:20:07 by rbroque          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -158,14 +158,17 @@ OBJS = $(patsubst %.c, $(PATH_OBJS)/%.o, $(SRCS))
 
 LIB_FOLDER = libft/
 LIB = $(LIB_FOLDER)/libft.a
+MLX_FOLDER = minilibx-linux/
+MINILIBX += $(MLX_FOLDER)/libmlx_Linux.a
+MINILIBX += $(MLX_FOLDER)/libmlx.a
 
 ###################
 #### INCLUDES #####
 ###################
 
 INCLUDES_LIB += -I $(LIB_FOLDER)/includes/
+INCLUDES_LIB += -I $(MLX_FOLDER)
 INCLUDES_LIB += -I /usr/include/X11/
-INCLUDES_LIB += -I minilibx-linux/
 INCLUDES += includes/
 
 LINKS += -Lminilibx-linux -lmlx_Linux
@@ -233,11 +236,16 @@ endif
 #### RULES ####
 ###############
 
-all: $(LIB) $(NAME)
+all: $(MINILIBX) $(LIB) $(NAME)
 
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -I $(INCLUDES) $(INCLUDES_LIB) $(LINKS) $(LIB)
 	$(ECHOC) $(GREEN) "--> $(NAME) COMPILED !"$(NC)"\n\n"
+
+$(MINILIBX):
+	echo -e $(BLUE) "\n====> Building MLX <===="$(NC)"\n"
+	$(MAKE) -sC $(MLX_FOLDER) &> /dev/null
+	$(ECHOC) $(GREEN) "--> MLX COMPILED !"$(NC)"\n"
 
 $(LIB):
 	echo -e $(BLUE) "\n====> Building libft.a <===="$(NC)"\n"
@@ -262,6 +270,7 @@ test:
 
 clean:
 	$(RM) -R $(PATH_OBJS)
+	$(MAKE) -sC $(MLX_FOLDER) clean > /dev/null
 	$(MAKE) -sC $(LIB_FOLDER) clean > /dev/null
 	$(MAKE) -sC $(TEST_FOLDER) clean > /dev/null
 	$(ECHOC) $(GREEN) "--> .o files deleted !"$(NC)"\n"
@@ -276,9 +285,12 @@ fclean: clean
 
 re: fclean
 	echo -e $(YELLOW) "\nRebuilding..." $(NC)
+	echo -e $(BLUE) "\n====> Building MLX <===="$(NC)"\n"
+	$(MAKE) -sC $(MLX_FOLDER) re &> /dev/null
+	$(ECHOC) $(GREEN) "--> MLX COMPILED !"$(NC)"\n"
 	$(MAKE) -s
 
 .PHONY: all clean fclean re run
-.SILENT: $(NAME) $(LIB) $(OBJS) run clean fclean re test
+.SILENT: $(NAME) $(LIB) $(MINILIBX) $(OBJS) run clean fclean re test
 
 #endif
