@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/27 16:05:58 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/27 16:15:43 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,7 +172,7 @@ typedef struct s_line
 {
 	t_vertex	v1;
 	t_vertex	v2;
-	long		dx; //stdlib --> math
+	long		dx;
 	int			sx;
 	long		dy;
 	int			sy;
@@ -192,12 +192,10 @@ typedef struct s_map
 	int			minz;
 	int			maxz;
 	t_view		view;
-	// transfo
 	double		zoom;
 	double		altitude;
 	int			x_offset;
 	int			y_offset;
-	// trigo
 	double		x_angle;
 	double		cosx;
 	double		sinx;
@@ -358,7 +356,8 @@ void	loop(t_win *window);
 
 // init_map.c
 
-void	cpy_vertex_map(t_vertex **vdest, t_vertex **vsrc, const size_t x_size, const size_t y_size);
+void	cpy_vertex_map(t_vertex **vdest, t_vertex **vsrc,
+			const size_t x_size, const size_t y_size);
 void	init_map(t_map *map, char ***parsing);
 
 // get_map_size.c
