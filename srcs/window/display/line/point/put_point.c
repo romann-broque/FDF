@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_map.c                                         :+:      :+:    :+:   */
+/*   put_point.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/09 13:29:38 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/12 13:59:44 by rbroque          ###   ########.fr       */
+/*   Created: 2023/01/22 17:44:39 by rbroque           #+#    #+#             */
+/*   Updated: 2023/01/27 16:09:41 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void	free_vertex_map(t_vertex **vertex_map, const size_t y_size)
+void	put_point(t_data *data, const t_line *line)
 {
-	size_t	i;
+	const float	interpol_factor = get_interpol_factor(
+			&(line->v1),
+			&(line->v2), line->nb_points);
+	const int	color = get_point_color(
+			&(line->v1),
+			&(line->v2),
+			interpol_factor);
 
-	if (vertex_map != NULL)
-	{
-		i = 0;
-		while (i < y_size)
-		{
-			free(vertex_map[i]);
-			++i;
-		}
-		free(vertex_map);
-	}
-}
-
-void	free_map(t_map *map)
-{
-	free_vertex_map(map->vertex, map->y_size);
-	free_vertex_map(map->vcpy, map->y_size);
+	put_pixel(data, line->v1.x, line->v1.y, color);
 }

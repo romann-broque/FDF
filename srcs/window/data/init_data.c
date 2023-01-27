@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 14:13:06 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/09 15:08:49 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/27 16:01:16 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,5 +16,6 @@ void	init_data(void *mlx_ptr, t_data *dest)
 {
 	dest->img = mlx_new_image(mlx_ptr, WIDTH, HEIGHT);
 	if (dest->img != NULL)
-		dest->addr = mlx_get_data_addr(dest->img, &dest->bits_per_pixel, &dest->line_length, &dest->endian);
+		dest->addr = mlx_get_data_addr(dest->img, &dest->bits_per_pixel,
+				&dest->line_length, &dest->endian);
 }

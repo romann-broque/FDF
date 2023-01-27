@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 14:27:27 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/20 16:45:56 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/27 16:01:54 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	display_map(t_win *window)
 	if (window->map.vertex != NULL)
 	{
 		print_map(&window->data, &window->map);
-		mlx_put_image_to_window(window->mlx_ptr, window->win_ptr, window->data.img, 0, 0);
+		mlx_put_image_to_window(window->mlx_ptr, window->win_ptr,
+			window->data.img, 0, 0);
 	}
 }

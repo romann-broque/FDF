@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/27 15:12:48 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/27 16:05:58 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@
 /// HUD ///
 ///////////
 
+# define CTRL_TITLE		"CONTROLS"
 # define CTRL_WIDTH		200
 # define CTRL_HEIGHT	230
 # define VIEW_WIDTH		200
@@ -137,6 +138,20 @@
 //// <----- STRUCT -----> ////
 //////////////////////////////
 
+typedef enum e_angle
+{
+	E_XANGLE,
+	E_YANGLE,
+	E_ZANGLE,
+}				t_angle;
+
+typedef enum e_view
+{
+	E_ISOMETRIC,
+	E_MILITARY,
+	E_FREE,
+}				t_view;
+
 typedef struct s_color
 {
 	uint	red;
@@ -166,20 +181,6 @@ typedef struct s_line
 	size_t		nb_points;
 
 }				t_line;
-
-typedef enum e_angle
-{
-	E_XANGLE,
-	E_YANGLE,
-	E_ZANGLE,
-}				t_angle;
-
-typedef enum e_view
-{
-	E_ISOMETRIC,
-	E_MILITARY,
-	E_FREE,
-}				t_view;
 
 typedef struct s_map
 {
@@ -366,8 +367,10 @@ size_t	get_size_strs(char **parsed_line);
 size_t	get_x_size(char ***parsing);
 size_t	get_y_size(char ***parsing);
 
-// free_map.c
+// map_utils.c
 
+void	destroy_vertex_map(t_vertex ***v_map);
+void	set_map_color(t_map *map, char ***parsing);
 void	free_map(t_map *map);
 
 // VERTEX //
@@ -431,14 +434,22 @@ void	display_hud(t_win *window);
 
 void	init_line(t_line *line, const t_vertex *v1, const t_vertex *v2);
 
+// line_utils.c
+
+bool	is_line_printable(t_line *line);
+bool	are_crd_same(const double c1, const double c2);
+bool	are_pos_same(const t_vertex *v1, const t_vertex *v2);
+
+// POINT //
+
 // put_pixel.c
 
 void	put_pixel(t_data *data, int x, int y, int color);
 
-// line_utils.c
+// put_utils.c
 
-bool	is_line_printable(t_line *line);
-bool	are_same_crd(const double c1, const double c2);
+int		get_point_color(const t_vertex *v1, const t_vertex *v2, const float interpol_factor);
+float	get_interpol_factor(const t_vertex *v1, const t_vertex *v2, const size_t pts_nb);
 
 // put_point.c
 

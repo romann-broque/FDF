@@ -6,7 +6,7 @@
 #    By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 13:20:37 by rbroque           #+#    #+#              #
-#    Updated: 2023/01/27 15:08:46 by rbroque          ###   ########.fr        #
+#    Updated: 2023/01/27 15:41:01 by rbroque          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ PATH_SRCS += srcs/window/
 PATH_SRCS += srcs/window/data/
 PATH_SRCS += srcs/window/display/
 PATH_SRCS += srcs/window/display/line/
+PATH_SRCS += srcs/window/display/line/point
 PATH_SRCS += srcs/window/display/hud/
 PATH_SRCS += srcs/window/loop/
 PATH_SRCS += srcs/window/loop/events/
@@ -75,15 +76,19 @@ SRCS += display_window.c
 SRCS += display_map.c
 SRCS += refresh.c
 
-# srcs/window/display/line
+# srcs/window/display/line/
 
 SRCS += init_line.c
 SRCS += line_utils.c
 SRCS += put_line.c
+
+# srcs/window/display/line/point/
+
+SRCS += point_utils.c
 SRCS += put_pixel.c
 SRCS += put_point.c
 
-# srcs/window/display/hud
+# srcs/window/display/hud/
 
 SRCS += display_hud.c
 SRCS += hud_utils.c
@@ -93,7 +98,7 @@ SRCS += hud_strings.c
 # srcs/window/map/
 
 SRCS += init_map.c
-SRCS += free_map.c
+SRCS += map_utils.c
 SRCS += get_map_size.c
 
 # srcs/window/map/vertex/

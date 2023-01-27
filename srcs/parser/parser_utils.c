@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:20:40 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/23 12:08:32 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/27 15:23:27 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ static bool	is_hex_valid(const char *str, const size_t max_size)
 	size_t	i;
 
 	i = 0;
-	while (i < max_size && str[i] != '\0' && ft_strchr(HEX_BASE, str[i]) != NULL)
+	while (i < max_size && str[i] != '\0'
+		&& ft_strchr(HEX_BASE, str[i]) != NULL)
 		++i;
 	return (str[i] == '\0');
 }
@@ -55,7 +56,8 @@ static bool	is_color_valid(const char *color)
 
 bool	is_format_valid(const char *str)
 {
-	return (is_alt_valid(str) && is_color_valid(str + abs_index(str, SEPARATOR)));
+	return (is_alt_valid(str)
+		&& is_color_valid(str + abs_index(str, SEPARATOR)));
 }
 
 bool	is_color_prefix_valid(const char *format)

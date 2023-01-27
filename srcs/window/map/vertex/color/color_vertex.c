@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:11:26 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/23 12:27:42 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/27 15:41:51 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ static void	set_defined_color(t_color *color, const char *format)
 	get_color_comp(color);
 }
 
-void	get_color(t_vertex *vertex, const char *format, const int minz, const int maxz)
+void	get_color(t_vertex *vertex, const char *format, const int minz,
+				const int maxz)
 {
 	format += abs_index(format, SEPARATOR) + 1;
 	if (is_color_prefix_valid(format) == true)
