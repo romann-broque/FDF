@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/26 15:19:36 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/27 15:12:48 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,21 @@
 # define WINDOW_TITLE "FDF"
 
 # ifndef WIDTH
-#  define WIDTH 1900
+#  define WIDTH 1920
 # endif
 
 # ifndef HEIGHT
-#  define HEIGHT 1200
+#  define HEIGHT 1080
 # endif
+
+///////////
+/// HUD ///
+///////////
+
+# define CTRL_WIDTH		200
+# define CTRL_HEIGHT	230
+# define VIEW_WIDTH		200
+# define VIEW_HEIGHT	20
 
 /////////////////
 /// TRANSFORM ///
@@ -79,7 +88,7 @@
 # define ALTITUDE_SHIFT_BOOST	1
 # define X_OFFSET				0
 # define Y_OFFSET				0
-# define OFFSET_SHIFT			5
+# define OFFSET_SHIFT			10
 
 /////////////
 /// COLOR ///
@@ -395,7 +404,24 @@ void	display_map(t_win *window);
 
 void	display_window(t_win *window);
 
-// hud.c
+// HUD //
+
+// hud_utils.c
+
+void	display_controls(t_win *window, char *text, const int width, const int height, const int x_offset, const int y_offset);
+void	display_interface(t_win *window, char *text, const int width, const int height, const int x_offset, const int y_offset, const int color);
+
+// hud_strings.c
+
+void	print_string(const t_win *window, char *str, const int x_offset, const int y_offset, const int color);
+void	print_center_text(t_win *window, char *text, const int width, const int x_offset, const int y_offset, const int color);
+
+// print_hud.c
+
+void	print_info(const t_win *window, const int x_offset, const int y_offset);
+void	print_view(t_win *window, const int width, const int height, const int x_offset, const int y_offset, int color);
+
+// display_hud.c
 
 void	display_hud(t_win *window);
 

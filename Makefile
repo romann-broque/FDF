@@ -6,7 +6,7 @@
 #    By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 13:20:37 by rbroque           #+#    #+#              #
-#    Updated: 2023/01/25 15:58:59 by rbroque          ###   ########.fr        #
+#    Updated: 2023/01/27 15:08:46 by rbroque          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ PATH_SRCS += srcs/window/
 PATH_SRCS += srcs/window/data/
 PATH_SRCS += srcs/window/display/
 PATH_SRCS += srcs/window/display/line/
+PATH_SRCS += srcs/window/display/hud/
 PATH_SRCS += srcs/window/loop/
 PATH_SRCS += srcs/window/loop/events/
 PATH_SRCS += srcs/window/map/
@@ -74,14 +75,20 @@ SRCS += display_window.c
 SRCS += display_map.c
 SRCS += refresh.c
 
-# srcs/window/display/
+# srcs/window/display/line
 
 SRCS += init_line.c
 SRCS += line_utils.c
 SRCS += put_line.c
 SRCS += put_pixel.c
 SRCS += put_point.c
-SRCS += hud.c
+
+# srcs/window/display/hud
+
+SRCS += display_hud.c
+SRCS += hud_utils.c
+SRCS += print_hud.c
+SRCS += hud_strings.c
 
 # srcs/window/map/
 
