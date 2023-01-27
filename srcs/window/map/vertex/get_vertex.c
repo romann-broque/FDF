@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/09 14:10:09 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/26 11:13:48 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/27 16:35:17 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ static int	get_altitude(const char *format, int *minz, int *maxz)
 }
 
 void	set_vertex(t_vertex *vertex,
-				const float x, const float y, const float z, const float color)
+				const float x, const float y, const float z)
 {
 	vertex->x = x;
 	vertex->y = y;
 	vertex->z = z;
-	vertex->color.sum = color;
+	vertex->color.sum = WHITE;
 	get_color_comp(&vertex->color);
 }
 
@@ -39,5 +39,5 @@ void	get_vertex(t_map *map, const int x, const int y, const char *format)
 	const int	new_y = y;
 	const int	new_z = get_altitude(format, &map->minz, &map->maxz);
 
-	set_vertex(&map->vertex[y][x], new_x, new_y, new_z, WHITE);
+	set_vertex(&map->vertex[y][x], new_x, new_y, new_z);
 }

@@ -6,13 +6,26 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 15:03:30 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/27 15:10:54 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/27 17:21:00 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	print_info(const t_win *window, const int x_offset, const int y_offset)
+static void	print_controls_info(const t_win *window, char info[][100], t_imginfo *img)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < 9)
+	{
+		img->y_offset += 20;
+		print_string(window, info[i], img, LIGHT_BLUE);
+		++i;
+	}
+}
+
+void	print_info(const t_win *window, const t_imginfo *img)
 {
 	static char	info[][100] = {
 		"MOVE       Arrows",
@@ -25,17 +38,14 @@ void	print_info(const t_win *window, const int x_offset, const int y_offset)
 		"HUD        H",
 		"EXIT       ESC",
 	};
-	size_t		i;
+	t_imginfo	tmp_img;
 
-	i = 0;
-	while (i < 9)
-	{
-		print_string(window, info[i], x_offset, y_offset + (i + 1) * 20, LIGHT_BLUE);
-		++i;
-	}
+	cpy_imginfo(&tmp_img, img);
+	tmp_img.x_offset += 15;
+	print_controls_info(window, info, &tmp_img);
 }
 
-void    print_view(t_win *window, const int width, const int height, const int x_offset, const int y_offset, int color)
+void	print_view(t_win *window, const t_imginfo *img, int color)
 {
 	static char	title[][20] = {
 		"[1] ISO     ",
@@ -43,8 +53,10 @@ void    print_view(t_win *window, const int width, const int height, const int x
 		"  - FREE -  ",
 	};
 	const int	tmp_color = color;
+	t_imginfo	tmp_img;
 	size_t		i;
 
+	cpy_imginfo(&tmp_img, img);
 	i = 0;
 	while (i < 3)
 	{
@@ -52,7 +64,8 @@ void    print_view(t_win *window, const int width, const int height, const int x
 			color = GREEN;
 		else
 			color = tmp_color;
-		display_interface(window, title[i], width, height, x_offset + (i * width), y_offset, color);
+		display_interface(window, title[i], &tmp_img, color);
+		tmp_img.x_offset += img->width;
 		++i;
 	}
 }

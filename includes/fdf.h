@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/27 16:15:43 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/27 17:19:46 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,6 +159,14 @@ typedef struct s_color
 	uint	blue;
 	uint	sum;
 }				t_color;
+
+typedef struct s_imginfo
+{
+	int		width;
+	int		height;
+	int		x_offset;
+	int		y_offset;
+}				t_imginfo;
 
 typedef struct s_vertex
 {
@@ -376,7 +384,7 @@ void	free_map(t_map *map);
 
 // get_vertex.c
 
-void	set_vertex(t_vertex *vertex, const float x, const float y, const float z, const float color);
+void	set_vertex(t_vertex *vertex, const float x, const float y, const float z);
 void	get_vertex(t_map *map, const int x, const int y, const char *format);
 
 // color_vertex.c
@@ -410,18 +418,19 @@ void	display_window(t_win *window);
 
 // hud_utils.c
 
-void	display_controls(t_win *window, char *text, const int width, const int height, const int x_offset, const int y_offset);
-void	display_interface(t_win *window, char *text, const int width, const int height, const int x_offset, const int y_offset, const int color);
+void	cpy_imginfo(t_imginfo *dest, const t_imginfo *src);
+void	display_controls(t_win *window, char *text, const t_imginfo *img);
+void	display_interface(t_win *window, char *text, const t_imginfo *img, const int color);
 
 // hud_strings.c
 
-void	print_string(const t_win *window, char *str, const int x_offset, const int y_offset, const int color);
-void	print_center_text(t_win *window, char *text, const int width, const int x_offset, const int y_offset, const int color);
+void	print_string(const t_win *window, char *str, const t_imginfo *img, const int color);
+void	print_center_text(t_win *window, char *text, const t_imginfo *img, const int color);
 
 // print_hud.c
 
-void	print_info(const t_win *window, const int x_offset, const int y_offset);
-void	print_view(t_win *window, const int width, const int height, const int x_offset, const int y_offset, int color);
+void	print_info(const t_win *window, const t_imginfo *img);
+void	print_view(t_win *window, const t_imginfo *img, int color);
 
 // display_hud.c
 

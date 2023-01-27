@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 17:54:53 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/26 10:40:47 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/27 16:36:03 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	get_signd(const double nb)
 
 static void	cpy_vertex(t_vertex *vdest, const t_vertex *vsrc)
 {
-	set_vertex(vdest, vsrc->x, vsrc->y, vsrc->z, 0);
+	set_vertex(vdest, vsrc->x, vsrc->y, vsrc->z);
 	vdest->color.red = vsrc->color.red;
 	vdest->color.green = vsrc->color.green;
 	vdest->color.blue = vsrc->color.blue;
