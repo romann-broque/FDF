@@ -6,7 +6,7 @@
 #    By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 13:20:37 by rbroque           #+#    #+#              #
-#    Updated: 2023/01/27 15:41:01 by rbroque          ###   ########.fr        #
+#    Updated: 2023/01/27 17:40:40 by rbroque          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ PATH_SRCS += srcs/window/display/line/point
 PATH_SRCS += srcs/window/display/hud/
 PATH_SRCS += srcs/window/loop/
 PATH_SRCS += srcs/window/loop/events/
+PATH_SRCS += srcs/window/loop/events/angle/
 PATH_SRCS += srcs/window/map/
 PATH_SRCS += srcs/window/map/vertex/
 PATH_SRCS += srcs/window/map/vertex/color/
@@ -110,15 +111,14 @@ SRCS += get_vertex.c
 SRCS += color_vertex.c
 SRCS += color_utils.c
 
-# srcs/window/loop
+# srcs/window/loop/
 
 SRCS += keyboard.c
 SRCS += loop.c
 
-# srcs/window/loop/events
+# srcs/window/loop/events/
 
 SRCS += e_altitude.c
-SRCS += e_angle.c
 SRCS += e_center.c
 SRCS += e_close_window.c
 SRCS += e_offset.c
@@ -126,6 +126,13 @@ SRCS += e_reset.c
 SRCS += e_zoom.c
 SRCS += e_hud.c
 SRCS += e_view.c
+
+# srcs/window/loop/events/angle/
+
+SRCS += e_angle.c
+SRCS += e_xangle.c
+SRCS += e_yangle.c
+SRCS += e_zangle.c
 
 # srcs/window/transform
 

@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/27 17:19:46 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/27 17:57:07 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,30 +109,30 @@
 /// KEY_MAPPING ///
 ///////////////////
 
-# define K_ESC		XK_Escape
-# define K_XROT1	XK_w
-# define K_XROT2	XK_s
-# define K_YROT1	XK_a
-# define K_YROT2	XK_d
-# define K_ZROT1	XK_q
-# define K_ZROT2	XK_e
-# define K_ZOOM		XK_equal
-# define K_UNZOOM	XK_minus
-# define K_ALT1		XK_o
-# define K_ALT2		XK_p
-# define K_ALT3		XK_u
-# define K_ALT4		XK_i
-# define K_UP		XK_Up
-# define K_DOWN		XK_Down
-# define K_LEFT		XK_Left
-# define K_RIGHT	XK_Right
-# define K_CENTER	XK_c
-# define K_RESET	XK_r
-# define K_HUD		XK_h
-# define K_FREE		XK_0
-# define K_ISO		XK_1
-# define K_MILIT	XK_2
-# define NO_KEY 0
+# define K_ESC		0xff1b
+# define K_XROT1	0x0077  /* U+0077 LATIN SMALL LETTER W */
+# define K_XROT2	0x0073  /* U+0073 LATIN SMALL LETTER S */
+# define K_YROT1	0x0061  /* U+0061 LATIN SMALL LETTER A */
+# define K_YROT2	0x0064  /* U+0064 LATIN SMALL LETTER D */
+# define K_ZROT1	0x0071  /* U+0071 LATIN SMALL LETTER Q */
+# define K_ZROT2	0x0065  /* U+0065 LATIN SMALL LETTER E */
+# define K_ZOOM		0x003d  /* U+003D EQUALS SIGN */
+# define K_UNZOOM	0x002d  /* U+002D HYPHEN-MINUS */
+# define K_ALT1		0x006f  /* U+006F LATIN SMALL LETTER O */
+# define K_ALT2		0x0070  /* U+0070 LATIN SMALL LETTER P */
+# define K_ALT3		0x0075  /* U+0075 LATIN SMALL LETTER U */
+# define K_ALT4		0x0069  /* U+0069 LATIN SMALL LETTER I */
+# define K_UP		0xff52  /* Move up, up arrow */
+# define K_DOWN		0xff54  /* Move down, down arrow */
+# define K_LEFT		0xff51  /* Move left, left arrow */
+# define K_RIGHT	0xff53  /* Move right, right arrow */
+# define K_CENTER	0x0063  /* U+0063 LATIN SMALL LETTER C */
+# define K_RESET	0x0072  /* U+0072 LATIN SMALL LETTER R */
+# define K_HUD		0x0068  /* U+0068 LATIN SMALL LETTER H */
+# define K_FREE		0x0030  /* U+0030 DIGIT ZERO */
+# define K_ISO		0x0031  /* U+0031 DIGIT ONE */
+# define K_MILIT	0x0032  /* U+0032 DIGIT TWO */
+# define NO_KEY		0
 
 //////////////////////////////
 //// <----- STRUCT -----> ////
@@ -311,12 +311,24 @@ int		close_window(t_win *ptr);
 int		increase_zoom(t_win *window);
 int		decrease_zoom(t_win *window);
 
+// ANGLE //
+
 // e_angle.c
+
+void	change_angle(t_win *window, t_angle angle, double rotation);
+
+// e_xangle.c
 
 int		increase_x_angle(t_win *ptr);
 int		decrease_x_angle(t_win *ptr);
+
+// e_yangle.c
+
 int		increase_y_angle(t_win *ptr);
 int		decrease_y_angle(t_win *ptr);
+
+// e_zangle.c
+
 int		increase_z_angle(t_win *ptr);
 int		decrease_z_angle(t_win *ptr);
 
@@ -384,12 +396,14 @@ void	free_map(t_map *map);
 
 // get_vertex.c
 
-void	set_vertex(t_vertex *vertex, const float x, const float y, const float z);
+void	set_vertex(t_vertex *vertex,
+			const float x, const float y, const float z);
 void	get_vertex(t_map *map, const int x, const int y, const char *format);
 
 // color_vertex.c
 
-void	get_color(t_vertex *vertex, const char *format, const int minz, const int maxz);
+void	get_color(t_vertex *vertex, const char *format,
+			const int minz, const int maxz);
 void	color_vertex(t_vertex *vertex, const int minz, const int maxz);
 
 // color_utils.c
@@ -420,12 +434,15 @@ void	display_window(t_win *window);
 
 void	cpy_imginfo(t_imginfo *dest, const t_imginfo *src);
 void	display_controls(t_win *window, char *text, const t_imginfo *img);
-void	display_interface(t_win *window, char *text, const t_imginfo *img, const int color);
+void	display_interface(t_win *window,
+			char *text, const t_imginfo *img, const int color);
 
 // hud_strings.c
 
-void	print_string(const t_win *window, char *str, const t_imginfo *img, const int color);
-void	print_center_text(t_win *window, char *text, const t_imginfo *img, const int color);
+void	print_string(const t_win *window,
+			char *str, const t_imginfo *img, const int color);
+void	print_center_text(t_win *window,
+			char *text, const t_imginfo *img, const int color);
 
 // print_hud.c
 
@@ -456,8 +473,10 @@ void	put_pixel(t_data *data, int x, int y, int color);
 
 // put_utils.c
 
-int		get_point_color(const t_vertex *v1, const t_vertex *v2, const float interpol_factor);
-float	get_interpol_factor(const t_vertex *v1, const t_vertex *v2, const size_t pts_nb);
+int		get_point_color(const t_vertex *v1, const t_vertex *v2,
+			const float interpol_factor);
+float	get_interpol_factor(const t_vertex *v1, const t_vertex *v2,
+			const size_t pts_nb);
 
 // put_point.c
 

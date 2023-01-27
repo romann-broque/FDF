@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/25 00:21:46 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/27 17:20:22 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/27 17:29:49 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,8 @@ void	display_controls(t_win *window, char *text, const t_imginfo *img)
 	print_info(window, &rectangle);
 }
 
-void	display_interface(t_win *window, char *text, const t_imginfo *img, const int color)
+void	display_interface(
+	t_win *window, char *text, const t_imginfo *img, const int color)
 {
 	display_rectangle(window, img);
 	print_center_text(window, text, img, color);

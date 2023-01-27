@@ -6,13 +6,14 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 15:03:30 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/27 17:21:00 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/27 17:30:05 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void	print_controls_info(const t_win *window, char info[][100], t_imginfo *img)
+static void	print_controls_info(
+	const t_win *window, char info[][100], t_imginfo *img)
 {
 	size_t	i;
 
