@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/27 17:57:07 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/28 00:29:14 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@
 # define CTRL_HEIGHT	230
 # define VIEW_WIDTH		200
 # define VIEW_HEIGHT	20
+# define VIEW_COUNT		4
 
 /////////////////
 /// TRANSFORM ///
@@ -84,7 +85,7 @@
 # define Y_ANGLE				0.0
 # define Z_ANGLE				0.0
 # define ANGLE_SHIFT			0.1
-# define ALTITUDE				-0.1
+# define ALTITUDE				0
 # define ALTITUDE_SHIFT			0.01
 # define ALTITUDE_SHIFT_BOOST	1
 # define X_OFFSET				0
@@ -95,9 +96,6 @@
 /// COLOR ///
 /////////////
 
-# define RED_MASK			0xFF0000
-# define GREEN_MASK			0x00FF00
-# define BLUE_MASK			0x0000FF
 # define WHITE				0xFFFFFF
 # define RED				0xFF0000
 # define YELLOW				0x00FF00
@@ -132,6 +130,7 @@
 # define K_FREE		0x0030  /* U+0030 DIGIT ZERO */
 # define K_ISO		0x0031  /* U+0031 DIGIT ONE */
 # define K_MILIT	0x0032  /* U+0032 DIGIT TWO */
+# define K_ELEV		0x0033  /* U+0033 DIGIT THREE */
 # define NO_KEY		0
 
 //////////////////////////////
@@ -149,6 +148,7 @@ typedef enum e_view
 {
 	E_ISOMETRIC,
 	E_MILITARY,
+	E_ELEVATION,
 	E_FREE,
 }				t_view;
 
@@ -363,6 +363,7 @@ int		toggle_hud(t_win *window);
 int		free_view(t_win *window);
 int		iso_view(t_win *window);
 int		milit_view(t_win *window);
+int		elev_view(t_win *window);
 
 // keyboard.c
 

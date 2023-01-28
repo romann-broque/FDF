@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 17:54:53 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/27 16:36:03 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/28 00:41:02 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,11 @@ static const t_vertex	*get_min_alt(const t_vertex *v1, const t_vertex *v2)
 	return (v1);
 }
 
+static size_t	get_nb_points(const double dx, const double dy)
+{
+	return ((size_t)(sqrt(pow(dx, 2) + pow(dy, 2))));
+}
+
 void	init_line(t_line *line, const t_vertex *v1, const t_vertex *v2)
 {
 	const t_vertex	*v_max = get_max_alt(v1, v2);
@@ -54,5 +59,5 @@ void	init_line(t_line *line, const t_vertex *v1, const t_vertex *v2)
 	line->dy = -fabs(v_min->y - v_max->y);
 	line->sy = get_signd(v_min->y - v_max->y);
 	line->error = line->dx + line->dy;
-	line->nb_points = (size_t)(sqrt(pow(line->dx, 2) + pow(line->dy, 2)));
+	line->nb_points = get_nb_points(line->dx, line->dy);
 }

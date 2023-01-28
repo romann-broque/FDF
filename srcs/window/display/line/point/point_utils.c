@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 15:36:57 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/27 15:38:41 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/28 01:07:30 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ int	get_point_color(const t_vertex *v1, const t_vertex *v2,
 float	get_interpol_factor(const t_vertex *v1, const t_vertex *v2,
 							const size_t pts_nb)
 {
+	if (pts_nb == 0)
+		return (1);
 	return ((float)(sqrt(pow(v1->x - v2->x, 2) + pow(v1->y - v2->y, 2)))
 				/ (float)pts_nb);
 }

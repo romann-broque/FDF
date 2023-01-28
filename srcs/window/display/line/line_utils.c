@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 17:46:19 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/27 16:08:02 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/28 01:00:07 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ bool	is_line_printable(t_line *line)
 
 bool	are_crd_same(const double c1, const double c2)
 {
-	return (round(c1) == round(c2));
+	return ((int)c1 == (int)c2);
 }
 
 bool	are_pos_same(const t_vertex *v1, const t_vertex *v2)
 {
-	return (are_crd_same(v1->x, v2->x) && are_crd_same(v1->x, v2->y) == true);
+	return ((are_crd_same(v1->x, v2->x) == true) && (are_crd_same(v1->x, v2->y) == true));
 }

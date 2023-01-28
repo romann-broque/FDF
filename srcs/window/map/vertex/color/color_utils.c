@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:01:26 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/27 15:52:42 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/27 23:38:11 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ uint	sum_color(t_color color)
 
 void	get_color_comp(t_color *color)
 {
-	color->red = (color->sum & RED_MASK) >> 16;
-	color->green = (color->sum & GREEN_MASK) >> 8;
-	color->blue = (color->sum & BLUE_MASK);
+	color->red = (color->sum & RED) >> 16;
+	color->green = (color->sum & GREEN) >> 8;
+	color->blue = (color->sum & BLUE);
 }

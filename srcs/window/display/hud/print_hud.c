@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 15:03:30 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/27 17:30:05 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/27 23:35:40 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	print_info(const t_win *window, const t_imginfo *img)
 		"ZOOM       + -",
 		"ROTATE     (Q E) (A D) (W S)",
 		"AMPLITUDE  (O P) (U I)",
-		"VIEW       1 / 2",
+		"VIEW       1 / 2 / 3",
 		"CENTER     C",
 		"RESET      R",
 		"HUD        H",
@@ -49,9 +49,10 @@ void	print_info(const t_win *window, const t_imginfo *img)
 void	print_view(t_win *window, const t_imginfo *img, int color)
 {
 	static char	title[][20] = {
-		"[1] ISO     ",
-		"[2] TOP-DOWN",
-		"  - FREE -  ",
+		"[1] ISOMETRIC ",
+		"[2] TOP-DOWN  ",
+		"[3] ELEVATION ",
+		"   - FREE -   ",
 	};
 	const int	tmp_color = color;
 	t_imginfo	tmp_img;
@@ -59,7 +60,7 @@ void	print_view(t_win *window, const t_imginfo *img, int color)
 
 	cpy_imginfo(&tmp_img, img);
 	i = 0;
-	while (i < 3)
+	while (i < VIEW_COUNT)
 	{
 		if (window->map.view == i)
 			color = GREEN;
