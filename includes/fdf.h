@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/28 01:53:47 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/28 02:06:31 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -399,6 +399,7 @@ void	free_map(t_map *map);
 
 void	set_vertex(t_vertex *vertex,
 			const float x, const float y, const float z);
+void	cpy_vertex(t_vertex *vdest, const t_vertex *vsrc);
 void	get_vertex(t_map *map, const int x, const int y, const char *format);
 
 // color_vertex.c

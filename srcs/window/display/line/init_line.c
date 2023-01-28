@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 17:54:53 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/28 00:41:02 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/28 02:05:57 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,6 @@ static int	get_signd(const double nb)
 	if (nb < 0)
 		return (-1);
 	return (1);
-}
-
-static void	cpy_vertex(t_vertex *vdest, const t_vertex *vsrc)
-{
-	set_vertex(vdest, vsrc->x, vsrc->y, vsrc->z);
-	vdest->color.red = vsrc->color.red;
-	vdest->color.green = vsrc->color.green;
-	vdest->color.blue = vsrc->color.blue;
-	vdest->color.sum = vsrc->color.sum;
 }
 
 static const t_vertex	*get_max_alt(const t_vertex *v1, const t_vertex *v2)
