@@ -6,7 +6,7 @@
 #    By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 10:15:13 by rbroque           #+#    #+#              #
-#    Updated: 2023/01/17 12:48:33 by rbroque          ###   ########.fr        #
+#    Updated: 2023/01/28 04:29:11 by rbroque          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,14 @@ PATH_SRCS += srcs/
 PATH_SRCS += srcs/conv/
 PATH_SRCS += srcs/ctype/
 PATH_SRCS += srcs/free/
+PATH_SRCS += srcs/ft_printf/
+PATH_SRCS += srcs/ft_printf/converters/
+PATH_SRCS += srcs/ft_printf/converters/type/
+PATH_SRCS += srcs/ft_printf/core/
+PATH_SRCS += srcs/ft_printf/printf/
+PATH_SRCS += srcs/ft_printf/states/
+PATH_SRCS += srcs/ft_printf/struct/
+PATH_SRCS += srcs/ft_printf/utils/
 PATH_SRCS += srcs/gnl/
 PATH_SRCS += srcs/list/
 PATH_SRCS += srcs/math/
@@ -58,6 +66,51 @@ SRCS += ft_itoa.c
 # free
 
 SRCS += free_strs.c
+
+# ft_printf
+
+# converters/
+
+SRCS += apply_converter.c
+SRCS += char_conv.c
+SRCS += hex_conv.c
+SRCS += nb_conv.c
+
+# converters/type/
+
+SRCS += char_type.c
+SRCS += get_type.c
+SRCS += hex_type.c
+SRCS += nb_type.c
+SRCS += signed_type.c
+SRCS += unsigned_type.c
+
+# core/
+
+SRCS += cpy_to_buffer.c
+SRCS += machine_struct.c
+
+# printf/
+
+SRCS += ft_printf.c
+SRCS += ft_vdprintf.c
+SRCS += ft_dprintf.c
+SRCS += ft_getprintf.c
+
+# states/
+
+SRCS += states_utils.c
+SRCS += states.c
+
+# utils/
+
+SRCS += add_str.c
+SRCS += cpy_data.c
+SRCS += itoa_base.c
+SRCS += precision.c
+SRCS += strings.c
+SRCS += tocase_str.c
+SRCS += utils.c
 
 # gnl
 

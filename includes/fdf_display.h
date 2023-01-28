@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 02:19:06 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/28 02:39:04 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/28 02:53:37 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	print_center_text(t_win *window,
 
 // print_hud.c
 
+void	print_data_map(t_win *window);
 void	print_info(const t_win *window, const t_imginfo *img);
 void	print_view(t_win *window, const t_imginfo *img, int color);
 

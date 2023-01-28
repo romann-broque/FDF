@@ -18,7 +18,9 @@
         "stat.h": "c",
         "fdf.h": "c",
         "fdf_struct.h": "c",
-        "fdf_defines.h": "c"
+        "fdf_defines.h": "c",
+        "ft_conv.h": "c",
+        "ft_free.h": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

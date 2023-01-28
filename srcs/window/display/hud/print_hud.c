@@ -6,14 +6,14 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 15:03:30 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/27 23:35:40 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/28 04:37:40 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
 static void	print_controls_info(
-	const t_win *window, char info[][100], t_imginfo *img)
+	const t_win *window, char info[][50], t_imginfo *img)
 {
 	size_t	i;
 
@@ -26,11 +26,28 @@ static void	print_controls_info(
 	}
 }
 
+void	print_data_map(t_win *window)
+{
+	t_imginfo	img;
+	char		*dimensions;
+	char		*nb_points;
+
+	img.x_offset = WIDTH / 40;
+	img.y_offset = HEIGHT / 4;
+	dimensions = ft_getprintf("Dimensions : %d x %d", window->map.x_size, window->map.y_size);
+	nb_points = ft_getprintf("Points : %d", (int)window->map.x_size * (int)window->map.y_size);
+	print_string(window, dimensions, &img, WHITE);
+	img.y_offset += 20;
+	print_string(window, nb_points, &img, WHITE);
+	free(dimensions);
+	free(nb_points);
+}
+
 void	print_info(const t_win *window, const t_imginfo *img)
 {
-	static char	info[][100] = {
+	static char	info[][50] = {
 		"MOVE       Arrows",
-		"ZOOM       + -",
+		"ZOOM       - +",
 		"ROTATE     (Q E) (A D) (W S)",
 		"AMPLITUDE  (O P) (U I)",
 		"VIEW       1 / 2 / 3",
@@ -49,10 +66,10 @@ void	print_info(const t_win *window, const t_imginfo *img)
 void	print_view(t_win *window, const t_imginfo *img, int color)
 {
 	static char	title[][20] = {
-		"[1] ISOMETRIC ",
-		"[2] TOP-DOWN  ",
-		"[3] ELEVATION ",
-		"   - FREE -   ",
+		"[1] ISOMETRIC",
+		"[2] TOP-DOWN",
+		"[3] ELEVATION",
+		"- FREE -",
 	};
 	const int	tmp_color = color;
 	t_imginfo	tmp_img;
