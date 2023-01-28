@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 17:46:19 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/28 01:00:07 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/28 01:51:48 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,5 @@ bool	are_crd_same(const double c1, const double c2)
 
 bool	are_pos_same(const t_vertex *v1, const t_vertex *v2)
 {
-	return ((are_crd_same(v1->x, v2->x) == true) && (are_crd_same(v1->x, v2->y) == true));
+	return ((are_crd_same(v1->x, v2->x) == true) && (are_crd_same(v1->y, v2->y) == true));
 }

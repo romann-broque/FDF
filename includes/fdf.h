@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:24:07 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/28 00:29:14 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/28 01:53:47 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@
 # define Y_ANGLE				0.0
 # define Z_ANGLE				0.0
 # define ANGLE_SHIFT			0.1
-# define ALTITUDE				0
+# define ALTITUDE				-0.1
 # define ALTITUDE_SHIFT			0.01
 # define ALTITUDE_SHIFT_BOOST	1
 # define X_OFFSET				0
