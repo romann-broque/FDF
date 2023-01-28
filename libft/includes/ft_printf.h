@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 04:34:09 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/28 04:34:59 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/28 14:31:54 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ void		free_machine(t_machine *machine);
 //states_utils
 
 char		*fill_unknown(t_machine *machine);
+void		fill_invalid_precision(t_machine *machine);
 
 // converters
 

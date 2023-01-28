@@ -6,7 +6,7 @@
 #    By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 13:20:37 by rbroque           #+#    #+#              #
-#    Updated: 2023/01/28 02:46:05 by rbroque          ###   ########.fr        #
+#    Updated: 2023/01/28 15:06:40 by rbroque          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -280,7 +280,7 @@ run:
 	./$(NAME) $(DEFAULT_ARG)
 
 norm:
-	norminette $(PATH_SRCS) $(INCLUDES) $(PATH_LIB)
+	norminette $(PATH_SRCS) $(INCLUDES) $(LIB_FOLDER)
 
 test:
 	$(MAKE) -s

@@ -6,7 +6,7 @@
 #    By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/31 10:15:13 by rbroque           #+#    #+#              #
-#    Updated: 2023/01/28 04:29:11 by rbroque          ###   ########.fr        #
+#    Updated: 2023/01/28 14:25:11 by rbroque          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,6 +61,7 @@ SRCS += ft_toupper.c
 
 SRCS += ft_atoi.c
 SRCS += ft_atoi_base.c
+SRCS += ft_atol.c
 SRCS += ft_itoa.c
 
 # free
