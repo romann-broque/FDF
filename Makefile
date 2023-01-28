@@ -6,7 +6,7 @@
 #    By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 13:20:37 by rbroque           #+#    #+#              #
-#    Updated: 2023/01/27 23:20:07 by rbroque          ###   ########.fr        #
+#    Updated: 2023/01/28 02:46:05 by rbroque          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -173,7 +173,25 @@ INCLUDES += includes/
 
 LINKS += -Lminilibx-linux -lmlx_Linux
 LINKS += -L/usr/lib -lXext -lX11 -lm -lz
-HEADER += $(INCLUDES)/fdf.h
+
+#################
+#### HEADERS ####
+#################
+
+HEADERS += fdf.h
+HEADERS += fdf_data.h
+HEADERS += fdf_defines.h
+HEADERS += fdf_display.h
+HEADERS += fdf_error.h
+HEADERS += fdf_loop.h
+HEADERS += fdf_map.h
+HEADERS += fdf_parser.h
+HEADERS += fdf_struct.h
+HEADERS += fdf_transform.h
+HEADERS += fdf_vertex.h
+HEADERS += fdf_window.h
+
+vpath %.h $(INCLUDES)
 
 ##################
 #### MAKEFILE ####
@@ -252,7 +270,7 @@ $(LIB):
 	$(MAKE) -sC $(LIB_FOLDER)
 	echo -e $(BLUE) "\n====> Building $(NAME) <===="$(NC)"\n"
 
-$(OBJS): $(PATH_OBJS)/%.o: %.c $(HEADER) $(MAKEFILE)
+$(OBJS): $(PATH_OBJS)/%.o: %.c $(HEADERS) $(MAKEFILE)
 	$(ECHO) $(ORANGE) "Compiling $<"
 	mkdir -p $(PATH_OBJS)
 	$(CC) $(CFLAGS) -c $< -o $@ -I $(INCLUDES) $(INCLUDES_LIB) -O3
