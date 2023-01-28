@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 15:03:30 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/28 04:37:40 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/28 14:19:25 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,10 @@ void	print_data_map(t_win *window)
 
 	img.x_offset = WIDTH / 40;
 	img.y_offset = HEIGHT / 4;
-	dimensions = ft_getprintf("Dimensions : %d x %d", window->map.x_size, window->map.y_size);
-	nb_points = ft_getprintf("Points : %d", (int)window->map.x_size * (int)window->map.y_size);
+	dimensions = ft_getprintf("Dimensions : %d x %d",
+			window->map.x_size, window->map.y_size);
+	nb_points = ft_getprintf("Points     : %u",
+			(int)window->map.x_size * (int)window->map.y_size);
 	print_string(window, dimensions, &img, WHITE);
 	img.y_offset += 20;
 	print_string(window, nb_points, &img, WHITE);
