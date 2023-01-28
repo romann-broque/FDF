@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/28 02:25:24 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/28 02:40:48 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/28 23:07:41 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,11 @@
 # define WINDOW_TITLE "FDF"
 
 # ifndef WIDTH
-#  define WIDTH 1920
+#  define WIDTH 1600
 # endif
 
 # ifndef HEIGHT
-#  define HEIGHT 1080
+#  define HEIGHT 1200
 # endif
 
 ///////////

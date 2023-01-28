@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/27 15:06:18 by rbroque           #+#    #+#             */
-/*   Updated: 2023/01/28 02:53:45 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/01/28 16:11:09 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,8 @@ void	display_hud(t_win *window)
 		view.height = VIEW_HEIGHT;
 		view.x_offset = (WIDTH - VIEW_COUNT * VIEW_WIDTH) / 2;
 		view.y_offset = HEIGHT / 40;
-		display_controls(window, CTRL_TITLE, &ctrl);
 		print_view(window, &view, RED);
+		display_controls(window, CTRL_TITLE, &ctrl);
 		print_data_map(window);
 	}
 }
