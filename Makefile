@@ -6,7 +6,7 @@
 #    By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 13:20:37 by rbroque           #+#    #+#              #
-#    Updated: 2023/01/28 16:09:43 by rbroque          ###   ########.fr        #
+#    Updated: 2023/03/01 11:43:30 by rbroque          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -161,6 +161,8 @@ LIB = $(LIB_FOLDER)/libft.a
 MLX_FOLDER = minilibx-linux/
 MINILIBX += $(MLX_FOLDER)/libmlx_Linux.a
 MINILIBX += $(MLX_FOLDER)/libmlx.a
+MINILIBX_TAR += minilibx-linux.tgz
+MINILIBX_LINK += https://projects.intra.42.fr/uploads/document/document/13430/$(MINILIBX_TAR)
 
 ###################
 #### INCLUDES #####
@@ -198,13 +200,6 @@ vpath %.h $(INCLUDES)
 ##################
 
 MAKEFILE = Makefile
-
-###############
-#### TESTS ####
-###############
-
-TEST_FOLDER = tests/
-RUN_TESTS = $(TEST_FOLDER)run_tests
 
 #####################
 #### COMPILATION ####
@@ -260,7 +255,13 @@ $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME) -I $(INCLUDES) $(INCLUDES_LIB) $(LINKS) $(LIB)
 	$(ECHOC) $(GREEN) "--> $(NAME) COMPILED !"$(NC)"\n\n"
 
-$(MINILIBX):
+$(MINILIBX_TAR):
+	echo -e $(BLUE) "\n====> Downloading MLX <===="$(NC)"\n"
+	wget $(MINILIBX_LINK)
+	tar -zxvf $(MINILIBX_TAR)
+	$(ECHOC) $(GREEN) "--> MLX DOWNLOADED !"$(NC)"\n"
+
+$(MINILIBX): $(MINILIBX_TAR)
 	echo -e $(BLUE) "\n====> Building MLX <===="$(NC)"\n"
 	$(MAKE) -sC $(MLX_FOLDER) &> /dev/null
 	$(ECHOC) $(GREEN) "--> MLX COMPILED !"$(NC)"\n"
@@ -282,24 +283,19 @@ run:
 norm:
 	norminette $(PATH_SRCS) $(INCLUDES) $(LIB_FOLDER)
 
-test:
-	$(MAKE) -s
-	$(MAKE) -sC $(TEST_FOLDER)
-
 clean:
 	$(RM) -R $(PATH_OBJS)
 	$(MAKE) -sC $(MLX_FOLDER) clean > /dev/null
 	$(MAKE) -sC $(LIB_FOLDER) clean > /dev/null
-	$(MAKE) -sC $(TEST_FOLDER) clean > /dev/null
 	$(ECHOC) $(GREEN) "--> .o files deleted !"$(NC)"\n"
 
 fclean: clean
 	$(ECHOC) $(YELLOW) "Cleaning up $(NAME)..." $(NC)
 	$(MAKE) -sC $(LIB_FOLDER) fclean > /dev/null
-	$(MAKE) -sC $(TEST_FOLDER) fclean > /dev/null
 	$(RM) $(NAME)
+	$(RM) $(MINILIBX_TAR)
 	$(ECHOC) $(GREEN) "--> $(NAME) deleted !"$(NC)"\n"
-	$(ECHOC) $(GREEN) "--> $(RUN_TESTS) deleted !"$(NC)"\n"
+	$(ECHOC) $(GREEN) "--> $(MINILIBX_TAR) deleted !"$(NC)"\n"
 
 re: fclean
 	echo -e $(YELLOW) "\nRebuilding..." $(NC)
@@ -309,6 +305,4 @@ re: fclean
 	$(MAKE) -s
 
 .PHONY: all clean fclean re run
-.SILENT: $(NAME) $(LIB) $(MINILIBX) $(OBJS) run clean fclean re test
-
-#endif
+.SILENT: $(NAME) $(LIB) $(MINILIBX) $(MINILIBX_TAR) $(OBJS) run clean fclean re test
