@@ -6,7 +6,7 @@
 #    By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 13:20:37 by rbroque           #+#    #+#              #
-#    Updated: 2023/03/01 12:11:22 by rbroque          ###   ########.fr        #
+#    Updated: 2023/03/01 18:32:21 by rbroque          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -255,8 +255,8 @@ $(NAME): $(OBJS)
 
 $(MINILIBX_TAR):
 	echo -e $(BLUE) "\n====> Downloading MLX <===="$(NC)"\n"
-	wget $(MINILIBX_LINK)
-	tar -zxvf $(MINILIBX_TAR)
+	wget $(MINILIBX_LINK) &> /dev/null
+	tar -zxvf $(MINILIBX_TAR) &> /dev/null
 	$(ECHOC) $(GREEN) "--> MLX DOWNLOADED !"$(NC)"\n"
 
 $(MINILIBX): $(MINILIBX_TAR)
