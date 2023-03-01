@@ -6,7 +6,7 @@
 #    By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 13:20:37 by rbroque           #+#    #+#              #
-#    Updated: 2023/03/01 11:43:30 by rbroque          ###   ########.fr        #
+#    Updated: 2023/03/01 12:11:22 by rbroque          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -235,9 +235,7 @@ BLUE='\033[1;36m'
 NC='\033[0m' # No Color
 
 ifndef ECHO
-T := $(shell $(MAKE) $(MAKECMDGOALS) --no-print-directory \
-      -nrRf $(firstword $(MAKEFILE_LIST)) \
-      ECHO="COUNTTHIS" | grep -c "COUNTTHIS")
+T := $(words $(SRCS))
 N := x
 C = $(words $N)$(eval N := x $N)
 

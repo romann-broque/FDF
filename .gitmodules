@@ -1,6 +1,0 @@
-[submodule "assets/42MapGenerator"]
-	path = assets/42MapGenerator
-	url = https://github.com/jgigault/42MapGenerator.git
-[submodule "libft"]
-	path = libft
-	url = https://github.com/romann-broque/libft.git
