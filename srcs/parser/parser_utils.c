@@ -6,7 +6,7 @@
 /*   By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 16:20:40 by rbroque           #+#    #+#             */
-/*   Updated: 2023/03/02 17:04:05 by rbroque          ###   ########.fr       */
+/*   Updated: 2023/03/05 21:06:01 by rbroque          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static bool	is_color_valid(const char *color)
 bool	is_format_valid(const char *str)
 {
 	return (is_alt_valid(str)
-		&& is_color_valid(str + abs_index(str, SEPARATOR) + 1));
+		&& is_color_valid(str + index_of(str, SEPARATOR) + 1));
 }
 
 bool	is_color_prefix_valid(const char *format)
