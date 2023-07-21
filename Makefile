@@ -162,7 +162,7 @@ MLX_FOLDER = minilibx-linux/
 MINILIBX += $(MLX_FOLDER)/libmlx_Linux.a
 MINILIBX += $(MLX_FOLDER)/libmlx.a
 MINILIBX_TAR += minilibx-linux.tgz
-MINILIBX_LINK += https://projects.intra.42.fr/uploads/document/document/13430/$(MINILIBX_TAR)
+MINILIBX_LINK += https://cdn.intra.42.fr/document/document/17935/$(MINILIBX_TAR)
 
 ###################
 #### INCLUDES #####
