@@ -6,7 +6,7 @@
 #    By: rbroque <rbroque@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/02 13:20:37 by rbroque           #+#    #+#              #
-#    Updated: 2023/03/01 18:32:21 by rbroque          ###   ########.fr        #
+#    Updated: 2023/09/16 11:28:28 by rbroque          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -162,7 +162,7 @@ MLX_FOLDER = minilibx-linux/
 MINILIBX += $(MLX_FOLDER)/libmlx_Linux.a
 MINILIBX += $(MLX_FOLDER)/libmlx.a
 MINILIBX_TAR += minilibx-linux.tgz
-MINILIBX_LINK += https://cdn.intra.42.fr/document/document/17935/$(MINILIBX_TAR)
+MINILIBX_LINK += https://cdn.intra.42.fr/document/document/20910/$(MINILIBX_TAR)
 
 ###################
 #### INCLUDES #####
